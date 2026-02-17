@@ -1,0 +1,311 @@
+---
+layout: default
+title: THANG Botanicals | Premium Kratom & Ethnobotanicals
+description: THANG Botanicals specializes in premium kratom strains, ethnobotanical specimens, and holistic wellness products. Launching March 2025.
+---
+
+<div class="landing-hero text-center" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 0;">
+  
+  <!-- Logo Area -->
+  <div class="logo-container mb-2" style="position: relative; display: inline-block;">
+    <img src="{{ '/assets/images/thang-logo.svg' | relative_url }}" alt="THANG Botanicals" style="max-width: 300px; filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));">
+    <div class="japanese-subtitle" style="margin-top: 1rem; font-size: 1rem;"> Botanicals</div>
+  </div>
+
+ <h1 style="font-size: 1.2rem; letter-spacing: 0.4em; margin-bottom: 0.5rem;">Premium Specimens</h1>
+<p style="color: var(--text-muted); max-width: 600px; line-height: 1.8; margin-bottom: 2rem;">
+  Curated ethnobotanicals sourced from sustainable Southeast Asian farms. 
+  Laboratory tested. Traditionally harvested.
+</p>
+
+ <!-- Launch Date -->
+<div class="holo-card" style="padding: 2rem; margin-bottom: 3rem; display: inline-block; background: rgba(20, 27, 61, 0.8);">
+  <div style="font-size: 0.8rem; letter-spacing: 0.3em; color: var(--gold-primary); margin-bottom: 0.5rem;">LAUNCHING</div>
+  <div style="font-size: 2rem; font-family: 'Cinzel', serif; color: var(--text-primary);">March 2025</div>
+</div>
+
+  <!-- Strain Finder CTA -->
+<div class="mb-2">
+  <button onclick="window.quiz.open()" class="btn-gold" style="margin-bottom: 1rem;">
+    Find Your Strain
+  </button>
+  <p style="font-size: 0.8rem; color: var(--text-muted);">
+    Not sure what you need? Take our 30-second botanical matcher.
+  </p>
+</div>
+
+  <!-- Secure Newsletter Signup -->
+  <div style="max-width: 500px; width: 100%; margin-top: 3rem; padding: 2rem; border: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 14, 39, 0.6);">
+    <h3 style="font-size: 1rem; margin-bottom: 1rem;">Early Access List</h3>
+    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+      Get notified when we launch + exclusive access to limited strains.
+    </p>
+    
+    <form id="newsletter-form" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+      <!-- Honeypot field (hidden from humans) -->
+      <input type="text" id="website-url" name="website-url" style="position: absolute; left: -5000px;" tabindex="-1" autocomplete="off">
+      
+      <input 
+        type="email" 
+        id="email-input" 
+        name="email" 
+        placeholder="your@email.com" 
+        required
+        class="secure-input"
+        style="flex: 1; min-width: 250px;"
+        autocomplete="email"
+        maxlength="100"
+      >
+      <button type="submit" class="btn-gold" style="white-space: nowrap;">
+        Notify Me
+      </button>
+    </form>
+    
+    <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 1rem; opacity: 0.6;">
+      Secure submission. No spam. Unsubscribe anytime.
+    </p>
+  </div>
+
+  <!-- Inventory Preview -->
+  <div style="margin-top: 4rem; text-align: center;">
+    <div style="font-size: 0.8rem; letter-spacing: 0.2em; color: var(--gold-primary); margin-bottom: 1rem;">
+      CURRENT INVENTORY
+    </div>
+    <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; font-size: 0.9rem; color: var(--text-muted);">
+      <div><span style="color: var(--gold-primary); font-size: 1.5rem; display: block;">25</span>Unique Strains</div>
+      <div><span style="color: var(--gold-primary); font-size: 1.5rem; display: block;">115kg</span>Total Stock</div>
+      <div><span style="color: var(--gold-primary); font-size: 1.5rem; display: block;">4</span>Color Varieties</div>
+    </div>
+  </div>
+
+    <!-- Order Form Section -->
+  <div style="max-width: 500px; margin: 4rem auto; padding: 3rem; border: 1px solid rgba(212, 175, 55, 0.3); background: rgba(10, 14, 39, 0.6);">
+    <h3 style="margin-bottom: 0.5rem; text-align: center; font-family: 'Cinzel', serif;">Quick Order</h3>
+    <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 2rem;">Cash App / Venmo / Zelle accepted</p>
+    
+    <form id="quick-order">
+      <input type="text" name="name" placeholder="Full Name" required class="secure-input" style="margin-bottom: 1rem; width: 100%;">
+      
+      <input type="email" name="email" placeholder="Email Address" required class="secure-input" style="margin-bottom: 1rem; width: 100%;">
+      
+      <select name="strain" required class="secure-input" style="margin-bottom: 1rem; width: 100%; background: var(--navy-deep);">
+        <option value="">Select Strain...</option>
+        <option value="Green Maeng Da">Green Maeng Da ($15/oz)</option>
+        <option value="Green Dragon">Green Dragon ($15/oz)</option>
+        <option value="Red Bali">Red Bali ($15/oz)</option>
+        <option value="Red Thai">Red Thai ($15/oz)</option>
+        <option value="White Maeng Da">White Maeng Da ($15/oz)</option>
+        <option value="Yellow Vietnam">Yellow Vietnam ($15/oz)</option>
+      </select>
+      
+      <select name="quantity" required class="secure-input" style="margin-bottom: 1rem; width: 100%; background: var(--navy-deep);" id="qty-select">
+        <option value="1">1 oz - $15</option>
+        <option value="4">4 oz - $50 (Save $10)</option>
+        <option value="8">8 oz - $90 (Save $30)</option>
+      </select>
+      
+      <select name="payment_method" required class="secure-input" style="margin-bottom: 1rem; width: 100%; background: var(--navy-deep);">
+        <option value="">Payment Method...</option>
+        <option value="Venmo">Venmo</option>
+        <option value="CashApp">Cash App</option>
+        <option value="Zelle">Zelle</option>
+        <option value="Crypto">Bitcoin/Crypto</option>
+      </select>
+      
+      <textarea name="address" placeholder="Shipping Address (include ZIP)" required class="secure-input" style="margin-bottom: 1.5rem; width: 100%; min-height: 80px; resize: vertical;"></textarea>
+      
+      <input type="hidden" name="amount" id="order-amount" value="15">
+      
+      <button type="submit" class="btn-gold" style="width: 100%; position: relative;">
+        <span id="btn-text">Place Order - $15</span>
+        <span id="btn-loading" class="loading-dots hidden"><span></span><span></span><span></span></span>
+      </button>
+      
+      <p style="font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 1rem;">
+        You will receive payment instructions via email within 30 minutes.
+      </p>
+    </form>
+  </div>
+
+  <script>
+    // Update price when quantity changes
+    document.getElementById('qty-select').addEventListener('change', function() {
+      const qty = parseInt(this.value);
+      const amount = qty === 1 ? 15 : qty === 4 ? 50 : 90;
+      document.getElementById('order-amount').value = amount;
+      document.getElementById('btn-text').textContent = 'Place Order - $' + amount;
+    });
+
+    // Handle form submission
+    document.getElementById('quick-order').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const btn = e.target.querySelector('button');
+      const btnText = document.getElementById('btn-text');
+      const btnLoading = document.getElementById('btn-loading');
+      
+      // Show loading state
+      btn.disabled = true;
+      btnText.classList.add('hidden');
+      btnLoading.classList.remove('hidden');
+      
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      
+      // Double-check amount calculation
+      const qty = parseInt(data.quantity);
+      data.amount = qty === 1 ? 15 : qty === 4 ? 50 : 90;
+      
+      // IMPORTANT: Replace this with your actual base64 encoded webhook URL
+      // Use: [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("YOUR_WEBHOOK_URL"))
+      const webhookUrl = atob("aHR0cHM6Ly9udWFuY2Vkcm9wLmFwcC5uOG4uY2xvdWQvd2ViaG9vay90aGFuZy1vcmRlcg==");
+      
+      try {
+        const res = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        });
+        
+        const result = await res.json();
+        
+        if (result.success) {
+          alert('Order received! Check your email for payment instructions.');
+          e.target.reset();
+          document.getElementById('btn-text').textContent = 'Place Order - $15';
+        } else {
+          alert('Error: ' + result.message);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Network error. Email orders@kratomthang.com directly with your order.');
+      } finally {
+        btn.disabled = false;
+        btnText.classList.remove('hidden');
+        btnLoading.classList.add('hidden');
+      }
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer style="margin-top: auto; padding-top: 4rem; font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+    <p>© 2025 THANG Botanicals. Garland, Texas.</p>
+    <p style="margin-top: 0.5rem; opacity: 0.5;">
+      These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.
+    </p>
+  </footer>
+</div>
+
+<style>
+.landing-hero {
+  position: relative;
+}
+.quiz-progress {
+  width: 100%;
+  height: 2px;
+  background: rgba(212, 175, 55, 0.2);
+  margin-bottom: 2rem;
+  position: relative;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--gold-primary);
+  transition: width 0.3s ease;
+}
+.progress-text {
+  position: absolute;
+  right: 0;
+  top: -25px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.quiz-options {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.quiz-option {
+  padding: 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.quiz-option:hover {
+  border-color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.05);
+}
+.option-label {
+  font-family: 'Cinzel', serif;
+  color: var(--gold-primary);
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+.option-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.results-container {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.result-card {
+  padding: 2rem;
+  position: relative;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+.result-card.top-match {
+  border-color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.05);
+}
+.match-percentage {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: 'Cinzel', serif;
+  color: var(--gold-primary);
+  font-size: 1.2rem;
+}
+.best-match-label {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold-primary);
+  color: var(--navy-deep);
+  padding: 0.2rem 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.strain-tags {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.quiz-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+@media (max-width: 600px) {
+  .quiz-options {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
