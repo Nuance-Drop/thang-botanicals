@@ -3,160 +3,8 @@ layout: default
 title: "Botanical Education | THANG Blog"
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Botanical Education | THANG Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-  
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Rajdhani', sans-serif;
-      background: #050505;
-      color: #fff;
-      line-height: 1.6;
-      background: radial-gradient(circle at 20% 20%, rgba(131,56,236,0.15) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(255,0,110,0.1) 0%, transparent 50%),
-                  #050505;
-    }
-    
-    .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
-    
-    h1, h2, h3 { font-family: 'Orbitron', sans-serif; color: #FFD700; }
-    
-    .back-link {
-      display: inline-block;
-      margin-bottom: 2rem;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 0.1em;
-    }
-    
-    .blog-header {
-      text-align: center;
-      padding: 4rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 3rem;
-    }
-    
-    .blog-header h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .blog-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: all 0.3s;
-      text-decoration: none;
-      color: #fff;
-      display: block;
-    }
-    
-    .blog-card:hover {
-      transform: translateY(-5px);
-      border-color: #ff006e;
-      box-shadow: 0 10px 30px rgba(255,0,110,0.2);
-    }
-    
-    .blog-content {
-      padding: 2rem;
-    }
-    
-    .blog-tag {
-      display: inline-block;
-      padding: 0.3rem 1rem;
-      background: rgba(255,0,110,0.1);
-      border: 1px solid rgba(255,0,110,0.3);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: #ff006e;
-      margin-bottom: 1rem;
-      font-family: 'Orbitron', sans-serif;
-    }
-    
-    .blog-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-    
-    .blog-card p {
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-    }
-    
-    .read-more {
-      display: inline-block;
-      margin-top: 1.5rem;
-      color: #FFD700;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-    }
-    
-    .edu-section {
-      background: rgba(0,255,127,0.05);
-      border: 1px solid rgba(0,255,127,0.2);
-      border-radius: 24px;
-      padding: 3rem;
-      margin: 4rem 0;
-      text-align: center;
-    }
-    
-    .edu-section h2 {
-      color: #00ff7f;
-      margin-bottom: 1.5rem;
-    }
-    
-    .strain-colors {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .color-box {
-      text-align: center;
-      padding: 1.5rem;
-      background: rgba(0,0,0,0.3);
-      border-radius: 12px;
-      min-width: 150px;
-    }
-    
-    .color-indicator {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      border: 3px solid;
-    }
-    
-    .green { border-color: #00ff7f; box-shadow: 0 0 20px rgba(0,255,127,0.3); }
-    .red { border-color: #ff006e; box-shadow: 0 0 20px rgba(255,0,110,0.3); }
-    .white { border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.3); }
-    .yellow { border-color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
-  </style>
-</head>
-<body>
-
 <div class="container">
-  <a href="/" class="back-link">← Back to Main Site</a>
+  <a href="{{ '/' | relative_url }}" class="back-link">← Back to Main Site</a>
   
   <div class="blog-header">
     <h1>Botanical Education</h1>
@@ -196,7 +44,7 @@ title: "Botanical Education | THANG Blog"
   </div>
   
   <div class="blog-grid">
-    <a href="#" class="blog-card">
+    <a href="#" class="blog-card" onclick="alert('Full article coming soon!')">
       <div class="blog-content">
         <span class="blog-tag">SOURCING</span>
         <h2>Meet Our Farmers: The Art of Traditional Harvesting</h2>
@@ -205,7 +53,7 @@ title: "Botanical Education | THANG Blog"
       </div>
     </a>
     
-    <a href="#" class="blog-card">
+    <a href="#" class="blog-card" onclick="alert('Full article coming soon!')">
       <div class="blog-content">
         <span class="blog-tag">SCIENCE</span>
         <h2>Alkaloid Profiles: Why Lab Testing Matters</h2>
@@ -214,7 +62,7 @@ title: "Botanical Education | THANG Blog"
       </div>
     </a>
     
-    <a href="#" class="blog-card">
+    <a href="#" class="blog-card" onclick="alert('Full article coming soon!')">
       <div class="blog-content">
         <span class="blog-tag">ETHICS</span>
         <h2>Fair Trade in the Botanical Industry</h2>
@@ -223,7 +71,7 @@ title: "Botanical Education | THANG Blog"
       </div>
     </a>
     
-    <a href="#" class="blog-card">
+    <a href="#" class="blog-card" onclick="alert('Full article coming soon!')">
       <div class="blog-content">
         <span class="blog-tag">STRAIN GUIDE</span>
         <h2>Limited Editions: Why Rare Strains Cost More</h2>
@@ -232,7 +80,7 @@ title: "Botanical Education | THANG Blog"
       </div>
     </a>
     
-    <a href="#" class="blog-card">
+    <a href="#" class="blog-card" onclick="alert('Full article coming soon!')">
       <div class="blog-content">
         <span class="blog-tag">SUSTAINABILITY</span>
         <h2>Agroforestry vs Plantation Farming</h2>
@@ -241,7 +89,7 @@ title: "Botanical Education | THANG Blog"
       </div>
     </a>
     
-    <a href="#" class="blog-card">
+    <a href="#" class="blog-card" onclick="alert('Full article coming soon!')">
       <div class="blog-content">
         <span class="blog-tag">CULTURE</span>
         <h2>The History of Kratom in Southeast Asia</h2>
@@ -265,8 +113,137 @@ title: "Botanical Education | THANG Blog"
     <p>THANG Botanicals Education Hub © 2026</p>
     <p style="margin-top: 0.5rem;">Research purposes only. Not for human consumption.</p>
   </footer>
-
 </div>
 
-</body>
-</html>
+<style>
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+  }
+  
+  .back-link:hover { color: #ff006e; }
+  
+  .blog-header {
+    text-align: center;
+    padding: 4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 3rem;
+  }
+  
+  .blog-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: 'Orbitron', sans-serif;
+    color: #FFD700;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .blog-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff006e;
+    box-shadow: 0 10px 30px rgba(255,0,110,0.2);
+  }
+  
+  .blog-content {
+    padding: 2rem;
+  }
+  
+  .blog-tag {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background: rgba(255,0,110,0.1);
+    border: 1px solid rgba(255,0,110,0.3);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #ff006e;
+    margin-bottom: 1rem;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .blog-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-family: 'Cinzel', serif;
+  }
+  
+  .blog-card p {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+  }
+  
+  .read-more {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #FFD700;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .edu-section {
+    background: rgba(0,255,127,0.05);
+    border: 1px solid rgba(0,255,127,0.2);
+    border-radius: 24px;
+    padding: 3rem;
+    margin: 4rem 0;
+    text-align: center;
+  }
+  
+  .edu-section h2 {
+    color: #00ff7f;
+    margin-bottom: 1.5rem;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .strain-colors {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .color-box {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    min-width: 150px;
+  }
+  
+  .color-indicator {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    border: 3px solid;
+  }
+  
+  .color-indicator.green { border-color: #00ff7f; box-shadow: 0 0 20px rgba(0,255,127,0.3); }
+  .color-indicator.red { border-color: #ff006e; box-shadow: 0 0 20px rgba(255,0,110,0.3); }
+  .color-indicator.white { border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+  .color-indicator.yellow { border-color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+</style>

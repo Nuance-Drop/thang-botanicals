@@ -3,134 +3,9 @@ layout: default
 title: "Investor Relations | THANG Botanicals"
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Investor Relations | THANG Botanicals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-  
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Rajdhani', sans-serif;
-      background: #050505;
-      color: #fff;
-      line-height: 1.6;
-      background: radial-gradient(circle at 20% 20%, rgba(131,56,236,0.15) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(255,0,110,0.1) 0%, transparent 50%),
-                  #050505;
-    }
-    
-    .container { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; }
-    
-    h1, h2, h3 { font-family: 'Orbitron', sans-serif; color: #FFD700; }
-    
-    .back-link {
-      display: inline-block;
-      margin-bottom: 2rem;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 0.1em;
-    }
-    
-    .back-link:hover { color: #ff006e; }
-    
-    .hero-investor {
-      text-align: center;
-      padding: 4rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 3rem;
-    }
-    
-    .hero-investor h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(to right, #FFD700, #ff006e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .metric-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 2rem;
-      border-radius: 16px;
-      text-align: center;
-    }
-    
-    .metric-number {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.5rem;
-      color: #ff006e;
-      display: block;
-    }
-    
-    .section {
-      margin: 4rem 0;
-      padding: 2rem;
-      background: rgba(255,255,255,0.02);
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .section h2 {
-      margin-bottom: 1.5rem;
-      color: #FFD700;
-    }
-    
-    .section p {
-      color: rgba(255,255,255,0.8);
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    
-    .highlight-box {
-      background: rgba(0,255,127,0.05);
-      border-left: 4px solid #00ff7f;
-      padding: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .contact-investor {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: rgba(255,0,110,0.05);
-      border: 1px solid rgba(255,0,110,0.2);
-      border-radius: 24px;
-      margin-top: 4rem;
-    }
-    
-    .contact-investor h2 {
-      color: #ff006e;
-      margin-bottom: 1rem;
-    }
-    
-    .email-big {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: #FFD700;
-      text-decoration: none;
-      display: inline-block;
-      margin: 1rem 0;
-    }
-  </style>
-</head>
-<body>
-
 <div class="container">
-  <a href="/" class="back-link">← Back to Main Site</a>
+  <!-- FIXED: Use relative_url for GitHub Pages project sites -->
+  <a href="{{ '/' | relative_url }}" class="back-link">← Back to Main Site</a>
   
   <div class="hero-investor">
     <h1>Investor Relations</h1>
@@ -149,7 +24,7 @@ title: "Investor Relations | THANG Botanicals"
       <div style="color: rgba(255,255,255,0.6);">Launch Year</div>
     </div>
     <div class="metric-card">
-      <span class="metric-number">40%</div>
+      <span class="metric-number">40%</span>
       <div style="color: rgba(255,255,255,0.6);">Above Market Farmer Pay</div>
     </div>
     <div class="metric-card">
@@ -158,32 +33,30 @@ title: "Investor Relations | THANG Botanicals"
     </div>
   </div>
   
+  <!-- Webhook Contact Form -->
   <div class="section">
-    <h2>The Opportunity</h2>
-    <p>The botanical market is flooded with mass-produced, low-quality product sourced through exploitative supply chains. THANG is different.</p>
-    <p>We've eliminated the traditional 4-5 layers of middlemen by partnering directly with generational farmers in Southeast Asia. This isn't just ethical—it's highly profitable.</p>
+    <h2>Request Investor Packet</h2>
+    <p>Receive our full prospectus and financial projections via secure delivery.</p>
     
-    <div class="highlight-box">
-      <h3 style="color: #00ff7f; margin-bottom: 0.5rem;">Competitive Advantage</h3>
-      <p style="margin: 0;">Direct relationships mean we control quality from seed to sale while paying farmers 40% above market rates. The result? Exclusive access to strains no other US vendor can offer, at margins that traditional importers can't match.</p>
-    </div>
-  </div>
-  
-  <div class="section">
-    <h2>Sustainability & Ethics</h2>
-    <p>Our farmers practice traditional agroforestry—no clear-cutting, no pesticides, no chemical fertilizers. These botanicals grow in their natural rainforest habitat, harvested by hand at peak maturity.</p>
-    <p>This isn't marketing fluff. We visit our partner farms quarterly. We know the families. And we're building the first fully traceable supply chain in the industry.</p>
-  </div>
-  
-  <div class="section">
-    <h2>Growth Strategy</h2>
-    <p><strong>Phase 1 (2026):</strong> Direct-to-consumer launch in Texas, establishing brand reputation and customer base.</p>
-    <p><strong>Phase 2 (2027):</strong> Expansion to wholesale B2B, supplying headshops and wellness centers with white-label options.</p>
-    <p><strong>Phase 3 (2028):</strong> Vertical integration—acquiring processing facilities in source regions to further reduce costs and improve quality control.</p>
+    <form id="investor-form" style="max-width: 600px; margin-top: 2rem;">
+      <div style="margin-bottom: 1rem;">
+        <input type="text" id="investor-name" placeholder="Full Name" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Rajdhani', sans-serif;">
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <input type="email" id="investor-email" placeholder="Accredited Investor Email" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Rajdhani', sans-serif;">
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <input type="text" id="investor-telegram" placeholder="Telegram @username (optional)" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Rajdhani', sans-serif;">
+      </div>
+      <!-- Honeypot field for bot protection -->
+      <input type="text" id="website-url" style="display: none;" tabindex="-1" autocomplete="off">
+      
+      <button type="submit" class="btn-gold" style="width: 100%;">Request Information</button>
+    </form>
   </div>
   
   <div class="contact-investor">
-    <h2>Investment Inquiries</h2>
+    <h2>Direct Contact</h2>
     <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
       We're currently seeking strategic partners who align with our mission of ethical trade and premium quality.
     </p>
@@ -197,8 +70,42 @@ title: "Investor Relations | THANG Botanicals"
     <p>THANG Botanicals © 2026</p>
     <p style="margin-top: 0.5rem;">Garland, Texas • Sustainable Southeast Asian Farms</p>
   </footer>
-
 </div>
 
-</body>
-</html>
+<script>
+// Investor form webhook integration
+document.getElementById('investor-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const data = {
+    type: 'investor_inquiry',
+    name: document.getElementById('investor-name').value,
+    email: document.getElementById('investor-email').value,
+    telegram: document.getElementById('investor-telegram').value,
+    timestamp: new Date().toISOString(),
+    source: 'investors_page'
+  };
+  
+  // Replace with your n8n webhook URL
+  const WEBHOOK_URL = 'YOUR_INVESTOR_WEBHOOK_URL_HERE';
+  
+  if (!WEBHOOK_URL.includes('YOUR_')) {
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (response.ok) {
+        alert('Request submitted! Check your email within 24 hours.');
+        e.target.reset();
+      }
+    } catch (error) {
+      alert('Error submitting. Please email directly.');
+    }
+  } else {
+    console.log('Investor data:', data);
+    alert('Investor webhook not configured. Please contact via email.');
+  }
+});
+</script>

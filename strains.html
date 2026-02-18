@@ -21,32 +21,39 @@ description: Browse our complete collection of 25 premium kratom strains includi
 
   <div class="strain-grid" id="strain-grid">
     {% for strain in site.data.strains %}
-    <a href="{{ strain.id | prepend: '/' | relative_url }}" class="strain-card holo-card strain-{{ strain.color }}" data-color="{{ strain.color }}" style="text-decoration: none; color: inherit; display: block; padding: 2rem; position: relative;">
+    <a href="{{ strain.id | prepend: '/' | relative_url }}" class="strain-card holo-card strain-{{ strain.color }}" data-color="{{ strain.color }}" style="text-decoration: none; color: inherit; display: block; position: relative;">
       {% if strain.limited %}
       <span class="limited-badge">Limited</span>
       {% endif %}
       
-      <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-        <div>
-          <div style="font-size: 0.7rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.3rem;">{{ strain.color }} Vein</div>
-          <h3 style="font-size: 1.3rem; margin: 0; border: none;">{{ strain.name }}</h3>
+      <!-- Holographic Mylar Bag Effect -->
+      <div class="mylar-bag">
+        <div class="shimmer"></div>
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; position: relative; z-index: 2;">
+          <div>
+            <div style="font-size: 0.7rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.3rem;">{{ strain.color }} Vein</div>
+            <h3 style="font-size: 1.3rem; margin: 0; border: none; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">{{ strain.name }}</h3>
+          </div>
+          <div style="background: rgba(0,0,0,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; color: var(--gold-primary); border: 1px solid rgba(255,255,255,0.2);">
+            {{ strain.weight }}kg
+          </div>
         </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; color: var(--gold-primary);">
-          {{ strain.weight }}kg
+        
+        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; position: relative; z-index: 2;">{{ strain.description | truncate: 100 }}</p>
+        
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; position: relative; z-index: 2;">
+          {% for tag in strain.tags limit:3 %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
         </div>
-      </div>
-      
-      <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem;">{{ strain.description | truncate: 100 }}</p>
-      
-      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-        {% for tag in strain.tags limit:3 %}
-        <span class="tag">{{ tag }}</span>
-        {% endfor %}
-      </div>
-      
-      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; font-size: 0.8rem;">
-        <span style="color: var(--text-muted);">Speed: <span style="color: var(--gold-primary);">{{ strain.speed | capitalize }}</span></span>
-        <span style="color: var(--text-muted);">Energy: <span style="color: var(--gold-primary);">{{ strain.energy }}/10</span></span>
+        
+        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; font-size: 0.8rem; position: relative; z-index: 2;">
+          <span style="color: var(--text-muted);">Speed: <span style="color: var(--gold-primary);">{{ strain.speed | capitalize }}</span></span>
+          <span style="color: var(--text-muted);">Energy: <span style="color: var(--gold-primary);">{{ strain.energy }}/10</span></span>
+        </div>
+        
+        <!-- Vein Color Indicator -->
+        <div class="vein-color" style="--vein-color: {% if strain.color == 'green' %}#06ffa5{% elsif strain.color == 'red' %}#ff006e{% elsif strain.color == 'white' %}#ffffff{% else %}#fee440{% endif %};"></div>
       </div>
     </a>
     {% endfor %}
@@ -74,10 +81,78 @@ description: Browse our complete collection of 25 premium kratom strains includi
 
 .strain-card {
   transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .strain-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,245,212,0.3), 0 0 30px rgba(0,245,212,0.2);
+}
+
+/* Holographic Mylar Bag CSS */
+.mylar-bag {
+  position: relative;
+  padding: 2rem;
+  height: 100%;
+  background: 
+    linear-gradient(135deg, rgba(0,245,212,0.08) 0%, rgba(254,228,64,0.08) 50%, rgba(155,93,229,0.08) 100%),
+    linear-gradient(45deg, #0a0b0d 0%, #1a1a2e 100%);
+  overflow: hidden;
+}
+
+.mylar-bag::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(0,245,212,0.3) 60deg,
+    rgba(254,228,64,0.3) 120deg,
+    rgba(155,93,229,0.3) 180deg,
+    rgba(255,0,110,0.3) 240deg,
+    transparent 360deg
+  );
+  animation: rotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+  mix-blend-mode: overlay;
+}
+
+.strain-card:hover .mylar-bag::before { opacity: 1; }
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.vein-color {
+  width: 100%;
+  height: 4px;
+  background: var(--vein-color);
+  border-radius: 2px;
+  margin-top: 1rem;
+  box-shadow: 0 0 10px var(--vein-color);
 }
 </style>
 
