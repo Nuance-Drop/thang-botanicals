@@ -1,0 +1,117 @@
+---
+layout: default
+---
+
+<div class="strain-detail" style="padding: 4rem 0;">
+  <a href="{{ '/strains' | relative_url }}" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 2rem; display: inline-block;">← Back to Catalog</a>
+  
+  <div class="holo-card strain-{{ page.color }}" style="padding: 3rem; margin-top: 2rem;">
+    {% if page.limited %}
+    <span class="limited-badge">Limited Edition</span>
+    {% endif %}
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+      <div>
+        <div style="font-size: 0.8rem; letter-spacing: 0.3em; color: var(--text-muted); margin-bottom: 0.5rem;">{{ page.color | upcase }} VEIN</div>
+        <h1 style="margin-bottom: 1rem;">{{ page.name }}</h1>
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem;">{{ page.description }}</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+          <div class="stat-box">
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Energy</div>
+            <div style="font-size: 1.5rem; color: var(--gold-primary);">{{ page.energy }}/10</div>
+          </div>
+          <div class="stat-box">
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Pain Relief</div>
+            <div style="font-size: 1.5rem; color: var(--gold-primary);">{{ page.pain }}/10</div>
+          </div>
+          <div class="stat-box">
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Anxiety Relief</div>
+            <div style="font-size: 1.5rem; color: var(--gold-primary);">{{ page.anxiety }}/10</div>
+          </div>
+          <div class="stat-box">
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Duration</div>
+            <div style="font-size: 1.5rem; color: var(--gold-primary);">{{ page.speed | capitalize }}</div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2rem;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Best For:</div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            {% for tag in page.tags limit:6 %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        
+        {% if page.limited %}
+        <div style="background: rgba(255, 0, 110, 0.1); border: 1px solid var(--accent-pink); padding: 1rem; margin-bottom: 2rem; color: #ff6b9d; font-size: 0.9rem;">
+          <strong>Limited Stock:</strong> Only {{ page.weight }}kg available. Subject to availability.
+        </div>
+        {% endif %}
+        
+        <button class="btn-gold" style="width: 100%;" onclick="alert('Ordering launching March 2025')">
+          Request Availability
+        </button>
+      </div>
+      
+      <div style="background: rgba(0,0,0,0.3); padding: 2rem; border: 1px solid rgba(212, 175, 55, 0.2);">
+        <h3 style="font-size: 1rem; margin-bottom: 1.5rem;">Characteristics</h3>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem;">
+            <span style="color: var(--text-muted);">Speed</span>
+            <span style="color: var(--gold-primary);">{{ page.speed | capitalize }}</span>
+          </div>
+          <div style="height: 2px; background: rgba(255,255,255,0.1);">
+            <div style="width: {% case page.speed %}{% when 'fast' %}90{% when 'moderate' %}60{% when 'slow' %}30{% else %}50{% endcase %}%; height: 100%; background: var(--gold-primary);"></div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem;">
+            <span style="color: var(--text-muted);">Social Enhancement</span>
+            <span style="color: var(--gold-primary);">{{ page.social }}/10</span>
+          </div>
+          <div style="height: 2px; background: rgba(255,255,255,0.1);">
+            <div style="width: {{ page.social | times: 10 }}%; height: 100%; background: var(--gold-primary);"></div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem;">
+            <span style="color: var(--text-muted);">Focus Enhancement</span>
+            <span style="color: var(--gold-primary);">{{ page.focus }}/10</span>
+          </div>
+          <div style="height: 2px; background: rgba(255,255,255,0.1);">
+            <div style="width: {{ page.focus | times: 10 }}%; height: 100%; background: var(--gold-primary);"></div>
+          </div>
+        </div>
+        
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 1.5rem;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Best Time</div>
+          <div style="display: flex; gap: 0.5rem;">
+            {% for time in page.time_of_day %}
+            <span style="padding: 0.3rem 0.8rem; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); font-size: 0.75rem; text-transform: capitalize;">{{ time }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        
+        {% if page.comparable %}
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 1.5rem;">
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Comparable To:</div>
+          <div style="color: var(--gold-primary); margin-top: 0.3rem;">{{ page.comparable }}</div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.stat-box {
+  background: rgba(0,0,0,0.2);
+  padding: 1rem;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+</style>

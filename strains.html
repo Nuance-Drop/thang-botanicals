@@ -1,0 +1,101 @@
+---
+layout: default
+title: Strain Catalog | THANG Botanicals
+description: Browse our complete collection of 25 premium kratom strains including Green, Red, White, and Yellow varieties.
+---
+
+<div style="padding: 4rem 0;">
+  <div class="text-center mb-2">
+    <h1>Strain Catalog <span class="japanese-subtitle">品種目録</span></h1>
+    <p style="color: var(--text-muted); margin-top: 1rem;">25 Premium Varieties • 115kg Total Inventory</p>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+    <button onclick="filterStrains('all')" class="filter-btn active" data-filter="all">All</button>
+    <button onclick="filterStrains('green')" class="filter-btn" data-filter="green">Green</button>
+    <button onclick="filterStrains('red')" class="filter-btn" data-filter="red">Red</button>
+    <button onclick="filterStrains('white')" class="filter-btn" data-filter="white">White</button>
+    <button onclick="filterStrains('yellow')" class="filter-btn" data-filter="yellow">Yellow</button>
+  </div>
+
+  <div class="strain-grid" id="strain-grid">
+    {% for strain in site.data.strains %}
+    <a href="{{ strain.id | prepend: '/' | relative_url }}" class="strain-card holo-card strain-{{ strain.color }}" data-color="{{ strain.color }}" style="text-decoration: none; color: inherit; display: block; padding: 2rem; position: relative;">
+      {% if strain.limited %}
+      <span class="limited-badge">Limited</span>
+      {% endif %}
+      
+      <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+        <div>
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.3rem;">{{ strain.color }} Vein</div>
+          <h3 style="font-size: 1.3rem; margin: 0; border: none;">{{ strain.name }}</h3>
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; color: var(--gold-primary);">
+          {{ strain.weight }}kg
+        </div>
+      </div>
+      
+      <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem;">{{ strain.description | truncate: 100 }}</p>
+      
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        {% for tag in strain.tags limit:3 %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; font-size: 0.8rem;">
+        <span style="color: var(--text-muted);">Speed: <span style="color: var(--gold-primary);">{{ strain.speed | capitalize }}</span></span>
+        <span style="color: var(--text-muted);">Energy: <span style="color: var(--gold-primary);">{{ strain.energy }}/10</span></span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--text-muted);
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.strain-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.strain-card:hover {
+  transform: translateY(-5px);
+}
+</style>
+
+<script>
+function filterStrains(color) {
+  const cards = document.querySelectorAll('.strain-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+  
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === color);
+  });
+  
+  cards.forEach(card => {
+    if (color === 'all' || card.dataset.color === color) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>

@@ -1,0 +1,37 @@
+title: THANG Botanicals
+description: Premium Kratom Botanicals & Ethnobotanical Specimens
+baseurl: ""
+url: "https://kratomthang.com"
+author: THANG Botanicals
+email: orders@kratomthang.com
+
+# Security settings
+markdown: kramdown
+highlighter: rouge
+
+# Collections
+collections:
+  strains:
+    output: true
+    permalink: /:name/
+
+# Build settings
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Content Security Policy (configured in meta tags)
+csp:
+  default_src: "'self'"
+  script_src: "'self' 'unsafe-inline' https://cdn.jsdelivr.net"
+  style_src: "'self' 'unsafe-inline' https://fonts.googleapis.com"
+  img_src: "'self' data: https:"
+  connect_src: "'self' https://*.n8n.cloud https://api.brevo.com"
+  font_src: "'self' https://fonts.gstatic.com"
+  frame_src: "'none'"
+  object_src: "'none'"
+  base_uri: "'self'"
+  form_action: "'self' https://*.n8n.cloud"
+
+# n8n Webhook (obfuscated - see security.js)
+n8n_webhook_prefix: "aHR0cHM6Ly9udWFuY2Vkcm9wLmFwcC5uOG4uY2xvdWQvd2ViaG9vay90aGFuZy1vcmRlcg=="

@@ -1,0 +1,411 @@
+# GREEN STRAINS (7)
+- id: green-aceh
+  name: "Green Aceh"
+  color: "green"
+  weight: 10
+  limited: false
+  speed: "balanced"
+  social: 9
+  focus: 6
+  energy: 8
+  pain: 4
+  anxiety: 3
+  beginner: false
+  time_of_day: ["morning", "afternoon", "evening"]
+  tags: ["intense", "vital", "rare", "upbeat", "social"]
+  description: "Intense and vital rare strain. Upbeat social characteristics perfect for experienced users."
+  comparable: "Ultra-premium Green Malay"
+  
+- id: green-dragon
+  name: "Green Dragon"
+  color: "green"
+  weight: 10
+  limited: false
+  speed: "balanced"
+  social: 8
+  focus: 7
+  energy: 6
+  pain: 5
+  anxiety: 4
+  beginner: true
+  time_of_day: ["morning", "afternoon"]
+  tags: ["euphoric", "happy", "balanced", "social", "solo"]
+  description: "Your euphoric, happy strain. Balanced energy suitable for social or solo use."
+  comparable: "Green Malay"
+
+- id: green-md
+  name: "Green Maeng Da"
+  color: "green"
+  weight: 10
+  limited: false
+  speed: "fast"
+  social: 5
+  focus: 9
+  energy: 8
+  pain: 6
+  anxiety: 2
+  beginner: false
+  time_of_day: ["morning", "afternoon"]
+  tags: ["gold-standard", "productive", "focused", "strong"]
+  description: "The gold standard. High energy, productivity-focused. Not for beginners."
+  comparable: "Classic Thai Green"
+
+- id: green-malay
+  name: "Green Malay"
+  color: "green"
+  weight: 10
+  limited: false
+  speed: "balanced"
+  social: 7
+  focus: 7
+  energy: 6
+  pain: 7
+  anxiety: 5
+  beginner: true
+  time_of_day: ["morning", "afternoon", "evening"]
+  tags: ["long-lasting", "chill", "fast", "strong", "versatile"]
+  description: "Long duration, strong and versatile. Both chill and fast characteristics."
+  comparable: "Green Dragon"
+
+- id: super-green
+  name: "Super Green"
+  color: "green"
+  weight: 5
+  limited: false
+  speed: "fast"
+  social: 6
+  focus: 9
+  energy: 10
+  pain: 4
+  anxiety: 2
+  beginner: false
+  time_of_day: ["morning"]
+  tags: ["espresso", "maximum-potency", "blend", "energy"]
+  description: "Maximum potency blend. Like an espresso shot in botanical form."
+  comparable: "Enhanced Green MD"
+
+- id: green-thai
+  name: "Green Thai"
+  color: "green"
+  weight: 4
+  limited: false
+  speed: "moderate"
+  social: 6
+  focus: 8
+  energy: 6
+  pain: 7
+  anxiety: 5
+  beginner: true
+  time_of_day: ["morning", "afternoon"]
+  tags: ["traditional", "calm-energy", "pain-relief", "smooth"]
+  description: "Traditional Thai profile. Calm energy boost, excellent for pain management."
+  comparable: "Classic Green Vein"
+
+- id: green-dracula
+  name: "Green Dracula"
+  color: "green"
+  weight: 1
+  limited: true
+  speed: "fast"
+  social: 8
+  focus: 7
+  energy: 9
+  pain: 5
+  anxiety: 4
+  beginner: false
+  time_of_day: ["afternoon", "evening"]
+  tags: ["exclusive", "limited", "unique-opportunity", "rare"]
+  description: "Exclusive limited strain. Unique opportunity for collectors and connoisseurs."
+  comparable: "Green Aceh Reserve"
+
+# RED STRAINS (6)
+- id: red-aceh
+  name: "Red Aceh"
+  color: "red"
+  weight: 6
+  limited: false
+  speed: "slow"
+  social: 2
+  focus: 3
+  energy: 2
+  pain: 10
+  anxiety: 9
+  beginner: false
+  time_of_day: ["evening", "night"]
+  tags: ["sedating", "couch-lock", "pain-relief", "anxiety-relief", "heavy"]
+  description: "Heavy sedation, couch-lock potential. Maximum pain and anxiety relief."
+  comparable: "Red Bali Supreme"
+
+- id: red-thai
+  name: "Red Thai"
+  color: "red"
+  weight: 6
+  limited: false
+  speed: "slow"
+  social: 4
+  focus: 4
+  energy: 3
+  pain: 7
+  anxiety: 8
+  beginner: true
+  time_of_day: ["evening"]
+  tags: ["traditional", "slow-creeper", "manageable", "classic"]
+  description: "Traditional red profile. Slow creeper onset, manageable daytime or evening."
+  comparable: "Standard Red Vein"
+
+- id: red-dragon
+  name: "Red Dragon"
+  color: "red"
+  weight: 6
+  limited: false
+  speed: "moderate"
+  social: 10
+  focus: 5
+  energy: 6
+  pain: 5
+  anxiety: 6
+  beginner: true
+  time_of_day: ["afternoon", "evening"]
+  tags: ["aphrodisiac", "social", "unique", "euphoric", "different"]
+  description: "Aphrodisiac qualities and excellent for socializing. Unique among reds."
+  comparable: "Green Dragon (but red!)"
+
+- id: red-bali
+  name: "Red Bali"
+  color: "red"
+  weight: 6
+  limited: false
+  speed: "slow"
+  social: 3
+  focus: 3
+  energy: 2
+  pain: 9
+  anxiety: 8
+  beginner: true
+  time_of_day: ["evening", "night"]
+  tags: ["classic", "sedating", "pure-sedation", "pain", "beginner-friendly"]
+  description: "Classic Red Bali feel. Purely sedating, best for pain. Beginner-friendly red."
+  comparable: "Red Thai (heavier)"
+
+- id: red-md
+  name: "Red Maeng Da"
+  color: "red"
+  weight: 6
+  limited: false
+  speed: "moderate"
+  social: 5
+  focus: 6
+  energy: 6
+  pain: 8
+  anxiety: 5
+  beginner: false
+  time_of_day: ["afternoon", "evening"]
+  tags: ["premium", "middle-road", "strong", "balanced-red"]
+  description: "Premium red middle-road. Stronger energy than typical reds."
+  comparable: "Red Thai (stronger)"
+
+- id: red-bentuangie
+  name: "Red Bentuangie"
+  color: "red"
+  weight: 1
+  limited: true
+  speed: "slow"
+  social: 3
+  focus: 4
+  energy: 2
+  pain: 8
+  anxiety: 9
+  beginner: true
+  time_of_day: ["evening", "night"]
+  tags: ["fermented", "chocolate", "smooth", "gentle", "tasty", "limited"]
+  description: "Fermented chocolate notes. Smooth, gentle, no tummy upset. Best tasting."
+  comparable: "Red Bali (smoother)"
+
+# WHITE STRAINS (6)
+- id: white-md
+  name: "White Maeng Da"
+  color: "white"
+  weight: 6
+  limited: false
+  speed: "fast"
+  social: 5
+  focus: 9
+  energy: 9
+  pain: 3
+  anxiety: 2
+  beginner: true
+  time_of_day: ["morning"]
+  tags: ["fast-energy", "coffee-replacement", "clean", "focused"]
+  description: "Fast energy without jitters. Perfect coffee replacement for mornings."
+  comparable: "White Coffee"
+
+- id: white-aceh
+  name: "White Aceh"
+  color: "white"
+  weight: 5
+  limited: false
+  speed: "fast"
+  social: 6
+  focus: 8
+  energy: 9
+  pain: 4
+  anxiety: 3
+  beginner: false
+  time_of_day: ["morning", "afternoon"]
+  tags: ["smooth", "intense", "medium-duration", "strong"]
+  description: "Both smooth and intense. Medium duration, potentially stronger than WMD."
+  comparable: "White MD (stronger)"
+
+- id: white-horn
+  name: "White Horn"
+  color: "white"
+  weight: 5
+  limited: false
+  speed: "fast"
+  social: 4
+  focus: 9
+  energy: 8
+  pain: 3
+  anxiety: 2
+  beginner: false
+  time_of_day: ["morning"]
+  tags: ["premium", "focused", "energetic", "sharp-comeup"]
+  description: "Premium white. Sharp come-up, highly energetic and focused."
+  comparable: "Adderall-lite"
+
+- id: white-sumatra
+  name: "White Sumatra"
+  color: "white"
+  weight: 3
+  limited: false
+  speed: "moderate"
+  social: 4
+  focus: 8
+  energy: 6
+  pain: 4
+  anxiety: 5
+  beginner: true
+  time_of_day: ["morning", "afternoon"]
+  tags: ["lighter", "focus", "subtle", "regional"]
+  description: "Lighter than other whites. Subtle focus enhancement from Sumatra region."
+  comparable: "Green tea caffeine"
+
+- id: white-elephant
+  name: "White Elephant"
+  color: "white"
+  weight: 3
+  limited: false
+  speed: "moderate"
+  social: 5
+  focus: 7
+  energy: 6
+  pain: 5
+  anxiety: 4
+  beginner: true
+  time_of_day: ["morning"]
+  tags: ["large-leaf", "strong", "mellow", "unusual", "rare"]
+  description: "Large leaf = different alkaloid profile. Strong but mellow. Unusual."
+  comparable: "White MD (mellower)"
+
+- id: white-zombie
+  name: "White Zombie"
+  color: "white"
+  weight: 1
+  limited: true
+  speed: "fast"
+  social: 7
+  focus: 8
+  energy: 8
+  pain: 4
+  anxiety: 3
+  beginner: true
+  time_of_day: ["morning", "afternoon"]
+  tags: ["exclusive", "novelty", "band-named", "limited", "fine-for-beginners"]
+  description: "Exclusive novelty strain named after the band. Beginner-friendly despite name."
+  comparable: "White MD"
+
+# YELLOW STRAINS (5)
+- id: yellow-dragon
+  name: "Yellow Dragon"
+  color: "yellow"
+  weight: 3
+  limited: false
+  speed: "moderate"
+  social: 7
+  focus: 6
+  energy: 5
+  pain: 5
+  anxiety: 8
+  beginner: true
+  time_of_day: ["evening"]
+  tags: ["euphoric", "anxiety-relief", "red-green-mix", "evening"]
+  description: "Red + green characteristics. More euphoric than other yellows. Evening preferred."
+  comparable: "Gold Bali"
+
+- id: yellow-hulu
+  name: "Yellow Hulu"
+  color: "yellow"
+  weight: 3
+  limited: false
+  speed: "moderate"
+  social: 5
+  focus: 6
+  energy: 5
+  pain: 6
+  anxiety: 9
+  beginner: true
+  time_of_day: ["afternoon", "evening"]
+  tags: ["kapuas", "anxiolytic", "medium-duration", "balanced"]
+  description: "Kapuas region. Medium duration, highly anxiolytic without sedation."
+  comparable: "Yellow Vietnam"
+
+- id: yellow-vietnam
+  name: "Yellow Vietnam"
+  color: "yellow"
+  weight: 2
+  limited: true
+  speed: "fast"
+  social: 6
+  focus: 7
+  energy: 6
+  pain: 4
+  anxiety: 10
+  beginner: true
+  time_of_day: ["morning", "afternoon"]
+  tags: ["unique", "anxiety-without-sedation", "faster", "rare"]
+  description: "Unique among yellows. Anxiety relief without sedation, faster profile."
+  comparable: "Green Malay (yellower)"
+
+- id: yellow-md
+  name: "Yellow Maeng Da"
+  color: "yellow"
+  weight: 2
+  limited: false
+  speed: "balanced"
+  social: 6
+  focus: 7
+  energy: 6
+  pain: 6
+  anxiety: 7
+  beginner: true
+  time_of_day: ["anytime"]
+  tags: ["flagship", "premium-process", "balanced-blend", "versatile"]
+  description: "Premium drying process. Great balanced blend, versatile anytime strain."
+  comparable: "Green Dragon (chill)"
+
+- id: yellow-thai
+  name: "Yellow Thai"
+  color: "yellow"
+  weight: 1
+  limited: true
+  speed: "moderate"
+  social: 7
+  focus: 6
+  energy: 5
+  pain: 7
+  anxiety: 9
+  beginner: true
+  time_of_day: ["afternoon", "evening"]
+  tags: ["traditional", "gentle", "strong", "well-balanced", "pain-relief"]
+  description: "Traditional Thai method. Gentle but strong, well-balanced anxiolytic. Takes the edge off."
+  comparable: "Yellow Hulu (stronger)"

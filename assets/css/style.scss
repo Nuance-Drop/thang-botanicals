@@ -1,0 +1,334 @@
+---
+---
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@300;600&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --navy-deep: #0a0e27;
+  --navy-mid: #141b3d;
+  --gold-primary: #D4AF37;
+  --gold-light: #F4E4BC;
+  --gold-dark: #996515;
+  --holographic: linear-gradient(135deg, #00f5d4, #00bbf9, #fee440, #f15bb5, #9b5de5);
+  --text-primary: #e0e6ed;
+  --text-muted: #8b92a8;
+  --accent-pink: #ff006e;
+  --accent-cyan: #00f5d4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--navy-deep);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+// Foodman-inspired geometric border
+.geometric-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background-image:
+      repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(212, 175, 55, 0.1) 50px, rgba(212, 175, 55, 0.1) 53px),
+      repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(0, 245, 212, 0.05) 20px, rgba(0, 245, 212, 0.05) 23px);
+  }
+
+  &::before { top: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+  &::after { bottom: 0; border-top: 1px solid rgba(212, 175, 55, 0.3); }
+}
+
+// Japanese geometric corners (from Foodman Moriyama)
+.corner-ornament {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  z-index: 2;
+  opacity: 0.6;
+
+  &.tl { top: 20px; left: 20px; border-top: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
+  &.tr { top: 20px; right: 20px; border-top: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
+  &.bl { bottom: 20px; left: 20px; border-bottom: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
+  &.br { bottom: 20px; right: 20px; border-bottom: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
+}
+
+// Typography
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+  }
+}
+
+.japanese-subtitle {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 0.5rem;
+  letter-spacing: 0.3em;
+}
+
+// Holographic cards (from packaging)
+.holo-card {
+  background: var(--navy-mid);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--holographic);
+    opacity: 0;
+    transform: rotate(30deg);
+    transition: opacity 0.3s;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  &:hover::before {
+    opacity: 0.1;
+    animation: holoShimmer 2s linear infinite;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 245, 212, 0.1);
+    border-color: var(--gold-primary);
+  }
+}
+
+@keyframes holoShimmer {
+  0% { transform: rotate(30deg) translateX(-10%); }
+  100% { transform: rotate(30deg) translateX(10%); }
+}
+
+// Form elements with security styling
+.secure-input {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(10, 14, 39, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--gold-light);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s;
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.2);
+  }
+
+  &.error {
+    border-color: var(--accent-pink);
+    animation: shake 0.5s;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+// Quiz modal styling
+.quiz-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 14, 39, 0.95);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+
+  &.active { display: flex; }
+
+  .quiz-container {
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--navy-deep);
+    border: 1px solid var(--gold-primary);
+    padding: 3rem;
+    position: relative;
+
+    &::before {
+      content: ' botanical specimen selector // v2.0';
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: var(--navy-deep);
+      padding: 0 10px;
+      color: var(--gold-primary);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+  }
+}
+
+// Strain color coding
+.strain-green { border-left: 4px solid #00b894; }
+.strain-red { border-left: 4px solid #e17055; }
+.strain-white { border-left: 4px solid #dfe6e9; }
+.strain-yellow { border-left: 4px solid #fdcb6e; }
+
+// Limited edition badge
+.limited-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: linear-gradient(135deg, #ff006e, #8338ec);
+  color: white;
+  padding: 0.3rem 1rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: rotate(5deg);
+  box-shadow: 0 4px 10px rgba(255, 0, 110, 0.3);
+  z-index: 10;
+}
+
+// Container
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+// Button styling
+.btn-gold {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-primary);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  &:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold-light);
+    text-shadow: 0 0 10px rgba(244, 228, 188, 0.5);
+
+    &::before { left: 100%; }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Responsive grid
+.strain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+// Loading animation (for webhook submission)
+.loading-dots {
+  display: inline-flex;
+  gap: 5px;
+
+  span {
+    width: 8px;
+    height: 8px;
+    background: var(--gold-primary);
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+
+    &:nth-child(1) { animation-delay: -0.32s; }
+    &:nth-child(2) { animation-delay: -0.16s; }
+  }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+// Utility
+.text-center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 2rem; }
+.hidden { display: none !important; }
+
+// Alert messages
+.alert {
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid;
+
+  &.error {
+    background: rgba(255, 0, 110, 0.1);
+    border-color: var(--accent-pink);
+    color: #ff6b9d;
+  }
+
+  &.success {
+    background: rgba(0, 245, 212, 0.1);
+    border-color: var(--accent-cyan);
+    color: #5ef2d9;
+  }
+}

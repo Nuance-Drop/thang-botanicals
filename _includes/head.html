@@ -1,0 +1,35 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Content Security Policy (Meta Tag for GitHub Pages) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src {{ site.csp.default_src }}; script-src {{ site.csp.script_src }}; style-src {{ site.csp.style_src }}; img-src {{ site.csp.img_src }}; connect-src {{ site.csp.connect_src }}; font-src {{ site.csp.font_src }}; frame-src {{ site.csp.frame_src }}; object-src {{ site.csp.object_src }}; base-uri {{ site.csp.base_uri }}; form-action {{ site.csp.form_action }};">
+  
+  <!-- Security Headers (Meta equivalents) -->
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+  
+  <!-- SEO -->
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  
+  <!-- Favicon (Jekyll compatible paths) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
+  <link rel="mask-icon" href="{{ '/assets/images/safari-pinned-tab.svg' | relative_url }}" color="#D4AF37">
+  <meta name="msapplication-TileColor" content="#0a0e27">
+  <meta name="theme-color" content="#0a0e27">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  
+  {% seo %}
+</head>
