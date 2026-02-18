@@ -1,151 +1,268 @@
 ---
 layout: default
-title: Strain Finder | THANG Botanicals
+title: "Strain Quiz | THANG Botanicals"
 ---
 
-<div style="max-width: 800px; margin: 0 auto; padding: 3rem 5%;">
-  <h1 style="font-family: 'Orbitron', sans-serif; text-align: center; color: #FFD700; margin-bottom: 1rem;">Find Your Perfect Strain</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Your Strain | THANG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: #050505;
+      color: #fff;
+      min-height: 100vh;
+      background: radial-gradient(circle at 20% 20%, rgba(131,56,236,0.15) 0%, transparent 50%), #050505;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    .back-link { color: rgba(255,255,255,0.6); text-decoration: none; font-family: 'Orbitron'; display: inline-block; margin-bottom: 2rem; }
+    .back-link:hover { color: #ff006e; }
+    
+    h1 { font-family: 'Orbitron'; color: #FFD700; text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .subtitle { text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 3rem; }
+    
+    .quiz-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px;
+      padding: 3rem;
+      margin: 2rem 0;
+    }
+    
+    .question { font-family: 'Orbitron'; font-size: 1.5rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+    .progress { text-align: center; color: #ff006e; margin-bottom: 2rem; font-family: 'Orbitron'; }
+    
+    .option {
+      display: block;
+      width: 100%;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-family: 'Rajdhani';
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: left;
+      border-radius: 12px;
+    }
+    
+    .option:hover {
+      border-color: #ff006e;
+      background: rgba(255,0,110,0.1);
+      transform: translateX(10px);
+    }
+    
+    .option-title { font-family: 'Orbitron'; color: #FFD700; display: block; margin-bottom: 0.3rem; }
+    .option-desc { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+    
+    .result-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 1rem 0;
+      position: relative;
+    }
+    
+    .best-match { border-color: #FFD700; background: rgba(255,215,0,0.1); }
+    .limited-badge {
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: #ff006e;
+      color: #fff;
+      padding: 0.3rem 1rem;
+      font-family: 'Orbitron';
+      font-size: 0.7rem;
+      border-radius: 20px;
+    }
+    
+    .strain-name { font-family: 'Orbitron'; color: #FFD700; font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .strain-type { display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1rem; font-family: 'Orbitron'; }
+    .type-green { background: rgba(0,255,127,0.2); color: #00ff7f; border: 1px solid #00ff7f; }
+    .type-red { background: rgba(255,0,110,0.2); color: #ff006e; border: 1px solid #ff006e; }
+    .type-white { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid #fff; }
+    .type-yellow { background: rgba(255,215,0,0.2); color: #FFD700; border: 1px solid #FFD700; }
+    
+    .btn { 
+      display: inline-block; 
+      padding: 1rem 2rem; 
+      background: transparent; 
+      border: 2px solid #ff006e; 
+      color: #ff006e; 
+      text-decoration: none; 
+      font-family: 'Orbitron'; 
+      margin-top: 2rem;
+      cursor: pointer;
+    }
+    .btn:hover { background: #ff006e; color: #fff; }
+    
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="/" class="back-link">← Back to Home</a>
   
-  <div style="background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; margin-bottom: 3rem;">
-    <div id="progress" style="background: linear-gradient(90deg, #FFD700, #ff006e); height: 100%; width: 0%; transition: width 0.3s;"></div>
+  <h1>Find Your Strain</h1>
+  <p class="subtitle">Answer 3 questions to find your perfect match</p>
+  
+  <div id="quiz-container" class="quiz-box">
+    <!-- Quiz content loads here -->
   </div>
-  
-  <div id="quiz-container"></div>
+
 </div>
+
 <script>
-// Load strain data from Jekyll
-const strains = {{ site.data.strains | jsonify }};
+const strains = [
+  {name: 'Green Aceh', type: 'green', tags: ['energy', 'experienced', 'anytime'], desc: 'Intense, vital, rare. For experienced users seeking potent effects.', limited: true},
+  {name: 'Green Dragon', type: 'green', tags: ['social', 'balanced', 'morning'], desc: 'Euphoric and happy. Great for social situations or creative work.', limited: false},
+  {name: 'Green Maeng Da', type: 'green', tags: ['focus', 'energy', 'morning'], desc: 'The gold standard. High energy and productivity without jitters.', limited: false},
+  {name: 'Green Malay', type: 'green', tags: ['balanced', 'long', 'anytime'], desc: 'Long duration, versatile. Both chill and energetic properties.', limited: false},
+  {name: 'Super Green', type: 'green', tags: ['energy', 'experienced', 'morning'], desc: 'Maximum potency blend. Like an espresso shot for your brain.', limited: false},
+  {name: 'Green Thai', type: 'green', tags: ['energy', 'pain', 'morning'], desc: 'Calm energy boost. Excellent for pain management.', limited: false},
+  {name: 'Green Dracula', type: 'green', tags: ['energy', 'rare', 'night'], desc: 'Limited exclusive. Intense nighttime energy.', limited: true},
+  {name: 'Red Aceh', type: 'red', tags: ['pain', 'night', 'experienced'], desc: 'Heavy sedation. Maximum pain relief and relaxation.', limited: false},
+  {name: 'Red Thai', type: 'red', tags: ['balanced', 'evening'], desc: 'Traditional red profile. Slow onset, long duration.', limited: false},
+  {name: 'Red Dragon', type: 'red', tags: ['social', 'aphrodisiac', 'afternoon'], desc: 'Aphrodisiac qualities. Great for socializing.', limited: false},
+  {name: 'Red Bali', type: 'red', tags: ['pain', 'night', 'beginner'], desc: 'Classic Red Bali. Purely sedating, good for beginners.', limited: false},
+  {name: 'Red Maeng Da', type: 'red', tags: ['balanced', 'strong', 'evening'], desc: 'Premium red. Stronger than typical red strains.', limited: false},
+  {name: 'Red Bentuangie', type: 'red', tags: ['anxiety', 'night', 'beginner'], desc: 'Fermented process. Best tasting, smooth on stomach.', limited: true},
+  {name: 'White Maeng Da', type: 'white', tags: ['energy', 'focus', 'morning'], desc: 'Fast energy without jitters. Perfect coffee replacement.', limited: false},
+  {name: 'White Aceh', type: 'white', tags: ['energy', 'experienced', 'morning'], desc: 'Smooth but intense. Medium duration.', limited: false},
+  {name: 'White Horn', type: 'white', tags: ['focus', 'energy', 'morning'], desc: 'Premium white. Sharp come-up, highly focused.', limited: false},
+  {name: 'White Sumatra', type: 'white', tags: ['focus', 'subtle', 'morning'], desc: 'Lighter than other whites. Subtle enhancement.', limited: false},
+  {name: 'White Elephant', type: 'white', tags: ['balanced', 'unusual', 'morning'], desc: 'Large leaf = different alkaloids. Strong but mellow.', limited: false},
+  {name: 'White Zombie', type: 'white', tags: ['social', 'rare', 'beginner'], desc: 'Limited exclusive. Surprisingly beginner-friendly.', limited: true},
+  {name: 'Yellow Dragon', type: 'yellow', tags: ['anxiety', 'social', 'evening'], desc: 'More euphoric than other yellows. Social anxiety relief.', limited: false},
+  {name: 'Yellow Hulu', type: 'yellow', tags: ['anxiety', 'balanced', 'afternoon'], desc: 'Kapuas region. Anxiolytic without sedation.', limited: false},
+  {name: 'Yellow Vietnam', type: 'yellow', tags: ['anxiety', 'rare', 'morning'], desc: 'Limited. Fast-acting anxiety relief.', limited: true},
+  {name: 'Yellow Maeng Da', type: 'yellow', tags: ['balanced', 'versatile', 'anytime'], desc: 'Premium drying process. Great balanced blend.', limited: false},
+  {name: 'Yellow Thai', type: 'yellow', tags: ['anxiety', 'pain', 'evening'], desc: 'Limited. Gentle but strong. Takes the edge off.', limited: true}
+];
+
 const questions = [
   {
-    id: 'experience',
-    title: 'Experience Level',
-    text: 'How experienced are you?',
+    text: 'What is your experience level?',
     options: [
-      {value: 'beginner', label: 'New Explorer', desc: 'First time or occasional'},
-      {value: 'experienced', label: 'Seasoned', desc: 'Regular user'}
+      {val: 'beginner', title: 'New Explorer', desc: 'First time or occasional user'},
+      {val: 'experienced', title: 'Seasoned User', desc: 'Regular, know my preferences'}
     ]
   },
   {
-    id: 'timeOfDay',
-    title: 'Timing',
+    text: 'What is your primary goal?',
+    options: [
+      {val: 'energy', title: 'Clean Energy', desc: 'Motivation and productivity'},
+      {val: 'social', title: 'Social Enhancement', desc: 'Talkative, euphoric, confident'},
+      {val: 'focus', title: 'Deep Focus', desc: 'Work, study, creative flow'},
+      {val: 'pain', title: 'Physical Relief', desc: 'Comfort and relaxation'},
+      {val: 'anxiety', title: 'Anxiety Relief', desc: 'Calm mind, less stress'}
+    ]
+  },
+  {
     text: 'When do you need this?',
     options: [
-      {value: 'morning', label: 'Morning', desc: 'Start the day'},
-      {value: 'afternoon', label: 'Afternoon', desc: 'Mid-day boost'},
-      {value: 'evening', label: 'Evening', desc: 'Wind down'},
-      {value: 'night', label: 'Night', desc: 'Sleep support'}
-    ]
-  },
-  {
-    id: 'goal',
-    title: 'Primary Goal',
-    text: 'What is your main intention?',
-    options: [
-      {value: 'energy', label: 'Clean Energy', desc: 'Like coffee but smoother'},
-      {value: 'focus', label: 'Deep Focus', desc: 'Productivity & flow'},
-      {value: 'social', label: 'Social', desc: 'Talkative & euphoric'},
-      {value: 'pain', label: 'Pain Relief', desc: 'Physical comfort'},
-      {value: 'anxiety', label: 'Anxiety Relief', desc: 'Calm & stress relief'}
-    ]
-  },
-  {
-    id: 'speed',
-    title: 'Energy Type',
-    text: 'What energy do you prefer?',
-    options: [
-      {value: 'fast', label: 'Fast & Uplifting', desc: 'Motivating'},
-      {value: 'balanced', label: 'Balanced', desc: 'Middle ground'},
-      {value: 'slow', label: 'Slow & Mellow', desc: 'Relaxing'}
-    ]
-  },
-  {
-    id: 'sedation',
-    title: 'Sedation',
-    text: 'How much sedation?',
-    options: [
-      {value: 'none', label: 'None', desc: 'Stay sharp'},
-      {value: 'mild', label: 'Mild', desc: 'Relaxed but functional'},
-      {value: 'heavy', label: 'Heavy', desc: 'Couch-lock ok'}
+      {val: 'morning', title: 'Morning', desc: 'Start the day'},
+      {val: 'afternoon', title: 'Afternoon', desc: 'Mid-day boost'},
+      {val: 'evening', title: 'Evening', desc: 'Wind down'},
+      {val: 'night', title: 'Night', desc: 'Sleep support'},
+      {val: 'anytime', title: 'Anytime', desc: 'Flexible'}
     ]
   }
 ];
 
-let current = 0;
-const answers = {};
+let currentQ = 0;
+let answers = {};
 
-function render() {
-  if (current >= questions.length) return showResults();
+function renderQuestion() {
+  const q = questions[currentQ];
+  const container = document.getElementById('quiz-container');
   
-  const q = questions[current];
-  document.getElementById('progress').style.width = ((current / questions.length) * 100) + '%';
+  let html = `<div class="progress">Question ${currentQ + 1} of ${questions.length}</div>`;
+  html += `<div class="question">${q.text}</div>`;
   
-  document.getElementById('quiz-container').innerHTML = `
-    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3rem;">
-      <h3 style="font-family: 'Orbitron', sans-serif; color: #00f5d4; margin-bottom: 0.5rem;">${q.title}</h3>
-      <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">${q.text}</p>
-      <div style="display: grid; gap: 1rem;">
-        ${q.options.map(opt => `
-          <button onclick="answer('${q.id}', '${opt.value}')" style="text-align: left; padding: 1.5rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; border-radius: 12px; transition: all 0.3s; font-family: 'Rajdhani', sans-serif;">
-            <div style="font-family: 'Orbitron', sans-serif; margin-bottom: 0.3rem;">${opt.label}</div>
-            <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">${opt.desc}</div>
-          </button>
-        `).join('')}
-      </div>
-    </div>
-  `;
+  q.options.forEach(opt => {
+    html += `
+      <button class="option" onclick="answer('${opt.val}')">
+        <span class="option-title">${opt.title}</span>
+        <span class="option-desc">${opt.desc}</span>
+      </button>
+    `;
+  });
+  
+  container.innerHTML = html;
 }
 
-function answer(q, val) {
-  answers[q] = val;
-  current++;
-  render();
+function answer(val) {
+  answers[currentQ] = val;
+  currentQ++;
+  
+  if (currentQ < questions.length) {
+    renderQuestion();
+  } else {
+    showResults();
+  }
 }
 
 function showResults() {
-  document.getElementById('quiz-container').style.display = 'none';
-  document.getElementById('progress').style.width = '100%';
-  
+  // Score each strain
   const scored = strains.map(s => {
     let score = 0;
-    if (answers.experience === 'beginner' && s.beginner) score += 10;
-    else if (answers.experience === 'experienced' && !s.beginner) score += 10;
-    
-    if (s.time_of_day.includes(answers.timeOfDay)) score += 15;
-    if (s.speed === answers.speed) score += 15;
-    
-    if (answers.goal === 'energy') score += s.energy * 2;
-    else if (answers.goal === 'focus') score += s.focus * 2;
-    else if (answers.goal === 'social') score += s.social * 2;
-    else if (answers.goal === 'pain') score += s.pain * 2;
-    else if (answers.goal === 'anxiety') score += s.anxiety * 2;
-    
-    if (answers.sedation === 'none' && s.speed !== 'slow') score += 10;
-    else if (answers.sedation === 'heavy' && s.speed === 'slow') score += 10;
+    // Match goal (highest weight)
+    if (s.tags.includes(answers[1])) score += 3;
+    // Match time
+    if (s.tags.includes(answers[2])) score += 2;
+    // Match experience
+    if (s.tags.includes(answers[0])) score += 1;
     
     return {...s, score};
-  }).sort((a,b) => b.score - a.score).slice(0,3);
+  }).sort((a,b) => b.score - a.score);
+
+  const top3 = scored.slice(0, 3);
+  const container = document.getElementById('quiz-container');
   
-  document.getElementById('results-container').innerHTML = `
-    <h2 style="text-align: center; font-family: 'Orbitron', sans-serif; color: #FFD700; margin-bottom: 2rem;">Your Top Matches</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-      ${scored.map((s,i) => `
-        <div style="background: linear-gradient(135deg, rgba(0,245,212,0.05) 0%, rgba(254,228,64,0.05) 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; text-align: center; ${i===0 ? 'border: 2px solid #FFD700;' : ''}">
-          ${i===0 ? '<div style="background: #FFD700; color: #000; padding: 0.3rem 1rem; font-family: Orbitron; font-size: 0.7rem; display: inline-block; margin-bottom: 1rem; border-radius: 4px;">BEST MATCH</div>' : ''}
-          <div style="color: #ff006e; font-family: Orbitron; font-size: 1.2rem; margin-bottom: 0.5rem;">${Math.round((s.score/80)*100)}% Match</div>
-          <h3 style="color: #FFD700; font-family: Orbitron; margin-bottom: 0.5rem;">${s.name}</h3>
-          <div style="color: rgba(255,255,255,0.6); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 1rem;">${s.color} Vein</div>
-          <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 1rem;">${s.description.substring(0,80)}...</p>
-          <a href="{{ '/strains' | relative_url }}#${s.id}" style="color: #00f5d4; text-decoration: none;">View Details →</a>
+  let html = `<div class="question">Your Top Matches</div>`;
+  
+  top3.forEach((strain, i) => {
+    const isBest = i === 0;
+    const limitedTag = strain.limited ? '<span class="limited-badge">LIMITED</span>' : '';
+    const bestClass = isBest ? 'best-match' : '';
+    
+    html += `
+      <div class="result-card ${bestClass}">
+        ${limitedTag}
+        <div class="strain-name">${strain.name}</div>
+        <span class="strain-type type-${strain.type}">${strain.type.toUpperCase()}</span>
+        <p style="color: rgba(255,255,255,0.8); margin: 1rem 0; line-height: 1.6;">${strain.desc}</p>
+        <div style="color: #ff006e; font-size: 0.9rem;">
+          Best for: ${strain.tags.join(' • ')}
         </div>
-      `).join('')}
-    </div>
-    <div style="text-align: center;">
-      <button onclick="location.reload()" style="padding: 1rem 2rem; background: transparent; border: 1px solid #FFD700; color: #FFD700; font-family: Orbitron; cursor: pointer; margin-right: 1rem;">Retake Quiz</button>
-      <a href="{{ '/strains' | relative_url }}" style="padding: 1rem 2rem; background: transparent; border: 1px solid #FFD700; color: #FFD700; font-family: Orbitron; text-decoration: none; display: inline-block;">Browse All</a>
+        ${isBest ? '<div style="margin-top: 1rem; color: #FFD700; font-family: Orbitron; font-size: 0.8rem;">★ BEST MATCH ★</div>' : ''}
+      </div>
+    `;
+  });
+  
+  html += `
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="/catalog.html" class="btn">View All Strains</a>
+      <a href="/" class="btn" style="margin-left: 1rem; border-color: #FFD700; color: #FFD700;">Back Home</a>
     </div>
   `;
-  document.getElementById('results-container').style.display = 'block';
+  
+  container.innerHTML = html;
 }
 
-render();
+// Start quiz
+renderQuestion();
 </script>
+
+</body>
+</html>
