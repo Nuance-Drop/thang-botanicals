@@ -2,12 +2,11 @@
 layout: default
 ---
 
-<div style="max-width: 1000px; margin: 0 auto; padding: 3rem 5%;">
-  <a href="{{ '/strains' | relative_url }}" style="color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 2rem; display: inline-block;">← Back to Catalog</a>
+<div style="max-width: 1000px; margin: 0 auto; padding: 4rem 5%;">
+  <!-- Back link to catalog -->
+  <a href="{{ '/strains' | relative_url }}" style="color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 2rem; display: inline-block; transition: color 0.3s;">← Back to Catalog</a>
   
   <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3rem; margin-top: 2rem; position: relative; overflow: hidden;">
-    <!-- Holographic effect -->
-    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent 0deg, rgba(0,245,212,0.1) 60deg, rgba(254,228,64,0.1) 120deg, rgba(155,93,229,0.1) 180deg, transparent 360deg); animation: rotate 10s linear infinite; opacity: 0.3; pointer-events: none;"></div>
     
     {% if page.limited %}
     <span style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #ff006e, #8338ec); color: white; padding: 0.5rem 1rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; border-radius: 4px; z-index: 10;">Limited Edition</span>
@@ -18,36 +17,47 @@ layout: default
       <h1 style="font-family: 'Orbitron', sans-serif; color: #FFD700; font-size: 2.5rem; margin-bottom: 1rem;">{{ page.name }}</h1>
       <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">{{ page.description }}</p>
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+      <!-- Stats Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 2rem 0;">
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
           <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Energy</div>
           <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.energy }}/10</div>
         </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Pain Relief</div>
-          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.pain }}/10</div>
-        </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Anxiety Relief</div>
-          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.anxiety }}/10</div>
-        </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
           <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Focus</div>
           <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.focus }}/10</div>
         </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Pain Relief</div>
+          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.pain }}/10</div>
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Anxiety Relief</div>
+          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.anxiety }}/10</div>
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Social</div>
+          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.social }}/10</div>
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Speed</div>
+          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize;">{{ page.speed }}</div>
+        </div>
       </div>
       
+      <!-- Tags -->
       <div style="margin: 2rem 0;">
         <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; text-transform: uppercase;">Best For:</div>
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          {% for tag in page.tags limit:6 %}
+          {% for tag in page.tags %}
           <span style="padding: 0.3rem 0.8rem; background: rgba(0,245,212,0.1); border: 1px solid rgba(0,245,212,0.3); color: #00f5d4; border-radius: 4px; font-size: 0.8rem;">{{ tag }}</span>
           {% endfor %}
         </div>
       </div>
       
+      <!-- Time of Day -->
       <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">Best Time of Day:</div>
+        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">Best Time:</div>
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
           {% for time in page.time_of_day %}
           <span style="padding: 0.3rem 0.8rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); color: #FFD700; border-radius: 4px; font-size: 0.8rem; text-transform: capitalize;">{{ time }}</span>
@@ -62,14 +72,7 @@ layout: default
       </div>
       {% endif %}
       
-      <button onclick="alert('Ordering launching March 2026')" style="width: 100%; margin-top: 3rem; padding: 1rem; background: transparent; border: 1px solid #FFD700; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s;">Request Availability</button>
+      <button onclick="alert('Ordering launching March 2026')" style="width: 100%; margin-top: 3rem; padding: 1rem; background: transparent; border: 1px solid #FFD700; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s; border-radius: 8px;">Request Availability</button>
     </div>
   </div>
 </div>
-
-<style>
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-</style>
