@@ -1,238 +1,308 @@
 ---
 layout: default
-title: "Full Catalog | THANG Botanicals"
+title: Strain Catalog | THANG Botanicals
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Catalog | THANG</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Rajdhani', sans-serif;
-      background: #050505;
-      color: #fff;
-      background: radial-gradient(circle at 20% 20%, rgba(131,56,236,0.15) 0%, transparent 50%), #050505;
-    }
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-    .back-link { color: rgba(255,255,255,0.6); text-decoration: none; font-family: 'Orbitron'; display: inline-block; margin-bottom: 2rem; }
-    .back-link:hover { color: #ff006e; }
-    
-    h1 { font-family: 'Orbitron'; color: #FFD700; text-align: center; font-size: 3rem; margin-bottom: 0.5rem; }
-    .subtitle { text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 3rem; }
-    
-    .filter-buttons { text-align: center; margin-bottom: 3rem; }
-    .filter-btn {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-      padding: 0.8rem 1.5rem;
-      margin: 0.5rem;
-      cursor: pointer;
-      font-family: 'Orbitron';
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      transition: all 0.3s;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      border-color: #ff006e;
-      background: rgba(255,0,110,0.1);
-      color: #ff006e;
-    }
-    
-    .strain-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .strain-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 2rem;
-      position: relative;
-      transition: all 0.3s;
-    }
-    
-    .strain-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255,215,0,0.3);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    
-    .strain-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      margin-bottom: 1rem;
-    }
-    
-    .strain-name {
-      font-family: 'Orbitron';
-      color: #FFD700;
-      font-size: 1.3rem;
-      margin-bottom: 0.3rem;
-    }
-    
-    .strain-type {
-      display: inline-block;
-      padding: 0.2rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-family: 'Orbitron';
-      border: 1px solid;
-    }
-    
-    .type-green { color: #00ff7f; border-color: #00ff7f; background: rgba(0,255,127,0.1); }
-    .type-red { color: #ff006e; border-color: #ff006e; background: rgba(255,0,110,0.1); }
-    .type-white { color: #fff; border-color: #fff; background: rgba(255,255,255,0.1); }
-    .type-yellow { color: #FFD700; border-color: #FFD700; background: rgba(255,215,0,0.1); }
-    
-    .limited-badge {
-      background: linear-gradient(135deg, #ff006e, #8338ec);
-      color: #fff;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-family: 'Orbitron';
-      letter-spacing: 0.1em;
-    }
-    
-    .strain-desc {
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      min-height: 50px;
-    }
-    
-    .price-row {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .price {
-      background: rgba(0,0,0,0.3);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-family: 'Orbitron';
-      color: #FFD700;
-      font-size: 0.9rem;
-    }
-    
-    .order-btn {
-      display: block;
-      width: 100%;
-      padding: 1rem;
-      background: transparent;
-      border: 2px solid #ff006e;
-      color: #ff006e;
-      text-align: center;
-      text-decoration: none;
-      font-family: 'Orbitron';
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: all 0.3s;
-    }
-    
-    .order-btn:hover {
-      background: #ff006e;
-      color: #fff;
-    }
-    
-    .hidden { display: none !important; }
-  </style>
-</head>
-<body>
+<style>
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.5rem;
+    background: transparent;
+    border: 1px solid rgba(255,215,0,0.4);
+    color: var(--gold);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+  }
+  
+  .btn:hover, .btn.active {
+    background: rgba(255,0,110,0.2);
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+    box-shadow: 0 0 20px rgba(255,0,110,0.3);
+  }
+  
+  .strain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 5% 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .strain-card {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+  }
+  
+  /* Holographic sheen on hover only (no constant shimmer) */
+  .strain-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+      0 25px 50px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(0,245,212,0.3),
+      inset 0 0 30px rgba(255,255,255,0.05);
+  }
+  
+  .mylar-bag {
+    padding: 1.5rem;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    background: 
+      linear-gradient(135deg, rgba(0,245,212,0.05) 0%, rgba(254,228,64,0.05) 50%, rgba(155,93,229,0.05) 100%),
+      linear-gradient(45deg, #0a0b0d 0%, #1a1a2e 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Rainbow border effect on hover */
+  .strain-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(from 0deg, var(--cyan), var(--gold), var(--neon-pink), var(--purple), var(--cyan));
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+    border-radius: 12px;
+    filter: blur(10px);
+  }
+  .strain-card:hover::before { opacity: 0.5; }
+  
+  .premium-badge {
+    position: absolute;
+    top: 10px; left: 10px;
+    background: linear-gradient(135deg, var(--gold), #ff9500);
+    color: #000;
+    padding: 0.3rem 0.8rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    z-index: 10;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  
+  .limited-badge {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: linear-gradient(135deg, var(--neon-pink), var(--purple));
+    color: white;
+    padding: 0.3rem 0.8rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    z-index: 10;
+    border-radius: 4px;
+    transform: rotate(3deg);
+  }
+  
+  .strain-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+  }
+  
+  .color-tag {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-family: 'Rajdhani', sans-serif;
+  }
+  
+  .color-tag.green { background: linear-gradient(135deg, #06ffa5, #00bb9f); color: #0a0b0d; }
+  .color-tag.red { background: linear-gradient(135deg, #ff006e, #8338ec); color: white; }
+  .color-tag.white { background: linear-gradient(135deg, #ffffff, #e0e0e0); color: #0a0b0d; }
+  .color-tag.yellow { background: linear-gradient(135deg, #fee440, #f77f00); color: #0a0b0d; }
+  
+  .weight-tag {
+    font-family: 'Orbitron', sans-serif;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    background: rgba(0,0,0,0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .strain-name {
+    font-family: 'Cormorant Garamond', serif; /* Elegant but legible */
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+  
+  .strain-desc {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+  
+  .strain-meta {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+  
+  .price {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+  
+  .price-note {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+  }
+  
+  /* Indicator bar (not called "vein") */
+  .spectrum-bar {
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 0.75rem;
+    box-shadow: 0 0 15px currentColor;
+  }
+</style>
 
-<div class="container">
-  <a href="/" class="back-link">← Back to Home</a>
-  
-  <h1>Full Catalog</h1>
-  <p class="subtitle">25 Premium Strains • Direct from Southeast Asian Farms</p>
-  
-  <div class="filter-buttons">
-    <button class="filter-btn active" onclick="filterStrains('all')">All</button>
-    <button class="filter-btn" onclick="filterStrains('green')">Green</button>
-    <button class="filter-btn" onclick="filterStrains('red')">Red</button>
-    <button class="filter-btn" onclick="filterStrains('white')">White</button>
-    <button class="filter-btn" onclick="filterStrains('yellow')">Yellow</button>
-  </div>
-  
-  <div class="strain-grid" id="strainGrid">
-    <!-- Populated by JS -->
-  </div>
+<div style="text-align: center; padding: 3rem 5% 1rem;">
+  <h1 style="font-family: 'Orbitron', sans-serif; color: var(--gold); font-size: 2.5rem; margin-bottom: 0.5rem;">Strain Catalog</h1>
+  <p style="color: rgba(255,255,255,0.7);">Premium Botanical Specimens • 24 Varieties</p>
+</div>
 
+<div class="controls">
+  <span style="color: rgba(255,255,255,0.6); margin-right: 0.5rem;">Filter:</span>
+  <button class="btn active" onclick="filter('all')">All</button>
+  <button class="btn" onclick="filter('green')">Green</button>
+  <button class="btn" onclick="filter('red')">Red</button>
+  <button class="btn" onclick="filter('white')">White</button>
+  <button class="btn" onclick="filter('yellow')">Yellow</button>
+  
+  <span style="color: rgba(255,255,255,0.6); margin: 0 0.5rem;">|</span>
+  
+  <span style="color: rgba(255,255,255,0.6); margin-right: 0.5rem;">Sort:</span>
+  <button class="btn" onclick="sort('name')">Name</button>
+  <button class="btn" onclick="sort('price')">Price</button>
+</div>
+
+<div class="strain-grid" id="strainGrid">
+  {% for strain in site.data.strains %}
+  {% assign is_aceh = false %}
+  {% if strain.name contains 'Aceh' %}{% assign is_aceh = true %}{% endif %}
+  {% assign base_price = 34.99 %}
+  {% assign price = base_price %}
+  {% if is_aceh %}{% assign price = base_price | plus: 15.00 %}{% endif %}
+  
+  <a href="{{ strain.id | relative_url }}" class="strain-card" data-color="{{ strain.color }}" data-name="{{ strain.name }}" data-price="{{ price }}">
+    <div class="mylar-bag">
+      {% if is_aceh %}<span class="premium-badge">Aceh Premium</span>{% endif %}
+      {% if strain.limited %}<span class="limited-badge">Limited</span>{% endif %}
+      
+      <div>
+        <div class="strain-header">
+          <span class="color-tag {{ strain.color }}">{{ strain.color }}</span>
+          <span class="weight-tag">{{ strain.weight }}kg avail</span>
+        </div>
+        
+        <h3 class="strain-name">{{ strain.name }}</h3>
+        <p class="strain-desc">{{ strain.description | truncate: 120 }}</p>
+      </div>
+      
+      <div class="strain-meta">
+        <div class="price-row">
+          <span class="price">${{ price }}</span>
+          <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+            {% if strain.speed == 'fast' %}⚡ Fast{% elsif strain.speed == 'slow' %}🌙 Slow{% else %}⚖️ Balanced{% endif %}
+          </span>
+        </div>
+        {% if is_aceh %}
+        <div class="price-note">Aceh region premium pricing</div>
+        {% endif %}
+        
+        <!-- Spectrum indicator (NOT "vein") -->
+        <div class="spectrum-bar" style="background: {% if strain.color == 'green' %}#06ffa5{% elsif strain.color == 'red' %}#ff006e{% elsif strain.color == 'white' %}#ffffff{% else %}#fee440{% endif %};"></div>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
 </div>
 
 <script>
-const strains = [
-  {name: 'Green Aceh', type: 'green', limited: true, desc: 'Intense, vital, rare. For experienced users.', price: '$15/$50/$90'},
-  {name: 'Green Dragon', type: 'green', limited: false, desc: 'Euphoric and happy. Great for social or solo.', price: '$15/$50/$90'},
-  {name: 'Green Maeng Da', type: 'green', limited: false, desc: 'The gold standard. High energy and productivity.', price: '$15/$50/$90'},
-  {name: 'Green Malay', type: 'green', limited: false, desc: 'Long lasting, versatile. Both chill and energetic.', price: '$15/$50/$90'},
-  {name: 'Super Green', type: 'green', limited: false, desc: 'Maximum potency. Like espresso.', price: '$15/$50/$90'},
-  {name: 'Green Thai', type: 'green', limited: false, desc: 'Calm energy. Excellent for pain.', price: '$15/$50/$90'},
-  {name: 'Green Dracula', type: 'green', limited: true, desc: 'Limited exclusive. Intense nighttime energy.', price: '$15/$50/$90'},
-  {name: 'Red Aceh', type: 'red', limited: false, desc: 'Heavy sedation. Maximum pain relief.', price: '$15/$50/$90'},
-  {name: 'Red Thai', type: 'red', limited: false, desc: 'Traditional red. Slow onset, long duration.', price: '$15/$50/$90'},
-  {name: 'Red Dragon', type: 'red', limited: false, desc: 'Aphrodisiac. Great for socializing.', price: '$15/$50/$90'},
-  {name: 'Red Bali', type: 'red', limited: false, desc: 'Classic Red Bali. Purely sedating.', price: '$15/$50/$90'},
-  {name: 'Red Maeng Da', type: 'red', limited: false, desc: 'Premium red. Stronger than typical.', price: '$15/$50/$90'},
-  {name: 'Red Bentuangie', type: 'red', limited: true, desc: 'Fermented. Best tasting, smooth.', price: '$15/$50/$90'},
-  {name: 'White Maeng Da', type: 'white', limited: false, desc: 'Fast energy. Coffee replacement.', price: '$15/$50/$90'},
-  {name: 'White Aceh', type: 'white', limited: false, desc: 'Smooth but intense.', price: '$15/$50/$90'},
-  {name: 'White Horn', type: 'white', limited: false, desc: 'Premium white. Sharp and focused.', price: '$15/$50/$90'},
-  {name: 'White Sumatra', type: 'white', limited: false, desc: 'Lighter than other whites.', price: '$15/$50/$90'},
-  {name: 'White Elephant', type: 'white', limited: false, desc: 'Large leaf profile. Unusual.', price: '$15/$50/$90'},
-  {name: 'White Zombie', type: 'white', limited: true, desc: 'Limited. Beginner-friendly.', price: '$15/$50/$90'},
-  {name: 'Yellow Dragon', type: 'yellow', limited: false, desc: 'More euphoric than other yellows.', price: '$15/$50/$90'},
-  {name: 'Yellow Hulu', type: 'yellow', limited: false, desc: 'Kapuas region. Anxiolytic.', price: '$15/$50/$90'},
-  {name: 'Yellow Vietnam', type: 'yellow', limited: true, desc: 'Limited. Fast anxiety relief.', price: '$15/$50/$90'},
-  {name: 'Yellow Maeng Da', type: 'yellow', limited: false, desc: 'Premium drying. Balanced.', price: '$15/$50/$90'},
-  {name: 'Yellow Thai', type: 'yellow', limited: true, desc: 'Limited. Gentle but strong.', price: '$15/$50/$90'}
-];
+let currentFilter = 'all';
+let currentSort = 'original';
 
-function renderStrains(filter = 'all') {
-  const grid = document.getElementById('strainGrid');
-  const filtered = filter === 'all' ? strains : strains.filter(s => s.type === filter);
-  
-  grid.innerHTML = filtered.map(strain => `
-    <div class="strain-card" data-type="${strain.type}">
-      <div class="strain-header">
-        <div>
-          <div class="strain-name">${strain.name}</div>
-          <span class="strain-type type-${strain.type}">${strain.type}</span>
-        </div>
-        ${strain.limited ? '<span class="limited-badge">LIMITED</span>' : ''}
-      </div>
-      <div class="strain-desc">${strain.desc}</div>
-      <div class="price-row">
-        <span class="price">1oz $15</span>
-        <span class="price">4oz $50</span>
-        <span class="price">8oz $90</span>
-      </div>
-      <a href="#" class="order-btn" onclick="alert('Order form coming soon! Email info@kratomthang.com')">Order Now</a>
-    </div>
-  `).join('');
-}
-
-function filterStrains(type) {
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.remove('active');
-    if(btn.textContent.toLowerCase() === type) btn.classList.add('active');
+function filter(color) {
+  currentFilter = color;
+  document.querySelectorAll('.controls button').forEach(btn => {
+    if (btn.textContent.toLowerCase() === color || (color === 'all' && btn.textContent === 'All')) {
+      btn.classList.add('active');
+    } else if (['Green','Red','White','Yellow','All'].includes(btn.textContent)) {
+      btn.classList.remove('active');
+    }
   });
-  renderStrains(type);
+  render();
 }
 
-// Initial render
-renderStrains();
-</script>
+function sort(criteria) {
+  currentSort = criteria;
+  render();
+}
 
-</body>
-</html>
+function render() {
+  const grid = document.getElementById('strainGrid');
+  const cards = Array.from(grid.children);
+  
+  // Filter
+  cards.forEach(card => {
+    const show = currentFilter === 'all' || card.dataset.color === currentFilter;
+    card.style.display = show ? 'block' : 'none';
+  });
+  
+  // Sort visible
+  const visible = cards.filter(c => c.style.display !== 'none');
+  visible.sort((a, b) => {
+    if (currentSort === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+    if (currentSort === 'price') return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
+    return 0;
+  });
+  
+  visible.forEach(card => grid.appendChild(card));
+}
+</script>

@@ -3,44 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <title>{{ page.title | default: "THANG Botanicals" }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-pink: #ff006e;
+      --gold: #FFD700;
+      --cyan: #00f5d4;
+      --purple: #9b5de5;
+      --void: #0a0b0d;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--void);
+      color: #fff;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Animated Fractal Rainbow Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        conic-gradient(from 0deg at 30% 30%, rgba(0,245,212,0.15) 0deg, transparent 60deg),
+        conic-gradient(from 120deg at 70% 70%, rgba(255,0,110,0.15) 0deg, transparent 60deg),
+        conic-gradient(from 240deg at 50% 50%, rgba(254,228,64,0.1) 0deg, transparent 60deg);
+      animation: fractalRotate 25s linear infinite;
+      pointer-events: none;
+      z-index: -2;
+      filter: blur(80px);
+    }
+    
+    @keyframes fractalRotate {
+      from { transform: rotate(0deg) scale(1); }
+      to { transform: rotate(360deg) scale(1.1); }
+    }
+    
+    /* Subtle noise texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: -1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      background: rgba(10,11,13,0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+    }
+    
+    .logo {
+      font-family: 'Orbitron', sans-serif; /* ONLY logo uses this */
+      font-size: 2rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 30px rgba(255,215,0,0.3);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      position: relative;
+      font-family: 'Rajdhani', sans-serif; /* Legible font */
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .nav-links a:hover { color: var(--neon-pink); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 0;
+      width: 0; height: 2px;
+      background: var(--neon-pink);
+      transition: width 0.3s;
+      box-shadow: 0 0 10px var(--neon-pink);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    
+    main { min-height: 80vh; position: relative; z-index: 1; }
+    
+    footer {
+      text-align: center;
+      padding: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+      background: rgba(0,0,0,0.5);
+      font-family: 'Rajdhani', sans-serif;
+    }
+    
+    footer a { color: var(--neon-pink); text-decoration: none; transition: all 0.3s; }
+    footer a:hover { text-shadow: 0 0 10px var(--neon-pink); }
+  </style>
 </head>
 <body>
 
-  <!-- Navigation - Fixed for Jekyll project sites -->
-  <nav style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; background: rgba(10,11,13,0.95); border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 1000;">
-  <!-- Use relative links that work from any page -->
-  <a href="{{ '/' | relative_url }}" class="logo" style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: #FFD700; text-decoration: none; letter-spacing: 0.1em;">THANG</a>
-  
-  <div class="nav-links" style="display: flex; gap: 2rem;">
-    <a href="{{ '/' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Home</a>
-    <a href="{{ '/strains' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Catalog</a>
-    <a href="{{ '/quiz' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Quiz</a>
-    <a href="{{ '/investors' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Investors</a>
-    <a href="{{ '/blog' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Blog</a>
-  </div>
-</nav>
+  <nav>
+    <!-- Use relative_url for GitHub Pages project sites -->
+    <a href="{{ '/' | relative_url }}" class="logo">THANG</a>
+    <ul class="nav-links">
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/catalog' | relative_url }}">Catalog</a></li>
+      <li><a href="{{ '/quiz' | relative_url }}">Quiz</a></li>
+      <li><a href="{{ '/investors' | relative_url }}">Investors</a></li>
+      <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
+    </ul>
+  </nav>
 
-  <main style="min-height: 80vh;">
+  <main>
     {{ content }}
   </main>
 
-  <footer style="text-align: center; padding: 3rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 3rem; color: rgba(255,255,255,0.5);">
-    <p>THANG Botanicals © 2026 • Garland, Texas</p>
-    <p style="margin-top: 0.5rem;">
-      <a href="{{ '/' | relative_url }}" style="color: #ff006e; text-decoration: none;">Home</a> | 
-      <a href="{{ '/strains' | relative_url }}" style="color: #ff006e; text-decoration: none;">Catalog</a> | 
-      <a href="{{ '/quiz' | relative_url }}" style="color: #ff006e; text-decoration: none;">Quiz</a>
+  <footer>
+    <p style="font-family: 'Orbitron', sans-serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 0.5rem;">THANG BOTANICALS</p>
+    <p> Texas • Sustainable Southeast Asian Botanicals</p>
+    <p style="margin-top: 1rem;">
+      <a href="{{ '/' | relative_url }}">Home</a> • 
+      <a href="{{ '/catalog' | relative_url }}">Catalog</a> • 
+      <a href="{{ '/quiz' | relative_url }}">Quiz</a> • 
+      <a href="{{ '/investors' | relative_url }}">Investors</a> • 
+      <a href="mailto:info@kratomthang.com">info@kratomthang.com</a>
     </p>
+    <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.6;">21+ Only • Research & Collection Purposes</p>
   </footer>
 
-  <!-- Load strain data for quiz -->
-  <script>
-    window.strainData = {{ site.data.strains | jsonify }};
-  </script>
-  <script src="{{ '/assets/js/quiz.js' | relative_url }}"></script>
 </body>
 </html>
