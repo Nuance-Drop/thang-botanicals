@@ -1,311 +1,532 @@
 ---
 layout: default
-title: THANG Botanicals | Premium Kratom & Ethnobotanicals
-description: THANG Botanicals specializes in premium kratom strains, ethnobotanical specimens, and holistic wellness products. Launching March 2025.
+title: "THANG Botanicals 2026"
 ---
 
-<div class="landing-hero text-center" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 0;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THANG Botanicals | Premium Kratom 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
   
-  <!-- Logo Area -->
-  <div class="logo-container mb-2" style="position: relative; display: inline-block;">
-    <img src="{{ '/assets/images/thang-logo.svg' | relative_url }}" alt="THANG Botanicals" style="max-width: 300px; filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));">
-    <div class="japanese-subtitle" style="margin-top: 1rem; font-size: 1rem;"> Botanicals</div>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --void: #050505;
+      --neon-pink: #ff006e;
+      --neon-purple: #8338ec;
+      --neon-cyan: #00ffff;
+      --gold: #FFD700;
+    }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--void);
+      color: #fff;
+      line-height: 1.6;
+      background: radial-gradient(circle at 20% 20%, rgba(131,56,236,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(255,0,110,0.1) 0%, transparent 50%),
+                  #050505;
+    }
+
+    /* Age Gate */
+    #age-gate {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.98);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    #age-gate h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 30px rgba(255,215,0,0.5);
+    }
+
+    #age-gate p {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      font-size: 1.1rem;
+    }
+
+    .age-btn {
+      padding: 1.2rem 3rem;
+      margin: 0.5rem;
+      border: 2px solid;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .age-btn.yes {
+      background: transparent;
+      border-color: var(--neon-pink);
+      color: var(--neon-pink);
+    }
+
+    .age-btn.yes:hover {
+      background: var(--neon-pink);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(255,0,110,0.5);
+    }
+
+    .age-btn.no {
+      background: transparent;
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.6);
+    }
+
+    .hidden { display: none !important; }
+
+    /* Main Content */
+    #main-content { opacity: 0; transition: opacity 0.5s; }
+    #main-content.visible { opacity: 1; }
+
+    .header {
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 5rem;
+      font-weight: 900;
+      background: linear-gradient(to bottom, #fff 0%, var(--gold) 50%, #fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .tagline {
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.4em;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .eco-badge {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 2rem;
+      background: rgba(0,255,127,0.1);
+      border: 1px solid rgba(0,255,127,0.3);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: #00ff7f;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.1em;
+    }
+
+    /* Choice Screen */
+    .choice-screen {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .choice-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: #fff;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .choice-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .choice-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--neon-pink);
+      box-shadow: 0 20px 40px rgba(255,0,110,0.2);
+    }
+
+    .choice-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .choice-card h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .choice-card p {
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* Info Section */
+    .info-section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 3rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      text-align: center;
+    }
+
+    .info-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    .info-section p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .differentiators {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+
+    .diff-card {
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.3);
+      border-left: 3px solid var(--neon-pink);
+    }
+
+    .diff-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-pink);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .diff-card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 4rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.9rem;
+    }
+
+    /* Cookie Popup */
+    #cookie-banner {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(20,20,20,0.95);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      z-index: 9998;
+      display: none;
+      max-width: 90%;
+      width: 500px;
+      text-align: center;
+    }
+
+    #cookie-banner p {
+      margin-bottom: 1rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .cookie-btn {
+      background: var(--neon-pink);
+      border: none;
+      color: #fff;
+      padding: 0.8rem 2rem;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+      border-radius: 6px;
+      margin: 0 0.5rem;
+    }
+
+    /* Newsletter Popup */
+    #newsletter-popup {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 9997;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .newsletter-box {
+      background: #141b3d;
+      border: 2px solid var(--gold);
+      padding: 3rem;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .newsletter-box h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .close-x {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 1rem;
+      margin: 1rem 0;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: var(--gold);
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Age Verification -->
+<div id="age-gate">
+  <h1>THANG</h1>
+  <p>You must be 21 years or older to enter. Our botanicals are sourced from sustainable farms in Southeast Asia with direct farmer partnerships.</p>
+  <div>
+    <button class="age-btn yes" onclick="enterSite()">I am 21+</button>
+    <button class="age-btn no" onclick="window.location.href='https://google.com'">Leave</button>
   </div>
-
- <h1 style="font-size: 1.2rem; letter-spacing: 0.4em; margin-bottom: 0.5rem;">Premium Specimens</h1>
-<p style="color: var(--text-muted); max-width: 600px; line-height: 1.8; margin-bottom: 2rem;">
-  Curated ethnobotanicals sourced from sustainable Southeast Asian farms. 
-  Laboratory tested. Traditionally harvested.
-</p>
-
- <!-- Launch Date -->
-<div class="holo-card" style="padding: 2rem; margin-bottom: 3rem; display: inline-block; background: rgba(20, 27, 61, 0.8);">
-  <div style="font-size: 0.8rem; letter-spacing: 0.3em; color: var(--gold-primary); margin-bottom: 0.5rem;">LAUNCHING</div>
-  <div style="font-size: 2rem; font-family: 'Cinzel', serif; color: var(--text-primary);">March 2025</div>
-</div>
-
-  <!-- Strain Finder CTA -->
-<div class="mb-2">
-  <button onclick="window.quiz.open()" class="btn-gold" style="margin-bottom: 1rem;">
-    Find Your Strain
-  </button>
-  <p style="font-size: 0.8rem; color: var(--text-muted);">
-    Not sure what you need? Take our 30-second botanical matcher.
+  <p style="margin-top: 2rem; font-size: 0.8rem; color: #444;">
+    Not for human consumption. Research purposes only.
   </p>
 </div>
 
-  <!-- Secure Newsletter Signup -->
-  <div style="max-width: 500px; width: 100%; margin-top: 3rem; padding: 2rem; border: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 14, 39, 0.6);">
-    <h3 style="font-size: 1rem; margin-bottom: 1rem;">Early Access List</h3>
-    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-      Get notified when we launch + exclusive access to limited strains.
-    </p>
-    
-    <form id="newsletter-form" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-      <!-- Honeypot field (hidden from humans) -->
-      <input type="text" id="website-url" name="website-url" style="position: absolute; left: -5000px;" tabindex="-1" autocomplete="off">
-      
-      <input 
-        type="email" 
-        id="email-input" 
-        name="email" 
-        placeholder="your@email.com" 
-        required
-        class="secure-input"
-        style="flex: 1; min-width: 250px;"
-        autocomplete="email"
-        maxlength="100"
-      >
-      <button type="submit" class="btn-gold" style="white-space: nowrap;">
-        Notify Me
-      </button>
-    </form>
-    
-    <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 1rem; opacity: 0.6;">
-      Secure submission. No spam. Unsubscribe anytime.
-    </p>
-  </div>
+<!-- Main Content -->
+<div id="main-content" class="hidden">
+  
+  <header class="header">
+    <div class="logo">THANG</div>
+    <div class="tagline">BOTANICALS • 2026</div>
+    <div class="eco-badge">🌿 25 Unique Strains • Direct Trade • Organic</div>
+  </header>
 
-  <!-- Inventory Preview -->
-  <div style="margin-top: 4rem; text-align: center;">
-    <div style="font-size: 0.8rem; letter-spacing: 0.2em; color: var(--gold-primary); margin-bottom: 1rem;">
-      CURRENT INVENTORY
+  <section class="choice-screen">
+    <h1 class="choice-title">How would you like to explore?</h1>
+    
+    <div class="choice-grid">
+      <a href="/quiz.html" class="choice-card">
+        <div class="choice-icon">🎯</div>
+        <h2>Find My Strain</h2>
+        <p>Take our 30-second quiz to discover the perfect botanical match for your needs. Whether you want energy, focus, or relaxation.</p>
+      </a>
+      
+      <a href="/catalog.html" class="choice-card">
+        <div class="choice-grid">
+  <a href="/quiz.html" class="choice-card">
+    <div style="font-size: 3rem; margin-bottom: 1rem; color: #ff006e;">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: block; margin: 0 auto;">
+        <circle cx="12" cy="12" r="10"></circle>
+        <circle cx="12" cy="12" r="6" fill="currentColor" fill-opacity="0.3"></circle>
+        <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+      </svg>
     </div>
-    <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; font-size: 0.9rem; color: var(--text-muted);">
-      <div><span style="color: var(--gold-primary); font-size: 1.5rem; display: block;">25</span>Unique Strains</div>
-      <div><span style="color: var(--gold-primary); font-size: 1.5rem; display: block;">115kg</span>Total Stock</div>
-      <div><span style="color: var(--gold-primary); font-size: 1.5rem; display: block;">4</span>Color Varieties</div>
+    <h2>Find My Strain</h2>
+    <p>Take our 30-second quiz to discover the perfect botanical match for your needs.</p>
+  </a>
+  
+  <a href="/catalog.html" class="choice-card">
+    <div style="font-size: 3rem; margin-bottom: 1rem; color: #FFD700;">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: block; margin: 0 auto;">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="3" y1="9" x2="21" y2="9"></line>
+        <line x1="9" y1="21" x2="9" y2="9"></line>
+      </svg>
     </div>
-  </div>
+    <h2>View Full Catalog</h2>
+    <p>Browse all 25 strains with detailed descriptions, effects, and pricing.</p>
+  </a>
+</div>
+    </div>
+  </section>
 
-    <!-- Order Form Section -->
-  <div style="max-width: 500px; margin: 4rem auto; padding: 3rem; border: 1px solid rgba(212, 175, 55, 0.3); background: rgba(10, 14, 39, 0.6);">
-    <h3 style="margin-bottom: 0.5rem; text-align: center; font-family: 'Cinzel', serif;">Quick Order</h3>
-    <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 2rem;">Cash App / Venmo / Zelle accepted</p>
-    
-    <form id="quick-order">
-      <input type="text" name="name" placeholder="Full Name" required class="secure-input" style="margin-bottom: 1rem; width: 100%;">
-      
-      <input type="email" name="email" placeholder="Email Address" required class="secure-input" style="margin-bottom: 1rem; width: 100%;">
-      
-      <select name="strain" required class="secure-input" style="margin-bottom: 1rem; width: 100%; background: var(--navy-deep);">
-        <option value="">Select Strain...</option>
-        <option value="Green Maeng Da">Green Maeng Da ($15/oz)</option>
-        <option value="Green Dragon">Green Dragon ($15/oz)</option>
-        <option value="Red Bali">Red Bali ($15/oz)</option>
-        <option value="Red Thai">Red Thai ($15/oz)</option>
-        <option value="White Maeng Da">White Maeng Da ($15/oz)</option>
-        <option value="Yellow Vietnam">Yellow Vietnam ($15/oz)</option>
-      </select>
-      
-      <select name="quantity" required class="secure-input" style="margin-bottom: 1rem; width: 100%; background: var(--navy-deep);" id="qty-select">
-        <option value="1">1 oz - $15</option>
-        <option value="4">4 oz - $50 (Save $10)</option>
-        <option value="8">8 oz - $90 (Save $30)</option>
-      </select>
-      
-      <select name="payment_method" required class="secure-input" style="margin-bottom: 1rem; width: 100%; background: var(--navy-deep);">
-        <option value="">Payment Method...</option>
-        <option value="Venmo">Venmo</option>
-        <option value="CashApp">Cash App</option>
-        <option value="Zelle">Zelle</option>
-        <option value="Crypto">Bitcoin/Crypto</option>
-      </select>
-      
-      <textarea name="address" placeholder="Shipping Address (include ZIP)" required class="secure-input" style="margin-bottom: 1.5rem; width: 100%; min-height: 80px; resize: vertical;"></textarea>
-      
-      <input type="hidden" name="amount" id="order-amount" value="15">
-      
-      <button type="submit" class="btn-gold" style="width: 100%; position: relative;">
-        <span id="btn-text">Place Order - $15</span>
-        <span id="btn-loading" class="loading-dots hidden"><span></span><span></span><span></span></span>
-      </button>
-      
-      <p style="font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 1rem;">
-        You will receive payment instructions via email within 30 minutes.
-      </p>
-    </form>
-  </div>
-
-  <script>
-    // Update price when quantity changes
-    document.getElementById('qty-select').addEventListener('change', function() {
-      const qty = parseInt(this.value);
-      const amount = qty === 1 ? 15 : qty === 4 ? 50 : 90;
-      document.getElementById('order-amount').value = amount;
-      document.getElementById('btn-text').textContent = 'Place Order - $' + amount;
-    });
-
-    // Handle form submission
-    document.getElementById('quick-order').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const btn = e.target.querySelector('button');
-      const btnText = document.getElementById('btn-text');
-      const btnLoading = document.getElementById('btn-loading');
-      
-      // Show loading state
-      btn.disabled = true;
-      btnText.classList.add('hidden');
-      btnLoading.classList.remove('hidden');
-      
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData);
-      
-      // Double-check amount calculation
-      const qty = parseInt(data.quantity);
-      data.amount = qty === 1 ? 15 : qty === 4 ? 50 : 90;
-      
-      // IMPORTANT: Replace this with your actual base64 encoded webhook URL
-      // Use: [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("YOUR_WEBHOOK_URL"))
-      const webhookUrl = atob("aHR0cHM6Ly9udWFuY2Vkcm9wLmFwcC5uOG4uY2xvdWQvd2ViaG9vay90aGFuZy1vcmRlcg==");
-      
-      try {
-        const res = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(data)
-        });
-        
-        const result = await res.json();
-        
-        if (result.success) {
-          alert('Order received! Check your email for payment instructions.');
-          e.target.reset();
-          document.getElementById('btn-text').textContent = 'Place Order - $15';
-        } else {
-          alert('Error: ' + result.message);
-        }
-      } catch (err) {
-        console.error(err);
-        alert('Network error. Email orders@kratomthang.com directly with your order.');
-      } finally {
-        btn.disabled = false;
-        btnText.classList.remove('hidden');
-        btnLoading.classList.add('hidden');
-      }
-    });
-  </script>
-
-  <!-- Footer -->
-  <footer style="margin-top: auto; padding-top: 4rem; font-size: 0.75rem; color: var(--text-muted); text-align: center;">
-    <p>© 2025 THANG Botanicals. Garland, Texas.</p>
-    <p style="margin-top: 0.5rem; opacity: 0.5;">
-      These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.
-    </p>
+  <footer>
+    <p style="font-family: Orbitron; color: var(--gold); font-size: 1.2rem; margin-bottom: 0.5rem;">THANG BOTANICALS</p>
+    <p>Garland, Texas • Sustainable Farms Southeast Asia</p>
+    <p style="margin-top: 1rem;">21+ Only • Research Purposes • <a href="/investors.html" style="color: var(--neon-pink);">Investor Relations</a> • <a href="/blog.html" style="color: var(--neon-pink);">Blog</a></p>
   </footer>
+
 </div>
 
-<style>
-.landing-hero {
-  position: relative;
-}
-.quiz-progress {
-  width: 100%;
-  height: 2px;
-  background: rgba(212, 175, 55, 0.2);
-  margin-bottom: 2rem;
-  position: relative;
-}
-.progress-bar {
-  height: 100%;
-  background: var(--gold-primary);
-  transition: width 0.3s ease;
-}
-.progress-text {
-  position: absolute;
-  right: 0;
-  top: -25px;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-.quiz-options {
-  display: grid;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-.quiz-option {
-  padding: 1.5rem;
-  background: transparent;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  color: var(--text-primary);
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: flex;
-  flex-direction: column;
-}
-.quiz-option:hover {
-  border-color: var(--gold-primary);
-  background: rgba(212, 175, 55, 0.05);
-}
-.option-label {
-  font-family: 'Cinzel', serif;
-  color: var(--gold-primary);
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
-}
-.option-desc {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-.results-container {
-  display: grid;
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-.result-card {
-  padding: 2rem;
-  position: relative;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-}
-.result-card.top-match {
-  border-color: var(--gold-primary);
-  background: rgba(212, 175, 55, 0.05);
-}
-.match-percentage {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-family: 'Cinzel', serif;
-  color: var(--gold-primary);
-  font-size: 1.2rem;
-}
-.best-match-label {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--gold-primary);
-  color: var(--navy-deep);
-  padding: 0.2rem 1rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-.strain-tags {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-.tag {
-  font-size: 0.7rem;
-  padding: 0.2rem 0.6rem;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-.quiz-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-@media (max-width: 600px) {
-  .quiz-options {
-    grid-template-columns: 1fr;
+<!-- Cookie Banner -->
+<div id="cookie-banner">
+  <p>We use cookies to improve your experience. By continuing, you agree to our privacy policy.</p>
+  <button class="cookie-btn" onclick="acceptCookies()">Accept</button>
+  <button class="cookie-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.3);" onclick="declineCookies()">Decline</button>
+</div>
+
+<!-- Newsletter Popup -->
+<div id="newsletter-popup" onclick="if(event.target===this)closeNewsletter()">
+  <div class="newsletter-box">
+    <button class="close-x" onclick="closeNewsletter()">×</button>
+    <h3>Join the THANG List</h3>
+    <p style="color: rgba(255,255,255,0.7); margin-bottom: 1.5rem;">Get exclusive access to limited strains and farmer stories.</p>
+    <form id="newsletter-form" onsubmit="return submitNewsletter(event)">
+      <input type="email" placeholder="your@email.com" required id="newsletter-email">
+      <button type="submit" class="submit-btn">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Webhook URL (base64 encoded - replace this with your actual encoded URL)
+  const WEBHOOK_URL = atob("aHR0cHM6Ly9hcHAubjhuLmNsb3VkL3dlYmhvb2svdGhhbmctbmV3c2xldHRlcg==");
+
+  function enterSite() {
+    localStorage.setItem('ageVerified2026', 'true');
+    document.getElementById('age-gate').style.display = 'none';
+    document.getElementById('main-content').classList.remove('hidden');
+    setTimeout(() => {
+      document.getElementById('main-content').classList.add('visible');
+      showCookieBanner();
+      setTimeout(showNewsletter, 3000);
+    }, 100);
   }
-}
-</style>
+
+  // Check if already verified
+  if (localStorage.getItem('ageVerified2026') === 'true') {
+    document.getElementById('age-gate').style.display = 'none';
+    document.getElementById('main-content').classList.remove('hidden');
+    document.getElementById('main-content').classList.add('visible');
+    showCookieBanner();
+  }
+
+  // Cookie Banner
+  function showCookieBanner() {
+    if (!localStorage.getItem('cookiesChoice')) {
+      document.getElementById('cookie-banner').style.display = 'block';
+    }
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('cookiesChoice', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  function declineCookies() {
+    localStorage.setItem('cookiesChoice', 'declined');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  // Newsletter Popup
+  function showNewsletter() {
+    if (!localStorage.getItem('newsletterShown')) {
+      document.getElementById('newsletter-popup').style.display = 'flex';
+      localStorage.setItem('newsletterShown', 'true');
+    }
+  }
+
+  function closeNewsletter() {
+    document.getElementById('newsletter-popup').style.display = 'none';
+  }
+
+  function submitNewsletter(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletter-email').value;
+    
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: email,
+        source: 'homepage_popup',
+        timestamp: new Date().toISOString()
+      })
+    }).then(() => {
+      alert('Thanks for subscribing!');
+      closeNewsletter();
+    }).catch(() => {
+      alert('Thanks! Please email us directly at info@kratomthang.com');
+      closeNewsletter();
+    });
+    
+    return false;
+  }
+</script>
+
+</body>
+</html>
