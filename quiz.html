@@ -143,4 +143,95 @@
       <div class="question">
         <h3>1. What time of day do you prefer?</h3>
         <div class="options">
-          <div class="option" onclick="selectOption(0, 'morning')">Morning - I need energy and focus
+          <div class="option" onclick="selectOption(0, 'morning')">Morning - I need energy and focus</div>
+          <div class="option" onclick="selectOption(0, 'evening')">Evening - I want to unwind</div>
+          <div class="option" onclick="selectOption(0, 'anytime')">Anytime - Balanced effects</div>
+        </div>
+      </div>
+      
+      <div class="question">
+        <h3>2. What's your experience level?</h3>
+        <div class="options">
+          <div class="option" onclick="selectOption(1, 'beginner')">Beginner - New to kratom</div>
+          <div class="option" onclick="selectOption(1, 'intermediate')">Intermediate - Some experience</div>
+          <div class="option" onclick="selectOption(1, 'experienced')">Experienced - Regular user</div>
+        </div>
+      </div>
+      
+      <div class="question">
+        <h3>3. Primary desired effect?</h3>
+        <div class="options">
+          <div class="option" onclick="selectOption(2, 'energy')">Energy & Focus</div>
+          <div class="option" onclick="selectOption(2, 'comfort')">Comfort & Relaxation</div>
+          <div class="option" onclick="selectOption(2, 'balance')">Balance & Wellbeing</div>
+        </div>
+      </div>
+      
+      <button onclick="calculateResult()" style="width: 100%; padding: 1rem; background: var(--cyan); border: none; color: #000; font-family: 'Orbitron'; font-size: 1rem; cursor: pointer; margin-top: 1rem;">Find My Strain</button>
+    </div>
+    
+    <div class="result" id="result">
+      <h2 id="result-title"></h2>
+      <p id="result-desc"></p>
+      <a href="catalog.html" class="cta-button">View in Catalog</a>
+    </div>
+  </div>
+
+  <footer>
+    <p><a href="index.html">← Back to Home</a> | <a href="investors.html">Investor Relations</a> | <a href="blog.html">Blog</a></p>
+  </footer>
+
+  <script>
+    const answers = {};
+    
+    function selectOption(q, val) {
+      answers[q] = val;
+      // Visual feedback
+      const questionDiv = document.querySelectorAll('.question')[q];
+      questionDiv.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+      event.target.classList.add('selected');
+    }
+    
+    function calculateResult() {
+      if (Object.keys(answers).length < 3) {
+        alert('Please answer all questions');
+        return;
+      }
+      
+      let strain = '';
+      let desc = '';
+      
+      if (answers[0] === 'morning' || answers[2] === 'energy') {
+        strain = 'Green Maeng Da';
+        desc = 'High-energy, focus-enhancing green strain perfect for productivity.';
+      } else if (answers[0] === 'evening' || answers[2] === 'comfort') {
+        strain = 'Red Bali';
+        desc = 'Classic red strain known for deep relaxation and comfort.';
+      } else {
+        strain = 'Gold Bali';
+        desc = 'Balanced gold strain offering the best of both worlds.';
+      }
+      
+      document.getElementById('result-title').textContent = 'Recommended: ' + strain;
+      document.getElementById('result-desc').textContent = desc;
+      document.getElementById('quiz').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+      
+      // Send webhook with quiz result (optional analytics)
+      const WEBHOOK_URL = 'YOUR_ANALYTICS_WEBHOOK_HERE';
+      if (!WEBHOOK_URL.includes('YOUR_')) {
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'quiz_completion',
+            result: strain,
+            answers: answers,
+            timestamp: new Date().toISOString()
+          })
+        }).catch(e => console.log('Analytics webhook skipped'));
+      }
+    }
+  </script>
+</body>
+</html>
