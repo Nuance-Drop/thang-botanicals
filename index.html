@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>THANG Botanicals</title>
+  <style>
+    body { background: #0a0e27; color: #e0e6ed; font-family: Arial, sans-serif; margin: 0; padding: 2rem; text-align: center; }
+    h1 { color: #D4AF37; }
+    .card { background: #141b3d; border: 1px solid #D4AF37; padding: 2rem; max-width: 500px; margin: 2rem auto; }
+    input, select { display: block; width: 90%; margin: 1rem auto; padding: 0.5rem; background: #0a0e27; border: 1px solid #D4AF37; color: #fff; }
+    button { background: transparent; border: 2px solid #D4AF37; color: #D4AF37; padding: 1rem 2rem; cursor: pointer; }
+    button:hover { background: #D4AF37; color: #0a0e27; }
+  </style>
+</head>
+<body>
+  <h1>THANG Botanicals</h1>
+  <p>Premium Specimens</p>
+  
+  <div class="card">
+    <h2>Quick Order</h2>
+    <form id="order">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <select name="strain" required>
+        <option value="">Select Strain...</option>
+        <option value="Green Maeng Da">Green Maeng Da</option>
+        <option value="Red Bali">Red Bali</option>
+      </select>
+      <select name="quantity" required>
+        <option value="1">1 oz - $15</option>
+        <option value="4">4 oz - $50</option>
+      </select>
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+</body>
+</html>
