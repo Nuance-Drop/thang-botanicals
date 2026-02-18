@@ -1,0 +1,151 @@
+---
+layout: default
+title: Strain Finder | THANG Botanicals
+---
+
+<div style="max-width: 800px; margin: 0 auto; padding: 3rem 5%;">
+  <h1 style="font-family: 'Orbitron', sans-serif; text-align: center; color: #FFD700; margin-bottom: 1rem;">Find Your Perfect Strain</h1>
+  
+  <div style="background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; margin-bottom: 3rem;">
+    <div id="progress" style="background: linear-gradient(90deg, #FFD700, #ff006e); height: 100%; width: 0%; transition: width 0.3s;"></div>
+  </div>
+  
+  <div id="quiz-container"></div>
+</div>
+<script>
+// Load strain data from Jekyll
+const strains = {{ site.data.strains | jsonify }};
+const questions = [
+  {
+    id: 'experience',
+    title: 'Experience Level',
+    text: 'How experienced are you?',
+    options: [
+      {value: 'beginner', label: 'New Explorer', desc: 'First time or occasional'},
+      {value: 'experienced', label: 'Seasoned', desc: 'Regular user'}
+    ]
+  },
+  {
+    id: 'timeOfDay',
+    title: 'Timing',
+    text: 'When do you need this?',
+    options: [
+      {value: 'morning', label: 'Morning', desc: 'Start the day'},
+      {value: 'afternoon', label: 'Afternoon', desc: 'Mid-day boost'},
+      {value: 'evening', label: 'Evening', desc: 'Wind down'},
+      {value: 'night', label: 'Night', desc: 'Sleep support'}
+    ]
+  },
+  {
+    id: 'goal',
+    title: 'Primary Goal',
+    text: 'What is your main intention?',
+    options: [
+      {value: 'energy', label: 'Clean Energy', desc: 'Like coffee but smoother'},
+      {value: 'focus', label: 'Deep Focus', desc: 'Productivity & flow'},
+      {value: 'social', label: 'Social', desc: 'Talkative & euphoric'},
+      {value: 'pain', label: 'Pain Relief', desc: 'Physical comfort'},
+      {value: 'anxiety', label: 'Anxiety Relief', desc: 'Calm & stress relief'}
+    ]
+  },
+  {
+    id: 'speed',
+    title: 'Energy Type',
+    text: 'What energy do you prefer?',
+    options: [
+      {value: 'fast', label: 'Fast & Uplifting', desc: 'Motivating'},
+      {value: 'balanced', label: 'Balanced', desc: 'Middle ground'},
+      {value: 'slow', label: 'Slow & Mellow', desc: 'Relaxing'}
+    ]
+  },
+  {
+    id: 'sedation',
+    title: 'Sedation',
+    text: 'How much sedation?',
+    options: [
+      {value: 'none', label: 'None', desc: 'Stay sharp'},
+      {value: 'mild', label: 'Mild', desc: 'Relaxed but functional'},
+      {value: 'heavy', label: 'Heavy', desc: 'Couch-lock ok'}
+    ]
+  }
+];
+
+let current = 0;
+const answers = {};
+
+function render() {
+  if (current >= questions.length) return showResults();
+  
+  const q = questions[current];
+  document.getElementById('progress').style.width = ((current / questions.length) * 100) + '%';
+  
+  document.getElementById('quiz-container').innerHTML = `
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3rem;">
+      <h3 style="font-family: 'Orbitron', sans-serif; color: #00f5d4; margin-bottom: 0.5rem;">${q.title}</h3>
+      <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">${q.text}</p>
+      <div style="display: grid; gap: 1rem;">
+        ${q.options.map(opt => `
+          <button onclick="answer('${q.id}', '${opt.value}')" style="text-align: left; padding: 1.5rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; border-radius: 12px; transition: all 0.3s; font-family: 'Rajdhani', sans-serif;">
+            <div style="font-family: 'Orbitron', sans-serif; margin-bottom: 0.3rem;">${opt.label}</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">${opt.desc}</div>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function answer(q, val) {
+  answers[q] = val;
+  current++;
+  render();
+}
+
+function showResults() {
+  document.getElementById('quiz-container').style.display = 'none';
+  document.getElementById('progress').style.width = '100%';
+  
+  const scored = strains.map(s => {
+    let score = 0;
+    if (answers.experience === 'beginner' && s.beginner) score += 10;
+    else if (answers.experience === 'experienced' && !s.beginner) score += 10;
+    
+    if (s.time_of_day.includes(answers.timeOfDay)) score += 15;
+    if (s.speed === answers.speed) score += 15;
+    
+    if (answers.goal === 'energy') score += s.energy * 2;
+    else if (answers.goal === 'focus') score += s.focus * 2;
+    else if (answers.goal === 'social') score += s.social * 2;
+    else if (answers.goal === 'pain') score += s.pain * 2;
+    else if (answers.goal === 'anxiety') score += s.anxiety * 2;
+    
+    if (answers.sedation === 'none' && s.speed !== 'slow') score += 10;
+    else if (answers.sedation === 'heavy' && s.speed === 'slow') score += 10;
+    
+    return {...s, score};
+  }).sort((a,b) => b.score - a.score).slice(0,3);
+  
+  document.getElementById('results-container').innerHTML = `
+    <h2 style="text-align: center; font-family: 'Orbitron', sans-serif; color: #FFD700; margin-bottom: 2rem;">Your Top Matches</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+      ${scored.map((s,i) => `
+        <div style="background: linear-gradient(135deg, rgba(0,245,212,0.05) 0%, rgba(254,228,64,0.05) 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; text-align: center; ${i===0 ? 'border: 2px solid #FFD700;' : ''}">
+          ${i===0 ? '<div style="background: #FFD700; color: #000; padding: 0.3rem 1rem; font-family: Orbitron; font-size: 0.7rem; display: inline-block; margin-bottom: 1rem; border-radius: 4px;">BEST MATCH</div>' : ''}
+          <div style="color: #ff006e; font-family: Orbitron; font-size: 1.2rem; margin-bottom: 0.5rem;">${Math.round((s.score/80)*100)}% Match</div>
+          <h3 style="color: #FFD700; font-family: Orbitron; margin-bottom: 0.5rem;">${s.name}</h3>
+          <div style="color: rgba(255,255,255,0.6); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 1rem;">${s.color} Vein</div>
+          <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 1rem;">${s.description.substring(0,80)}...</p>
+          <a href="{{ '/strains' | relative_url }}#${s.id}" style="color: #00f5d4; text-decoration: none;">View Details →</a>
+        </div>
+      `).join('')}
+    </div>
+    <div style="text-align: center;">
+      <button onclick="location.reload()" style="padding: 1rem 2rem; background: transparent; border: 1px solid #FFD700; color: #FFD700; font-family: Orbitron; cursor: pointer; margin-right: 1rem;">Retake Quiz</button>
+      <a href="{{ '/strains' | relative_url }}" style="padding: 1rem 2rem; background: transparent; border: 1px solid #FFD700; color: #FFD700; font-family: Orbitron; text-decoration: none; display: inline-block;">Browse All</a>
+    </div>
+  `;
+  document.getElementById('results-container').style.display = 'block';
+}
+
+render();
+</script>
