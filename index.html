@@ -3,282 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THANG Botanicals | Premium Kratom</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <title>THANG Botanicals | Premium Specimens</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     :root {
       --neon-pink: #ff006e;
       --gold: #FFD700;
-      --dark: #0a0b0d;
-      --darker: #050505;
       --cyan: #00f5d4;
       --purple: #9b5de5;
-      --yellow: #fee440;
+      --void: #0a0b0d;
     }
-    
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
       font-family: 'Rajdhani', sans-serif;
-      background: linear-gradient(135deg, var(--darker) 0%, #1a1a2e 100%);
+      background: var(--void);
       color: #fff;
       overflow-x: hidden;
     }
     
-    /* Age Gate Overlay */
-    #age-gate {
+    /* Static background only */
+    body::before {
+      content: '';
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.95);
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      z-index: 9999;
-      backdrop-filter: blur(10px);
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0,245,212,0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255,0,110,0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(254,228,64,0.05) 0%, transparent 50%);
+      z-index: -1;
+      pointer-events: none;
     }
     
-    #age-gate h2 {
-      font-family: 'Orbitron', sans-serif;
-      color: var(--gold);
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-    }
-    
-    #age-gate p { margin-bottom: 2rem; color: rgba(255,255,255,0.8); }
-    
-    .age-btn {
-      padding: 1rem 3rem;
-      margin: 0 1rem;
-      border: 2px solid var(--neon-pink);
-      background: transparent;
-      color: var(--neon-pink);
-      font-family: 'Orbitron', sans-serif;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    
-    .age-btn:hover {
-      background: var(--neon-pink);
-      color: #000;
-      box-shadow: 0 0 30px var(--neon-pink);
-    }
-    
-    .hidden { display: none !important; }
-    
-    /* Navigation */
+    /* Navigation - Fixed links */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 5%;
-      background: rgba(10,11,13,0.8);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
+      background: rgba(10,11,13,0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
     }
     
     .logo {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: var(--gold);
       text-decoration: none;
-      letter-spacing: 0.1em;
-      text-shadow: 0 0 20px rgba(255,215,0,0.5);
+      letter-spacing: 0.15em;
+      font-weight: 700;
     }
     
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
       list-style: none;
     }
     
     .nav-links a {
-      color: #fff;
+      color: rgba(255,255,255,0.9);
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
       position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     
-    .nav-links a:hover { color: var(--neon-pink); }
-    
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--neon-pink);
-      transition: width 0.3s;
+    .nav-links a:hover {
+      color: var(--neon-pink);
+      text-shadow: 0 0 10px rgba(255,0,110,0.5);
     }
     
-    .nav-links a:hover::after { width: 100%; }
-    
-    /* Hero Section */
+    /* Hero Section - NO SHIMMER */
     .hero {
-      margin-top: 80px;
       padding: 5rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
       text-align: center;
-      background: radial-gradient(circle at center, rgba(255,0,110,0.1) 0%, transparent 70%);
     }
     
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 4rem;
+      font-size: 3rem;
+      color: var(--gold);
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--neon-pink) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+      text-shadow: 0 0 30px rgba(255,215,0,0.3);
     }
     
     .hero p {
-      font-size: 1.2rem;
       color: rgba(255,255,255,0.8);
-      max-width: 600px;
-      margin: 0 auto 3rem;
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      font-family: 'Rajdhani', sans-serif;
     }
     
-    /* Holographic Choice Cards (Mylar Bag Effect) */
+    /* CHOICE CARDS - STATIC, NO SHIMMER ANIMATION */
     .choice-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
+      margin: 3rem 0;
     }
     
     .choice-card {
       position: relative;
+      padding: 3rem 2rem;
       border-radius: 16px;
-      overflow: hidden;
       text-decoration: none;
-      display: block;
-      height: 400px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .mylar-bag {
-      position: relative;
-      padding: 2.5rem;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: 
-        linear-gradient(135deg, rgba(0,245,212,0.1) 0%, rgba(254,228,64,0.1) 50%, rgba(155,93,229,0.1) 100%),
-        linear-gradient(45deg, #0a0b0d 0%, #1a1a2e 100%);
-      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
       overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+      /* Static gradient instead of animated shimmer */
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     
-    /* Rainbow Shimmer Animation */
-    .mylar-bag::before {
+    /* Static holographic border effect (no animation) */
+    .choice-card::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        rgba(0,245,212,0.3) 60deg,
-        rgba(254,228,64,0.3) 120deg,
-        rgba(155,93,229,0.3) 180deg,
-        rgba(255,0,110,0.3) 240deg,
-        transparent 360deg
-      );
-      animation: rotate 6s linear infinite;
+      inset: 0;
+      background: linear-gradient(135deg, 
+        rgba(0,245,212,0.2) 0%, 
+        rgba(254,228,64,0.2) 50%, 
+        rgba(255,0,110,0.2) 100%);
       opacity: 0;
       transition: opacity 0.3s;
-      mix-blend-mode: overlay;
+      z-index: 0;
     }
     
-    .choice-card:hover .mylar-bag::before { opacity: 1; }
-    
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    
-    /* Metallic Sheen */
-    .shimmer {
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.3),
-        transparent
-      );
-      animation: shimmer 3s infinite;
-      pointer-events: none;
-    }
-    
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 200%; }
+    .choice-card:hover::before {
+      opacity: 1;
     }
     
     .choice-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 
-        0 30px 60px rgba(0,0,0,0.5),
-        0 0 0 1px rgba(0,245,212,0.3),
-        0 0 40px rgba(0,245,212,0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      border-color: rgba(0,245,212,0.3);
     }
     
-    .card-content {
+    .choice-content {
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
     
-    .card-icon {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 1.5rem;
-      fill: var(--gold);
-      filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
     }
     
-    .choice-card h3 {
+    .check-icon { background: linear-gradient(135deg, var(--gold), #ff9500); color: #000; }
+    .star-icon { background: linear-gradient(135deg, var(--cyan), var(--purple)); color: #000; }
+    
+    .choice-card h2 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
       letter-spacing: 0.1em;
     }
     
     .choice-card p {
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.7);
       font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      font-family: 'Rajdhani', sans-serif;
     }
     
-    .card-arrow {
-      font-size: 2rem;
+    .arrow {
+      display: inline-block;
       color: var(--neon-pink);
-      align-self: flex-end;
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+    
+    .choice-card:hover .arrow {
+      transform: translateX(5px);
     }
     
     /* Features Section */
     .features {
-      padding: 5rem 5%;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 3rem;
+      gap: 2rem;
+      padding: 4rem 5%;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -286,15 +210,13 @@
     .feature {
       text-align: center;
       padding: 2rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
       background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
     }
     
-    .feature svg {
-      width: 50px;
-      height: 50px;
-      fill: var(--cyan);
+    .feature-icon {
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
     
@@ -302,19 +224,33 @@
       font-family: 'Orbitron', sans-serif;
       color: var(--gold);
       margin-bottom: 0.5rem;
+      font-size: 1.1rem;
     }
     
-    /* Footer */
+    .feature p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    
+    /* Footer - Fixed links */
     footer {
       text-align: center;
-      padding: 3rem 5%;
+      padding: 3rem 2rem;
       border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 5rem;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.5);
+      margin-top: 4rem;
+    }
+    
+    footer h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
     }
     
     footer p {
       color: rgba(255,255,255,0.6);
+      font-family: 'Rajdhani', sans-serif;
       margin: 0.5rem 0;
     }
     
@@ -322,111 +258,56 @@
       color: var(--neon-pink);
       text-decoration: none;
       margin: 0 0.5rem;
+      transition: all 0.3s;
+      font-weight: 600;
     }
     
-    footer a:hover { text-shadow: 0 0 10px var(--neon-pink); }
-    
-    .footer-brand {
-      font-family: 'Orbitron', sans-serif;
-      color: var(--gold);
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+    footer a:hover {
+      text-shadow: 0 0 10px rgba(255,0,110,0.5);
     }
     
-    /* Cookie Banner */
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(10,11,13,0.95);
-      padding: 1rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      z-index: 9998;
-      transform: translateY(100%);
-      transition: transform 0.3s;
-    }
-    
-    #cookie-banner.show { transform: translateY(0); }
-    
-    .cookie-btn {
-      padding: 0.5rem 1.5rem;
-      background: var(--neon-pink);
-      border: none;
-      color: #000;
-      font-family: 'Orbitron', sans-serif;
-      cursor: pointer;
-      margin-left: 1rem;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .nav-links { gap: 1rem; font-size: 0.9rem; }
-      .choice-grid { grid-template-columns: 1fr; }
+    .footer-links {
+      margin-top: 1rem;
+      font-family: 'Rajdhani', sans-serif;
     }
   </style>
 </head>
 <body>
 
-  <!-- Age Gate -->
-  <div id="age-gate">
-    <h2>Age Verification</h2>
-    <p>You must be 21+ to enter THANG Botanicals</p>
-    <div>
-      <button class="age-btn" onclick="verifyAge(true)">I am 21+</button>
-      <button class="age-btn" onclick="verifyAge(false)">Exit</button>
-    </div>
-  </div>
+  <!-- FIXED NAVIGATION (no leading slashes) -->
+  <nav>
+    <a href="index.html" class="logo">THANG</a>
+    <ul class="nav-links">
+      <li><a href="quiz.html">Strain Finder</a></li>
+      <li><a href="catalog.html">Catalog</a></li>
+      <li><a href="blog.html">Education</a></li>
+      <li><a href="investors.html">Investors</a></li>
+    </ul>
+  </nav>
 
- <!-- Navigation that works on GitHub Pages project sites -->
-<nav>
-  <a href="index.html" style="font-family: 'Orbitron'; color: #FFD700; text-decoration: none; font-size: 1.8rem;">THANG</a>
-  <div style="display: flex; gap: 2rem;">
-    <a href="index.html" style="color: #fff; text-decoration: none; font-family: 'Rajdhani';">Home</a>
-    <a href="catalog.html" style="color: #fff; text-decoration: none; font-family: 'Rajdhani';">Catalog</a>
-    <a href="quiz.html" style="color: #fff; text-decoration: none; font-family: 'Rajdhani';">Quiz</a>
-    <a href="investors.html" style="color: #fff; text-decoration: none; font-family: 'Rajdhani';">Investors</a>
-    <a href="blog.html" style="color: #fff; text-decoration: none; font-family: 'Rajdhani';">Blog</a>
-  </div>
-</nav>
-
-  <!-- Hero Section -->
   <section class="hero">
-    <h1>THANG Botanicals</h1>
-    <p>Premium kratom sourced from sustainable Southeast Asian farms. Lab-tested, ethically harvested, holographically sealed.</p>
+    <h1>PREMIUM BOTANICALS</h1>
+    <p>Ethically sourced. Lab verified. Direct from Southeast Asian family farms.</p>
     
+    <!-- FIXED CHOICE CARDS (no shimmer animation) -->
     <div class="choice-grid">
-      <!-- Strain Finder Card -->
+      <!-- Card 1: Strain Finder -->
       <a href="quiz.html" class="choice-card">
-        <div class="mylar-bag">
-          <div class="shimmer"></div>
-          <div class="card-content">
-            <svg class="card-icon" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
-            <h3>Find My Strain</h3>
-            <p>Take our 30-second quiz to discover your perfect match based on desired effects and experience level.</p>
-          </div>
-          <span class="card-arrow">→</span>
+        <div class="choice-content">
+          <div class="icon-circle check-icon">✓</div>
+          <h2>FIND MY STRAIN</h2>
+          <p>Take our 30-second quiz to discover your perfect match based on desired effects and experience level.</p>
+          <span class="arrow">→</span>
         </div>
       </a>
-
-      <!-- View Catalog Card -->
+      
+      <!-- Card 2: View Catalog -->
       <a href="catalog.html" class="choice-card">
-        <div class="mylar-bag">
-          <div class="shimmer"></div>
-          <div class="card-content">
-            <svg class="card-icon" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-            </svg>
-            <h3>View Catalog</h3>
-            <p>Browse our complete collection of 25+ premium strains. From Green Maeng Da to Gold Bali.</p>
-          </div>
-          <span class="card-arrow">→</span>
+        <div class="choice-content">
+          <div class="icon-circle star-icon">★</div>
+          <h2>VIEW CATALOG</h2>
+          <p>Browse our complete collection of 24+ premium strains. From Green Maeng Da to Gold Bali.</p>
+          <span class="arrow">→</span>
         </div>
       </a>
     </div>
@@ -435,107 +316,33 @@
   <!-- Features -->
   <section class="features">
     <div class="feature">
-      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+      <div class="feature-icon">🛡️</div>
       <h3>Lab Tested</h3>
       <p>Every batch verified for purity and potency</p>
     </div>
     <div class="feature">
-      <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+      <div class="feature-icon">💼</div>
       <h3>Wholesale</h3>
       <p>Volume pricing for retailers and distributors</p>
     </div>
     <div class="feature">
-      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      <div class="feature-icon">✓</div>
       <h3>Same Day Shipping</h3>
       <p>Orders placed before 3PM CST ship today</p>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FIXED FOOTER (no leading slashes) -->
   <footer>
-    <div class="footer-brand">THANG BOTANICALS</div>
+    <h2>THANG BOTANICALS</h2>
     <p>Garland, Texas • Sustainable Farms Southeast Asia</p>
-    <p>21+ Only • Research Purposes • <a href="investors.html">Investor Relations</a> • <a href="blog.html">Blog</a></p>
-    <p style="margin-top: 1rem; font-size: 0.9rem;">© 2026 THANG Botanicals. All rights reserved.</p>
+    <p>21+ Only • Research Purposes Only</p>
+    <div class="footer-links">
+      <a href="investors.html">Investor Relations</a> • 
+      <a href="blog.html">Blog</a> • 
+      <a href="mailto:info@kratomthang.com">Contact</a>
+    </div>
   </footer>
 
-  <!-- Cookie Banner -->
-  <div id="cookie-banner">
-    <span>We use cookies to enhance your experience and process orders.</span>
-    <button class="cookie-btn" onclick="acceptCookies()">Accept</button>
-  </div>
-
-  <!-- Webhook Configuration & Scripts -->
-  <script>
-    // WEBHOOK CONFIGURATION - Replace with your n8n, Telegram, or Discord webhook URL
-    const WEBHOOK_CONFIG = {
-      orderUrl: 'YOUR_ORDER_WEBHOOK_URL_HERE',        // e.g., https://n8n.yourdomain.com/webhook/order
-      contactUrl: 'YOUR_CONTACT_WEBHOOK_URL_HERE',    // e.g., https://n8n.yourdomain.com/webhook/contact
-      newsletterUrl: 'YOUR_NEWSLETTER_WEBHOOK_URL'    // e.g., https://n8n.yourdomain.com/webhook/subscribe
-    };
-
-    // Universal Webhook Sender
-    async function sendWebhook(type, data) {
-      const url = WEBHOOK_CONFIG[type + 'Url'];
-      if (!url || url.includes('YOUR_')) {
-        console.log('Webhook not configured:', type);
-        return { success: false, error: 'Webhook URL not set' };
-      }
-      
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            ...data,
-            timestamp: new Date().toISOString(),
-            source: 'thang-botanicals-website',
-            page: window.location.pathname
-          })
-        });
-        return { success: response.ok, status: response.status };
-      } catch (error) {
-        console.error('Webhook error:', error);
-        return { success: false, error: error.message };
-      }
-    }
-
-    // Age Gate Logic
-    function verifyAge(isAdult) {
-      if (isAdult) {
-        localStorage.setItem('ageVerified', 'true');
-        document.getElementById('age-gate').classList.add('hidden');
-        document.body.style.overflow = 'auto';
-      } else {
-        window.location.href = 'https://google.com';
-      }
-    }
-
-    // Check Age Gate on Load
-    if (localStorage.getItem('ageVerified')) {
-      document.getElementById('age-gate').classList.add('hidden');
-    }
-
-    // Cookie Banner
-    setTimeout(() => {
-      if (!localStorage.getItem('cookiesAccepted')) {
-        document.getElementById('cookie-banner').classList.add('show');
-      }
-    }, 2000);
-
-    function acceptCookies() {
-      localStorage.setItem('cookiesAccepted', 'true');
-      document.getElementById('cookie-banner').classList.remove('show');
-    }
-
-    // Example: Send analytics webhook on page load (optional)
-    window.addEventListener('load', () => {
-      sendWebhook('contact', { 
-        event: 'page_view', 
-        page: 'homepage',
-        referrer: document.referrer 
-      });
-    });
-  </script>
 </body>
 </html>
