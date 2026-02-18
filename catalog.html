@@ -1,173 +1,172 @@
 ---
 layout: default
-title: Strain Catalog | THANG Botanicals
+title: Catalog | THANG Botanicals
 ---
 
 <style>
+  /* REMOVE ALL SHIMMERS - Static only */
+  * { animation: none !important; }
+  
+  body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #0a0b0d;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  /* Static fractal background (no animation on buttons) */
+  .bg-fractal {
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(0,245,212,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255,0,110,0.15) 0%, transparent 40%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .container { padding: 2rem 5%; max-width: 1400px; margin: 0 auto; }
+  
+  h1 { 
+    font-family: 'Orbitron', sans-serif; 
+    color: #FFD700; 
+    text-align: center; 
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(255,215,0,0.3);
+  }
+  
+  .subtitle { 
+    text-align: center; 
+    color: rgba(255,255,255,0.7); 
+    margin-bottom: 2rem;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  /* STATIC BUTTONS - No shimmer, no animation */
   .controls {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
-    align-items: center;
   }
   
   .btn {
     padding: 0.6rem 1.5rem;
-    background: transparent;
-    border: 1px solid rgba(255,215,0,0.4);
-    color: var(--gold);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,215,0,0.3);
+    color: #FFD700;
     border-radius: 4px;
     cursor: pointer;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
+    font-size: 0.85rem;
     letter-spacing: 0.05em;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
   }
   
-  .btn:hover, .btn.active {
+  .btn:hover {
     background: rgba(255,0,110,0.2);
-    border-color: var(--neon-pink);
-    color: var(--neon-pink);
-    box-shadow: 0 0 20px rgba(255,0,110,0.3);
+    border-color: #ff006e;
+    color: #ff006e;
+    box-shadow: 0 0 15px rgba(255,0,110,0.3);
+    transform: translateY(-2px);
   }
   
-  .strain-grid {
+  .btn.active {
+    background: rgba(255,0,110,0.3);
+    border-color: #ff006e;
+    color: #fff;
+  }
+
+  /* Cards - No shimmer */
+  .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 0 5% 4rem;
-    max-width: 1400px;
-    margin: 0 auto;
   }
   
-  .strain-card {
+  .card {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 12px;
     overflow: hidden;
-    transition: all 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
     color: inherit;
+    display: block;
     position: relative;
   }
   
-  /* Holographic sheen on hover only (no constant shimmer) */
-  .strain-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 
-      0 25px 50px rgba(0,0,0,0.5),
-      0 0 0 1px rgba(0,245,212,0.3),
-      inset 0 0 30px rgba(255,255,255,0.05);
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-color: rgba(0,245,212,0.3);
   }
   
-  .mylar-bag {
-    padding: 1.5rem;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-    background: 
-      linear-gradient(135deg, rgba(0,245,212,0.05) 0%, rgba(254,228,64,0.05) 50%, rgba(155,93,229,0.05) 100%),
-      linear-gradient(45deg, #0a0b0d 0%, #1a1a2e 100%);
-    position: relative;
-    overflow: hidden;
-  }
+  .card-content { padding: 1.5rem; height: 280px; display: flex; flex-direction: column; }
   
-  /* Rainbow border effect on hover */
-  .strain-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: conic-gradient(from 0deg, var(--cyan), var(--gold), var(--neon-pink), var(--purple), var(--cyan));
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: -1;
-    border-radius: 12px;
-    filter: blur(10px);
-  }
-  .strain-card:hover::before { opacity: 0.5; }
+  .badges { display: flex; justify-content: space-between; margin-bottom: 1rem; }
   
-  .premium-badge {
-    position: absolute;
-    top: 10px; left: 10px;
-    background: linear-gradient(135deg, var(--gold), #ff9500);
-    color: #000;
-    padding: 0.3rem 0.8rem;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    z-index: 10;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-  
-  .limited-badge {
-    position: absolute;
-    top: 10px; right: 10px;
-    background: linear-gradient(135deg, var(--neon-pink), var(--purple));
-    color: white;
-    padding: 0.3rem 0.8rem;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    z-index: 10;
-    border-radius: 4px;
-    transform: rotate(3deg);
-  }
-  
-  .strain-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-bottom: 1rem;
-  }
-  
-  .color-tag {
-    display: inline-block;
+  .tag {
     padding: 0.3rem 1rem;
     border-radius: 20px;
     font-size: 0.75rem;
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 0.05em;
     font-family: 'Rajdhani', sans-serif;
   }
   
-  .color-tag.green { background: linear-gradient(135deg, #06ffa5, #00bb9f); color: #0a0b0d; }
-  .color-tag.red { background: linear-gradient(135deg, #ff006e, #8338ec); color: white; }
-  .color-tag.white { background: linear-gradient(135deg, #ffffff, #e0e0e0); color: #0a0b0d; }
-  .color-tag.yellow { background: linear-gradient(135deg, #fee440, #f77f00); color: #0a0b0d; }
-  
-  .weight-tag {
+  .tag.green { background: #06ffa5; color: #0a0b0d; }
+  .tag.red { background: #ff006e; color: white; }
+  .tag.white { background: #ffffff; color: #0a0b0d; }
+  .tag.yellow { background: #fee440; color: #0a0b0d; }
+  .tag.premium { 
+    background: linear-gradient(135deg, #FFD700, #ff9500); 
+    color: #000;
+    position: absolute;
+    top: 10px; left: 10px;
+    font-size: 0.65rem;
     font-family: 'Orbitron', sans-serif;
+  }
+  .tag.limited {
+    background: linear-gradient(135deg, #ff006e, #8338ec);
+    color: white;
+    position: absolute;
+    top: 10px; right: 10px;
+    transform: rotate(3deg);
+  }
+  
+  .weight {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
     color: rgba(255,255,255,0.6);
-    font-size: 0.85rem;
     background: rgba(0,0,0,0.3);
     padding: 0.3rem 0.8rem;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.1);
   }
   
-  .strain-name {
-    font-family: 'Cormorant Garamond', serif; /* Elegant but legible */
-    font-size: 1.6rem;
+  /* Cormorant Garamond for strain names - legible */
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
     color: #fff;
     margin-bottom: 0.5rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-weight: 600;
   }
   
-  .strain-desc {
-    color: rgba(255,255,255,0.8);
+  p.desc {
+    color: rgba(255,255,255,0.7);
     font-size: 0.95rem;
     line-height: 1.5;
     flex-grow: 1;
+    font-family: 'Rajdhani', sans-serif;
   }
   
-  .strain-meta {
+  .footer {
     margin-top: auto;
     padding-top: 1rem;
     border-top: 1px solid rgba(255,255,255,0.1);
@@ -176,133 +175,528 @@ title: Strain Catalog | THANG Botanicals
   .price-row {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0.5rem;
+    align-items: center;
   }
   
   .price {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.4rem;
-    color: var(--gold);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    color: #FFD700;
   }
   
-  .price-note {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
+  .speed {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Rajdhani', sans-serif;
   }
   
-  /* Indicator bar (not called "vein") */
-  .spectrum-bar {
+  .line {
     width: 100%;
-    height: 4px;
-    border-radius: 2px;
+    height: 3px;
     margin-top: 0.75rem;
-    box-shadow: 0 0 15px currentColor;
+    border-radius: 2px;
+  }
+
+  /* Back button - no animation */
+  .back {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  
+  .back:hover {
+    border-color: #ff006e;
+    color: #ff006e;
   }
 </style>
 
-<div style="text-align: center; padding: 3rem 5% 1rem;">
-  <h1 style="font-family: 'Orbitron', sans-serif; color: var(--gold); font-size: 2.5rem; margin-bottom: 0.5rem;">Strain Catalog</h1>
-  <p style="color: rgba(255,255,255,0.7);">Premium Botanical Specimens • 24 Varieties</p>
-</div>
+<div class="bg-fractal"></div>
 
-<div class="controls">
-  <span style="color: rgba(255,255,255,0.6); margin-right: 0.5rem;">Filter:</span>
-  <button class="btn active" onclick="filter('all')">All</button>
-  <button class="btn" onclick="filter('green')">Green</button>
-  <button class="btn" onclick="filter('red')">Red</button>
-  <button class="btn" onclick="filter('white')">White</button>
-  <button class="btn" onclick="filter('yellow')">Yellow</button>
-  
-  <span style="color: rgba(255,255,255,0.6); margin: 0 0.5rem;">|</span>
-  
-  <span style="color: rgba(255,255,255,0.6); margin-right: 0.5rem;">Sort:</span>
-  <button class="btn" onclick="sort('name')">Name</button>
-  <button class="btn" onclick="sort('price')">Price</button>
-</div>
+<div class="container">
+  <h1>Strain Catalog</h1>
+  <p class="subtitle">24 Premium Varieties • Aceh Collection +$15 Premium</p>
 
-<div class="strain-grid" id="strainGrid">
-  {% for strain in site.data.strains %}
-  {% assign is_aceh = false %}
-  {% if strain.name contains 'Aceh' %}{% assign is_aceh = true %}{% endif %}
-  {% assign base_price = 34.99 %}
-  {% assign price = base_price %}
-  {% if is_aceh %}{% assign price = base_price | plus: 15.00 %}{% endif %}
-  
-  <a href="{{ strain.id | relative_url }}" class="strain-card" data-color="{{ strain.color }}" data-name="{{ strain.name }}" data-price="{{ price }}">
-    <div class="mylar-bag">
-      {% if is_aceh %}<span class="premium-badge">Aceh Premium</span>{% endif %}
-      {% if strain.limited %}<span class="limited-badge">Limited</span>{% endif %}
-      
-      <div>
-        <div class="strain-header">
-          <span class="color-tag {{ strain.color }}">{{ strain.color }}</span>
-          <span class="weight-tag">{{ strain.weight }}kg avail</span>
+  <div class="controls">
+    <button class="btn active" onclick="filter('all')">All</button>
+    <button class="btn" onclick="filter('green')">Green</button>
+    <button class="btn" onclick="filter('red')">Red</button>
+    <button class="btn" onclick="filter('white')">White</button>
+    <button class="btn" onclick="filter('yellow')">Yellow</button>
+    <button class="btn" onclick="sort('price')">Price: Low-High</button>
+  </div>
+
+  <div class="grid" id="grid">
+    <!-- Hardcoded strains so they actually show up -->
+    
+    <!-- GREENS -->
+    <a href="strains/green-aceh.html" class="card" data-color="green" data-price="49.99">
+      <span class="tag premium">PREMIUM +$15</span>
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">Green</span>
+          <span class="weight">10kg</span>
         </div>
-        
-        <h3 class="strain-name">{{ strain.name }}</h3>
-        <p class="strain-desc">{{ strain.description | truncate: 120 }}</p>
-      </div>
-      
-      <div class="strain-meta">
-        <div class="price-row">
-          <span class="price">${{ price }}</span>
-          <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">
-            {% if strain.speed == 'fast' %}⚡ Fast{% elsif strain.speed == 'slow' %}🌙 Slow{% else %}⚖️ Balanced{% endif %}
-          </span>
+        <h3>Green Aceh</h3>
+        <p class="desc">Intense, vital, rare. Upbeat social characteristics perfect for experienced users.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$49.99</span>
+            <span class="speed">Balanced</span>
+          </div>
+          <div class="line" style="background: #06ffa5;"></div>
         </div>
-        {% if is_aceh %}
-        <div class="price-note">Aceh region premium pricing</div>
-        {% endif %}
-        
-        <!-- Spectrum indicator (NOT "vein") -->
-        <div class="spectrum-bar" style="background: {% if strain.color == 'green' %}#06ffa5{% elsif strain.color == 'red' %}#ff006e{% elsif strain.color == 'white' %}#ffffff{% else %}#fee440{% endif %};"></div>
       </div>
-    </div>
-  </a>
-  {% endfor %}
+    </a>
+
+    <a href="strains/green-dragon.html" class="card" data-color="green" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">Green</span>
+          <span class="weight">10kg</span>
+        </div>
+        <h3>Green Dragon</h3>
+        <p class="desc">Euphoric and happy strain. Balanced energy suitable for social or solo use.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Balanced</span>
+          </div>
+          <div class="line" style="background: #06ffa5;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/green-md.html" class="card" data-color="green" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">Green</span>
+          <span class="weight">10kg</span>
+        </div>
+        <h3>Green Maeng Da</h3>
+        <p class="desc">The gold standard. High energy, productivity-focused. Not for beginners.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Fast</span>
+          </div>
+          <div class="line" style="background: #06ffa5;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/green-malay.html" class="card" data-color="green" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">Green</span>
+          <span class="weight">10kg</span>
+        </div>
+        <h3>Green Malay</h3>
+        <p class="desc">Long duration, strong and versatile. Both chill and fast characteristics.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Balanced</span>
+          </div>
+          <div class="line" style="background: #06ffa5;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/super-green.html" class="card" data-color="green" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">Green</span>
+          <span class="weight">5kg</span>
+        </div>
+        <h3>Super Green</h3>
+        <p class="desc">Maximum potency blend. Like an espresso shot in botanical form.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Fast</span>
+          </div>
+          <div class="line" style="background: #06ffa5;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/green-thai.html" class="card" data-color="green" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">Green</span>
+          <span class="weight">4kg</span>
+        </div>
+        <h3>Green Thai</h3>
+        <p class="desc">Traditional Thai profile. Calm energy boost, excellent for discomfort.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Moderate</span>
+          </div>
+          <div class="line" style="background: #06ffa5;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/green-dracula.html" class="card" data-color="green" data-price="34.99">
+      <span class="tag limited">LIMITED</span>
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">Green</span>
+          <span class="weight">1kg</span>
+        </div>
+        <h3>Green Dracula</h3>
+        <p class="desc">Exclusive limited strain. Unique opportunity for collectors.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Fast</span>
+          </div>
+          <div class="line" style="background: #06ffa5;"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- REDS -->
+    <a href="strains/red-aceh.html" class="card" data-color="red" data-price="49.99">
+      <span class="tag premium">PREMIUM +$15</span>
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">Red</span>
+          <span class="weight">6kg</span>
+        </div>
+        <h3>Red Aceh</h3>
+        <p class="desc">Couch-lock sedating. Heavy relief for experienced users only.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$49.99</span>
+            <span class="speed">Slow</span>
+          </div>
+          <div class="line" style="background: #ff006e;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/red-thai.html" class="card" data-color="red" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">Red</span>
+          <span class="weight">6kg</span>
+        </div>
+        <h3>Red Thai</h3>
+        <p class="desc">Traditional red profile. Slow creeper, good for anytime use.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Slow</span>
+          </div>
+          <div class="line" style="background: #ff006e;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/red-dragon.html" class="card" data-color="red" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">Red</span>
+          <span class="weight">6kg</span>
+        </div>
+        <h3>Red Dragon</h3>
+        <p class="desc">Aphrodisiac and great for socializing. Unique social red.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Moderate</span>
+          </div>
+          <div class="line" style="background: #ff006e;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/red-bali.html" class="card" data-color="red" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">Red</span>
+          <span class="weight">6kg</span>
+        </div>
+        <h3>Red Bali</h3>
+        <p class="desc">Classic feel. Best for relief, purely sedating. Beginner friendly.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Slow</span>
+          </div>
+          <div class="line" style="background: #ff006e;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/red-md.html" class="card" data-color="red" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">Red</span>
+          <span class="weight">6kg</span>
+        </div>
+        <h3>Red Maeng Da</h3>
+        <p class="desc">Premium red. Stronger energy than typical reds.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Moderate</span>
+          </div>
+          <div class="line" style="background: #ff006e;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/red-bentuangie.html" class="card" data-color="red" data-price="34.99">
+      <span class="tag limited">LIMITED</span>
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">Red</span>
+          <span class="weight">1kg</span>
+        </div>
+        <h3>Red Bentuangie</h3>
+        <p class="desc">Fermented. Best tasting, smooth, gentle on stomach.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Slow</span>
+          </div>
+          <div class="line" style="background: #ff006e;"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- WHITES -->
+    <a href="strains/white-md.html" class="card" data-color="white" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">White</span>
+          <span class="weight">6kg</span>
+        </div>
+        <h3>White Maeng Da</h3>
+        <p class="desc">Fast energy. Good coffee replacement. Beginner friendly.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Fast</span>
+          </div>
+          <div class="line" style="background: #ffffff;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/white-aceh.html" class="card" data-color="white" data-price="49.99">
+      <span class="tag premium">PREMIUM +$15</span>
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">White</span>
+          <span class="weight">5kg</span>
+        </div>
+        <h3>White Aceh</h3>
+        <p class="desc">Smooth but intense. Medium duration, maybe stronger than MD.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$49.99</span>
+            <span class="speed">Fast</span>
+          </div>
+          <div class="line" style="background: #ffffff;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/white-horn.html" class="card" data-color="white" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">White</span>
+          <span class="weight">5kg</span>
+        </div>
+        <h3>White Horn</h3>
+        <p class="desc">Premium energetic profile. Not smooth come-up but energetic.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Fast</span>
+          </div>
+          <div class="line" style="background: #ffffff;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/white-sumatra.html" class="card" data-color="white" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">White</span>
+          <span class="weight">3kg</span>
+        </div>
+        <h3>White Sumatra</h3>
+        <p class="desc">Lighter regional variety. Best for focus and concentration.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Moderate</span>
+          </div>
+          <div class="line" style="background: #ffffff;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/white-elephant.html" class="card" data-color="white" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">White</span>
+          <span class="weight">3kg</span>
+        </div>
+        <h3>White Elephant</h3>
+        <p class="desc">Unusual large leaf type. Strong profile, more mellow.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Moderate</span>
+          </div>
+          <div class="line" style="background: #ffffff;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/white-zombie.html" class="card" data-color="white" data-price="34.99">
+      <span class="tag limited">LIMITED</span>
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">White</span>
+          <span class="weight">1kg</span>
+        </div>
+        <h3>White Zombie</h3>
+        <p class="desc">Exclusive novelty strain named after the band. Fine for beginners.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Fast</span>
+          </div>
+          <div class="line" style="background: #ffffff;"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- YELLOWS -->
+    <a href="strains/yellow-dragon.html" class="card" data-color="yellow" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">Yellow</span>
+          <span class="weight">3kg</span>
+        </div>
+        <h3>Yellow Dragon</h3>
+        <p class="desc">More euphoric than other yellows. Evening or daytime anxiety.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Balanced</span>
+          </div>
+          <div class="line" style="background: #fee440;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/yellow-hulu.html" class="card" data-color="yellow" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">Yellow</span>
+          <span class="weight">3kg</span>
+        </div>
+        <h3>Yellow Hulu</h3>
+        <p class="desc">Kapuas region. Medium duration, anxiolytic properties.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Moderate</span>
+          </div>
+          <div class="line" style="background: #fee440;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/yellow-vietnam.html" class="card" data-color="yellow" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">Yellow</span>
+          <span class="weight">2kg</span>
+        </div>
+        <h3>Yellow Vietnam</h3>
+        <p class="desc">Great for anxiety without sedation. Faster, rare strain.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Moderate</span>
+          </div>
+          <div class="line" style="background: #fee440;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/yellow-md.html" class="card" data-color="yellow" data-price="34.99">
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">Yellow</span>
+          <span class="weight">2kg</span>
+        </div>
+        <h3>Yellow Maeng Da</h3>
+        <p class="desc">Premium drying process. Great balanced blend.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Balanced</span>
+          </div>
+          <div class="line" style="background: #fee440;"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="strains/yellow-thai.html" class="card" data-color="yellow" data-price="34.99">
+      <span class="tag limited">LIMITED</span>
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">Yellow</span>
+          <span class="weight">1kg</span>
+        </div>
+        <h3>Yellow Thai</h3>
+        <p class="desc">Traditional method. Gentle but strong, well-balanced anxiolytic.</p>
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">Moderate</span>
+          </div>
+          <div class="line" style="background: #fee440;"></div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- WORKING BACK BUTTON (relative path) -->
+  <div style="text-align: center; margin-top: 3rem;">
+    <a href="index.html" class="back">← Back to Home</a>
+  </div>
 </div>
 
 <script>
-let currentFilter = 'all';
-let currentSort = 'original';
-
 function filter(color) {
-  currentFilter = color;
-  document.querySelectorAll('.controls button').forEach(btn => {
-    if (btn.textContent.toLowerCase() === color || (color === 'all' && btn.textContent === 'All')) {
-      btn.classList.add('active');
-    } else if (['Green','Red','White','Yellow','All'].includes(btn.textContent)) {
-      btn.classList.remove('active');
-    }
+  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = (color === 'all' || card.dataset.color === color) ? 'block' : 'none';
   });
-  render();
 }
 
-function sort(criteria) {
-  currentSort = criteria;
-  render();
-}
-
-function render() {
-  const grid = document.getElementById('strainGrid');
+function sort(type) {
+  const grid = document.getElementById('grid');
   const cards = Array.from(grid.children);
-  
-  // Filter
-  cards.forEach(card => {
-    const show = currentFilter === 'all' || card.dataset.color === currentFilter;
-    card.style.display = show ? 'block' : 'none';
-  });
-  
-  // Sort visible
-  const visible = cards.filter(c => c.style.display !== 'none');
-  visible.sort((a, b) => {
-    if (currentSort === 'name') return a.dataset.name.localeCompare(b.dataset.name);
-    if (currentSort === 'price') return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
-    return 0;
-  });
-  
-  visible.forEach(card => grid.appendChild(card));
+  cards.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+  cards.forEach(c => grid.appendChild(c));
 }
 </script>
