@@ -567,4 +567,59 @@
     function openOrder(strain, price) {
       document.getElementById('order-strain').value = strain;
       document.getElementById('price-250').textContent = price;
-      document.getElementById('price-500').textContent = (price * 1.8).toFixed(2
+      document.getElementById('price-500').textContent = (price * 1.8).toFixed(2);
+      document.getElementById('price-1000').textContent = (price * 3).toFixed(2);
+      document.getElementById('order-modal').style.display = 'flex';
+    }
+
+    function closeOrder() {
+      document.getElementById('order-modal').style.display = 'none';
+    }
+
+    async function submitOrder(e) {
+      e.preventDefault();
+      
+      const data = {
+        strain: document.getElementById('order-strain').value,
+        quantity: document.getElementById('order-qty').value,
+        email: document.getElementById('order-email').value,
+        telegram: document.getElementById('order-telegram').value,
+        timestamp: new Date().toISOString(),
+        type: 'new_order'
+      };
+
+      if (!WEBHOOK_URL.includes('YOUR_')) {
+        try {
+          const response = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          
+          if (response.ok) {
+            alert('Order submitted! Check your email for confirmation.');
+            closeOrder();
+          } else {
+            alert('Error submitting order. Please try again.');
+          }
+        } catch (error) {
+          console.error('Webhook error:', error);
+          alert('Connection error. Please try again.');
+        }
+      } else {
+        alert('Order webhook not configured. Data logged to console.');
+        console.log('Order data:', data);
+        closeOrder();
+      }
+    }
+
+    // Close modal on outside click
+    window.onclick = function(event) {
+      const modal = document.getElementById('order-modal');
+      if (event.target === modal) {
+        closeOrder();
+      }
+    }
+  </script>
+</body>
+</html>
