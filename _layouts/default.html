@@ -12,15 +12,17 @@
 
   <!-- Navigation - Fixed for Jekyll project sites -->
   <nav style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; background: rgba(10,11,13,0.95); border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 1000;">
-    <a href="{{ '/' | relative_url }}" style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: #FFD700; text-decoration: none;">THANG</a>
-    <div style="display: flex; gap: 2rem;">
-      <a href="{{ '/' | relative_url }}" style="color: #fff; text-decoration: none;">Home</a>
-      <a href="{{ '/strains' | relative_url }}" style="color: #fff; text-decoration: none;">Catalog</a>
-      <a href="{{ '/quiz' | relative_url }}" style="color: #fff; text-decoration: none;">Quiz</a>
-      <a href="{{ '/investors' | relative_url }}" style="color: #fff; text-decoration: none;">Investors</a>
-      <a href="{{ '/blog' | relative_url }}" style="color: #fff; text-decoration: none;">Blog</a>
-    </div>
-  </nav>
+  <!-- Use relative links that work from any page -->
+  <a href="{{ '/' | relative_url }}" class="logo" style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: #FFD700; text-decoration: none; letter-spacing: 0.1em;">THANG</a>
+  
+  <div class="nav-links" style="display: flex; gap: 2rem;">
+    <a href="{{ '/' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Home</a>
+    <a href="{{ '/strains' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Catalog</a>
+    <a href="{{ '/quiz' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Quiz</a>
+    <a href="{{ '/investors' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Investors</a>
+    <a href="{{ '/blog' | relative_url }}" style="color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">Blog</a>
+  </div>
+</nav>
 
   <main style="min-height: 80vh;">
     {{ content }}

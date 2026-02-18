@@ -1,922 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strain Catalog | THANG Botanicals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --neon-pink: #ff006e;
-      --gold: #FFD700;
-      --dark: #0a0b0d;
-      --cyan: #00f5d4;
-      --purple: #9b5de5;
-    }
-    
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: 'Rajdhani', sans-serif;
-      background: linear-gradient(135deg, #050505 0%, #1a1a2e 100%);
-      color: #fff;
-      min-height: 100vh;
-    }
-    
-    /* Navigation - Fixed for GitHub Pages */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 5%;
-      background: rgba(10,11,13,0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-      font-family: 'Rajdhani', sans-serif;
-    }
-    
-    .nav-links a:hover { color: var(--neon-pink); }
-    
-    /* Header */
-    header {
-      text-align: center;
-      padding: 3rem 5%;
-      background: radial-gradient(circle at center, rgba(255,0,110,0.1) 0%, transparent 70%);
-    }
-    
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    
-    header p { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
-    
-    /* Filter Buttons */
-    .filters {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      padding: 0 5% 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .filter-btn {
-      padding: 0.5rem 1.5rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
-      font-family: 'Rajdhani', sans-serif;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--neon-pink);
-      border-color: var(--neon-pink);
-      box-shadow: 0 0 20px rgba(255,0,110,0.3);
-    }
-    
-    /* Strain Grid */
-    .strain-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-      padding: 2rem 5%;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    
-    .strain-card {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    
-    .mylar-bag {
-      position: relative;
-      padding: 2rem;
-      height: 340px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: 
-        linear-gradient(135deg, rgba(0,245,212,0.08) 0%, rgba(254,228,64,0.08) 50%, rgba(155,93,229,0.08) 100%),
-        linear-gradient(45deg, #0a0b0d 0%, #1a1a2e 100%);
-      overflow: hidden;
-    }
-    
-    .mylar-bag::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        rgba(0,245,212,0.3) 60deg,
-        rgba(254,228,64,0.3) 120deg,
-        rgba(155,93,229,0.3) 180deg,
-        rgba(255,0,110,0.3) 240deg,
-        transparent 360deg
-      );
-      animation: rotate 4s linear infinite;
-      opacity: 0;
-      transition: opacity 0.3s;
-      mix-blend-mode: overlay;
-    }
-    
-    .strain-card:hover .mylar-bag::before { opacity: 1; }
-    
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    
-    .shimmer {
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      animation: shimmer 3s infinite;
-      pointer-events: none;
-    }
-    
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 200%; }
-    }
-    
-    .strain-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      z-index: 2;
-      position: relative;
-    }
-    
-    .strain-type {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 700;
-      font-family: 'Orbitron', sans-serif;
-    }
-    
-    .strain-type.red { background: linear-gradient(135deg, #ff006e, #8338ec); color: white; }
-    .strain-type.green { background: linear-gradient(135deg, #06ffa5, #00bb9f); color: #0a0b0d; }
-    .strain-type.white { background: linear-gradient(135deg, #ffffff, #e0e0e0); color: #0a0b0d; }
-    .strain-type.yellow { background: linear-gradient(135deg, #fee440, #f77f00); color: #0a0b0d; }
-    
-    .strain-content {
-      z-index: 2;
-      position: relative;
-      margin-top: auto;
-    }
-    
-    .strain-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .origin {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.875rem;
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-    
-    .effects {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .effect-tag {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
-      background: rgba(0,245,212,0.1);
-      border: 1px solid rgba(0,245,212,0.3);
-      color: var(--cyan);
-      border-radius: 4px;
-    }
-    
-    .stats-row {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.8rem;
-    }
-    
-    .stats-row span { color: rgba(255,255,255,0.6); }
-    .stats-row strong { color: var(--gold); font-family: 'Orbitron', sans-serif; }
-    
-    .vein-color {
-      width: 100%;
-      height: 4px;
-      border-radius: 2px;
-      margin-top: 1rem;
-      box-shadow: 0 0 10px currentColor;
-    }
-    
-    .limited-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: linear-gradient(135deg, #ff006e, #8338ec);
-      color: white;
-      padding: 0.3rem 0.8rem;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      border-radius: 4px;
-      z-index: 10;
-      font-family: 'Orbitron', sans-serif;
-      transform: rotate(5deg);
-    }
-    
-    .strain-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,245,212,0.3);
-      z-index: 10;
-    }
-    
-    footer {
-      text-align: center;
-      padding: 3rem 5%;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 3rem;
-      color: rgba(255,255,255,0.5);
-    }
-    
-    footer a { color: var(--neon-pink); text-decoration: none; margin: 0 0.5rem; }
-    
-    @media (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      .nav-links { gap: 1rem; font-size: 0.9rem; }
-      .strain-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
+---
+layout: default
+title: Strain Catalog | THANG Botanicals
+---
 
-  <nav>
-    <a href="index.html" class="logo">← THANG</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="quiz.html">Quiz</a></li>
-      <li><a href="investors.html">Investors</a></li>
-      <li><a href="blog.html">Blog</a></li>
-    </ul>
-  </nav>
+<style>
+  /* Add hover effect for cards */
+  .strain-card { transition: transform 0.3s, box-shadow 0.3s; }
+  .strain-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,245,212,0.3);
+  }
+  .filter-btn { transition: all 0.3s; }
+  .filter-btn:hover, .filter-btn.active {
+    background: #ff006e !important;
+    border-color: #ff006e !important;
+  }
+</style>
 
-  <header>
-    <h1>Strain Catalog</h1>
-    <p>25 Premium Varieties • 115kg Total Inventory</p>
-  </header>
-
-  <div class="filters">
-    <button class="filter-btn active" onclick="filterStrains('all')">All</button>
-    <button class="filter-btn" onclick="filterStrains('green')">Green</button>
-    <button class="filter-btn" onclick="filterStrains('red')">Red</button>
-    <button class="filter-btn" onclick="filterStrains('white')">White</button>
-    <button class="filter-btn" onclick="filterStrains('yellow')">Yellow</button>
+<div style="padding: 4rem 5%; max-width: 1400px; margin: 0 auto;">
+  <div style="text-align: center; margin-bottom: 3rem;">
+    <h1 style="font-family: 'Orbitron', sans-serif; color: #FFD700; font-size: 3rem; margin-bottom: 0.5rem;">Strain Catalog</h1>
+    <p style="color: rgba(255,255,255,0.7);">25 Premium Varieties • 115kg Total Inventory</p>
   </div>
 
-  <div class="strain-grid" id="strainGrid">
-    <!-- GREEN STRAINS -->
-    <a href="#" class="strain-card" data-type="green" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type green">Green</span>
-        </div>
-        <div class="strain-content">
-          <h3>Green Maeng Da</h3>
-          <p class="origin">Jongkong Region, Indonesia</p>
-          <div class="effects">
-            <span class="effect-tag">Energy</span>
-            <span class="effect-tag">Focus</span>
-            <span class="effect-tag">Strong</span>
-          </div>
-          <div class="stats-row">
-            <span>Energy: <strong>8/10</strong></span>
-            <span>Focus: <strong>9/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #06ffa5; color: #06ffa5;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="green" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type green">Green</span>
-        </div>
-        <div class="strain-content">
-          <h3>Green Dragon</h3>
-          <p class="origin">Sundanese Valley</p>
-          <div class="effects">
-            <span class="effect-tag">Euphoric</span>
-            <span class="effect-tag">Happy</span>
-            <span class="effect-tag">Social</span>
-          </div>
-          <div class="stats-row">
-            <span>Social: <strong>8/10</strong></span>
-            <span>Energy: <strong>6/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #06ffa5; color: #06ffa5;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="green" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type green">Green</span>
-        </div>
-        <div class="strain-content">
-          <h3>Green Malay</h3>
-          <p class="origin">Malaysian Highlands</p>
-          <div class="effects">
-            <span class="effect-tag">Long-lasting</span>
-            <span class="effect-tag">Versatile</span>
-            <span class="effect-tag">Chill</span>
-          </div>
-          <div class="stats-row">
-            <span>Duration: <strong>Long</strong></span>
-            <span>Pain: <strong>7/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #06ffa5; color: #06ffa5;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="green" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type green">Green</span>
-        </div>
-        <div class="strain-content">
-          <h3>Super Green</h3>
-          <p class="origin">Premium Blend</p>
-          <div class="effects">
-            <span class="effect-tag">Maximum Potency</span>
-            <span class="effect-tag">Espresso</span>
-            <span class="effect-tag">Energy</span>
-          </div>
-          <div class="stats-row">
-            <span>Energy: <strong>10/10</strong></span>
-            <span>Focus: <strong>9/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #06ffa5; color: #06ffa5;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="green" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type green">Green</span>
-        </div>
-        <div class="strain-content">
-          <h3>Green Thai</h3>
-          <p class="origin">Thailand</p>
-          <div class="effects">
-            <span class="effect-tag">Traditional</span>
-            <span class="effect-tag">Calm</span>
-            <span class="effect-tag">Pain Relief</span>
-          </div>
-          <div class="stats-row">
-            <span>Pain: <strong>7/10</strong></span>
-            <span>Speed: <strong>Moderate</strong></span>
-          </div>
-          <div class="vein-color" style="background: #06ffa5; color: #06ffa5;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="green" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type green">Green</span>
-        </div>
-        <div class="strain-content">
-          <h3>Green Aceh</h3>
-          <p class="origin">Aceh Region</p>
-          <div class="effects">
-            <span class="effect-tag">Intense</span>
-            <span class="effect-tag">Vital</span>
-            <span class="effect-tag">Rare</span>
-          </div>
-          <div class="stats-row">
-            <span>Social: <strong>9/10</strong></span>
-            <span>Energy: <strong>8/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #06ffa5; color: #06ffa5;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="green" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <span class="limited-badge">Limited</span>
-        <div class="strain-header">
-          <span class="strain-type green">Green</span>
-        </div>
-        <div class="strain-content">
-          <h3>Green Dracula</h3>
-          <p class="origin">Exclusive Harvest</p>
-          <div class="effects">
-            <span class="effect-tag">Exclusive</span>
-            <span class="effect-tag">Limited</span>
-            <span class="effect-tag">Rare</span>
-          </div>
-          <div class="stats-row">
-            <span>Energy: <strong>9/10</strong></span>
-            <span>Speed: <strong>Fast</strong></span>
-          </div>
-          <div class="vein-color" style="background: #06ffa5; color: #06ffa5;"></div>
-        </div>
-      </div>
-    </a>
-
-    <!-- RED STRAINS -->
-    <a href="#" class="strain-card" data-type="red" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type red">Red</span>
-        </div>
-        <div class="strain-content">
-          <h3>Red Bali</h3>
-          <p class="origin">Bali Highlands</p>
-          <div class="effects">
-            <span class="effect-tag">Classic</span>
-            <span class="effect-tag">Sedating</span>
-            <span class="effect-tag">Pain</span>
-          </div>
-          <div class="stats-row">
-            <span>Pain: <strong>9/10</strong></span>
-            <span>Anxiety: <strong>8/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ff006e; color: #ff006e;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="red" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type red">Red</span>
-        </div>
-        <div class="strain-content">
-          <h3>Red Thai</h3>
-          <p class="origin">Thailand</p>
-          <div class="effects">
-            <span class="effect-tag">Traditional</span>
-            <span class="effect-tag">Slow Creeper</span>
-            <span class="effect-tag">Classic</span>
-          </div>
-          <div class="stats-row">
-            <span>Pain: <strong>7/10</strong></span>
-            <span>Anxiety: <strong>8/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ff006e; color: #ff006e;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="red" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type red">Red</span>
-        </div>
-        <div class="strain-content">
-          <h3>Red Maeng Da</h3>
-          <p class="origin">Jongkong Region</p>
-          <div class="effects">
-            <span class="effect-tag">Premium</span>
-            <span class="effect-tag">Strong</span>
-            <span class="effect-tag">Balanced</span>
-          </div>
-          <div class="stats-row">
-            <span>Pain: <strong>8/10</strong></span>
-            <span>Energy: <strong>6/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ff006e; color: #ff006e;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="red" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type red">Red</span>
-        </div>
-        <div class="strain-content">
-          <h3>Red Dragon</h3>
-          <p class="origin">Sundanese Valley</p>
-          <div class="effects">
-            <span class="effect-tag">Aphrodisiac</span>
-            <span class="effect-tag">Social</span>
-            <span class="effect-tag">Euphoric</span>
-          </div>
-          <div class="stats-row">
-            <span>Social: <strong>10/10</strong></span>
-            <span>Energy: <strong>6/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ff006e; color: #ff006e;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="red" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type red">Red</span>
-        </div>
-        <div class="strain-content">
-          <h3>Red Aceh</h3>
-          <p class="origin">Aceh Region</p>
-          <div class="effects">
-            <span class="effect-tag">Sedating</span>
-            <span class="effect-tag">Couch-lock</span>
-            <span class="effect-tag">Heavy</span>
-          </div>
-          <div class="stats-row">
-            <span>Pain: <strong>10/10</strong></span>
-            <span>Anxiety: <strong>9/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ff006e; color: #ff006e;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="red" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <span class="limited-badge">Limited</span>
-        <div class="strain-header">
-          <span class="strain-type red">Red</span>
-        </div>
-        <div class="strain-content">
-          <h3>Red Bentuangie</h3>
-          <p class="origin">Fermented</p>
-          <div class="effects">
-            <span class="effect-tag">Chocolate</span>
-            <span class="effect-tag">Smooth</span>
-            <span class="effect-tag">Tasty</span>
-          </div>
-          <div class="stats-row">
-            <span>Pain: <strong>8/10</strong></span>
-            <span>Anxiety: <strong>9/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ff006e; color: #ff006e;"></div>
-        </div>
-      </div>
-    </a>
-
-    <!-- WHITE STRAINS -->
-    <a href="#" class="strain-card" data-type="white" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type white">White</span>
-        </div>
-        <div class="strain-content">
-          <h3>White Maeng Da</h3>
-          <p class="origin">Jongkong Region</p>
-          <div class="effects">
-            <span class="effect-tag">Fast Energy</span>
-            <span class="effect-tag">Coffee Replacement</span>
-            <span class="effect-tag">Clean</span>
-          </div>
-          <div class="stats-row">
-            <span>Energy: <strong>9/10</strong></span>
-            <span>Focus: <strong>9/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ffffff; color: #ffffff;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="white" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type white">White</span>
-        </div>
-        <div class="strain-content">
-          <h3>White Aceh</h3>
-          <p class="origin">Aceh Region</p>
-          <div class="effects">
-            <span class="effect-tag">Smooth</span>
-            <span class="effect-tag">Intense</span>
-            <span class="effect-tag">Strong</span>
-          </div>
-          <div class="stats-row">
-            <span>Energy: <strong>9/10</strong></span>
-            <span>Focus: <strong>8/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ffffff; color: #ffffff;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="white" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type white">White</span>
-        </div>
-        <div class="strain-content">
-          <h3>White Horn</h3>
-          <p class="origin">Borneo</p>
-          <div class="effects">
-            <span class="effect-tag">Premium</span>
-            <span class="effect-tag">Focused</span>
-            <span class="effect-tag">Sharp</span>
-          </div>
-          <div class="stats-row">
-            <span>Focus: <strong>9/10</strong></span>
-            <span>Energy: <strong>8/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ffffff; color: #ffffff;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="white" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type white">White</span>
-        </div>
-        <div class="strain-content">
-          <h3>White Sumatra</h3>
-          <p class="origin">Sumatra</p>
-          <div class="effects">
-            <span class="effect-tag">Lighter</span>
-            <span class="effect-tag">Focus</span>
-            <span class="effect-tag">Subtle</span>
-          </div>
-          <div class="stats-row">
-            <span>Focus: <strong>8/10</strong></span>
-            <span>Energy: <strong>6/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ffffff; color: #ffffff;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="white" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type white">White</span>
-        </div>
-        <div class="strain-content">
-          <h3>White Elephant</h3>
-          <p class="origin">Large Leaf Variety</p>
-          <div class="effects">
-            <span class="effect-tag">Large Leaf</span>
-            <span class="effect-tag">Mellow</span>
-            <span class="effect-tag">Unusual</span>
-          </div>
-          <div class="stats-row">
-            <span>Energy: <strong>6/10</strong></span>
-            <span>Pain: <strong>5/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ffffff; color: #ffffff;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="white" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <span class="limited-badge">Limited</span>
-        <div class="strain-header">
-          <span class="strain-type white">White</span>
-        </div>
-        <div class="strain-content">
-          <h3>White Zombie</h3>
-          <p class="origin">Exclusive</p>
-          <div class="effects">
-            <span class="effect-tag">Exclusive</span>
-            <span class="effect-tag">Novelty</span>
-            <span class="effect-tag">Limited</span>
-          </div>
-          <div class="stats-row">
-            <span>Energy: <strong>8/10</strong></span>
-            <span>Focus: <strong>8/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #ffffff; color: #ffffff;"></div>
-        </div>
-      </div>
-    </a>
-
-    <!-- YELLOW STRAINS -->
-    <a href="#" class="strain-card" data-type="yellow" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type yellow">Yellow</span>
-        </div>
-        <div class="strain-content">
-          <h3>Yellow Maeng Da</h3>
-          <p class="origin">Premium Process</p>
-          <div class="effects">
-            <span class="effect-tag">Flagship</span>
-            <span class="effect-tag">Balanced</span>
-            <span class="effect-tag">Versatile</span>
-          </div>
-          <div class="stats-row">
-            <span>Anxiety: <strong>7/10</strong></span>
-            <span>Energy: <strong>6/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #fee440; color: #fee440;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="yellow" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type yellow">Yellow</span>
-        </div>
-        <div class="strain-content">
-          <h3>Yellow Dragon</h3>
-          <p class="origin">Sundanese Valley</p>
-          <div class="effects">
-            <span class="effect-tag">Euphoric</span>
-            <span class="effect-tag">Anxiety Relief</span>
-            <span class="effect-tag">Evening</span>
-          </div>
-          <div class="stats-row">
-            <span>Anxiety: <strong>8/10</strong></span>
-            <span>Social: <strong>7/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #fee440; color: #fee440;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="yellow" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <div class="strain-header">
-          <span class="strain-type yellow">Yellow</span>
-        </div>
-        <div class="strain-content">
-          <h3>Yellow Hulu</h3>
-          <p class="origin">Kapuas Region</p>
-          <div class="effects">
-            <span class="effect-tag">Kapuas</span>
-            <span class="effect-tag">Anxiolytic</span>
-            <span class="effect-tag">Balanced</span>
-          </div>
-          <div class="stats-row">
-            <span>Anxiety: <strong>9/10</strong></span>
-            <span>Speed: <strong>Moderate</strong></span>
-          </div>
-          <div class="vein-color" style="background: #fee440; color: #fee440;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="yellow" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <span class="limited-badge">Limited</span>
-        <div class="strain-header">
-          <span class="strain-type yellow">Yellow</span>
-        </div>
-        <div class="strain-content">
-          <h3>Yellow Vietnam</h3>
-          <p class="origin">Vietnam</p>
-          <div class="effects">
-            <span class="effect-tag">Unique</span>
-            <span class="effect-tag">Rare</span>
-            <span class="effect-tag">Faster</span>
-          </div>
-          <div class="stats-row">
-            <span>Anxiety: <strong>10/10</strong></span>
-            <span>Speed: <strong>Fast</strong></span>
-          </div>
-          <div class="vein-color" style="background: #fee440; color: #fee440;"></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="#" class="strain-card" data-type="yellow" onclick="alert('Ordering launching March 2026')">
-      <div class="mylar-bag">
-        <div class="shimmer"></div>
-        <span class="limited-badge">Limited</span>
-        <div class="strain-header">
-          <span class="strain-type yellow">Yellow</span>
-        </div>
-        <div class="strain-content">
-          <h3>Yellow Thai</h3>
-          <p class="origin">Thailand</p>
-          <div class="effects">
-            <span class="effect-tag">Traditional</span>
-            <span class="effect-tag">Gentle</span>
-            <span class="effect-tag">Strong</span>
-          </div>
-          <div class="stats-row">
-            <span>Anxiety: <strong>9/10</strong></span>
-            <span>Pain: <strong>7/10</strong></span>
-          </div>
-          <div class="vein-color" style="background: #fee440; color: #fee440;"></div>
-        </div>
-      </div>
-    </a>
+  <!-- Filters -->
+  <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+    <button onclick="filterStrains('all')" class="filter-btn active" data-filter="all" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.1em; border-radius: 4px;">All</button>
+    <button onclick="filterStrains('green')" class="filter-btn" data-filter="green" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.1em; border-radius: 4px;">Green</button>
+    <button onclick="filterStrains('red')" class="filter-btn" data-filter="red" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.1em; border-radius: 4px;">Red</button>
+    <button onclick="filterStrains('white')" class="filter-btn" data-filter="white" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.1em; border-radius: 4px;">White</button>
+    <button onclick="filterStrains('yellow')" class="filter-btn" data-filter="yellow" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.1em; border-radius: 4px;">Yellow</button>
   </div>
 
-  <footer>
-    <p><a href="index.html">← Back to Home</a> | <a href="quiz.html">Take the Quiz</a> | <a href="investors.html">Investors</a> | <a href="blog.html">Blog</a></p>
-    <p style="margin-top: 1rem;">21+ Only • Research Purposes • Garland, Texas</p>
-  </footer>
+  <div class="strain-grid" id="strainGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+    {% for strain in site.data.strains %}
+    <a href="{{ strain.id | relative_url }}" class="strain-card" data-color="{{ strain.color }}" style="text-decoration: none; color: inherit; display: block; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; position: relative;">
+      
+      {% if strain.limited %}
+      <span style="position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #ff006e, #8338ec); color: white; padding: 0.3rem 0.8rem; font-family: 'Orbitron', sans-serif; font-size: 0.7rem; z-index: 10; border-radius: 4px; transform: rotate(5deg); font-weight: 700;">LIMITED</span>
+      {% endif %}
+      
+      <div style="padding: 2rem; height: 320px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, rgba(0,245,212,0.05) 0%, rgba(254,228,64,0.05) 50%, rgba(155,93,229,0.05) 100%), linear-gradient(45deg, #0a0b0d 0%, #1a1a2e 100%); position: relative; overflow: hidden;">
+        
+        <!-- Shimmer effect -->
+        <div style="position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); animation: shimmer 3s infinite; pointer-events: none;"></div>
+        
+        <div style="position: relative; z-index: 2;">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+            <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; font-family: 'Orbitron', sans-serif; font-weight: 700; letter-spacing: 0.05em;
+              {% if strain.color == 'green' %}background: linear-gradient(135deg, #06ffa5, #00bb9f); color: #0a0b0d;
+              {% elsif strain.color == 'red' %}background: linear-gradient(135deg, #ff006e, #8338ec); color: white;
+              {% elsif strain.color == 'white' %}background: linear-gradient(135deg, #ffffff, #e0e0e0); color: #0a0b0d;
+              {% else %}background: linear-gradient(135deg, #fee440, #f77f00); color: #0a0b0d;{% endif %}">
+              {{ strain.color }} Vein
+            </span>
+            <span style="font-family: 'Orbitron', sans-serif; color: #FFD700; font-size: 0.9rem; background: rgba(0,0,0,0.3); padding: 0.3rem 0.8rem; border-radius: 12px;">{{ strain.weight }}kg</span>
+          </div>
+          
+          <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">{{ strain.name }}</h3>
+          <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1rem;">{{ strain.description | truncate: 100 }}</p>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            {% for tag in strain.tags limit:3 %}
+            <span style="font-size: 0.75rem; padding: 0.3rem 0.7rem; background: rgba(0,245,212,0.1); border: 1px solid rgba(0,245,212,0.3); color: #00f5d4; border-radius: 4px; font-family: 'Rajdhani', sans-serif; font-weight: 500;">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        
+        <div style="position: relative; z-index: 2; margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; font-size: 0.85rem; align-items: center;">
+          <span style="color: rgba(255,255,255,0.6);">Speed: <strong style="color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize;">{{ strain.speed }}</strong></span>
+          <span style="color: rgba(255,255,255,0.6);">Energy: <strong style="color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ strain.energy }}/10</strong></span>
+        </div>
+        
+        <!-- Vein color indicator -->
+        <div style="width: 100%; height: 4px; background: {% if strain.color == 'green' %}#06ffa5{% elsif strain.color == 'red' %}#ff006e{% elsif strain.color == 'white' %}#ffffff{% else %}#fee440{% endif %}; border-radius: 2px; margin-top: 1rem; box-shadow: 0 0 15px {% if strain.color == 'green' %}rgba(6,255,165,0.5){% elsif strain.color == 'red' %}rgba(255,0,110,0.5){% elsif strain.color == 'white' %}rgba(255,255,255,0.5){% else %}rgba(254,228,64,0.5){% endif %};"></div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
 
-  <script>
-    function filterStrains(color) {
-      const cards = document.querySelectorAll('.strain-card');
-      const buttons = document.querySelectorAll('.filter-btn');
-      
-      buttons.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.textContent.toLowerCase() === color || (color === 'all' && btn.textContent === 'All')) {
-          btn.classList.add('active');
-        }
-      });
-      
-      cards.forEach(card => {
-        if (color === 'all' || card.dataset.type === color) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+<style>
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+</style>
+
+<script>
+function filterStrains(color) {
+  // Update active button
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.dataset.filter === color) btn.classList.add('active');
+  });
+  
+  // Filter cards
+  document.querySelectorAll('.strain-card').forEach(card => {
+    if (color === 'all' || card.dataset.color === color) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
     }
-  </script>
-</body>
-</html>
+  });
+}
+</script>
