@@ -1,0 +1,32 @@
+---
+layout: default
+title: Strain Catalog | THANG Botanicals
+---
+
+<div style="padding: 4rem 5%; max-width: 1400px; margin: 0 auto;">
+  <div style="text-align: center; margin-bottom: 3rem;">
+    <h1 style="font-family: 'Orbitron', sans-serif; color: #FFD700; font-size: 3rem; margin-bottom: 0.5rem;">Strain Catalog</h1>
+    <p style="color: rgba(255,255,255,0.7);">25 Premium Varieties • 115kg Total Inventory</p>
+  </div>
+
+  <!-- Filters -->
+  <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+    <button onclick="filterStrains('all')" class="filter-btn active" data-filter="all" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; transition: all 0.3s;">All</button>
+    <button onclick="filterStrains('green')" class="filter-btn" data-filter="green" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; transition: all 0.3s;">Green</button>
+    <button onclick="filterStrains('red')" class="filter-btn" data-filter="red" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; transition: all 0.3s;">Red</button>
+    <button onclick="filterStrains('white')" class="filter-btn" data-filter="white" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; transition: all 0.3s;">White</button>
+    <button onclick="filterStrains('yellow')" class="filter-btn" data-filter="yellow" style="padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; transition: all 0.3s;">Yellow</button>
+  </div>
+
+  <div class="strain-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+    {% for strain in site.data.strains %}
+    <a href="{{ strain.id | relative_url }}" class="strain-card" data-color="{{ strain.color }}" style="text-decoration: none; color: inherit; display: block; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+      
+      {% if strain.limited %}
+      <span style="position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #ff006e, #8338ec); color: white; padding: 0.3rem 0.8rem; font-family: 'Orbitron', sans-serif; font-size: 0.7rem; z-index: 10; border-radius: 4px; transform: rotate(5deg);">Limited</span>
+      {% endif %}
+      
+      <div style="padding: 2rem; height: 340px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, rgba(0,245,212,0.05) 0%, rgba(254,228,64,0.05) 50%, rgba(155,93,229,0.05) 100%), linear-gradient(45deg, #0a0b0d 0%, #1a1a2e 100%); position: relative; overflow: hidden;">
+        
+        <!-- Shimmer effect -->
+        <div style="position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
