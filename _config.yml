@@ -1,19 +1,15 @@
 title: THANG Botanicals
 description: Premium Kratom Botanicals & Ethnobotanical Specimens
-baseurl: "/thang-botanicals"  # CRITICAL for GitHub Pages project sites
+baseurl: ""  # EMPTY for custom domain
 url: "https://kratomthang.com"
 author: THANG Botanicals
 email: orders@kratomthang.com
 
-# Security settings
-markdown: kramdown
-highlighter: rouge
-
-# Collections
+# CRITICAL: Collections
 collections:
   strains:
     output: true
-    permalink: /:name/
+    permalink: /strains/:name/
 
 # Build settings
 plugins:

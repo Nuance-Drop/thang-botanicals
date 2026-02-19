@@ -24,7 +24,7 @@ title: Catalog | THANG Botanicals
     pointer-events: none;
   }
 
-  /* Navigation (matches index.html) */
+  /* Navigation */
   nav {
     display: flex;
     justify-content: space-between;
@@ -60,7 +60,6 @@ title: Catalog | THANG Botanicals
     font-weight: 600;
     font-size: 1.1rem;
     transition: all 0.3s;
-    position: relative;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -258,7 +257,6 @@ title: Catalog | THANG Botanicals
 
 <div class="bg-fractal"></div>
 
-<!-- FIXED NAVIGATION -->
 <nav>
   <a href="{{ '/' | relative_url }}" class="logo">THANG</a>
   <ul class="nav-links">
@@ -279,17 +277,17 @@ title: Catalog | THANG Botanicals
     <button class="btn" onclick="filter('red')">Red</button>
     <button class="btn" onclick="filter('white')">White</button>
     <button class="btn" onclick="filter('yellow')">Yellow</button>
-    <button class="btn" onclick="filterRegion('aceh')">Aceh</button>
-    <button class="btn" onclick="filterRegion('thai')">Thai</button>
-    <button class="btn" onclick="filterRegion('borneo')">Borneo</button>
+    <button class="btn" onclick="filterRegion('Aceh')">Aceh</button>
+    <button class="btn" onclick="filterRegion('Thai')">Thai</button>
+    <button class="btn" onclick="filterRegion('Borneo')">Borneo</button>
+    <button class="btn" onclick="filterRegion('Sumatra')">Sumatra</button>
   </div>
 
   <div class="grid" id="grid">
     {% for strain in site.strains %}
     <a href="{{ strain.url | relative_url }}" class="card" 
        data-color="{{ strain.color }}" 
-       data-region="{{ strain.region | downcase }}"
-       data-price="{{ strain.price }}">
+       data-region="{{ strain.region }}">
       
       {% if strain.premium %}<span class="tag premium" style="position: absolute; top: 10px; left: 10px;">PREMIUM +$15</span>{% endif %}
       {% if strain.limited %}<span class="tag limited" style="position: absolute; top: 10px; right: 10px;">LIMITED</span>{% endif %}
@@ -313,7 +311,14 @@ title: Catalog | THANG Botanicals
             <span class="price">${{ strain.price }}</span>
             <span class="speed">{{ strain.speed }}</span>
           </div>
-          <div class="line" style="background: {% case strain.color %}{% when 'green' %}#06ffa5{% when 'red' %}#ff006e{% when 'white' %}#ffffff{% when 'yellow' %}#fee440{% endcase %};"></div>
+          <div class="line" style="background: 
+            {% case strain.color %}
+              {% when 'green' %}#06ffa5
+              {% when 'red' %}#ff006e
+              {% when 'white' %}#ffffff
+              {% when 'yellow' %}#fee440
+            {% endcase %};">
+          </div>
         </div>
       </div>
     </a>

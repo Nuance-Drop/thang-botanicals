@@ -3,45 +3,77 @@ layout: default
 ---
 
 <div style="max-width: 1000px; margin: 0 auto; padding: 4rem 5%;">
-  <!-- Back link to catalog -->
-  <a href="{{ '/strains' | relative_url }}" style="color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 2rem; display: inline-block; transition: color 0.3s;">← Back to Catalog</a>
-  
-  <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3rem; margin-top: 2rem; position: relative; overflow: hidden;">
+  <!-- Breadcrumbs -->
+  <div style="margin-bottom: 2rem;">
+    <a href="{{ '/' | relative_url }}" style="color: rgba(255,255,255,0.6); text-decoration: none;">Home</a>
+    <span style="color: rgba(255,255,255,0.4); margin: 0 0.5rem;">/</span>
+    <a href="{{ '/catalog' | relative_url }}" style="color: rgba(255,255,255,0.6); text-decoration: none;">Catalog</a>
+    <span style="color: rgba(255,255,255,0.4); margin: 0 0.5rem;">/</span>
+    <span style="color: rgba(255,255,255,0.9);">{{ page.name }}</span>
+  </div>
+
+  <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3rem; position: relative; overflow: hidden;">
     
     {% if page.limited %}
     <span style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #ff006e, #8338ec); color: white; padding: 0.5rem 1rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; border-radius: 4px; z-index: 10;">Limited Edition</span>
     {% endif %}
     
+    {% if page.premium %}
+    <span style="position: absolute; top: 20px; right: {% if page.limited %}140px{% else %}20px{% endif %}; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; padding: 0.5rem 1rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; border-radius: 4px; z-index: 10;">Premium +$15</span>
+    {% endif %}
+    
     <div style="position: relative; z-index: 2;">
-      <div style="font-size: 0.8rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 0.5rem;">{{ page.color }} Vein</div>
-      <h1 style="font-family: 'Orbitron', sans-serif; color: #FFD700; font-size: 2.5rem; margin-bottom: 1rem;">{{ page.name }}</h1>
-      <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">{{ page.description }}</p>
+      <!-- Header -->
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+        <span style="padding: 0.3rem 1rem; background: 
+          {% case page.color %}
+            {% when 'green' %}#06ffa5{% when 'red' %}#ff006e{% when 'white' %}#ffffff{% when 'yellow' %}#fee440{% endcase %}; 
+          color: {% if page.color == 'white' %}#0a0b0d{% else %}#fff{% endif %}; 
+          border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">
+          {{ page.color }}
+        </span>
+        <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em;">{{ page.region }} Region</span>
+      </div>
+      
+      <h1 style="font-family: 'Orbitron', sans-serif; color: #FFD700; font-size: 3rem; margin-bottom: 1rem;">{{ page.name }}</h1>
+      
+      <!-- Vibe Section -->
+      <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #ff006e; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
+        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Vibe</div>
+        <p style="font-style: italic; color: rgba(255,255,255,0.9); font-size: 1.2rem; font-family: 'Cormorant Garamond', serif;">"{{ page.vibe }}"</p>
+        <p style="color: #FFD700; margin-top: 0.5rem; font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">{{ page.characteristics }}</p>
+      </div>
+
+      <!-- Description -->
+      <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1.1rem; margin-bottom: 3rem;">
+        {{ content }}
+      </div>
       
       <!-- Stats Grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 2rem 0;">
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin: 2rem 0; padding: 2rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
+        <div style="text-align: center;">
           <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Energy</div>
-          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.energy }}/10</div>
+          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.energy }}/10</div>
         </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+        <div style="text-align: center;">
           <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Focus</div>
-          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.focus }}/10</div>
+          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.focus }}/10</div>
         </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+        <div style="text-align: center;">
           <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Pain Relief</div>
-          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.pain }}/10</div>
+          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.pain }}/10</div>
         </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+        <div style="text-align: center;">
           <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Anxiety Relief</div>
-          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.anxiety }}/10</div>
+          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.anxiety }}/10</div>
         </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+        <div style="text-align: center;">
           <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Social</div>
-          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.social }}/10</div>
+          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.social }}/10</div>
         </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center;">
+        <div style="text-align: center;">
           <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Speed</div>
-          <div style="font-size: 1.5rem; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize;">{{ page.speed }}</div>
+          <div style="font-size: 1.4rem; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize;">{{ page.speed }}</div>
         </div>
       </div>
       
@@ -50,7 +82,7 @@ layout: default
         <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; text-transform: uppercase;">Best For:</div>
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
           {% for tag in page.tags %}
-          <span style="padding: 0.3rem 0.8rem; background: rgba(0,245,212,0.1); border: 1px solid rgba(0,245,212,0.3); color: #00f5d4; border-radius: 4px; font-size: 0.8rem;">{{ tag }}</span>
+          <span style="padding: 0.4rem 1rem; background: rgba(0,245,212,0.1); border: 1px solid rgba(0,245,212,0.3); color: #00f5d4; border-radius: 20px; font-size: 0.85rem;">{{ tag }}</span>
           {% endfor %}
         </div>
       </div>
@@ -60,19 +92,16 @@ layout: default
         <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">Best Time:</div>
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
           {% for time in page.time_of_day %}
-          <span style="padding: 0.3rem 0.8rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); color: #FFD700; border-radius: 4px; font-size: 0.8rem; text-transform: capitalize;">{{ time }}</span>
+          <span style="padding: 0.4rem 1rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); color: #FFD700; border-radius: 20px; font-size: 0.85rem; text-transform: capitalize;">{{ time }}</span>
           {% endfor %}
         </div>
       </div>
       
-      {% if page.comparable %}
-      <div style="margin-top: 2rem;">
-        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Comparable To:</div>
-        <div style="color: #FFD700; margin-top: 0.3rem; font-family: 'Orbitron', sans-serif;">{{ page.comparable }}</div>
+      <!-- CTA -->
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #FFD700;">${{ page.price }}</div>
+        <button onclick="alert('Ordering launching March 2026')" style="flex: 1; min-width: 200px; padding: 1rem; background: transparent; border: 2px solid #FFD700; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s; border-radius: 8px; font-weight: bold;">Request Availability</button>
       </div>
-      {% endif %}
-      
-      <button onclick="alert('Ordering launching March 2026')" style="width: 100%; margin-top: 3rem; padding: 1rem; background: transparent; border: 1px solid #FFD700; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s; border-radius: 8px;">Request Availability</button>
     </div>
   </div>
 </div>
