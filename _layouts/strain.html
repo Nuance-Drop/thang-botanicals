@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div style="max-width: 1000px; margin: 0 auto; padding: 4rem 5%;">
+<div style="max-width: 1000px; margin: 0 auto; padding: 6rem 5% 4rem;">
   <!-- Breadcrumbs -->
   <div style="margin-bottom: 2rem;">
     <a href="{{ '/' | relative_url }}" style="color: rgba(255,255,255,0.6); text-decoration: none;">Home</a>
@@ -15,93 +15,135 @@ layout: default
   <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3rem; position: relative; overflow: hidden;">
     
     {% if page.limited %}
-    <span style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #ff006e, #8338ec); color: white; padding: 0.5rem 1rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; border-radius: 4px; z-index: 10;">Limited Edition</span>
+    <span style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #ff006e, #8338ec); color: white; padding: 0.5rem 1rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; border-radius: 4px;">Limited Stock</span>
     {% endif %}
     
     {% if page.premium %}
-    <span style="position: absolute; top: 20px; right: {% if page.limited %}140px{% else %}20px{% endif %}; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; padding: 0.5rem 1rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; border-radius: 4px; z-index: 10;">Premium +$15</span>
+    <span style="position: absolute; top: 20px; right: {% if page.limited %}140px{% else %}20px{% endif %}; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; padding: 0.5rem 1rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; border-radius: 4px;">Premium</span>
     {% endif %}
     
-    <div style="position: relative; z-index: 2;">
-      <!-- Header -->
-      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
-        <span style="padding: 0.3rem 1rem; background: 
-          {% case page.color %}
-            {% when 'green' %}#06ffa5{% when 'red' %}#ff006e{% when 'white' %}#ffffff{% when 'yellow' %}#fee440{% endcase %}; 
-          color: {% if page.color == 'white' %}#0a0b0d{% else %}#fff{% endif %}; 
-          border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">
-          {{ page.color }}
-        </span>
-        <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em;">{{ page.region }} Region</span>
-      </div>
-      
-      <h1 style="font-family: 'Orbitron', sans-serif; color: #FFD700; font-size: 3rem; margin-bottom: 1rem;">{{ page.name }}</h1>
-      
-      <!-- Vibe Section -->
-      <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #ff006e; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
-        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Vibe</div>
-        <p style="font-style: italic; color: rgba(255,255,255,0.9); font-size: 1.2rem; font-family: 'Cormorant Garamond', serif;">"{{ page.vibe }}"</p>
-        <p style="color: #FFD700; margin-top: 0.5rem; font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">{{ page.characteristics }}</p>
-      </div>
+    <!-- Header -->
+    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+      <span style="padding: 0.3rem 1rem; background: 
+        {% case page.color %}
+          {% when 'green' %}#06ffa5{% when 'red' %}#ff006e{% when 'white' %}#ffffff{% when 'yellow' %}#fee440{% endcase %}; 
+        color: {% if page.color == 'white' %}#0a0b0d{% else %}#fff{% endif %}; 
+        border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">
+        {{ page.color }}
+      </span>
+      <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em;">{{ page.region }} Region</span>
+    </div>
+    
+    <h1 style="font-family: 'Orbitron', sans-serif; color: #FFD700; font-size: 3rem; margin-bottom: 1rem;">{{ page.name }}</h1>
+    
+    <!-- Vibe -->
+    <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #ff006e; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
+      <p style="font-style: italic; color: rgba(255,255,255,0.9); font-size: 1.2rem; font-family: 'Cormorant Garamond', serif;">"{{ page.vibe }}"</p>
+      <p style="color: #FFD700; margin-top: 0.5rem; font-family: 'Orbitron', sans-serif;">{{ page.characteristics }}</p>
+    </div>
 
-      <!-- Description -->
-      <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1.1rem; margin-bottom: 3rem;">
-        {{ content }}
+    <!-- Description -->
+    <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1.1rem; margin-bottom: 3rem;">
+      {{ content }}
+    </div>
+    
+    <!-- Stats Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin: 2rem 0; padding: 2rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
+      <div style="text-align: center;">
+        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Energy</div>
+        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.energy }}/10</div>
       </div>
+      <div style="text-align: center;">
+        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Focus</div>
+        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.focus }}/10</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Pain Relief</div>
+        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.pain }}/10</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Anxiety Relief</div>
+        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.anxiety }}/10</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Social</div>
+        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.social }}/10</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Speed</div>
+        <div style="font-size: 1.4rem; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize;">{{ page.speed }}</div>
+      </div>
+    </div>
+    
+    <!-- Tags -->
+    <div style="margin: 2rem 0;">
+      <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; text-transform: uppercase;">Best For:</div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        {% for tag in page.tags %}
+        <span style="padding: 0.4rem 1rem; background: rgba(0,245,212,0.1); border: 1px solid rgba(0,245,212,0.3); color: #00f5d4; border-radius: 20px; font-size: 0.85rem;">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <!-- Time -->
+    <div style="margin: 2rem 0;">
+      <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">Best Time:</div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        {% for time in page.time_of_day %}
+        <span style="padding: 0.4rem 1rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); color: #FFD700; border-radius: 20px; font-size: 0.85rem; text-transform: capitalize;">{{ time }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <!-- ORDER FORM -->
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(255,215,0,0.2);">
+      <h2 style="font-family: 'Orbitron', sans-serif; color: #FFD700; margin-bottom: 1.5rem;">Request Availability</h2>
       
-      <!-- Stats Grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin: 2rem 0; padding: 2rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
-        <div style="text-align: center;">
-          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Energy</div>
-          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.energy }}/10</div>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: grid; gap: 1.5rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Name</label>
+            <input type="text" name="name" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif;">
+          </div>
+          <div>
+            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Email</label>
+            <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif;">
+          </div>
         </div>
-        <div style="text-align: center;">
-          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Focus</div>
-          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.focus }}/10</div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Amount</label>
+            <select name="amount" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif;">
+              <option value="1oz">1 oz - Sample (${{ page.price | divided_by: 4 | round: 2 }})</option>
+              <option value="4oz">4 oz - Personal (${{ page.price }})</option>
+              <option value="8oz">8 oz - Value (${{ page.price | times: 1.8 | round: 2 }})</option>
+              <option value="1kg">1 kg - Bulk (${{ page.price | times: 3.5 | round: 2 }})</option>
+            </select>
+          </div>
+          <div>
+            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Quantity</label>
+            <input type="number" name="quantity" value="1" min="1" max="10" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif;">
+          </div>
         </div>
-        <div style="text-align: center;">
-          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Pain Relief</div>
-          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.pain }}/10</div>
+        
+        <input type="hidden" name="strain" value="{{ page.name }}">
+        <input type="hidden" name="color" value="{{ page.color }}">
+        <input type="hidden" name="_subject" value="New THANG Order Request: {{ page.name }}">
+        
+        <div>
+          <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Notes (Optional)</label>
+          <textarea name="message" rows="3" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif; resize: vertical;"></textarea>
         </div>
-        <div style="text-align: center;">
-          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Anxiety Relief</div>
-          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.anxiety }}/10</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Social</div>
-          <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.social }}/10</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Speed</div>
-          <div style="font-size: 1.4rem; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize;">{{ page.speed }}</div>
-        </div>
-      </div>
-      
-      <!-- Tags -->
-      <div style="margin: 2rem 0;">
-        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; text-transform: uppercase;">Best For:</div>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          {% for tag in page.tags %}
-          <span style="padding: 0.4rem 1rem; background: rgba(0,245,212,0.1); border: 1px solid rgba(0,245,212,0.3); color: #00f5d4; border-radius: 20px; font-size: 0.85rem;">{{ tag }}</span>
-          {% endfor %}
-        </div>
-      </div>
-      
-      <!-- Time of Day -->
-      <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">Best Time:</div>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          {% for time in page.time_of_day %}
-          <span style="padding: 0.4rem 1rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); color: #FFD700; border-radius: 20px; font-size: 0.85rem; text-transform: capitalize;">{{ time }}</span>
-          {% endfor %}
-        </div>
-      </div>
-      
-      <!-- CTA -->
-      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-        <div style="font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #FFD700;">${{ page.price }}</div>
-        <button onclick="alert('Ordering launching March 2026')" style="flex: 1; min-width: 200px; padding: 1rem; background: transparent; border: 2px solid #FFD700; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s; border-radius: 8px; font-weight: bold;">Request Availability</button>
-      </div>
+        
+        <button type="submit" style="padding: 1rem; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; border: none; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: transform 0.3s;">
+          Submit Request
+        </button>
+        
+        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-align: center;">
+          You will receive a confirmation email within 24 hours. No payment required until availability confirmed.
+        </p>
+      </form>
     </div>
   </div>
 </div>
