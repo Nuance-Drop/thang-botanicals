@@ -23,39 +23,8 @@ title: Catalog | THANG Botanicals
     z-index: -1;
     pointer-events: none;
   }
-  
-  .logo {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    color: #FFD700;
-    text-decoration: none;
-    letter-spacing: 0.15em;
-    font-weight: 700;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-  
-  .nav-links a {
-    color: rgba(255,255,255,0.9);
-    text-decoration: none;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  .nav-links a:hover {
-    color: #ff006e;
-    text-shadow: 0 0 10px rgba(255,0,110,0.5);
-  }
 
-  .container { padding: 2rem 5%; max-width: 1400px; margin: 0 auto; }
+  .container { padding: 2rem 3%; max-width: 1400px; margin: 0 auto; }
   
   h1 { 
     font-family: 'Orbitron', sans-serif; 
@@ -106,7 +75,7 @@ title: Catalog | THANG Botanicals
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
   }
   
@@ -128,9 +97,60 @@ title: Catalog | THANG Botanicals
     border-color: rgba(0,245,212,0.3);
   }
   
-  .card-content { padding: 1.5rem; min-height: 280px; display: flex; flex-direction: column; }
+  /* Photo placeholder area */
+  .card-photo {
+    height: 160px;
+    background: linear-gradient(135deg, rgba(255,0,110,0.1), rgba(0,245,212,0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+  }
   
-  .badges { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .card-photo::after {
+    content: '📷';
+    font-size: 3rem;
+    opacity: 0.3;
+  }
+  
+  .card-content { padding: 1.5rem; min-height: 200px; display: flex; flex-direction: column; }
+  
+  /* Badge positioning */
+  .badge-premium {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, #FFD700, #ff9500);
+    color: #000;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    z-index: 10;
+  }
+  
+  .badge-limited {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #ff006e, #8338ec);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    z-index: 10;
+  }
+  
+  .badges { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 1rem; 
+  }
   
   .tag {
     padding: 0.3rem 1rem;
@@ -145,17 +165,6 @@ title: Catalog | THANG Botanicals
   .tag.red { background: #ff006e; color: white; }
   .tag.white { background: #ffffff; color: #0a0b0d; }
   .tag.yellow { background: #fee440; color: #0a0b0d; }
-  .tag.premium { 
-    background: linear-gradient(135deg, #FFD700, #ff9500); 
-    color: #000;
-    font-size: 0.65rem;
-    font-family: 'Orbitron', sans-serif;
-  }
-  .tag.limited {
-    background: linear-gradient(135deg, #ff006e, #8338ec);
-    color: white;
-    transform: rotate(3deg);
-  }
   
   .region-tag {
     font-family: 'Orbitron', sans-serif;
@@ -173,15 +182,6 @@ title: Catalog | THANG Botanicals
     color: #fff;
     margin-bottom: 0.5rem;
     font-weight: 600;
-  }
-  
-  .vibe-text {
-    font-style: italic;
-    color: rgba(255,255,255,0.6);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    border-left: 2px solid rgba(255,0,110,0.3);
-    padding-left: 1rem;
   }
   
   p.desc {
@@ -243,16 +243,6 @@ title: Catalog | THANG Botanicals
 
 <div class="bg-fractal"></div>
 
-<nav>
-  <a href="{{ '/' | relative_url }}" class="logo">THANG</a>
-  <ul class="nav-links">
-    <li><a href="{{ '/quiz' | relative_url }}">Strain Finder</a></li>
-    <li><a href="{{ '/catalog' | relative_url }}">Catalog</a></li>
-    <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
-    <li><a href="{{ '/investors' | relative_url }}">Investors</a></li>
-  </ul>
-</nav>
-
 <div class="container">
   <h1>Strain Catalog</h1>
   <p class="subtitle">24 Premium Varieties • Direct Trade • Lab Verified</p>
@@ -267,12 +257,13 @@ title: Catalog | THANG Botanicals
 
   <div class="grid" id="grid">
     {% for strain in site.strains %}
-    <a href="{{ strain.url | relative_url }}" class="card" 
-       data-color="{{ strain.color }}" 
-       data-region="{{ strain.region }}">
+    <a href="{{ strain.url | relative_url }}" class="card" data-color="{{ strain.color }}">
       
-      {% if strain.premium %}<span class="tag premium" style="position: absolute; top: 10px; left: 10px;">PREMIUM +$15</span>{% endif %}
-      {% if strain.limited %}<span class="tag limited" style="position: absolute; top: 10px; right: 10px;">LIMITED</span>{% endif %}
+      {% if strain.premium %}<span class="badge-premium">PREMIUM</span>{% endif %}
+      {% if strain.limited %}<span class="badge-limited">LIMITED</span>{% endif %}
+      
+      <!-- Photo placeholder -->
+      <div class="card-photo"></div>
       
       <div class="card-content">
         <div class="badges">
@@ -282,9 +273,7 @@ title: Catalog | THANG Botanicals
         
         <h3>{{ strain.name }}</h3>
         
-        {% if strain.vibe %}
-        <div class="vibe-text">"{{ strain.vibe }}"</div>
-        {% endif %}
+        <!-- Removed vibe text -->
         
         <p class="desc">{{ strain.short_desc }}</p>
         
@@ -319,15 +308,6 @@ function filter(color) {
   
   document.querySelectorAll('.card').forEach(card => {
     card.style.display = (color === 'all' || card.dataset.color === color) ? 'block' : 'none';
-  });
-}
-
-function filterRegion(region) {
-  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  
-  document.querySelectorAll('.card').forEach(card => {
-    card.style.display = (card.dataset.region === region) ? 'block' : 'none';
   });
 }
 </script>

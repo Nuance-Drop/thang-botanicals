@@ -1,210 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Investor Relations | THANG Botanicals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: 'Rajdhani', sans-serif;
-      background: #050505;
-      color: #fff;
-      line-height: 1.6;
-      background: radial-gradient(circle at 20% 20%, rgba(131,56,236,0.15) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(255,0,110,0.1) 0%, transparent 50%),
-                  #050505;
-    }
-    
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 5%;
-      background: rgba(10,11,13,0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    
-    
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
-      color: #FFD700;
-      text-decoration: none;
-    }
-    
-  /* Ensure consistent nav font size */
-.nav-links a {
-  font-size: 1.1rem !important;
-}
-    .container { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; }
-    
-    .back-link {
-      display: inline-block;
-      margin-bottom: 2rem;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 0.1em;
-    }
-    
-    .back-link:hover { color: #ff006e; }
-    
-    .hero-investor {
-      text-align: center;
-      padding: 4rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 3rem;
-    }
-    
-    .hero-investor h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(to right, #FFD700, #ff006e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .metric-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 2rem;
-      border-radius: 16px;
-      text-align: center;
-    }
-    
-    .metric-number {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.5rem;
-      color: #ff006e;
-      display: block;
-    }
-    
-    .section {
-      margin: 4rem 0;
-      padding: 2rem;
-      background: rgba(255,255,255,0.02);
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .section h2 {
-      font-family: 'Orbitron', sans-serif;
-      margin-bottom: 1.5rem;
-      color: #FFD700;
-    }
-    
-    .section p {
-      color: rgba(255,255,255,0.8);
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    
-    .highlight-box {
-      background: rgba(0,255,127,0.05);
-      border-left: 4px solid #00ff7f;
-      padding: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .contact-investor {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: rgba(255,0,110,0.05);
-      border: 1px solid rgba(255,0,110,0.2);
-      border-radius: 24px;
-      margin-top: 4rem;
-    }
-    
-    .email-big {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: #FFD700;
-      text-decoration: none;
-      display: inline-block;
-      margin: 1rem 0;
-    }
-    
-    .btn-gold {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: transparent;
-      border: 1px solid #FFD700;
-      color: #FFD700;
-      text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin-top: 1rem;
-    }
-    
-    .btn-gold:hover {
-      background: rgba(255,215,0,0.1);
-      box-shadow: 0 0 20px rgba(255,215,0,0.3);
-    }
-    
-    footer {
-      text-align: center;
-      padding: 4rem 0;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 4rem;
-    }
-    
-    footer a { color: #ff006e; text-decoration: none; }
-    
-    input, textarea {
-      width: 100%;
-      padding: 1rem;
-      margin: 0.5rem 0;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem;
-    }
-    
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #FFD700;
-    }
-  </style>
-</head>
-<body>
+---
+layout: default
+title: Investors | THANG Botanicals
+---
 
-<nav>
-  <a href="index.html" class="logo">← THANG</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="strains.html">Catalog</a></li>
-    <li><a href="quiz.html">Quiz</a></li>
-    <li><a href="blog.html">Blog</a></li>
-  </ul>
-</nav>
+<style>
+  .container { max-width: 1000px; margin: 0 auto; padding: 2rem 3%; }
+  
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+  }
+  
+  .back-link:hover { color: #ff006e; }
+  
+  .hero-investor {
+    text-align: center;
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 3rem;
+  }
+  
+  .hero-investor h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #FFD700, #ff006e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+  
+  .metric-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+  }
+  
+  .metric-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: #ff006e;
+    display: block;
+  }
+  
+  .section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .section h2 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1.5rem;
+    color: #FFD700;
+    font-size: 1.3rem;
+  }
+  
+  .section p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  
+  .highlight-box {
+    background: rgba(0,255,127,0.05);
+    border-left: 4px solid #00ff7f;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .contact-investor {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(255,0,110,0.05);
+    border: 1px solid rgba(255,0,110,0.2);
+    border-radius: 24px;
+    margin-top: 4rem;
+  }
+  
+  .email-big {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: #FFD700;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1rem 0;
+  }
+  
+  .btn-gold {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid #FFD700;
+    color: #FFD700;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn-gold:hover {
+    background: rgba(255,215,0,0.1);
+    box-shadow: 0 0 20px rgba(255,215,0,0.3);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 4rem 0;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 4rem;
+  }
+  
+  footer a { color: #ff006e; text-decoration: none; }
+  
+  input, textarea {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    border-radius: 4px;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #FFD700;
+  }
+</style>
 
 <div class="container">
-  <a href="index.html" class="back-link">← Back to Main Site</a>
+  <a href="{{ '/' | relative_url }}" class="back-link">← Back to Home</a>
   
   <div class="hero-investor">
     <h1>Investor Relations</h1>
-    <p style="color: rgba(255,255,255,0.7); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+    <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
       Premium botanicals meets ethical capitalism. Sustainable growth through direct trade partnerships.
     </p>
   </div>
@@ -212,98 +166,54 @@
   <div class="metric-grid">
     <div class="metric-card">
       <span class="metric-number">25</span>
-      <div style="color: rgba(255,255,255,0.6);">Unique Strains</div>
+      <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Unique Strains</div>
     </div>
     <div class="metric-card">
       <span class="metric-number">2026</span>
-      <div style="color: rgba(255,255,255,0.6);">Launch Year</div>
+      <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Launch Year</div>
     </div>
     <div class="metric-card">
       <span class="metric-number">40%</span>
-      <div style="color: rgba(255,255,255,0.6);">Above Market Farmer Pay</div>
+      <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Above Market Farmer Pay</div>
     </div>
     <div class="metric-card">
       <span class="metric-number">0</span>
-      <div style="color: rgba(255,255,255,0.6);">Middlemen</div>
+      <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Middlemen</div>
     </div>
   </div>
   
   <div class="section">
     <h2>The Opportunity</h2>
     <p>The botanical market is flooded with mass-produced, low-quality product sourced through exploitative supply chains. THANG is different.</p>
-    <p>We've eliminated the traditional 4-5 layers of middlemen by partnering directly with generational farmers in Southeast Asia. This isn't just ethical—it's highly profitable.</p>
+    <p>We've eliminated the traditional 4-5 layers of middlemen by partnering directly with generational farmers in Southeast Asia.</p>
     
     <div class="highlight-box">
-      <h3 style="color: #00ff7f; margin-bottom: 0.5rem; font-family: 'Orbitron', sans-serif;">Competitive Advantage</h3>
-      <p style="margin: 0;">Direct relationships mean we control quality from seed to sale while paying farmers 40% above market rates. The result? Exclusive access to strains no other US vendor can offer, at margins that traditional importers can't match.</p>
+      <h3 style="color: #00ff7f; margin-bottom: 0.5rem; font-family: 'Orbitron', sans-serif; font-size: 1rem;">Competitive Advantage</h3>
+      <p style="margin: 0; font-size: 0.95rem;">Direct relationships mean we control quality from seed to sale while paying farmers 40% above market rates.</p>
     </div>
   </div>
   
-  <div class="section">
-    <h2>Sustainability & Ethics</h2>
-    <p>Our farmers practice traditional agroforestry—no clear-cutting, no pesticides, no chemical fertilizers. These botanicals grow in their natural rainforest habitat, harvested by hand at peak maturity.</p>
-    <p>This isn't marketing fluff. We visit our partner farms quarterly. We know the families. And we're building the first fully traceable supply chain in the industry.</p>
-  </div>
-  
   <div class="contact-investor">
-    <h2 style="color: #ff006e; margin-bottom: 1rem; font-family: 'Orbitron', sans-serif;">Investment Inquiries</h2>
-    <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
-      We're currently seeking strategic partners who align with our mission of ethical trade and premium quality.
+    <h2 style="color: #ff006e; margin-bottom: 1rem; font-family: 'Orbitron', sans-serif; font-size: 1.3rem;">Investment Inquiries</h2>
+    <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-size: 0.95rem;">
+      Seeking strategic partners who align with our mission of ethical trade and premium quality.
     </p>
     
-    <form id="investor-form" style="max-width: 500px; margin: 2rem auto; text-align: left;">
-      <input type="text" id="inv-name" placeholder="Full Name" required>
-      <input type="email" id="inv-email" placeholder="Email Address" required>
-      <input type="text" id="inv-telegram" placeholder="Telegram @username (optional)">
-      <textarea id="inv-message" rows="4" placeholder="Tell us about your investment interests..." style="resize: vertical;"></textarea>
+    <form style="max-width: 500px; margin: 2rem auto; text-align: left;">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <textarea rows="4" placeholder="Tell us about your investment interests..." style="resize: vertical;"></textarea>
       <button type="submit" class="btn-gold" style="width: 100%;">Submit Inquiry</button>
     </form>
     
     <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-      <p style="color: rgba(255,255,255,0.6);">Or email directly:</p>
+      <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Or email directly:</p>
       <a href="mailto:investors@kratomthang.com" class="email-big">investors@kratomthang.com</a>
-      <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-top: 1rem;">
-        Serious inquiries only. Minimum investment $25,000.
-      </p>
     </div>
   </div>
   
   <footer>
     <p>THANG Botanicals © 2026</p>
-    <p style="margin-top: 0.5rem;">Garland, Texas • Sustainable Southeast Asian Farms</p>
-    <p style="margin-top: 1rem;"><a href="index.html">← Home</a> | <a href="strains.html">Catalog</a> | <a href="quiz.html">Quiz</a></p>
+    <p style="margin-top: 0.5rem;"><a href="{{ '/' | relative_url }}">Home</a> | <a href="{{ '/catalog' | relative_url }}">Catalog</a> | <a href="{{ '/quiz' | relative_url }}">Quiz</a></p>
   </footer>
 </div>
-
-<script>
-  document.getElementById('investor-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const data = {
-      name: document.getElementById('inv-name').value,
-      email: document.getElementById('inv-email').value,
-      telegram: document.getElementById('inv-telegram').value,
-      message: document.getElementById('inv-message').value,
-      type: 'investor_inquiry'
-    };
-    
-    // Replace with your webhook
-    const WEBHOOK = 'YOUR_INVESTOR_WEBHOOK_URL_HERE';
-    
-    if (!WEBHOOK.includes('YOUR_')) {
-      fetch(WEBHOOK, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-      }).then(() => {
-        alert('Thank you for your inquiry. We will contact you within 24 hours.');
-        this.reset();
-      }).catch(() => alert('Error sending. Please email directly.'));
-    } else {
-      alert('Investor webhook not configured yet. Please email directly.');
-      console.log(data);
-    }
-  });
-</script>
-
-</body>
-</html>

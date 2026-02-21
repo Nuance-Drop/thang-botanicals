@@ -1,250 +1,203 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Botanical Education | THANG Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: 'Rajdhani', sans-serif;
-      background: #050505;
-      color: #fff;
-      line-height: 1.6;
-      background: radial-gradient(circle at 20% 20%, rgba(131,56,236,0.15) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(255,0,110,0.1) 0%, transparent 50%),
-                  #050505;
-    }
-    
-    
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 5%;
-      background: rgba(10,11,13,0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
-      color: #FFD700;
-      text-decoration: none;
-    }
-    
-/* Ensure consistent nav font size */
-.nav-links a {
-  font-size: 1.1rem !important;
-}
-    
-    .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
-    
-    .back-link {
-      display: inline-block;
-      margin-bottom: 2rem;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 0.1em;
-    }
-    
-    .back-link:hover { color: #ff006e; }
-    
-    .blog-header {
-      text-align: center;
-      padding: 4rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 3rem;
-    }
-    
-    .blog-header h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #FFD700;
-      font-family: 'Orbitron', sans-serif;
-    }
-    
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .blog-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: all 0.3s;
-      text-decoration: none;
-      color: #fff;
-      display: block;
-      cursor: pointer;
-    }
-    
-    .blog-card:hover {
-      transform: translateY(-5px);
-      border-color: #ff006e;
-      box-shadow: 0 10px 30px rgba(255,0,110,0.2);
-    }
-    
-    .blog-content {
-      padding: 2rem;
-    }
-    
-    .blog-tag {
-      display: inline-block;
-      padding: 0.3rem 1rem;
-      background: rgba(255,0,110,0.1);
-      border: 1px solid rgba(255,0,110,0.3);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: #ff006e;
-      margin-bottom: 1rem;
-      font-family: 'Orbitron', sans-serif;
-    }
-    
-    .blog-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #fff;
-      font-family: 'Orbitron', sans-serif;
-    }
-    
-    .blog-card p {
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-    }
-    
-    .read-more {
-      display: inline-block;
-      margin-top: 1.5rem;
-      color: #FFD700;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-    }
-    
-    .edu-section {
-      background: rgba(0,255,127,0.05);
-      border: 1px solid rgba(0,255,127,0.2);
-      border-radius: 24px;
-      padding: 3rem;
-      margin: 4rem 0;
-      text-align: center;
-    }
-    
-    .edu-section h2 {
-      color: #00ff7f;
-      margin-bottom: 1.5rem;
-      font-family: 'Orbitron', sans-serif;
-    }
-    
-    .strain-colors {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .color-box {
-      text-align: center;
-      padding: 1.5rem;
-      background: rgba(0,0,0,0.3);
-      border-radius: 12px;
-      min-width: 150px;
-    }
-    
-    .color-indicator {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      border: 3px solid;
-    }
-    
-    .color-indicator.green { border-color: #00ff7f; box-shadow: 0 0 20px rgba(0,255,127,0.3); }
-    .color-indicator.red { border-color: #ff006e; box-shadow: 0 0 20px rgba(255,0,110,0.3); }
-    .color-indicator.white { border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.3); }
-    .color-indicator.yellow { border-color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
-    
-    footer {
-      text-align: center;
-      padding: 4rem 0;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 4rem;
-    }
-    
-    footer a { color: #ff006e; text-decoration: none; }
-  </style>
-</head>
-<body>
+---
+layout: default
+title: Education | THANG Botanicals
+---
 
-<nav>
-  <a href="{{ '/' | relative_url }}" class="logo">THANG</a>
-  <ul class="nav-links">
-    <li><a href="{{ '/quiz' | relative_url }}">Strain Finder</a></li>
-    <li><a href="{{ '/catalog' | relative_url }}">Catalog</a></li>
-    <li><a href="{{ '/index' | relative_url }}">Index</a></li>
-    <li><a href="{{ '/investors' | relative_url }}">Investors</a></li>
-  </ul>
-</nav>
+<style>
+  .container { max-width: 1200px; margin: 0 auto; padding: 2rem 3%; }
+  
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+  }
+  
+  .back-link:hover { color: #ff006e; }
+  
+  .blog-header {
+    text-align: center;
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 3rem;
+  }
+  
+  .blog-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .blog-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff006e;
+    box-shadow: 0 10px 30px rgba(255,0,110,0.2);
+  }
+  
+  .blog-content {
+    padding: 2rem;
+  }
+  
+  .blog-tag {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background: rgba(255,0,110,0.1);
+    border: 1px solid rgba(255,0,110,0.3);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #ff006e;
+    margin-bottom: 1rem;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .blog-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .blog-card p {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+  
+  .read-more {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #FFD700;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .edu-section {
+    background: rgba(0,255,127,0.05);
+    border: 1px solid rgba(0,255,127,0.2);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    margin: 4rem 0;
+    text-align: center;
+  }
+  
+  .edu-section h2 {
+    color: #00ff7f;
+    margin-bottom: 1.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+  }
+  
+  .strain-colors {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .color-box {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    min-width: 120px;
+  }
+  
+  .color-indicator {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    border: 3px solid;
+  }
+  
+  .color-indicator.green { border-color: #00ff7f; box-shadow: 0 0 20px rgba(0,255,127,0.3); }
+  .color-indicator.red { border-color: #ff006e; box-shadow: 0 0 20px rgba(255,0,110,0.3); }
+  .color-indicator.white { border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+  .color-indicator.yellow { border-color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+  
+  footer {
+    text-align: center;
+    padding: 4rem 0;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 4rem;
+  }
+  
+  footer a { color: #ff006e; text-decoration: none; }
+</style>
 
 <div class="container">
-  <a href="index.html" class="back-link">← Back to Main Site</a>
+  <a href="{{ '/' | relative_url }}" class="back-link">← Back to Home</a>
   
   <div class="blog-header">
     <h1>Botanical Education</h1>
-    <p style="color: rgba(255,255,255,0.7); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+    <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
       Learn about our sustainable sourcing, strain varieties, and the science behind botanicals.
     </p>
   </div>
   
   <div class="edu-section">
     <h2>Understanding Vein Colors</h2>
-    <p style="color: rgba(255,255,255,0.8); max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+    <p style="color: rgba(255,255,255,0.8); max-width: 800px; margin: 0 auto; font-size: 1rem;">
       The color of kratom veins indicates the alkaloid profile and effects. Our farmers harvest at specific times to ensure optimal potency for each variety.
     </p>
     
     <div class="strain-colors">
       <div class="color-box">
         <div class="color-indicator green"></div>
-        <h3 style="color: #00ff7f; font-family: Orbitron; margin-bottom: 0.5rem;">Green</h3>
-        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Balanced energy & focus</p>
+        <h3 style="color: #00ff7f; font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; font-size: 0.9rem;">Green</h3>
+        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Balanced energy & focus</p>
       </div>
       <div class="color-box">
         <div class="color-indicator red"></div>
-        <h3 style="color: #ff006e; font-family: Orbitron; margin-bottom: 0.5rem;">Red</h3>
-        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Relaxation & comfort</p>
+        <h3 style="color: #ff006e; font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; font-size: 0.9rem;">Red</h3>
+        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Relaxation & comfort</p>
       </div>
       <div class="color-box">
         <div class="color-indicator white"></div>
-        <h3 style="color: #fff; font-family: Orbitron; margin-bottom: 0.5rem;">White</h3>
-        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Clean energy & productivity</p>
+        <h3 style="color: #fff; font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; font-size: 0.9rem;">White</h3>
+        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Clean energy</p>
       </div>
       <div class="color-box">
         <div class="color-indicator yellow"></div>
-        <h3 style="color: #FFD700; font-family: Orbitron; margin-bottom: 0.5rem;">Yellow</h3>
-        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Mood enhancement & balance</p>
+        <h3 style="color: #FFD700; font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; font-size: 0.9rem;">Yellow</h3>
+        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Mood & balance</p>
       </div>
     </div>
   </div>
   
+  <div class="blog-grid">
     <div class="blog-card" onclick="alert('Full article coming soon!')">
       <div class="blog-content">
         <span class="blog-tag">SCIENCE</span>
         <h2>Alkaloid Profiles: Why Lab Testing Matters</h2>
-        <p>Not all kratom is created equal. We break down mitragynine and 7-hydroxymitragynine levels, and why our testing standards exceed industry norms...</p>
+        <p>Not all kratom is created equal. We break down mitragynine and 7-hydroxymitragynine levels...</p>
         <span class="read-more">Read Article →</span>
       </div>
     </div>
@@ -253,7 +206,7 @@
       <div class="blog-content">
         <span class="blog-tag">ETHICS</span>
         <h2>Fair Trade in the Botanical Industry</h2>
-        <p>The dark truth about middlemen in the kratom supply chain, and how THANG is building a model that puts farmers first without sacrificing quality...</p>
+        <p>The dark truth about middlemen in the kratom supply chain, and how THANG is building a better model...</p>
         <span class="read-more">Read Article →</span>
       </div>
     </div>
@@ -262,46 +215,14 @@
       <div class="blog-content">
         <span class="blog-tag">STRAIN GUIDE</span>
         <h2>Limited Editions: Why Rare Strains Cost More</h2>
-        <p>From Green Dracula to White Zombie—understanding what makes certain harvests limited, and why serious collectors seek them out...</p>
+        <p>From Green Dracula to White Zombie—understanding what makes certain harvests limited...</p>
         <span class="read-more">Read Article →</span>
       </div>
     </div>
-    
-    <div class="blog-card" onclick="alert('Full article coming soon!')">
-      <div class="blog-content">
-        <span class="blog-tag">SUSTAINABILITY</span>
-        <h2>Agroforestry vs Plantation Farming</h2>
-        <p>Why we only source from wild-crafted or agroforestry farms, and how this traditional method protects rainforest ecosystems...</p>
-        <span class="read-more">Read Article →</span>
-      </div>
-    </div>
-    
-    <div class="blog-card" onclick="alert('Full article coming soon!')">
-      <div class="blog-content">
-        <span class="blog-tag">CULTURE</span>
-        <h2>The History of Kratom in Southeast Asia</h2>
-        <p>From traditional chewed leaves in Thai culture to modern botanical science—tracing the 200+ year history of this remarkable plant...</p>
-        <span class="read-more">Read Article →</span>
-      </div>
-    </div>
-  </div>
-  
-  <div style="text-align: center; padding: 3rem; background: rgba(255,215,0,0.05); border: 1px solid rgba(255,215,0,0.2); border-radius: 24px; margin-top: 4rem;">
-    <h2 style="color: #FFD700; margin-bottom: 1rem;">Questions?</h2>
-    <p style="color: rgba(255,255,255,0.7); margin-bottom: 1.5rem;">
-      Our team is constantly researching and learning. Email us topics you'd like to see covered.
-    </p>
-    <a href="mailto:education@kratomthang.com" style="color: #ff006e; font-family: Orbitron; text-decoration: none; letter-spacing: 0.1em;">
-      education@kratomthang.com
-    </a>
   </div>
   
   <footer>
-    <p>THANG Botanicals Education Hub © 2026</p>
-    <p style="margin-top: 0.5rem;">Research purposes only. Not for human consumption.</p>
-    <p style="margin-top: 1rem;"><a href="index.html">← Home</a> | <a href="strains.html">Catalog</a> | <a href="quiz.html">Quiz</a></p>
+    <p>THANG Botanicals © 2026</p>
+    <p style="margin-top: 0.5rem;"><a href="{{ '/' | relative_url }}">Home</a> | <a href="{{ '/catalog' | relative_url }}">Catalog</a> | <a href="{{ '/quiz' | relative_url }}">Quiz</a></p>
   </footer>
 </div>
-
-</body>
-</html>
