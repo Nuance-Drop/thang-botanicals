@@ -23,10 +23,6 @@ characteristics: "Light - Focused - Smooth"
 short_desc: "Traditional white type for smooth energy. Lighter regional variety, best for focus."
 ---
 
-**VIBES:** a clear mountain stream flowing over smooth stones, steady and refreshing
-
-**Light - Focused - Smooth**
-
 Traditional white type for smooth energy.
 
 Heavier or lighter than other whites? Lighter. Best for focus and concentration without the intensity of Maeng Da or Aceh. A gentle introduction to white veins for beginners.

@@ -23,10 +23,6 @@ characteristics: "Fermented - Smooth - Gentle"
 short_desc: "Unique fermented kratom leaf. Best tasting, smooth, no tummy upset."
 ---
 
-**VIBES:** rich dark chocolate melts on the tongue in a quiet, wood-paneled study
-
-**Fermented - Smooth - Gentle**
-
 Unique fermented kratom leaf.
 
 The fermentation process creates a chocolate-like aroma and taste while smoothing out the edges of the kratom experience. Best tasting kratom, smooth, gentle, and easy on the stomach. Purely sedative in effects.

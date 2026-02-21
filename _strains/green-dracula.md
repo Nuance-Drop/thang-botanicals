@@ -23,10 +23,6 @@ characteristics: "Exclusive - Rare - Intense"
 short_desc: "Exclusive strain with a bite. Unique opportunity, not a daily driver."
 ---
 
-**VIBES:** he appears as an elegant youth, a knowing glint in dark eyes like pools reflecting many ages of man gone by
-
-**Exclusive - Rare - Intense**
-
 Exclusive strain with a bite.
 
 Limited edition collector's strain from the Aceh region. Not your typical green—this variety offers a unique alkaloid profile that bites harder than standard strains. For the connoisseur seeking something truly exclusive.

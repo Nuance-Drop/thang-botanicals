@@ -23,10 +23,6 @@ characteristics: "Classic - Heavy - Comforting"
 short_desc: "Gold standard pain relief, stimulant-free. Best for relief, purely sedating."
 ---
 
-**VIBES:** a warm bath by candlelight, every muscle releasing tension into steaming water
-
-**Classic - Heavy - Comforting**
-
 Gold standard pain relief.
 
 The classic red Bali feel that built the reputation of red vein kratom. Purely sedating and stimulant-free, this is best for pain relief and deep relaxation. The standard by which all other reds are measured.

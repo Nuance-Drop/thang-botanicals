@@ -23,10 +23,6 @@ characteristics: "Fast - Clean - Focused"
 short_desc: "Fast energy. Good for coffee replacement. Clean stimulation, beginner friendly."
 ---
 
-**VIBES:** the first ray of sunlight piercing through high mountain mist, crystal clear and sharp
-
-**Fast - Clean - Focused**
-
 Fast energy. Perfect coffee replacement.
 
 Clean, fast-acting energy without the jitters of caffeine. This is the white vein standard for morning productivity and focus. Beginner friendly despite the potency.

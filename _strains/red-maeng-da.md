@@ -22,10 +22,6 @@ characteristics: "Premium - Strong - Balanced"
 short_desc: "Premium classic red blended for potency. Stronger energy than typical reds."
 ---
 
-**VIBES:** a tiger lounges in the shade, powerful but at ease, ready to move if needed
-
-**Premium - Strong - Balanced**
-
 Premium classic red blended for potency.
 
 Not your typical sedating red—Red Maeng Da maintains moderate energy levels while delivering premium pain relief. The middle ground for those who need relief but can't afford to be completely couch-locked.

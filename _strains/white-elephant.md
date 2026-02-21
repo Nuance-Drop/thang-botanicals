@@ -24,9 +24,6 @@ characteristics: "Unusual - Strong - Balanced"
 short_desc: "Special elephant leaf. Unusual large leaf type with strong but manageable profile."
 ---
 
-**VIBES:** a wise matriarch leads her herd with steady, purposeful steps through dense jungle
-
-**Unusual - Strong - Balanced**
 
 Special elephant leaf.
 

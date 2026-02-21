@@ -23,9 +23,6 @@ characteristics: "Anxiolytic - Smooth - Gentle"
 short_desc: "Best strain for anxiety relief. Kapuas region, medium duration, smooth."
 ---
 
-**VIBES:** a quiet canoe drifting down a misty river, surrounded by ancient forest
-
-**Anxiolytic - Smooth - Gentle**
 
 Best strain for anxiety relief.
 

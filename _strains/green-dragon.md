@@ -23,9 +23,6 @@ characteristics: "Euphoric - Powerful - Sparkling"
 short_desc: "Flagship special variety. Extremely strong and well-balanced profile, dried indoors following traditional methods."
 ---
 
-**VIBES:** in a coastal cave like a hidden temple, an ancient jade dragon named Thang perches upon his pile of gems
-
-**Euphoric - Powerful - Sparkling**
 
 Flagship, special variety.
 

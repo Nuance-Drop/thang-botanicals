@@ -24,9 +24,6 @@ characteristics: "Balanced - Uplifting - Effective"
 short_desc: "USA Bestseller, dependable strain. Long duration and exceptionally alkaloid-rich profile."
 ---
 
-**VIBES:** a solitary orangutan contemplates a tangerine wash over the South China Sea, as if meditating upon the dawn
-
-**Balanced - Uplifting - Effective**
 
 USA Bestseller, dependable strain.
 

@@ -22,9 +22,6 @@ characteristics: "Energetic - Smooth - Inspiring"
 short_desc: "Our farmer's personal favorite strain. Maximum potency blend for smooth energy."
 ---
 
-**VIBES:** from his bamboo porch, a hardworking father overlooks a misty plantation with a steaming morning cuppa and a hand-rolled cigarette
-
-**Energetic - Smooth - Inspiring**
 
 Our farmer's personal favorite strain.
 

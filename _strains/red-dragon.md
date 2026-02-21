@@ -23,10 +23,6 @@ characteristics: "Social - Euphoric - Unique"
 short_desc: "Most unusual, 'hot red' variety, social lubricant and aphrodisiac. Different from Green Dragon."
 ---
 
-**VIBES:** candles flicker in red silk lanterns as laughter echoes through hidden courtyards
-
-**Social - Euphoric - Unique**
-
 Most unusual, "hot red" variety.
 
 Unlike the typical sedating red, Red Dragon brings heat and sociability. This is an aphrodisiac and great for socializing—a unique characteristic among red veins. Different from Green Dragon in every way except the name.

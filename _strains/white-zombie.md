@@ -23,10 +23,6 @@ characteristics: "Exclusive - Energetic - Novelty"
 short_desc: "Exclusively bred strain by Sitra. Named after the band, rare collector item."
 ---
 
-**VIBES:** a rock concert at midnight, electric energy surging through a sea of raised hands
-
-**Exclusive - Energetic - Novelty**
-
 Exclusively bred strain by Sitra.
 
 Named after the band, this novelty strain is a rare collector item. Fine for beginners despite the aggressive name. Exclusive limited release.

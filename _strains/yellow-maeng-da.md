@@ -23,10 +23,6 @@ characteristics: "Premium - Balanced - Refined"
 short_desc: "Premium yellow blend for balanced potency. Premium drying process creates great balance."
 ---
 
-**VIBES:** a master craftsman perfecting his technique, every movement precise and intentional
-
-**Premium - Balanced - Refined**
-
 Premium yellow blend for balanced potency.
 
 Premium drying process. Great balanced blend that represents the middle path—equal parts energy and relaxation, suitable for any afternoon.

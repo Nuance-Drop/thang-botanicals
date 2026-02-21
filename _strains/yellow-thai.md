@@ -23,10 +23,6 @@ characteristics: "Traditional - Gentle - Strong"
 short_desc: "Gentle, uplifting anxiety and pain relief. Traditional method, well-balanced anxiolytic."
 ---
 
-**VIBES:** old scrolls and sandalwood in a quiet temple library, wisdom passed down through generations
-
-**Traditional - Gentle - Strong**
-
 Gentle, uplifting anxiety and pain relief.
 
 Traditional Thai method creates a gentle but strong, well-balanced anxiolytic. Limited availability. When to choose this? To take the edge off without losing yourself.

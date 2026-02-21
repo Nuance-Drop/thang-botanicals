@@ -23,9 +23,6 @@ characteristics: "Traditional - Smooth - Reliable"
 short_desc: "Traditional red for pain relief and relaxation, strong and smooth. Slow creeper."
 ---
 
-**VIBES:** a saffron-robed monk walks slowly through morning mist, each step deliberate and grounded
-
-**Traditional - Smooth - Reliable**
 
 Traditional red for pain relief and relaxation.
 

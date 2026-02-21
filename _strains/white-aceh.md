@@ -24,9 +24,6 @@ characteristics: "Intense - Smooth - Premium"
 short_desc: "Legendary, rare variety for fast, potent energy. Smoother but more intense than White MD."
 ---
 
-**VIBES:** lightning captured in a bottle, electric and brilliant but controlled
-
-**Intense - Smooth - Premium**
 
 Legendary, rare variety for fast, potent energy.
 
