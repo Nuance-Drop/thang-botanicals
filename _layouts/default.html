@@ -20,9 +20,10 @@
       background: var(--void);
       color: #fff;
       overflow-x: hidden;
+      line-height: 1.6;
     }
     
-    /* Navigation - THIS IS THE ONLY ONE */
+    /* Consistent Navigation */
     nav {
       display: flex;
       justify-content: space-between;
@@ -68,17 +69,20 @@
       color: var(--neon-pink);
       text-shadow: 0 0 10px rgba(255,0,110,0.5);
     }
+    
+    /* Ensure consistent heading sizes across pages */
+    h1 { font-family: 'Orbitron', sans-serif; }
+    h2, h3 { font-family: 'Orbitron', sans-serif; }
   </style>
 </head>
 <body>
 
-  <!-- WORKING NAVIGATION -->
   <nav>
     <a href="{{ '/' | relative_url }}" class="logo">THANG</a>
     <ul class="nav-links">
       <li><a href="{{ '/quiz' | relative_url }}">Strain Finder</a></li>
       <li><a href="{{ '/catalog' | relative_url }}">Catalog</a></li>
-      <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
+      <li><a href="{{ '/blog' | relative_url }}">Education</a></li>
       <li><a href="{{ '/investors' | relative_url }}">Investors</a></li>
     </ul>
   </nav>

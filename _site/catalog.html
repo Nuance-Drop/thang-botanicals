@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog | THANG Botanicals | THANG Botanicals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-pink: #ff006e;
+      --gold: #FFD700;
+      --cyan: #00f5d4;
+      --void: #0a0b0d;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--void);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    /* Navigation - THIS IS THE ONLY ONE */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      background: rgba(10,11,13,0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .nav-links a:hover {
+      color: var(--neon-pink);
+      text-shadow: 0 0 10px rgba(255,0,110,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WORKING NAVIGATION -->
+  <nav>
+    <a href="/" class="logo">THANG</a>
+    <ul class="nav-links">
+      <li><a href="/quiz">Strain Finder</a></li>
+      <li><a href="/catalog">Catalog</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/investors">Investors</a></li>
+    </ul>
+  </nav>
+
+  <style>
+  * { animation: none !important; }
+  
+  body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #0a0b0d;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  .bg-fractal {
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(0,245,212,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255,0,110,0.15) 0%, transparent 40%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: #FFD700;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  
+  .nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .nav-links a:hover {
+    color: #ff006e;
+    text-shadow: 0 0 10px rgba(255,0,110,0.5);
+  }
+
+  .container { padding: 2rem 5%; max-width: 1400px; margin: 0 auto; }
+  
+  h1 { 
+    font-family: 'Orbitron', sans-serif; 
+    color: #FFD700; 
+    text-align: center; 
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(255,215,0,0.3);
+  }
+  
+  .subtitle { 
+    text-align: center; 
+    color: rgba(255,255,255,0.7); 
+    margin-bottom: 2rem;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,215,0,0.3);
+    color: #FFD700;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover, .btn.active {
+    background: rgba(255,0,110,0.2);
+    border-color: #ff006e;
+    color: #ff006e;
+    box-shadow: 0 0 15px rgba(255,0,110,0.3);
+    transform: translateY(-2px);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .card {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-color: rgba(0,245,212,0.3);
+  }
+  
+  .card-content { padding: 1.5rem; min-height: 280px; display: flex; flex-direction: column; }
+  
+  .badges { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  
+  .tag {
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Rajdhani', sans-serif;
+  }
+  
+  .tag.green { background: #06ffa5; color: #0a0b0d; }
+  .tag.red { background: #ff006e; color: white; }
+  .tag.white { background: #ffffff; color: #0a0b0d; }
+  .tag.yellow { background: #fee440; color: #0a0b0d; }
+  .tag.premium { 
+    background: linear-gradient(135deg, #FFD700, #ff9500); 
+    color: #000;
+    font-size: 0.65rem;
+    font-family: 'Orbitron', sans-serif;
+  }
+  .tag.limited {
+    background: linear-gradient(135deg, #ff006e, #8338ec);
+    color: white;
+    transform: rotate(3deg);
+  }
+  
+  .region-tag {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.3);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .vibe-text {
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    border-left: 2px solid rgba(255,0,110,0.3);
+    padding-left: 1rem;
+  }
+  
+  p.desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex-grow: 1;
+    font-family: 'Rajdhani', sans-serif;
+  }
+  
+  .footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .price {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    color: #FFD700;
+  }
+  
+  .speed {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: capitalize;
+  }
+  
+  .line {
+    width: 100%;
+    height: 3px;
+    margin-top: 0.75rem;
+    border-radius: 2px;
+  }
+
+  .back {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  
+  .back:hover {
+    border-color: #ff006e;
+    color: #ff006e;
+  }
+</style>
+
+<div class="bg-fractal"></div>
+
+<nav>
+  <a href="/" class="logo">THANG</a>
+  <ul class="nav-links">
+    <li><a href="/quiz">Strain Finder</a></li>
+    <li><a href="/catalog">Catalog</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/investors">Investors</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1>Strain Catalog</h1>
+  <p class="subtitle">24 Premium Varieties • Direct Trade • Lab Verified</p>
+
+  <div class="controls">
+    <button class="btn active" onclick="filter('all')">All</button>
+    <button class="btn" onclick="filter('green')">Green</button>
+    <button class="btn" onclick="filter('red')">Red</button>
+    <button class="btn" onclick="filter('white')">White</button>
+    <button class="btn" onclick="filter('yellow')">Yellow</button>
+    <button class="btn" onclick="filterRegion('Aceh')">Aceh</button>
+    <button class="btn" onclick="filterRegion('Thai')">Thai</button>
+    <button class="btn" onclick="filterRegion('Borneo')">Borneo</button>
+    <button class="btn" onclick="filterRegion('Sumatra')">Sumatra</button>
+  </div>
+
+  <div class="grid" id="grid">
+    
+    <a href="/strains/chocolate-bentuangie/" class="card" 
+       data-color="red" 
+       data-region="Borneo">
+      
+      
+      <span class="tag limited" style="position: absolute; top: 10px; right: 10px;">LIMITED</span>
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">red</span>
+          <span class="region-tag">Borneo</span>
+        </div>
+        
+        <h3>Chocolate Bentuangie</h3>
+        
+        
+        <div class="vibe-text">"rich dark chocolate melts on the tongue in a quiet, wood-paneled study"</div>
+        
+        
+        <p class="desc">Unique fermented kratom leaf. Best tasting, smooth, no tummy upset.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">slow</span>
+          </div>
+          <div class="line" style="background: 
+            #ff006e
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/green-aceh/" class="card" 
+       data-color="green" 
+       data-region="Aceh">
+      
+      <span class="tag premium" style="position: absolute; top: 10px; left: 10px;">PREMIUM +$15</span>
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">green</span>
+          <span class="region-tag">Aceh</span>
+        </div>
+        
+        <h3>Green Aceh</h3>
+        
+        
+        <div class="vibe-text">"a critically endangered Sumatran tiger pads swiftly through the vibrant understory of an ancient jungle"</div>
+        
+        
+        <p class="desc">Legendary variety, exceedingly rare. Possibly the most powerful strain of Mitragyna speciosa on earth.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$49.99</span>
+            <span class="speed">balanced</span>
+          </div>
+          <div class="line" style="background: 
+            #06ffa5
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/green-dracula/" class="card" 
+       data-color="green" 
+       data-region="Aceh">
+      
+      
+      <span class="tag limited" style="position: absolute; top: 10px; right: 10px;">LIMITED</span>
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">green</span>
+          <span class="region-tag">Aceh</span>
+        </div>
+        
+        <h3>Green Dracula</h3>
+        
+        
+        <div class="vibe-text">"he appears as an elegant youth, a knowing glint in dark eyes like pools reflecting many ages of man gone by"</div>
+        
+        
+        <p class="desc">Exclusive strain with a bite. Unique opportunity, not a daily driver.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">fast</span>
+          </div>
+          <div class="line" style="background: 
+            #06ffa5
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/green-dragon/" class="card" 
+       data-color="green" 
+       data-region="Thai">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">green</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>Green Dragon</h3>
+        
+        
+        <div class="vibe-text">"in a coastal cave like a hidden temple, an ancient jade dragon named Thang perches upon his pile of gems"</div>
+        
+        
+        <p class="desc">Flagship special variety. Extremely strong and well-balanced profile, dried indoors following traditional methods.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">balanced</span>
+          </div>
+          <div class="line" style="background: 
+            #06ffa5
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/green-maeng-da/" class="card" 
+       data-color="green" 
+       data-region="Thai">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">green</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>Green Maeng Da</h3>
+        
+        
+        <div class="vibe-text">"a neon ghost of the city sits cross-legged on a skytrain bench, humming along to music only he can hear"</div>
+        
+        
+        <p class="desc">Premium classic green blended for potency. The gold standard for productivity.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">fast</span>
+          </div>
+          <div class="line" style="background: 
+            #06ffa5
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/green-malay/" class="card" 
+       data-color="green" 
+       data-region="Borneo">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">green</span>
+          <span class="region-tag">Borneo</span>
+        </div>
+        
+        <h3>Green Malay</h3>
+        
+        
+        <div class="vibe-text">"a solitary orangutan contemplates a tangerine wash over the South China Sea, as if meditating upon the dawn"</div>
+        
+        
+        <p class="desc">USA Bestseller, dependable strain. Long duration and exceptionally alkaloid-rich profile.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">balanced</span>
+          </div>
+          <div class="line" style="background: 
+            #06ffa5
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/green-thai/" class="card" 
+       data-color="green" 
+       data-region="Thai">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">green</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>Green Thai</h3>
+        
+        
+        <div class="vibe-text">"grandmother chews her quid as she chats, nimble fingers working tirelessly to embroider a rich, heirloom tapestry"</div>
+        
+        
+        <p class="desc">Traditional green variety. Provides relief from pain and fatigue to get you through your toughest day.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">moderate</span>
+          </div>
+          <div class="line" style="background: 
+            #06ffa5
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/red-aceh/" class="card" 
+       data-color="red" 
+       data-region="Aceh">
+      
+      <span class="tag premium" style="position: absolute; top: 10px; left: 10px;">PREMIUM +$15</span>
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">red</span>
+          <span class="region-tag">Aceh</span>
+        </div>
+        
+        <h3>Red Aceh</h3>
+        
+        
+        <div class="vibe-text">"the heavy velvet curtain of night falls over a ancient temple, incense smoke curling in thick spirals"</div>
+        
+        
+        <p class="desc">Legendary red variety, super rare. Fermented version perfect for nighttime use and heavy pain relief.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$49.99</span>
+            <span class="speed">slow</span>
+          </div>
+          <div class="line" style="background: 
+            #ff006e
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/red-bali/" class="card" 
+       data-color="red" 
+       data-region="Borneo">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">red</span>
+          <span class="region-tag">Borneo</span>
+        </div>
+        
+        <h3>Red Bali</h3>
+        
+        
+        <div class="vibe-text">"a warm bath by candlelight, every muscle releasing tension into steaming water"</div>
+        
+        
+        <p class="desc">Gold standard pain relief, stimulant-free. Best for relief, purely sedating.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">slow</span>
+          </div>
+          <div class="line" style="background: 
+            #ff006e
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/red-dragon/" class="card" 
+       data-color="red" 
+       data-region="Thai">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">red</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>Red Dragon</h3>
+        
+        
+        <div class="vibe-text">"candles flicker in red silk lanterns as laughter echoes through hidden courtyards"</div>
+        
+        
+        <p class="desc">Most unusual, 'hot red' variety, social lubricant and aphrodisiac. Different from Green Dragon.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">moderate</span>
+          </div>
+          <div class="line" style="background: 
+            #ff006e
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/red-maeng-da/" class="card" 
+       data-color="red" 
+       data-region="Thai">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">red</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>Red Maeng Da</h3>
+        
+        
+        <div class="vibe-text">"a tiger lounges in the shade, powerful but at ease, ready to move if needed"</div>
+        
+        
+        <p class="desc">Premium classic red blended for potency. Stronger energy than typical reds.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">moderate</span>
+          </div>
+          <div class="line" style="background: 
+            #ff006e
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/red-thai/" class="card" 
+       data-color="red" 
+       data-region="Thai">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag red">red</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>Red Thai</h3>
+        
+        
+        <div class="vibe-text">"a saffron-robed monk walks slowly through morning mist, each step deliberate and grounded"</div>
+        
+        
+        <p class="desc">Traditional red for pain relief and relaxation, strong and smooth. Slow creeper.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">slow</span>
+          </div>
+          <div class="line" style="background: 
+            #ff006e
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/super-green/" class="card" 
+       data-color="green" 
+       data-region="Borneo">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag green">green</span>
+          <span class="region-tag">Borneo</span>
+        </div>
+        
+        <h3>Super Green</h3>
+        
+        
+        <div class="vibe-text">"from his bamboo porch, a hardworking father overlooks a misty plantation with a steaming morning cuppa and a hand-rolled cigarette"</div>
+        
+        
+        <p class="desc">Our farmer's personal favorite strain. Maximum potency blend for smooth energy.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">fast</span>
+          </div>
+          <div class="line" style="background: 
+            #06ffa5
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/white-aceh/" class="card" 
+       data-color="white" 
+       data-region="Aceh">
+      
+      <span class="tag premium" style="position: absolute; top: 10px; left: 10px;">PREMIUM +$15</span>
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">white</span>
+          <span class="region-tag">Aceh</span>
+        </div>
+        
+        <h3>White Aceh</h3>
+        
+        
+        <div class="vibe-text">"lightning captured in a bottle, electric and brilliant but controlled"</div>
+        
+        
+        <p class="desc">Legendary, rare variety for fast, potent energy. Smoother but more intense than White MD.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$49.99</span>
+            <span class="speed">fast</span>
+          </div>
+          <div class="line" style="background: 
+            #ffffff
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/white-elephant/" class="card" 
+       data-color="white" 
+       data-region="Borneo">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">white</span>
+          <span class="region-tag">Borneo</span>
+        </div>
+        
+        <h3>White Elephant</h3>
+        
+        
+        <div class="vibe-text">"a wise matriarch leads her herd with steady, purposeful steps through dense jungle"</div>
+        
+        
+        <p class="desc">Special elephant leaf. Unusual large leaf type with strong but manageable profile.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">moderate</span>
+          </div>
+          <div class="line" style="background: 
+            #ffffff
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/white-horn/" class="card" 
+       data-color="white" 
+       data-region="Borneo">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">white</span>
+          <span class="region-tag">Borneo</span>
+        </div>
+        
+        <h3>White Horn</h3>
+        
+        
+        <div class="vibe-text">"a sprinter exploding from starting blocks, pure kinetic force unleashed"</div>
+        
+        
+        <p class="desc">Special horned leaf loved by athletes. Premium energetic profile, not smooth come-up.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">fast</span>
+          </div>
+          <div class="line" style="background: 
+            #ffffff
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/white-maeng-da/" class="card" 
+       data-color="white" 
+       data-region="Thai">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">white</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>White Maeng Da</h3>
+        
+        
+        <div class="vibe-text">"the first ray of sunlight piercing through high mountain mist, crystal clear and sharp"</div>
+        
+        
+        <p class="desc">Fast energy. Good for coffee replacement. Clean stimulation, beginner friendly.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">fast</span>
+          </div>
+          <div class="line" style="background: 
+            #ffffff
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/white-sumatra/" class="card" 
+       data-color="white" 
+       data-region="Sumatra">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">white</span>
+          <span class="region-tag">Sumatra</span>
+        </div>
+        
+        <h3>White Sumatra</h3>
+        
+        
+        <div class="vibe-text">"a clear mountain stream flowing over smooth stones, steady and refreshing"</div>
+        
+        
+        <p class="desc">Traditional white type for smooth energy. Lighter regional variety, best for focus.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">moderate</span>
+          </div>
+          <div class="line" style="background: 
+            #ffffff
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/white-zombie/" class="card" 
+       data-color="white" 
+       data-region="Thai">
+      
+      
+      <span class="tag limited" style="position: absolute; top: 10px; right: 10px;">LIMITED</span>
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag white">white</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>White Zombie</h3>
+        
+        
+        <div class="vibe-text">"a rock concert at midnight, electric energy surging through a sea of raised hands"</div>
+        
+        
+        <p class="desc">Exclusively bred strain by Sitra. Named after the band, rare collector item.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">fast</span>
+          </div>
+          <div class="line" style="background: 
+            #ffffff
+              ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/yellow-dragon/" class="card" 
+       data-color="yellow" 
+       data-region="Thai">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">yellow</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>Yellow Dragon</h3>
+        
+        
+        <div class="vibe-text">"golden hour sunlight spilling through amber whiskey in a crystal glass"</div>
+        
+        
+        <p class="desc">Thang's personal favorite for euphoric anxiety relief. More euphoric than other yellows.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">balanced</span>
+          </div>
+          <div class="line" style="background: 
+            #fee440
+            ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/yellow-hulu/" class="card" 
+       data-color="yellow" 
+       data-region="Hulu">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">yellow</span>
+          <span class="region-tag">Hulu</span>
+        </div>
+        
+        <h3>Yellow Hulu</h3>
+        
+        
+        <div class="vibe-text">"a quiet canoe drifting down a misty river, surrounded by ancient forest"</div>
+        
+        
+        <p class="desc">Best strain for anxiety relief. Kapuas region, medium duration, smooth.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">moderate</span>
+          </div>
+          <div class="line" style="background: 
+            #fee440
+            ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/yellow-maeng-da/" class="card" 
+       data-color="yellow" 
+       data-region="Thai">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">yellow</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>Yellow Maeng Da</h3>
+        
+        
+        <div class="vibe-text">"a master craftsman perfecting his technique, every movement precise and intentional"</div>
+        
+        
+        <p class="desc">Premium yellow blend for balanced potency. Premium drying process creates great balance.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">balanced</span>
+          </div>
+          <div class="line" style="background: 
+            #fee440
+            ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/yellow-thai/" class="card" 
+       data-color="yellow" 
+       data-region="Thai">
+      
+      
+      <span class="tag limited" style="position: absolute; top: 10px; right: 10px;">LIMITED</span>
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">yellow</span>
+          <span class="region-tag">Thai</span>
+        </div>
+        
+        <h3>Yellow Thai</h3>
+        
+        
+        <div class="vibe-text">"old scrolls and sandalwood in a quiet temple library, wisdom passed down through generations"</div>
+        
+        
+        <p class="desc">Gentle, uplifting anxiety and pain relief. Traditional method, well-balanced anxiolytic.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">moderate</span>
+          </div>
+          <div class="line" style="background: 
+            #fee440
+            ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <a href="/strains/yellow-vietnam/" class="card" 
+       data-color="yellow" 
+       data-region="Vietnam">
+      
+      
+      
+      
+      <div class="card-content">
+        <div class="badges">
+          <span class="tag yellow">yellow</span>
+          <span class="region-tag">Vietnam</span>
+        </div>
+        
+        <h3>Yellow Vietnam</h3>
+        
+        
+        <div class="vibe-text">"rice paddies reflect the morning sun like a thousand mirrors, peaceful and bright"</div>
+        
+        
+        <p class="desc">Well-rounded energy and relaxation. Great for anxiety without sedation.</p>
+        
+        <div class="footer">
+          <div class="price-row">
+            <span class="price">$34.99</span>
+            <span class="speed">moderate</span>
+          </div>
+          <div class="line" style="background: 
+            #fee440
+            ;">
+          </div>
+        </div>
+      </div>
+    </a>
+    
+  </div>
+
+  <div style="text-align: center; margin-top: 3rem;">
+    <a href="/" class="back">← Back to Home</a>
+  </div>
+</div>
+
+<script>
+function filter(color) {
+  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = (color === 'all' || card.dataset.color === color) ? 'block' : 'none';
+  });
+}
+
+function filterRegion(region) {
+  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = (card.dataset.region === region) ? 'block' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>

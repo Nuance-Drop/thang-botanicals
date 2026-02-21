@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strain Finder | THANG Botanicals | THANG Botanicals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-pink: #ff006e;
+      --gold: #FFD700;
+      --cyan: #00f5d4;
+      --void: #0a0b0d;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--void);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    /* Navigation - THIS IS THE ONLY ONE */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      background: rgba(10,11,13,0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .nav-links a:hover {
+      color: var(--neon-pink);
+      text-shadow: 0 0 10px rgba(255,0,110,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WORKING NAVIGATION -->
+  <nav>
+    <a href="/" class="logo">THANG</a>
+    <ul class="nav-links">
+      <li><a href="/quiz">Strain Finder</a></li>
+      <li><a href="/catalog">Catalog</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/investors">Investors</a></li>
+    </ul>
+  </nav>
+
+  <style>
+  .quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 5%;
+  }
+  
+  .progress-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    margin-bottom: 3rem;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--neon-pink));
+    width: 0%;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 15px rgba(255, 0, 110, 0.5);
+  }
+  
+  .question {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .question.active { display: block; }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .question h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .question-subtitle {
+    color: rgba(255,255,255,0.6);
+    font-family: 'Rajdhani', sans-serif;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .options {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .option {
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .option:hover {
+    background: rgba(255,0,110,0.08);
+    border-color: var(--neon-pink);
+    transform: translateX(8px);
+    box-shadow: 0 0 30px rgba(255,0,110,0.15);
+  }
+  
+  .option::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--neon-pink);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .option:hover::before {
+    opacity: 1;
+  }
+  
+  .result-card {
+    background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(22,33,62,0.9));
+    border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+  }
+  
+  .result-card.top-match {
+    border-color: var(--gold);
+    box-shadow: 0 0 40px rgba(255,215,0,0.15);
+    transform: scale(1.02);
+  }
+  
+  .match-score {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: linear-gradient(135deg, var(--neon-pink), #ff006e);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  
+  .strain-badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+  }
+  
+  .badge-limited {
+    background: rgba(255,0,0,0.2);
+    border: 1px solid rgba(255,0,0,0.4);
+    color: #ff4444;
+  }
+  
+  .badge-premium {
+    background: rgba(255,215,0,0.2);
+    border: 1px solid rgba(255,215,0,0.4);
+    color: var(--gold);
+  }
+  
+  .badge-beginner {
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.3);
+    color: #00ff88;
+  }
+  
+  .strain-meta {
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem 0 1rem;
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--cyan);
+    font-size: 0.9rem;
+  }
+  
+  .strain-characteristics {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .char-tag {
+    background: rgba(255,255,255,0.05);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+  }
+  
+  .results-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    border-color: var(--neon-pink);
+    background: rgba(255,0,110,0.1);
+  }
+  
+  .warning-box {
+    background: rgba(255,193,7,0.1);
+    border: 1px solid rgba(255,193,7,0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    color: #ffc107;
+    font-family: 'Rajdhani', sans-serif;
+  }
+</style>
+
+<div class="quiz-container">
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+  
+  <!-- Question 1: Experience (Critical Safety Filter) -->
+  <div class="question active" data-q="0">
+    <h2>Experience Level</h2>
+    <div class="question-subtitle">This determines which strains we show you. Safety first.</div>
+    <div class="options">
+      <div class="option" onclick="answer('experience', 'beginner')">
+        <strong>First Timer</strong><br>
+        <small style="opacity: 0.7">New to botanicals or kratom specifically</small>
+      </div>
+      <div class="option" onclick="answer('experience', 'moderate')">
+        <strong>Some Experience</strong><br>
+        <small style="opacity: 0.7">Tried a few strains, know the basics</small>
+      </div>
+      <div class="option" onclick="answer('experience', 'experienced')">
+        <strong>Connoisseur</strong><br>
+        <small style="opacity: 0.7">Know your veins, regions, and alkaloid profiles</small>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Question 2: Primary Intent (Mapped to interview data) -->
+  <div class="question" data-q="1">
+    <h2>What are you seeking?</h2>
+    <div class="question-subtitle">Different strains have different "personalities"</div>
+    <div class="options">
+      <div class="option" onclick="answer('intent', 'energy')">
+        <strong>Clean Energy & Focus</strong><br>
+        <small style="opacity: 0.7">Coffee replacement, productivity, mental clarity</small>
+      </div>
+      <div class="option" onclick="answer('intent', 'social')">
+        <strong>Social Euphoria</strong><br>
+        <small style="opacity: 0.7">Upbeat, talkative, mood lift for social settings</small>
+      </div>
+      <div class="option" onclick="answer('intent', 'relax')">
+        <strong>Deep Relaxation</strong><br>
+        <small style="opacity: 0.7">Couch-lock, sedating, heavy relief</small>
+      </div>
+      <div class="option" onclick="answer('intent', 'relief')">
+        <strong>Pain & Anxiety Relief</strong><br>
+        <small style="opacity: 0.7">Therapeutic use, comfort, taking the edge off</small>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Question 3: Time of Day (Filters by strain.time array) -->
+  <div class="question" data-q="2">
+    <h2>When do you prefer?</h2>
+    <div class="question-subtitle">Some strains are too stimulating or sedating for certain times</div>
+    <div class="options">
+      <div class="option" onclick="answer('time', 'morning')">
+        <strong>Morning</strong><br>
+        <small style="opacity: 0.7">Start the day, replace coffee</small>
+      </div>
+      <div class="option" onclick="answer('time', 'afternoon')">
+        <strong>Afternoon</strong><br>
+        <small style="opacity: 0.7">Mid-day boost or social situations</small>
+      </div>
+      <div class="option" onclick="answer('time', 'evening')">
+        <strong>Evening</strong><br>
+        <small style="opacity: 0.7">Wind down, relax, socialize at night</small>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Question 4: Speed/Intensity (Mapped to strain.speed) -->
+  <div class="question" data-q="3">
+    <h2>Preferred Intensity</h2>
+    <div class="question-subtitle">How fast and hard should it hit?</div>
+    <div class="options">
+      <div class="option" onclick="answer('speed', 'gentle')">
+        <strong>Gentle & Smooth</strong><br>
+        <small style="opacity: 0.7">Slow onset, manageable, subtle</small>
+      </div>
+      <div class="option" onclick="answer('speed', 'moderate')">
+        <strong>Balanced & Moderate</strong><br>
+        <small style="opacity: 0.7">Middle of the road, predictable</small>
+      </div>
+      <div class="option" onclick="answer('speed', 'fast')">
+        <strong>Fast & Potent</strong><br>
+        <small style="opacity: 0.7">Quick onset, strong effects, espresso-style</small>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Results -->
+  <div id="results" style="display: none;">
+    <h2 style="font-family: 'Orbitron', sans-serif; color: var(--gold); text-align: center; margin-bottom: 0.5rem;">Your Top Matches</h2>
+    <p style="text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 2rem; font-family: 'Rajdhani', sans-serif;">
+      Based on your experience level and preferences
+    </p>
+    
+    <div id="beginner-warning" class="warning-box" style="display: none;">
+      ⚠️ <strong>Beginner Mode:</strong> We've filtered out experienced-only strains. Start slow with lower doses.
+    </div>
+    
+    <div id="resultContainer"></div>
+    
+    <div class="results-actions">
+      <a href="/catalog" class="btn" style="text-decoration: none;">Browse Full Catalog</a>
+      <button onclick="resetQuiz()" class="btn btn-secondary">Retake Quiz</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Strain database with interview-corrected metadata
+const strains = [
+  // === GREENS (Social to Focus spectrum) ===
+  { 
+    name: "Green Aceh", 
+    color: "green", 
+    speed: "balanced", 
+    experience: "experienced",
+    time: ["morning","afternoon","evening"], 
+    intent: ["social", "energy"],
+    potency: 9,
+    limited: false,
+    premium: true,
+    desc: "Intense, vital, rare. Upbeat social characteristics. Not for beginners.",
+    tags: ["Upbeat", "Social", "Rare"]
+  },
+  { 
+    name: "Green Dragon", 
+    color: "green", 
+    speed: "balanced", 
+    experience: "beginner",
+    time: ["morning","afternoon"], 
+    intent: ["social", "balance"],
+    potency: 6,
+    limited: false,
+    premium: false,
+    desc: "Euphoric and happy. Balanced for social or solo use. Comparable to Green Malay.",
+    tags: ["Euphoric", "Versatile", "Happy"]
+  },
+  { 
+    name: "Green Maeng Da", 
+    color: "green", 
+    speed: "fast", 
+    experience: "moderate",
+    time: ["morning","afternoon"], 
+    intent: ["energy", "focus"],
+    potency: 8,
+    limited: false,
+    premium: false,
+    desc: "The gold standard. High productivity strain. Stronger than typical greens.",
+    tags: ["Productivity", "Gold Standard", "Strong"]
+  },
+  { 
+    name: "Green Malay", 
+    color: "green", 
+    speed: "balanced", 
+    experience: "beginner",
+    time: ["morning","afternoon","evening"], 
+    intent: ["balance", "social"],
+    potency: 6,
+    limited: false,
+    premium: false,
+    desc: "Long duration, strong and versatile. Chill yet functional.",
+    tags: ["Long Lasting", "Versatile", "Reliable"]
+  },
+  { 
+    name: "Super Green", 
+    color: "green", 
+    speed: "fast", 
+    experience: "experienced",
+    time: ["morning"], 
+    intent: ["energy"],
+    potency: 10,
+    limited: false,
+    premium: false,
+    desc: "Maximum potency blend. Like espresso. For those who need serious energy.",
+    tags: ["Maximum Potency", "Espresso-like", "Blend"]
+  },
+  { 
+    name: "Green Thai", 
+    color: "green", 
+    speed: "moderate", 
+    experience: "beginner",
+    time: ["morning","afternoon"], 
+    intent: ["relief", "energy"],
+    potency: 5,
+    limited: false,
+    premium: false,
+    desc: "Traditional profile. Calm energy, good for discomfort. Moderate speed.",
+    tags: ["Traditional", "Calm Energy", "Pain Relief"]
+  },
+  { 
+    name: "Green Dracula", 
+    color: "green", 
+    speed: "fast", 
+    experience: "experienced",
+    time: ["afternoon","evening"], 
+    intent: ["social", "energy"],
+    potency: 8,
+    limited: true,
+    premium: false,
+    desc: "Exclusive limited collector's strain. Unique opportunity, not daily driver.",
+    tags: ["Limited", "Exclusive", "Collectible"]
+  },
+  
+  // === REDS (Sedation to Social spectrum) ===
+  { 
+    name: "Red Aceh", 
+    color: "red", 
+    speed: "slow", 
+    experience: "experienced",
+    time: ["evening"], 
+    intent: ["relax", "relief"],
+    potency: 9,
+    limited: false,
+    premium: true,
+    desc: "Couch-lock sedating. Heavy relief. Best for deep relaxation.",
+    tags: ["Couch Lock", "Heavy", "Sedating"]
+  },
+  { 
+    name: "Red Thai", 
+    color: "red", 
+    speed: "slow", 
+    experience: "beginner",
+    time: ["afternoon","evening"], 
+    intent: ["balance", "relief"],
+    potency: 4,
+    limited: false,
+    premium: false,
+    desc: "Traditional red profile. Slow creeper. Manageable during day or night.",
+    tags: ["Traditional", "Slow Creeper", "Gentle"]
+  },
+  { 
+    name: "Red Dragon", 
+    color: "red", 
+    speed: "moderate", 
+    experience: "beginner",
+    time: ["evening"], 
+    intent: ["social"],
+    potency: 6,
+    limited: false,
+    premium: false,
+    desc: "Aphrodisiac and socializing qualities. Different from Green Dragon.",
+    tags: ["Social", "Aphrodisiac", "Mood Lift"]
+  },
+  { 
+    name: "Red Bali", 
+    color: "red", 
+    speed: "slow", 
+    experience: "beginner",
+    time: ["evening"], 
+    intent: ["relax", "relief"],
+    potency: 7,
+    limited: false,
+    premium: false,
+    desc: "Classic feel. Best for relief, purely sedating. The standard red.",
+    tags: ["Classic", "Pain Relief", "Sedating"]
+  },
+  { 
+    name: "Red Maeng Da", 
+    color: "red", 
+    speed: "moderate", 
+    experience: "moderate",
+    time: ["afternoon"], 
+    intent: ["balance", "relief"],
+    potency: 7,
+    limited: false,
+    premium: false,
+    desc: "Premium red. Stronger than typical reds. Middle-ground energy.",
+    tags: ["Premium Red", "Stronger", "Balanced"]
+  },
+  { 
+    name: "Red Bentuangie", 
+    color: "red", 
+    speed: "slow", 
+    experience: "beginner",
+    time: ["evening"], 
+    intent: ["relax"],
+    potency: 6,
+    limited: true,
+    premium: false,
+    desc: "Fermented. Best taste, smooth, no tummy upset. Gentle sedation.",
+    tags: ["Fermented", "Smooth", "Best Taste"]
+  },
+  
+  // === WHITES (Energy/Focus spectrum) ===
+  { 
+    name: "White Maeng Da", 
+    color: "white", 
+    speed: "fast", 
+    experience: "beginner",
+    time: ["morning"], 
+    intent: ["energy", "focus"],
+    potency: 8,
+    limited: false,
+    premium: false,
+    desc: "Fast energy. Perfect coffee replacement. Clean stimulation.",
+    tags: ["Coffee Alternative", "Clean Energy", "Morning"]
+  },
+  { 
+    name: "White Aceh", 
+    color: "white", 
+    speed: "fast", 
+    experience: "experienced",
+    time: ["morning","afternoon"], 
+    intent: ["energy"],
+    potency: 9,
+    limited: false,
+    premium: true,
+    desc: "Smooth but intense. Medium duration. Stronger than White MD.",
+    tags: ["Intense", "Smooth", "Premium"]
+  },
+  { 
+    name: "White Horn", 
+    color: "white", 
+    speed: "fast", 
+    experience: "experienced",
+    time: ["morning"], 
+    intent: ["energy"],
+    potency: 8,
+    limited: false,
+    premium: false,
+    desc: "Premium energetic profile. Not smooth come-up, but potent.",
+    tags: ["Potent", "Energetic", "Premium"]
+  },
+  { 
+    name: "White Sumatra", 
+    color: "white", 
+    speed: "moderate", 
+    experience: "beginner",
+    time: ["morning"], 
+    intent: ["focus"],
+    potency: 6,
+    limited: false,
+    premium: false,
+    desc: "Lighter regional variety. Good for concentration without jitters.",
+    tags: ["Light", "Focus", "Gentle"]
+  },
+  { 
+    name: "White Elephant", 
+    color: "white", 
+    speed: "moderate", 
+    experience: "beginner",
+    time: ["morning","afternoon"], 
+    intent: ["balance", "energy"],
+    potency: 7,
+    limited: false,
+    premium: false,
+    desc: "Unusual large leaf type. Strong profile but manageable.",
+    tags: ["Unusual", "Strong", "Large Leaf"]
+  },
+  { 
+    name: "White Zombie", 
+    color: "white", 
+    speed: "fast", 
+    experience: "beginner",
+    time: ["morning"], 
+    intent: ["energy", "social"],
+    potency: 7,
+    limited: true,
+    premium: false,
+    desc: "Exclusive novelty strain. Named after the band. Rare collector item.",
+    tags: ["Limited", "Novelty", "Rare"]
+  },
+  
+  // === YELLOWS (Anxiety/Balance spectrum) ===
+  { 
+    name: "Yellow Dragon", 
+    color: "yellow", 
+    speed: "balanced", 
+    experience: "beginner",
+    time: ["evening"], 
+    intent: ["social", "relief"],
+    potency: 5,
+    limited: false,
+    premium: false,
+    desc: "Euphoric mix characteristics. More euphoric than other yellows.",
+    tags: ["Euphoric", "Social", "Evening"]
+  },
+  { 
+    name: "Yellow Hulu", 
+    color: "yellow", 
+    speed: "moderate", 
+    experience: "beginner",
+    time: ["afternoon"], 
+    intent: ["relief"],
+    potency: 5,
+    limited: false,
+    premium: false,
+    desc: "Kapuas region. Anxiolytic properties. Medium duration.",
+    tags: ["Anxiolytic", "Kapuas", "Balanced"]
+  },
+  { 
+    name: "Yellow Vietnam", 
+    color: "yellow", 
+    speed: "moderate", 
+    experience: "beginner",
+    time: ["morning","afternoon"], 
+    intent: ["relief", "focus"],
+    potency: 6,
+    limited: false,
+    premium: false,
+    desc: "Anxiety relief without sedation. Rare regional variety.",
+    tags: ["Rare", "Clear-headed", "Anxiety Relief"]
+  },
+  { 
+    name: "Yellow Maeng Da", 
+    color: "yellow", 
+    speed: "balanced", 
+    experience: "beginner",
+    time: ["afternoon"], 
+    intent: ["balance"],
+    potency: 5,
+    limited: false,
+    premium: false,
+    desc: "Premium drying process. Great balance of all characteristics.",
+    tags: ["Premium Process", "Balanced", "Smooth"]
+  },
+  { 
+    name: "Yellow Thai", 
+    color: "yellow", 
+    speed: "moderate", 
+    experience: "beginner",
+    time: ["evening"], 
+    intent: ["relief", "relax"],
+    potency: 5,
+    limited: true,
+    premium: false,
+    desc: "Traditional method. Gentle but strong anxiolytic. Take the edge off.",
+    tags: ["Limited", "Traditional", "Gentle"]
+  }
+];
+
+let answers = {};
+let currentQ = 0;
+const totalQ = 4;
+
+function answer(category, value) {
+  answers[category] = value;
+  
+  // Update progress
+  const progress = ((currentQ + 1) / totalQ) * 100;
+  document.getElementById('progress').style.width = progress + '%';
+  
+  // Hide current, show next or results
+  const questions = document.querySelectorAll('.question');
+  questions[currentQ].classList.remove('active');
+  
+  if (currentQ < totalQ - 1) {
+    currentQ++;
+    questions[currentQ].classList.add('active');
+  } else {
+    showResults();
+  }
+}
+
+function calculateScores() {
+  return strains.map(strain => {
+    let score = 0;
+    let reasons = [];
+    
+    // 1. EXPERIENCE FILTER (Critical)
+    if (answers.experience === 'beginner') {
+      if (strain.experience === 'beginner') {
+        score += 40;
+        reasons.push("Beginner friendly");
+      } else if (strain.experience === 'experienced') {
+        score -= 100; // Hard filter out
+        reasons.push("Too strong for beginners");
+      } else {
+        score += 20; // Moderate is okay for beginners with caution
+      }
+    } else if (answers.experience === 'experienced') {
+      if (strain.experience === 'experienced') {
+        score += 30;
+        reasons.push("Connoisseur grade");
+      } else if (strain.experience === 'beginner') {
+        score += 10; // Boring for experts but acceptable
+      }
+    } else {
+      // Moderate experience - all acceptable
+      score += 25;
+    }
+    
+    // 2. INTENT MATCHING (Weighted by strain's strength in that area)
+    if (answers.intent === 'energy' && strain.intent.includes('energy')) {
+      score += 30;
+      if (strain.potency >= 8) score += 10;
+      reasons.push("High energy");
+    }
+    if (answers.intent === 'social' && strain.intent.includes('social')) {
+      score += 30;
+      reasons.push("Social enhancement");
+    }
+    if (answers.intent === 'relax' && strain.intent.includes('relax')) {
+      score += 35; // Higher weight for sedation
+      if (strain.speed === 'slow') score += 10;
+      reasons.push("Deep relaxation");
+    }
+    if (answers.intent === 'relief' && strain.intent.includes('relief')) {
+      score += 35;
+      reasons.push("Therapeutic relief");
+    }
+    if (answers.intent === 'focus' && strain.intent.includes('focus')) {
+      score += 30;
+      reasons.push("Mental clarity");
+    }
+    if (answers.intent === 'balance' && strain.intent.includes('balance')) {
+      score += 25;
+      reasons.push("Balanced effects");
+    }
+    
+    // 3. TIME MATCHING
+    if (strain.time.includes(answers.time)) {
+      score += 20;
+      reasons.push(`Good for ${answers.time}`);
+    } else if (answers.time === 'evening' && strain.time.includes('afternoon')) {
+      score += 10; // Partial credit
+    }
+    
+    // 4. SPEED/POTENCY PREFERENCE
+    const speedMap = {
+      'gentle': 'slow',
+      'moderate': 'moderate', 
+      'fast': 'fast'
+    };
+    
+    if (answers.speed === 'gentle') {
+      if (strain.speed === 'slow') score += 25;
+      else if (strain.speed === 'moderate') score += 15;
+      else if (strain.speed === 'fast' && strain.potency > 7) score -= 10; // Too intense
+    } else if (answers.speed === 'moderate') {
+      if (strain.speed === 'moderate') score += 25;
+      else if (strain.speed === 'balanced') score += 20;
+      else score += 10;
+    } else if (answers.speed === 'fast') {
+      if (strain.speed === 'fast') score += 25;
+      else if (strain.potency >= 8) score += 15;
+    }
+    
+    // 5. CROSS-CATEGORY PENALTIES
+    // Don't recommend stimulating whites for evening
+    if (answers.time === 'evening' && strain.color === 'white' && strain.speed === 'fast') {
+      score -= 20;
+    }
+    // Don't recommend sedating reds for morning
+    if (answers.time === 'morning' && strain.color === 'red' && strain.speed === 'slow') {
+      score -= 15;
+    }
+    
+    return { strain, score, reasons };
+  }).filter(match => match.score > 0) // Remove negative scores (incompatible)
+    .sort((a, b) => b.score - a.score);
+}
+
+function showResults() {
+  document.getElementById('results').style.display = 'block';
+  
+  if (answers.experience === 'beginner') {
+    document.getElementById('beginner-warning').style.display = 'block';
+  }
+  
+  const matches = calculateScores();
+  const topMatches = matches.slice(0, 3);
+  const container = document.getElementById('resultContainer');
+  
+  container.innerHTML = topMatches.map((match, i) => {
+    const isTop = i === 0;
+    const s = match.strain;
+    
+    // Determine color accent
+    const colorMap = {
+      'green': '#00ff88',
+      'red': '#ff4444', 
+      'white': '#ffffff',
+      'yellow': '#ffd700'
+    };
+    const accentColor = colorMap[s.color] || 'var(--cyan)';
+    
+    return `
+      <div class="result-card ${isTop ? 'top-match' : ''}">
+        <div class="match-score">${Math.min(98, Math.max(75, match.score))}% Match</div>
+        
+        <div class="strain-badges">
+          ${s.limited ? '<span class="badge badge-limited">Limited Stock</span>' : ''}
+          ${s.premium ? '<span class="badge badge-premium">Premium +$15</span>' : ''}
+          ${s.experience === 'beginner' ? '<span class="badge badge-beginner">Beginner Safe</span>' : ''}
+          <span class="badge" style="background: ${accentColor}20; border: 1px solid ${accentColor}40; color: ${accentColor}; text-transform: capitalize;">${s.color}</span>
+        </div>
+        
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin: 0 0 0.5rem; color: #fff;">
+          ${s.name}
+        </h3>
+        
+        <div class="strain-meta">
+          <span style="text-transform: capitalize">${s.speed} onset</span>
+          <span>•</span>
+          <span>Potency: ${s.potency}/10</span>
+          <span>•</span>
+          <span>Best: ${s.time.join(', ')}</span>
+        </div>
+        
+        <p style="color: rgba(255,255,255,0.85); line-height: 1.6; font-size: 1.05rem; margin: 1rem 0;">
+          ${s.desc}
+        </p>
+        
+        <div class="strain-characteristics">
+          ${s.tags.map(tag => `<span class="char-tag">${tag}</span>`).join('')}
+        </div>
+        
+        <div style="margin-top: 1.5rem;">
+          <a href="/catalog#${s.name.toLowerCase().replace(/ /g,'-')}" 
+             class="btn" 
+             style="text-decoration: none; display: inline-block; margin-right: 0.5rem;">
+            View Details
+          </a>
+          ${s.limited ? '<span style="color: #ff4444; font-size: 0.9rem; font-family: Rajdhani;">Only a few left!</span>' : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  // Smooth scroll to results
+  setTimeout(() => {
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function resetQuiz() {
+  currentQ = 0;
+  answers = {};
+  document.getElementById('progress').style.width = '0%';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('beginner-warning').style.display = 'none';
+  
+  const questions = document.querySelectorAll('.question');
+  questions.forEach((q, i) => {
+    q.classList.toggle('active', i === 0);
+  });
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

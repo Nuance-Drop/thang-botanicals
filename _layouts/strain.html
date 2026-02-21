@@ -48,32 +48,32 @@ layout: default
     </div>
     
     <!-- Stats Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin: 2rem 0; padding: 2rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
-      <div style="text-align: center;">
-        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Energy</div>
-        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.energy }}/10</div>
+    <!-- Stats with Bar Graphs -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; padding: 2rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
+
+  {% assign stats = "energy|Energy,focus|Focus,pain|Pain Relief,anxiety|Anxiety Relief,social|Social" | split: "," %}
+  {% for stat in stats %}
+    {% assign pair = stat | split: "|" %}
+    {% assign key = pair[0] %}
+    {% assign label = pair[1] %}
+    {% assign value = page[key] %}
+    
+    <div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+        <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase;">{{ label }}</span>
+        <span style="font-size: 0.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ value }}/10</span>
       </div>
-      <div style="text-align: center;">
-        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Focus</div>
-        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.focus }}/10</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Pain Relief</div>
-        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.pain }}/10</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Anxiety Relief</div>
-        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.anxiety }}/10</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Social</div>
-        <div style="font-size: 1.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ page.social }}/10</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Speed</div>
-        <div style="font-size: 1.4rem; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize;">{{ page.speed }}</div>
+      <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+        <div style="width: {{ value | times: 10 }}%; height: 100%; background: linear-gradient(90deg, #ff006e, #FFD700); border-radius: 4px;"></div>
       </div>
     </div>
+  {% endfor %}
+  
+  <div style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+    <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Speed</div>
+    <div style="font-size: 1.4rem; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize; margin-top: 0.5rem;">{{ page.speed }}</div>
+  </div>
+</div>
     
     <!-- Tags -->
     <div style="margin: 2rem 0;">
@@ -143,6 +143,29 @@ layout: default
         <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-align: center;">
           You will receive a confirmation email within 24 hours. No payment required until availability confirmed.
         </p>
+        <!-- Compare Similar Strains -->
+<div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+  <h3 style="font-family: 'Orbitron', sans-serif; color: #FFD700; margin-bottom: 1.5rem;">Compare Similar Strains</h3>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+    {% assign similar = site.strains | where: "color", page.color | where_exp: "s", "s.name != page.name" | limit: 3 %}
+    {% for s in similar %}
+    <a href="{{ s.url | relative_url }}" style="text-decoration: none; color: inherit;">
+      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem; transition: all 0.3s;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <span style="font-weight: bold; color: #fff;">{{ s.name }}</span>
+          <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: capitalize;">{{ s.speed }}</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; font-size: 0.75rem;">
+          <span style="color: #00f5d4;">E{{ s.energy }}</span>
+          <span style="color: #ff006e;">F{{ s.focus }}</span>
+          <span style="color: #FFD700;">P{{ s.pain }}</span>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
       </form>
     </div>
   </div>
