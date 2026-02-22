@@ -299,3 +299,19 @@ h1::after, h2::after, h3::after {
   border-color: var(--accent-cyan);
   color: #5ef2d9;
 }
+
+.click-hint {
+  display: block;
+  text-align: center;
+  color: #FFD700;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 4px;
+}
+
+.result-card-button:hover .click-hint {
+  background: rgba(255,215,0,0.1);
+}

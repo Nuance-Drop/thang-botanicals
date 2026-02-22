@@ -301,24 +301,15 @@ title: Strain Finder | THANG Botanicals
   </div>
   
   <!-- Results -->
-  <div id="results" style="display: none;">
-    <h2 style="font-family: 'Orbitron', sans-serif; color: var(--gold); text-align: center; margin-bottom: 0.5rem;">Your Top Matches</h2>
-    <p style="text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 2rem; font-family: 'Rajdhani', sans-serif;">
-      Based on your experience level and preferences
-    </p>
-    
-    <div id="beginner-warning" class="warning-box" style="display: none;">
-      ⚠️ <strong>Beginner Mode:</strong> We've filtered out experienced-only strains. Start slow with lower doses.
-    </div>
-    
-    <div id="resultContainer"></div>
-    
-    <div class="results-actions">
-      <a href="{{ '/catalog' | relative_url }}" class="btn" style="text-decoration: none;">Browse Full Catalog</a>
-      <button onclick="resetQuiz()" class="btn btn-secondary">Retake Quiz</button>
-    </div>
+  <a href="{{ '/strains/' | append: match.strain.name | slugify | relative_url }}" 
+   class="result-card-button" 
+   style="display: block; text-decoration: none; color: inherit;">
+  <div class="result-card">
+    <h3>{{ match.strain.name }}</h3>
+    <p>{{ match.strain.short_desc }}</p>
+    <span class="click-hint">Click for details →</span>
   </div>
-</div>
+</a>
 
 <script>
 // Strain database with interview-corrected metadata
