@@ -1,0 +1,191 @@
+---
+layout: default
+title: Web Design & Development | Garland, TX
+permalink: /work-with-me/
+---
+
+<style>
+  .portfolio-hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: linear-gradient(135deg, rgba(10,14,39,0.9), rgba(20,27,61,0.9));
+    border-bottom: 1px solid rgba(255,215,0,0.2);
+  }
+  
+  .portfolio-hero h1 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-primary);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  
+  .portfolio-hero p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .case-study {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+  
+  .case-study-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin: 2rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    .case-study-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  
+  .case-study-image {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .case-study-image::before {
+    content: 'THANG Botanicals';
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-family: 'Cinzel', serif;
+    color: var(--gold-primary);
+    font-size: 0.8rem;
+  }
+  
+  .mockup-browser {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .mockup-header {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #ffbd2e; }
+  .dot-green { background: #28c840; }
+  
+  .mockup-content {
+    height: 150px;
+    background: linear-gradient(135deg, rgba(255,0,110,0.1), rgba(0,245,212,0.1));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+  }
+  
+  .tech-stack {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
+  
+  .tech-tag {
+    padding: 0.3rem 0.8rem;
+    background: rgba(0,245,212,0.1);
+    border: 1px solid rgba(0,245,212,0.3);
+    color: #00f5d4;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+  
+  .service-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s;
+  }
+  
+  .service-card:hover {
+    border-color: var(--gold-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255,215,0,0.1);
+  }
+  
+  .service-card h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-primary);
+    margin-bottom: 1rem;
+  }
+  
+  .price-tag {
+    font-size: 1.5rem;
+    color: #00f5d4;
+    font-family: 'Cinzel', serif;
+    margin: 1rem 0;
+  }
+  
+  .contact-cta {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: rgba(0,0,0,0.2);
+    margin-top: 3rem;
+  }
+  
+  .contact-cta h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-primary);
+    margin-bottom: 1.5rem;
+  }
+  
+  .email-link {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--gold-primary), #ff9500);
+    color: #000;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: transform 0.3s;
+  }
+  
+  .email-link:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+<div class="portfolio-hero">
+  <h1>Web Design & Development</h1>
+  <p>I build fast, secure, conversion-focused websites for local businesses in Garland, Dallas, and across Texas. No WordPress bloat. No monthly SaaS fees. Just clean code that works.</p>
+</div>
+
+<div class="case-study">
+  <h2 style="font-family

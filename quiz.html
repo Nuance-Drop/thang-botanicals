@@ -20,7 +20,7 @@ title: Strain Finder | THANG Botanicals
   
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--gold), var(--neon-pink));
+    background: linear-gradient(90deg, var(--gold-primary), var(--accent-pink));
     width: 0%;
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 0 15px rgba(255, 0, 110, 0.5);
@@ -39,17 +39,17 @@ title: Strain Finder | THANG Botanicals
   }
   
   .question h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    color: var(--gold);
+    color: var(--gold-primary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
   
   .question-subtitle {
     color: rgba(255,255,255,0.6);
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Inter', sans-serif;
     margin-bottom: 2rem;
     font-size: 1.1rem;
   }
@@ -66,7 +66,7 @@ title: Strain Finder | THANG Botanicals
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.1rem;
     position: relative;
     overflow: hidden;
@@ -74,7 +74,7 @@ title: Strain Finder | THANG Botanicals
   
   .option:hover {
     background: rgba(255,0,110,0.08);
-    border-color: var(--neon-pink);
+    border-color: var(--accent-pink);
     transform: translateX(8px);
     box-shadow: 0 0 30px rgba(255,0,110,0.15);
   }
@@ -86,7 +86,7 @@ title: Strain Finder | THANG Botanicals
     top: 0;
     height: 100%;
     width: 3px;
-    background: var(--neon-pink);
+    background: var(--accent-pink);
     opacity: 0;
     transition: opacity 0.3s;
   }
@@ -95,31 +95,81 @@ title: Strain Finder | THANG Botanicals
     opacity: 1;
   }
   
+  .option strong {
+    display: block;
+    color: var(--gold-primary);
+    margin-bottom: 0.3rem;
+    font-family: 'Cinzel', serif;
+  }
+  
+  .option small {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+  }
+  
+  /* Results Styling */
+  #results {
+    display: none;
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .result-card-wrapper {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .result-card-wrapper:hover {
+    transform: translateY(-5px);
+  }
+  
   .result-card {
     background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(22,33,62,0.9));
     border: 1px solid rgba(255,215,0,0.2);
     border-radius: 16px;
     padding: 2rem;
-    margin-bottom: 1.5rem;
     position: relative;
     backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .result-card:hover {
+    border-color: var(--gold-primary);
+    box-shadow: 0 10px 40px rgba(255,215,0,0.15);
   }
   
   .result-card.top-match {
-    border-color: var(--gold);
-    box-shadow: 0 0 40px rgba(255,215,0,0.15);
-    transform: scale(1.02);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 40px rgba(255,215,0,0.2);
+    background: linear-gradient(135deg, rgba(26,26,46,0.95), rgba(32,42,72,0.95));
+  }
+  
+  .click-header {
+    text-align: center;
+    color: var(--gold-primary);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 4px;
+    background: rgba(255,215,0,0.05);
   }
   
   .match-score {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    background: linear-gradient(135deg, var(--neon-pink), #ff006e);
+    background: linear-gradient(135deg, var(--accent-pink), #ff006e);
     color: white;
     padding: 0.4rem 1rem;
     border-radius: 20px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Cinzel', serif;
     font-size: 0.75rem;
     font-weight: bold;
   }
@@ -135,8 +185,9 @@ title: Strain Finder | THANG Botanicals
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
     font-size: 0.7rem;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Cinzel', serif;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   
   .badge-limited {
@@ -148,7 +199,7 @@ title: Strain Finder | THANG Botanicals
   .badge-premium {
     background: rgba(255,215,0,0.2);
     border: 1px solid rgba(255,215,0,0.4);
-    color: var(--gold);
+    color: var(--gold-primary);
   }
   
   .badge-beginner {
@@ -161,9 +212,24 @@ title: Strain Finder | THANG Botanicals
     display: flex;
     gap: 1rem;
     margin: 0.5rem 0 1rem;
-    font-family: 'Rajdhani', sans-serif;
-    color: var(--cyan);
+    font-family: 'Inter', sans-serif;
+    color: var(--accent-cyan);
     font-size: 0.9rem;
+    flex-wrap: wrap;
+  }
+  
+  .strain-photo-placeholder {
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(255,255,255,0.05));
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.9rem;
+    border: 1px dashed rgba(255,255,255,0.2);
   }
   
   .strain-characteristics {
@@ -179,6 +245,7 @@ title: Strain Finder | THANG Botanicals
     border-radius: 20px;
     font-size: 0.8rem;
     color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.1);
   }
   
   .results-actions {
@@ -193,10 +260,16 @@ title: Strain Finder | THANG Botanicals
     background: transparent;
     border: 1px solid rgba(255,255,255,0.2);
     color: white;
+    padding: 1rem 2rem;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s;
   }
   
   .btn-secondary:hover {
-    border-color: var(--neon-pink);
+    border-color: var(--accent-pink);
     background: rgba(255,0,110,0.1);
   }
   
@@ -207,7 +280,47 @@ title: Strain Finder | THANG Botanicals
     padding: 1rem;
     margin-bottom: 2rem;
     color: #ffc107;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .warning-box strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .avoid-warning {
+    background: rgba(255,0,0,0.1);
+    border: 1px solid rgba(255,0,0,0.3);
+    color: #ff6b6b;
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 600px) {
+    .quiz-container {
+      padding: 1rem;
+    }
+    
+    .question h2 {
+      font-size: 1.4rem;
+    }
+    
+    .option {
+      padding: 1rem;
+    }
+    
+    .result-card {
+      padding: 1.5rem;
+    }
+    
+    .match-score {
+      position: static;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
   }
 </style>
 
@@ -219,104 +332,142 @@ title: Strain Finder | THANG Botanicals
   <!-- Question 1: Experience (Critical Safety Filter) -->
   <div class="question active" data-q="0">
     <h2>Experience Level</h2>
-    <div class="question-subtitle">This determines which strains we show you. Safety first.</div>
+    <div class="question-subtitle">This determines which strains we show you. Safety first—some strains are not for beginners.</div>
     <div class="options">
       <div class="option" onclick="answer('experience', 'beginner')">
-        <strong>First Timer</strong><br>
-        <small style="opacity: 0.7">New to botanicals or kratom specifically</small>
+        <strong>First Timer</strong>
+        <small>New to botanicals or kratom specifically</small>
       </div>
       <div class="option" onclick="answer('experience', 'moderate')">
-        <strong>Some Experience</strong><br>
-        <small style="opacity: 0.7">Tried a few strains, know the basics</small>
+        <strong>Some Experience</strong>
+        <small>Tried a few strains, know the basics, 6+ months use</small>
       </div>
       <div class="option" onclick="answer('experience', 'experienced')">
-        <strong>Connoisseur</strong><br>
-        <small style="opacity: 0.7">Know your veins, regions, and alkaloid profiles</small>
+        <strong>Connoisseur</strong>
+        <small>Years of experience, know your veins, regions, and dosing</small>
       </div>
     </div>
   </div>
   
-  <!-- Question 2: Primary Intent (Mapped to interview data) -->
+  <!-- Question 2: Primary Intent -->
   <div class="question" data-q="1">
     <h2>What are you seeking?</h2>
     <div class="question-subtitle">Different strains have different "personalities"</div>
     <div class="options">
       <div class="option" onclick="answer('intent', 'energy')">
-        <strong>Clean Energy & Focus</strong><br>
-        <small style="opacity: 0.7">Coffee replacement, productivity, mental clarity</small>
+        <strong>Clean Energy & Focus</strong>
+        <small>Coffee replacement, productivity, mental clarity (nootropic)</small>
       </div>
       <div class="option" onclick="answer('intent', 'social')">
-        <strong>Social Euphoria</strong><br>
-        <small style="opacity: 0.7">Upbeat, talkative, mood lift for social settings</small>
+        <strong>Social Euphoria</strong>
+        <small>Upbeat, talkative, mood lift for social settings</small>
       </div>
       <div class="option" onclick="answer('intent', 'relax')">
-        <strong>Deep Relaxation</strong><br>
-        <small style="opacity: 0.7">Couch-lock, sedating, heavy relief</small>
+        <strong>Deep Relaxation</strong>
+        <small>Couch-lock, sedating, heavy relief for evening</small>
       </div>
       <div class="option" onclick="answer('intent', 'relief')">
-        <strong>Pain & Anxiety Relief</strong><br>
-        <small style="opacity: 0.7">Therapeutic use, comfort, taking the edge off</small>
+        <strong>Pain & Anxiety Relief</strong>
+        <small>Therapeutic use, comfort, taking the edge off without sedation</small>
+      </div>
+      <div class="option" onclick="answer('intent', 'balance')">
+        <strong>Balanced All-Rounder</strong>
+        <small>Jack of all trades—good for any situation</small>
       </div>
     </div>
   </div>
   
-  <!-- Question 3: Time of Day (Filters by strain.time array) -->
+  <!-- Question 3: Time of Day -->
   <div class="question" data-q="2">
     <h2>When do you prefer?</h2>
     <div class="question-subtitle">Some strains are too stimulating or sedating for certain times</div>
     <div class="options">
       <div class="option" onclick="answer('time', 'morning')">
-        <strong>Morning</strong><br>
-        <small style="opacity: 0.7">Start the day, replace coffee</small>
+        <strong>Morning</strong>
+        <small>Start the day, replace coffee, get going</small>
       </div>
       <div class="option" onclick="answer('time', 'afternoon')">
-        <strong>Afternoon</strong><br>
-        <small style="opacity: 0.7">Mid-day boost or social situations</small>
+        <strong>Afternoon</strong>
+        <small>Mid-day boost or social situations</small>
       </div>
       <div class="option" onclick="answer('time', 'evening')">
-        <strong>Evening</strong><br>
-        <small style="opacity: 0.7">Wind down, relax, socialize at night</small>
+        <strong>Evening</strong>
+        <small>Wind down, relax, socialize at night, sleep prep</small>
+      </div>
+      <div class="option" onclick="answer('time', 'anytime')">
+        <strong>Anytime</strong>
+        <small>Flexible—need something that works whenever</small>
       </div>
     </div>
   </div>
   
-  <!-- Question 4: Speed/Intensity (Mapped to strain.speed) -->
+  <!-- Question 4: Speed/Intensity -->
   <div class="question" data-q="3">
     <h2>Preferred Intensity</h2>
     <div class="question-subtitle">How fast and hard should it hit?</div>
     <div class="options">
       <div class="option" onclick="answer('speed', 'gentle')">
-        <strong>Gentle & Smooth</strong><br>
-        <small style="opacity: 0.7">Slow onset, manageable, subtle</small>
+        <strong>Gentle & Smooth</strong>
+        <small>Slow onset, manageable, subtle—easy on the stomach</small>
       </div>
       <div class="option" onclick="answer('speed', 'moderate')">
-        <strong>Balanced & Moderate</strong><br>
-        <small style="opacity: 0.7">Middle of the road, predictable</small>
+        <strong>Balanced & Moderate</strong>
+        <small>Middle of the road, predictable, reliable</small>
       </div>
       <div class="option" onclick="answer('speed', 'fast')">
-        <strong>Fast & Potent</strong><br>
-        <small style="opacity: 0.7">Quick onset, strong effects, espresso-style</small>
+        <strong>Fast & Potent</strong>
+        <small>Quick onset, strong effects, espresso-style kick</small>
       </div>
     </div>
   </div>
   
-  <!-- Results -->
-  <a href="{{ '/strains/' | append: match.strain.name | slugify | relative_url }}" 
-   class="result-card-button" 
-   style="display: block; text-decoration: none; color: inherit;">
-  <div class="result-card">
-    <h3>{{ match.strain.name }}</h3>
-    <p>{{ match.strain.short_desc }}</p>
-    <span class="click-hint">Click for details →</span>
+  <!-- Question 5: Health/Safety (Optional but recommended) -->
+  <div class="question" data-q="4">
+    <h2>Health Considerations</h2>
+    <div class="question-subtitle">Help us filter for your safety (optional)</div>
+    <div class="options">
+      <div class="option" onclick="answer('health', 'sensitive')">
+        <strong>Sensitive Stomach</strong>
+        <small>Prone to nausea—need gentle, fermented, or smooth strains</small>
+      </div>
+      <div class="option" onclick="answer('health', 'anxiety')">
+        <strong>Prone to Anxiety</strong>
+        <small>Avoid overly stimulating strains that might cause jitters</small>
+      </div>
+      <div class="option" onclick="answer('health', 'none')">
+        <strong>No Special Concerns</strong>
+        <small>Standard tolerance, no known sensitivities</small>
+      </div>
+    </div>
   </div>
-</a>
+  
+  <!-- Results Section -->
+  <div id="results">
+    <div class="warning-box" id="beginner-warning" style="display: none;">
+      <strong>⚠️ Beginner Safety Notice</strong>
+      We've filtered out high-potency strains. Start low and slow. If a strain makes you nauseous, try a smaller amount or switch to a gentler variety like Yellow Thai or Red Bentuangie.
+    </div>
+    
+    <h2 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 2rem; text-align: center;">
+      Your Top 3 Matches
+    </h2>
+    
+    <div id="resultContainer"></div>
+    
+    <div class="results-actions">
+      <button class="btn-secondary" onclick="resetQuiz()">Retake Quiz</button>
+      <a href="{{ '/catalog' | relative_url }}" class="btn-gold" style="text-decoration: none; display: inline-block;">View Full Catalog</a>
+    </div>
+  </div>
+</div>
 
 <script>
-// Strain database with interview-corrected metadata
+// Complete strain database with all metadata from interview
 const strains = [
-  // === GREENS (Social to Focus spectrum) ===
+  // === GREENS ===
   { 
     name: "Green Aceh", 
+    slug: "green-aceh",
     color: "green", 
     speed: "balanced", 
     experience: "experienced",
@@ -325,11 +476,14 @@ const strains = [
     potency: 9,
     limited: false,
     premium: true,
-    desc: "Intense, vital, rare. Upbeat social characteristics. Not for beginners.",
-    tags: ["Upbeat", "Social", "Rare"]
+    desc: "Intense, vital, rare. Upbeat social characteristics. Seriously more intense—requires experience.",
+    tags: ["Upbeat", "Social", "Rare", "Intense"],
+    avoidIf: ["beginner", "sensitive"],
+    stats: { energy: 8, focus: 6, pain: 5, anxiety: 4, social: 9 }
   },
   { 
     name: "Green Dragon", 
+    slug: "green-dragon",
     color: "green", 
     speed: "balanced", 
     experience: "beginner",
@@ -339,10 +493,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Euphoric and happy. Balanced for social or solo use. Comparable to Green Malay.",
-    tags: ["Euphoric", "Versatile", "Happy"]
+    tags: ["Euphoric", "Versatile", "Happy"],
+    avoidIf: [],
+    stats: { energy: 6, focus: 5, pain: 4, anxiety: 6, social: 8 }
   },
   { 
     name: "Green Maeng Da", 
+    slug: "green-maeng-da",
     color: "green", 
     speed: "fast", 
     experience: "moderate",
@@ -352,10 +509,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "The gold standard. High productivity strain. Stronger than typical greens.",
-    tags: ["Productivity", "Gold Standard", "Strong"]
+    tags: ["Productivity", "Gold Standard", "Strong"],
+    avoidIf: ["sensitive"],
+    stats: { energy: 9, focus: 8, pain: 6, anxiety: 5, social: 5 }
   },
   { 
     name: "Green Malay", 
+    slug: "green-malay",
     color: "green", 
     speed: "balanced", 
     experience: "beginner",
@@ -365,10 +525,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Long duration, strong and versatile. Chill yet functional.",
-    tags: ["Long Lasting", "Versatile", "Reliable"]
+    tags: ["Long Lasting", "Versatile", "Reliable"],
+    avoidIf: [],
+    stats: { energy: 6, focus: 6, pain: 5, anxiety: 6, social: 7 }
   },
   { 
     name: "Super Green", 
+    slug: "super-green",
     color: "green", 
     speed: "fast", 
     experience: "experienced",
@@ -378,10 +541,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Maximum potency blend. Like espresso. For those who need serious energy.",
-    tags: ["Maximum Potency", "Espresso-like", "Blend"]
+    tags: ["Maximum Potency", "Espresso-like", "Blend"],
+    avoidIf: ["beginner", "anxiety", "sensitive"],
+    stats: { energy: 10, focus: 7, pain: 4, anxiety: 3, social: 4 }
   },
   { 
     name: "Green Thai", 
+    slug: "green-thai",
     color: "green", 
     speed: "moderate", 
     experience: "beginner",
@@ -391,10 +557,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Traditional profile. Calm energy, good for discomfort. Moderate speed.",
-    tags: ["Traditional", "Calm Energy", "Pain Relief"]
+    tags: ["Traditional", "Calm Energy", "Pain Relief"],
+    avoidIf: [],
+    stats: { energy: 6, focus: 5, pain: 7, anxiety: 6, social: 5 }
   },
   { 
     name: "Green Dracula", 
+    slug: "green-dracula",
     color: "green", 
     speed: "fast", 
     experience: "experienced",
@@ -404,12 +573,15 @@ const strains = [
     limited: true,
     premium: false,
     desc: "Exclusive limited collector's strain. Unique opportunity, not daily driver.",
-    tags: ["Limited", "Exclusive", "Collectible"]
+    tags: ["Limited", "Exclusive", "Collectible"],
+    avoidIf: ["beginner"],
+    stats: { energy: 8, focus: 6, pain: 4, anxiety: 5, social: 8 }
   },
   
-  // === REDS (Sedation to Social spectrum) ===
+  // === REDS ===
   { 
     name: "Red Aceh", 
+    slug: "red-aceh",
     color: "red", 
     speed: "slow", 
     experience: "experienced",
@@ -419,10 +591,13 @@ const strains = [
     limited: false,
     premium: true,
     desc: "Couch-lock sedating. Heavy relief. Best for deep relaxation.",
-    tags: ["Couch Lock", "Heavy", "Sedating"]
+    tags: ["Couch Lock", "Heavy", "Sedating"],
+    avoidIf: ["beginner"],
+    stats: { energy: 2, focus: 3, pain: 9, anxiety: 8, social: 3 }
   },
   { 
     name: "Red Thai", 
+    slug: "red-thai",
     color: "red", 
     speed: "slow", 
     experience: "beginner",
@@ -432,10 +607,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Traditional red profile. Slow creeper. Manageable during day or night.",
-    tags: ["Traditional", "Slow Creeper", "Gentle"]
+    tags: ["Traditional", "Slow Creeper", "Gentle"],
+    avoidIf: [],
+    stats: { energy: 3, focus: 4, pain: 6, anxiety: 7, social: 5 }
   },
   { 
     name: "Red Dragon", 
+    slug: "red-dragon",
     color: "red", 
     speed: "moderate", 
     experience: "beginner",
@@ -445,10 +623,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Aphrodisiac and socializing qualities. Different from Green Dragon.",
-    tags: ["Social", "Aphrodisiac", "Mood Lift"]
+    tags: ["Social", "Aphrodisiac", "Mood Lift"],
+    avoidIf: [],
+    stats: { energy: 5, focus: 5, pain: 4, anxiety: 6, social: 9 }
   },
   { 
     name: "Red Bali", 
+    slug: "red-bali",
     color: "red", 
     speed: "slow", 
     experience: "beginner",
@@ -458,10 +639,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Classic feel. Best for relief, purely sedating. The standard red.",
-    tags: ["Classic", "Pain Relief", "Sedating"]
+    tags: ["Classic", "Pain Relief", "Sedating"],
+    avoidIf: [],
+    stats: { energy: 2, focus: 3, pain: 9, anxiety: 7, social: 3 }
   },
   { 
     name: "Red Maeng Da", 
+    slug: "red-maeng-da",
     color: "red", 
     speed: "moderate", 
     experience: "moderate",
@@ -471,10 +655,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Premium red. Stronger than typical reds. Middle-ground energy.",
-    tags: ["Premium Red", "Stronger", "Balanced"]
+    tags: ["Premium Red", "Stronger", "Balanced"],
+    avoidIf: [],
+    stats: { energy: 5, focus: 5, pain: 8, anxiety: 6, social: 5 }
   },
   { 
     name: "Red Bentuangie", 
+    slug: "red-bentuangie",
     color: "red", 
     speed: "slow", 
     experience: "beginner",
@@ -484,12 +671,15 @@ const strains = [
     limited: true,
     premium: false,
     desc: "Fermented. Best taste, smooth, no tummy upset. Gentle sedation.",
-    tags: ["Fermented", "Smooth", "Best Taste"]
+    tags: ["Fermented", "Smooth", "Best Taste", "Gentle"],
+    avoidIf: [],
+    stats: { energy: 2, focus: 3, pain: 7, anxiety: 8, social: 4 }
   },
   
-  // === WHITES (Energy/Focus spectrum) ===
+  // === WHITES ===
   { 
     name: "White Maeng Da", 
+    slug: "white-maeng-da",
     color: "white", 
     speed: "fast", 
     experience: "beginner",
@@ -499,10 +689,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Fast energy. Perfect coffee replacement. Clean stimulation.",
-    tags: ["Coffee Alternative", "Clean Energy", "Morning"]
+    tags: ["Coffee Alternative", "Clean Energy", "Morning"],
+    avoidIf: ["anxiety"],
+    stats: { energy: 9, focus: 8, pain: 3, anxiety: 4, social: 5 }
   },
   { 
     name: "White Aceh", 
+    slug: "white-aceh",
     color: "white", 
     speed: "fast", 
     experience: "experienced",
@@ -512,10 +705,13 @@ const strains = [
     limited: false,
     premium: true,
     desc: "Smooth but intense. Medium duration. Stronger than White MD.",
-    tags: ["Intense", "Smooth", "Premium"]
+    tags: ["Intense", "Smooth", "Premium"],
+    avoidIf: ["beginner", "anxiety"],
+    stats: { energy: 9, focus: 7, pain: 4, anxiety: 3, social: 6 }
   },
   { 
     name: "White Horn", 
+    slug: "white-horn",
     color: "white", 
     speed: "fast", 
     experience: "experienced",
@@ -525,10 +721,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Premium energetic profile. Not smooth come-up, but potent.",
-    tags: ["Potent", "Energetic", "Premium"]
+    tags: ["Potent", "Energetic", "Premium"],
+    avoidIf: ["beginner", "anxiety", "sensitive"],
+    stats: { energy: 9, focus: 6, pain: 3, anxiety: 3, social: 5 }
   },
   { 
     name: "White Sumatra", 
+    slug: "white-sumatra",
     color: "white", 
     speed: "moderate", 
     experience: "beginner",
@@ -538,10 +737,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Lighter regional variety. Good for concentration without jitters.",
-    tags: ["Light", "Focus", "Gentle"]
+    tags: ["Light", "Focus", "Gentle"],
+    avoidIf: [],
+    stats: { energy: 6, focus: 8, pain: 3, anxiety: 6, social: 4 }
   },
   { 
     name: "White Elephant", 
+    slug: "white-elephant",
     color: "white", 
     speed: "moderate", 
     experience: "beginner",
@@ -551,10 +753,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Unusual large leaf type. Strong profile but manageable.",
-    tags: ["Unusual", "Strong", "Large Leaf"]
+    tags: ["Unusual", "Strong", "Large Leaf"],
+    avoidIf: [],
+    stats: { energy: 7, focus: 6, pain: 4, anxiety: 5, social: 6 }
   },
   { 
     name: "White Zombie", 
+    slug: "white-zombie",
     color: "white", 
     speed: "fast", 
     experience: "beginner",
@@ -564,12 +769,15 @@ const strains = [
     limited: true,
     premium: false,
     desc: "Exclusive novelty strain. Named after the band. Rare collector item.",
-    tags: ["Limited", "Novelty", "Rare"]
+    tags: ["Limited", "Novelty", "Rare"],
+    avoidIf: ["anxiety"],
+    stats: { energy: 8, focus: 6, pain: 3, anxiety: 4, social: 7 }
   },
   
-  // === YELLOWS (Anxiety/Balance spectrum) ===
+  // === YELLOWS ===
   { 
     name: "Yellow Dragon", 
+    slug: "yellow-dragon",
     color: "yellow", 
     speed: "balanced", 
     experience: "beginner",
@@ -579,10 +787,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Euphoric mix characteristics. More euphoric than other yellows.",
-    tags: ["Euphoric", "Social", "Evening"]
+    tags: ["Euphoric", "Social", "Evening"],
+    avoidIf: [],
+    stats: { energy: 5, focus: 5, pain: 5, anxiety: 7, social: 8 }
   },
   { 
     name: "Yellow Hulu", 
+    slug: "yellow-hulu",
     color: "yellow", 
     speed: "moderate", 
     experience: "beginner",
@@ -592,10 +803,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Kapuas region. Anxiolytic properties. Medium duration.",
-    tags: ["Anxiolytic", "Kapuas", "Balanced"]
+    tags: ["Anxiolytic", "Kapuas", "Balanced"],
+    avoidIf: [],
+    stats: { energy: 4, focus: 5, pain: 5, anxiety: 8, social: 5 }
   },
   { 
     name: "Yellow Vietnam", 
+    slug: "yellow-vietnam",
     color: "yellow", 
     speed: "moderate", 
     experience: "beginner",
@@ -605,10 +819,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Anxiety relief without sedation. Rare regional variety.",
-    tags: ["Rare", "Clear-headed", "Anxiety Relief"]
+    tags: ["Rare", "Clear-headed", "Anxiety Relief"],
+    avoidIf: [],
+    stats: { energy: 6, focus: 7, pain: 4, anxiety: 9, social: 5 }
   },
   { 
     name: "Yellow Maeng Da", 
+    slug: "yellow-maeng-da",
     color: "yellow", 
     speed: "balanced", 
     experience: "beginner",
@@ -618,10 +835,13 @@ const strains = [
     limited: false,
     premium: false,
     desc: "Premium drying process. Great balance of all characteristics.",
-    tags: ["Premium Process", "Balanced", "Smooth"]
+    tags: ["Premium Process", "Balanced", "Smooth"],
+    avoidIf: [],
+    stats: { energy: 6, focus: 6, pain: 5, anxiety: 7, social: 6 }
   },
   { 
     name: "Yellow Thai", 
+    slug: "yellow-thai",
     color: "yellow", 
     speed: "moderate", 
     experience: "beginner",
@@ -631,13 +851,15 @@ const strains = [
     limited: true,
     premium: false,
     desc: "Traditional method. Gentle but strong anxiolytic. Take the edge off.",
-    tags: ["Limited", "Traditional", "Gentle"]
+    tags: ["Limited", "Traditional", "Gentle"],
+    avoidIf: [],
+    stats: { energy: 3, focus: 4, pain: 6, anxiety: 9, social: 5 }
   }
 ];
 
 let answers = {};
 let currentQ = 0;
-const totalQ = 4;
+const totalQ = 5;
 
 function answer(category, value) {
   answers[category] = value;
@@ -662,98 +884,131 @@ function calculateScores() {
   return strains.map(strain => {
     let score = 0;
     let reasons = [];
+    let warnings = [];
     
-    // 1. EXPERIENCE FILTER (Critical)
+    // 1. EXPERIENCE GATE (CRITICAL - Hard filters)
     if (answers.experience === 'beginner') {
+      // Hard block experienced-only strains
+      if (strain.experience === 'experienced') {
+        return { strain, score: -999, reasons: [], warnings: [] }; // Filtered out
+      }
       if (strain.experience === 'beginner') {
         score += 40;
-        reasons.push("Beginner friendly");
-      } else if (strain.experience === 'experienced') {
-        score -= 100; // Hard filter out
-        reasons.push("Too strong for beginners");
+        reasons.push("Perfect for beginners");
       } else {
-        score += 20; // Moderate is okay for beginners with caution
+        score += 20; // Moderate okay with caution
       }
     } else if (answers.experience === 'experienced') {
       if (strain.experience === 'experienced') {
-        score += 30;
+        score += 35;
         reasons.push("Connoisseur grade");
-      } else if (strain.experience === 'beginner') {
-        score += 10; // Boring for experts but acceptable
+      } else {
+        score += 15;
       }
     } else {
-      // Moderate experience - all acceptable
-      score += 25;
+      // Moderate - prefer moderate strains, allow others
+      if (strain.experience === 'moderate') {
+        score += 30;
+      } else {
+        score += 20;
+      }
     }
     
-    // 2. INTENT MATCHING (Weighted by strain's strength in that area)
-    if (answers.intent === 'energy' && strain.intent.includes('energy')) {
-      score += 30;
-      if (strain.potency >= 8) score += 10;
-      reasons.push("High energy");
-    }
-    if (answers.intent === 'social' && strain.intent.includes('social')) {
-      score += 30;
-      reasons.push("Social enhancement");
-    }
-    if (answers.intent === 'relax' && strain.intent.includes('relax')) {
-      score += 35; // Higher weight for sedation
-      if (strain.speed === 'slow') score += 10;
-      reasons.push("Deep relaxation");
-    }
-    if (answers.intent === 'relief' && strain.intent.includes('relief')) {
-      score += 35;
-      reasons.push("Therapeutic relief");
-    }
-    if (answers.intent === 'focus' && strain.intent.includes('focus')) {
-      score += 30;
-      reasons.push("Mental clarity");
-    }
-    if (answers.intent === 'balance' && strain.intent.includes('balance')) {
-      score += 25;
-      reasons.push("Balanced effects");
+    // 2. HEALTH FILTERS (Safety)
+    if (answers.health === 'sensitive') {
+      if (strain.avoidIf.includes('sensitive')) {
+        score -= 50;
+        warnings.push("May cause nausea—start very small");
+      }
+      // Bonus for gentle/fermented strains
+      if (strain.name.includes('Bentuangie') || strain.speed === 'slow' || strain.potency <= 5) {
+        score += 20;
+        reasons.push("Gentle on stomach");
+      }
     }
     
-    // 3. TIME MATCHING
+    if (answers.health === 'anxiety') {
+      if (strain.avoidIf.includes('anxiety')) {
+        score -= 60;
+        warnings.push("May increase anxiety—avoid if sensitive");
+      }
+      // Bonus for yellows and certain reds
+      if (strain.color === 'yellow' || (strain.color === 'red' && strain.speed === 'slow')) {
+        score += 15;
+        reasons.push("Anxiety-friendly");
+      }
+    }
+    
+    // 3. INTENT MATCHING
+    const intentWeights = {
+      'energy': 30,
+      'social': 30,
+      'relax': 35,
+      'relief': 35,
+      'balance': 25,
+      'focus': 30
+    };
+    
+    if (strain.intent.includes(answers.intent)) {
+      score += intentWeights[answers.intent] || 25;
+      reasons.push(`Great for ${answers.intent}`);
+      
+      // Extra for potency match on energy/relax
+      if (answers.intent === 'energy' && strain.potency >= 7) score += 10;
+      if (answers.intent === 'relax' && strain.speed === 'slow') score += 10;
+    }
+    
+    // 4. TIME MATCHING
     if (strain.time.includes(answers.time)) {
+      score += 25;
+      reasons.push(`Perfect for ${answers.time}`);
+    } else if (answers.time === 'anytime' && strain.time.length >= 3) {
       score += 20;
-      reasons.push(`Good for ${answers.time}`);
+      reasons.push("Flexible timing");
     } else if (answers.time === 'evening' && strain.time.includes('afternoon')) {
       score += 10; // Partial credit
     }
     
-    // 4. SPEED/POTENCY PREFERENCE
-    const speedMap = {
-      'gentle': 'slow',
-      'moderate': 'moderate', 
-      'fast': 'fast'
-    };
-    
+    // 5. SPEED/POTENCY PREFERENCE
     if (answers.speed === 'gentle') {
       if (strain.speed === 'slow') score += 25;
       else if (strain.speed === 'moderate') score += 15;
-      else if (strain.speed === 'fast' && strain.potency > 7) score -= 10; // Too intense
+      else if (strain.speed === 'fast') {
+        if (strain.potency > 7) score -= 15;
+        else score += 5;
+      }
     } else if (answers.speed === 'moderate') {
       if (strain.speed === 'moderate') score += 25;
       else if (strain.speed === 'balanced') score += 20;
       else score += 10;
     } else if (answers.speed === 'fast') {
-      if (strain.speed === 'fast') score += 25;
+      if (strain.speed === 'fast') score += 30;
       else if (strain.potency >= 8) score += 15;
+      else score += 5;
     }
     
-    // 5. CROSS-CATEGORY PENALTIES
-    // Don't recommend stimulating whites for evening
+    // 6. CROSS-CATEGORY PENALTIES
+    // Don't recommend fast whites for evening
     if (answers.time === 'evening' && strain.color === 'white' && strain.speed === 'fast') {
-      score -= 20;
+      score -= 25;
+      warnings.push("Too stimulating for evening");
     }
     // Don't recommend sedating reds for morning
     if (answers.time === 'morning' && strain.color === 'red' && strain.speed === 'slow') {
+      score -= 20;
+      warnings.push("Too sedating for morning");
+    }
+    // Don't recommend stimulating greens for evening unless specifically for social
+    if (answers.time === 'evening' && strain.color === 'green' && strain.speed === 'fast' && answers.intent !== 'social') {
       score -= 15;
     }
     
-    return { strain, score, reasons };
-  }).filter(match => match.score > 0) // Remove negative scores (incompatible)
+    // 7. PREMIUM/LIMITED BONUS (small nudge for variety)
+    if (strain.premium) score += 5;
+    if (strain.limited) score += 3;
+    
+    return { strain, score, reasons, warnings };
+  }).filter(match => match.score > 0)
     .sort((a, b) => b.score - a.score);
 }
 
@@ -768,9 +1023,20 @@ function showResults() {
   const topMatches = matches.slice(0, 3);
   const container = document.getElementById('resultContainer');
   
+  if (topMatches.length === 0) {
+    container.innerHTML = `
+      <div class="warning-box">
+        <strong>No perfect matches found</strong>
+        Try adjusting your preferences or <a href="{{ '/catalog' | relative_url }}" style="color: var(--gold-primary);">browse the full catalog</a>.
+      </div>
+    `;
+    return;
+  }
+  
   container.innerHTML = topMatches.map((match, i) => {
     const isTop = i === 0;
     const s = match.strain;
+    const matchPercent = Math.min(98, Math.max(70, Math.round(match.score / 2)));
     
     // Determine color accent
     const colorMap = {
@@ -779,48 +1045,53 @@ function showResults() {
       'white': '#ffffff',
       'yellow': '#ffd700'
     };
-    const accentColor = colorMap[s.color] || 'var(--cyan)';
+    const accentColor = colorMap[s.color] || 'var(--accent-cyan)';
+    
+    // Build warnings HTML
+    const warningsHtml = match.warnings.length > 0 ? 
+      `<div class="avoid-warning">⚠️ ${match.warnings.join(' • ')}</div>` : '';
     
     return `
-      <div class="result-card ${isTop ? 'top-match' : ''}">
-        <div class="match-score">${Math.min(98, Math.max(75, match.score))}% Match</div>
-        
-        <div class="strain-badges">
-          ${s.limited ? '<span class="badge badge-limited">Limited Stock</span>' : ''}
-          ${s.premium ? '<span class="badge badge-premium">Premium +$15</span>' : ''}
-          ${s.experience === 'beginner' ? '<span class="badge badge-beginner">Beginner Safe</span>' : ''}
-          <span class="badge" style="background: ${accentColor}20; border: 1px solid ${accentColor}40; color: ${accentColor}; text-transform: capitalize;">${s.color}</span>
+      <a href="/strains/${s.slug}/" class="result-card-wrapper">
+        <div class="result-card ${isTop ? 'top-match' : ''}">
+          <div class="click-header">Click for Full Details →</div>
+          
+          <div class="match-score">${matchPercent}% Match</div>
+          
+          <div class="strain-badges">
+            ${s.limited ? '<span class="badge badge-limited">Limited Stock</span>' : ''}
+            ${s.premium ? '<span class="badge badge-premium">Premium +$15</span>' : ''}
+            ${s.experience === 'beginner' ? '<span class="badge badge-beginner">Beginner Safe</span>' : ''}
+            <span class="badge" style="background: ${accentColor}20; border: 1px solid ${accentColor}40; color: ${accentColor}; text-transform: capitalize;">${s.color}</span>
+          </div>
+          
+          <div class="strain-photo-placeholder">
+            [Photo: ${s.name}]
+          </div>
+          
+          <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; margin: 0 0 0.5rem; color: #fff;">
+            ${s.name}
+          </h3>
+          
+          <div class="strain-meta">
+            <span style="text-transform: capitalize">${s.speed} onset</span>
+            <span>•</span>
+            <span>Potency: ${s.potency}/10</span>
+            <span>•</span>
+            <span>Best: ${s.time.join(', ')}</span>
+          </div>
+          
+          <p style="color: rgba(255,255,255,0.85); line-height: 1.6; font-size: 1.05rem; margin: 1rem 0;">
+            ${s.desc}
+          </p>
+          
+          <div class="strain-characteristics">
+            ${s.tags.map(tag => `<span class="char-tag">${tag}</span>`).join('')}
+          </div>
+          
+          ${warningsHtml}
         </div>
-        
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin: 0 0 0.5rem; color: #fff;">
-          ${s.name}
-        </h3>
-        
-        <div class="strain-meta">
-          <span style="text-transform: capitalize">${s.speed} onset</span>
-          <span>•</span>
-          <span>Potency: ${s.potency}/10</span>
-          <span>•</span>
-          <span>Best: ${s.time.join(', ')}</span>
-        </div>
-        
-        <p style="color: rgba(255,255,255,0.85); line-height: 1.6; font-size: 1.05rem; margin: 1rem 0;">
-          ${s.desc}
-        </p>
-        
-        <div class="strain-characteristics">
-          ${s.tags.map(tag => `<span class="char-tag">${tag}</span>`).join('')}
-        </div>
-        
-        <div style="margin-top: 1.5rem;">
-          <a href="{{ '/catalog' | relative_url }}#${s.name.toLowerCase().replace(/ /g,'-')}" 
-             class="btn" 
-             style="text-decoration: none; display: inline-block; margin-right: 0.5rem;">
-            View Details
-          </a>
-          ${s.limited ? '<span style="color: #ff4444; font-size: 0.9rem; font-family: Rajdhani;">Only a few left!</span>' : ''}
-        </div>
-      </div>
+      </a>
     `;
   }).join('');
   

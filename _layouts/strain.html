@@ -4,7 +4,7 @@ layout: default
 
 <div style="max-width: 1000px; margin: 0 auto; padding: 6rem 5% 4rem;">
   <!-- Breadcrumbs -->
-  <div style="margin-bottom: 2rem;">
+  <div style="margin-bottom: 2rem; font-size: 0.9rem;">
     <a href="{{ '/' | relative_url }}" style="color: rgba(255,255,255,0.6); text-decoration: none;">Home</a>
     <span style="color: rgba(255,255,255,0.4); margin: 0 0.5rem;">/</span>
     <a href="{{ '/catalog' | relative_url }}" style="color: rgba(255,255,255,0.6); text-decoration: none;">Catalog</a>
@@ -12,15 +12,24 @@ layout: default
     <span style="color: rgba(255,255,255,0.9);">{{ page.name }}</span>
   </div>
 
-  <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3rem; position: relative; overflow: hidden;">
+  <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; position: relative; overflow: hidden;">
     
     {% if page.limited %}
-    <span style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #ff006e, #8338ec); color: white; padding: 0.5rem 1rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; border-radius: 4px;">Limited Stock</span>
+    <span style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #ff006e, #8338ec); color: white; padding: 0.5rem 1rem; font-family: 'Cinzel', serif; font-size: 0.8rem; border-radius: 4px; z-index: 5;">Limited Stock</span>
     {% endif %}
     
     {% if page.premium %}
-    <span style="position: absolute; top: 20px; right: {% if page.limited %}140px{% else %}20px{% endif %}; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; padding: 0.5rem 1rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; border-radius: 4px;">Premium</span>
+    <span style="position: absolute; top: 20px; right: {% if page.limited %}140px{% else %}20px{% endif %}; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; padding: 0.5rem 1rem; font-family: 'Cinzel', serif; font-size: 0.8rem; border-radius: 4px; z-index: 5;">Premium</span>
     {% endif %}
+    
+    <!-- Photo Placeholder Area -->
+    <div style="width: 100%; height: 300px; background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(255,255,255,0.05)); border-radius: 12px; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-size: 1.1rem; border: 2px dashed rgba(255,255,255,0.2); position: relative;">
+      <div style="text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">📷</div>
+        <div>Product Photography</div>
+        <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.7;">{{ page.name }} - {{ page.color | capitalize }} Vein</div>
+      </div>
+    </div>
     
     <!-- Header -->
     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
@@ -28,18 +37,18 @@ layout: default
         {% case page.color %}
           {% when 'green' %}#06ffa5{% when 'red' %}#ff006e{% when 'white' %}#ffffff{% when 'yellow' %}#fee440{% endcase %}; 
         color: {% if page.color == 'white' %}#0a0b0d{% else %}#fff{% endif %}; 
-        border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">
+        border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; font-family: 'Cinzel', serif;">
         {{ page.color }}
       </span>
-      <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em;">{{ page.region }} Region</span>
+      <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Cinzel', serif;">{{ page.region }} Region</span>
     </div>
     
-    <h1 style="font-family: 'Orbitron', sans-serif; color: #FFD700; font-size: 3rem; margin-bottom: 1rem;">{{ page.name }}</h1>
+    <h1 style="font-family: 'Cinzel', serif; color: #FFD700; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; line-height: 1.2;">{{ page.name }}</h1>
     
-    <!-- Vibe -->
+    <!-- Vibe Quote -->
     <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #ff006e; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
-      <p style="font-style: italic; color: rgba(255,255,255,0.9); font-size: 1.2rem; font-family: 'Cormorant Garamond', serif;">"{{ page.vibe }}"</p>
-      <p style="color: #FFD700; margin-top: 0.5rem; font-family: 'Orbitron', sans-serif;">{{ page.characteristics }}</p>
+      <p style="font-style: italic; color: rgba(255,255,255,0.9); font-size: 1.2rem; font-family: 'Cormorant Garamond', serif; margin-bottom: 0.5rem;">"{{ page.vibe }}"</p>
+      <p style="color: #FFD700; font-family: 'Cinzel', serif; font-size: 0.9rem;">{{ page.characteristics }}</p>
     </div>
 
     <!-- Description -->
@@ -47,90 +56,92 @@ layout: default
       {{ content }}
     </div>
     
-    <!-- Stats Grid -->
-     <div style="margin: 2rem 0; padding: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
-  
-  <!-- Energy Bar -->
-  <div style="margin-bottom: 1rem;">
-    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-      <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">Energy</span>
-      <span style="font-size: 0.8rem; color: #FFD700;">{{ page.energy }}/10</span>
-    </div>
-    <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
-      <div style="width: {{ page.energy | times: 10 }}%; height: 100%; background: linear-gradient(90deg, #ff006e, #FFD700); border-radius: 3px;"></div>
-    </div>
-  </div>
-  
-  <!-- Repeat for Focus, Pain, Anxiety, Social -->
-  
-</div>
-    <!-- Stats with Bar Graphs -->
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; padding: 2rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
-
-  {% assign stats = "energy|Energy,focus|Focus,pain|Pain Relief,anxiety|Anxiety Relief,social|Social" | split: "," %}
-  {% for stat in stats %}
-    {% assign pair = stat | split: "|" %}
-    {% assign key = pair[0] %}
-    {% assign label = pair[1] %}
-    {% assign value = page[key] %}
-    
-    <div>
-      <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-        <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase;">{{ label }}</span>
-        <span style="font-size: 0.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ value }}/10</span>
+    <!-- Stats Grid - MOBILE OPTIMIZED -->
+    <div style="margin: 2rem 0; padding: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+      <h3 style="font-family: 'Cinzel', serif; color: #FFD700; margin-bottom: 1.5rem; font-size: 1.2rem;">Effect Profile</h3>
+      
+      {% assign stats = "energy|Energy,focus|Focus,pain|Pain Relief,anxiety|Anxiety Relief,social|Social" | split: "," %}
+      
+      <div style="display: grid; gap: 1.2rem;">
+        {% for stat in stats %}
+          {% assign pair = stat | split: "|" %}
+          {% assign key = pair[0] %}
+          {% assign label = pair[1] %}
+          {% assign value = page[key] %}
+          
+          <div style="width: 100%;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; align-items: center;">
+              <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7); text-transform: uppercase; font-family: 'Cinzel', serif; letter-spacing: 0.05em;">{{ label }}</span>
+              <span style="font-size: 0.9rem; color: #FFD700; font-family: 'Cinzel', serif; font-weight: bold;">{{ value }}/10</span>
+            </div>
+            <div style="height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; overflow: hidden; position: relative;">
+              <div style="width: {{ value | times: 10 }}%; height: 100%; background: linear-gradient(90deg, 
+                {% if value >= 8 %}#ff006e{% elsif value >= 6 %}#FFD700{% else %}#00f5d4{% endif %}, 
+                {% if value >= 8 %}#ff4757{% elsif value >= 6 %}#ff9500{% else %}#06ffa5{% endif %}); 
+                border-radius: 5px; transition: width 0.8s ease-out;"></div>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-      <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
-        <div style="width: {{ value | times: 10 }}%; height: 100%; background: linear-gradient(90deg, #ff006e, #FFD700); border-radius: 4px;"></div>
+      
+      <!-- Speed Indicator -->
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7); text-transform: uppercase; font-family: 'Cinzel', serif;">Onset Speed</span>
+        <span style="padding: 0.4rem 1.2rem; background: 
+          {% case page.speed %}
+            {% when 'fast' %}rgba(255,0,110,0.2){% when 'moderate' %}rgba(255,215,0,0.2){% when 'slow' %}rgba(0,245,212,0.2){% else %}rgba(255,255,255,0.1){% endcase %}; 
+          border: 1px solid 
+          {% case page.speed %}
+            {% when 'fast' %}rgba(255,0,110,0.5){% when 'moderate' %}rgba(255,215,0,0.5){% when 'slow' %}rgba(0,245,212,0.5){% else %}rgba(255,255,255,0.3){% endcase %}; 
+          color: 
+          {% case page.speed %}
+            {% when 'fast' %}#ff006e{% when 'moderate' %}#FFD700{% when 'slow' %}#00f5d4{% else %}#fff{% endcase %}; 
+          border-radius: 20px; font-size: 0.8rem; font-family: 'Cinzel', serif; text-transform: capitalize;">
+          {{ page.speed }}
+        </span>
       </div>
     </div>
-  {% endfor %}
-  
-  <div style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-    <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Speed</div>
-    <div style="font-size: 1.4rem; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize; margin-top: 0.5rem;">{{ page.speed }}</div>
-  </div>
-</div>
     
     <!-- Tags -->
     <div style="margin: 2rem 0;">
-      <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; text-transform: uppercase;">Best For:</div>
+      <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; text-transform: uppercase; font-family: 'Cinzel', serif;">Best For:</div>
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         {% for tag in page.tags %}
-        <span style="padding: 0.4rem 1rem; background: rgba(0,245,212,0.1); border: 1px solid rgba(0,245,212,0.3); color: #00f5d4; border-radius: 20px; font-size: 0.85rem;">{{ tag }}</span>
+        <span style="padding: 0.4rem 1rem; background: rgba(0,245,212,0.1); border: 1px solid rgba(0,245,212,0.3); color: #00f5d4; border-radius: 20px; font-size: 0.85rem; font-family: 'Inter', sans-serif;">{{ tag }}</span>
         {% endfor %}
       </div>
     </div>
     
     <!-- Time -->
     <div style="margin: 2rem 0;">
-      <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">Best Time:</div>
+      <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; text-transform: uppercase; font-family: 'Cinzel', serif;">Best Time:</div>
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         {% for time in page.time_of_day %}
-        <span style="padding: 0.4rem 1rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); color: #FFD700; border-radius: 20px; font-size: 0.85rem; text-transform: capitalize;">{{ time }}</span>
+        <span style="padding: 0.4rem 1rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); color: #FFD700; border-radius: 20px; font-size: 0.85rem; font-family: 'Inter', sans-serif; text-transform: capitalize;">{{ time }}</span>
         {% endfor %}
       </div>
     </div>
     
     <!-- ORDER FORM -->
     <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(255,215,0,0.2);">
-      <h2 style="font-family: 'Orbitron', sans-serif; color: #FFD700; margin-bottom: 1.5rem;">Request Availability</h2>
+      <h2 style="font-family: 'Cinzel', serif; color: #FFD700; margin-bottom: 1.5rem;">Request Availability</h2>
       
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: grid; gap: 1.5rem;">
+      <form action="https://formspree.io/f/orders@kratomthang.com" method="POST" style="display: grid; gap: 1.5rem;">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
           <div>
-            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Name</label>
-            <input type="text" name="name" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif;">
+            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Name</label>
+            <input type="text" name="name" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif; transition: border-color 0.3s;" onfocus="this.style.borderColor='#FFD700'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
           </div>
           <div>
-            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Email</label>
-            <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif;">
+            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Email</label>
+            <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif; transition: border-color 0.3s;" onfocus="this.style.borderColor='#FFD700'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
           </div>
         </div>
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
           <div>
-            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Amount</label>
-            <select name="amount" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif;">
+            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Amount</label>
+            <select name="amount" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif; cursor: pointer;">
               <option value="1oz">1 oz - Sample (${{ page.price | divided_by: 4 | round: 2 }})</option>
               <option value="4oz">4 oz - Personal (${{ page.price }})</option>
               <option value="8oz">8 oz - Value (${{ page.price | times: 1.8 | round: 2 }})</option>
@@ -138,51 +149,54 @@ layout: default
             </select>
           </div>
           <div>
-            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Quantity</label>
-            <input type="number" name="quantity" value="1" min="1" max="10" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif;">
+            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Quantity</label>
+            <input type="number" name="quantity" value="1" min="1" max="10" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif;">
           </div>
         </div>
         
         <input type="hidden" name="strain" value="{{ page.name }}">
         <input type="hidden" name="color" value="{{ page.color }}">
         <input type="hidden" name="_subject" value="New THANG Order Request: {{ page.name }}">
+        <input type="hidden" name="_replyto" value="orders@kratomthang.com">
         
         <div>
-          <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem;">Notes (Optional)</label>
-          <textarea name="message" rows="3" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Rajdhani', sans-serif; resize: vertical;"></textarea>
+          <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Notes (Optional)</label>
+          <textarea name="message" rows="3" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif; resize: vertical; transition: border-color 0.3s;" onfocus="this.style.borderColor='#FFD700'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'"></textarea>
         </div>
         
-        <button type="submit" style="padding: 1rem; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; border: none; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: transform 0.3s;">
+        <button type="submit" style="padding: 1rem; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; border: none; font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 30px rgba(255,215,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
           Submit Request
         </button>
         
-        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-align: center;">
+        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-align: center; font-family: 'Inter', sans-serif;">
           You will receive a confirmation email within 24 hours. No payment required until availability confirmed.
         </p>
-        <!-- Compare Similar Strains -->
-<div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-  <h3 style="font-family: 'Orbitron', sans-serif; color: #FFD700; margin-bottom: 1.5rem;">Compare Similar Strains</h3>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-    {% assign similar = site.strains | where: "color", page.color | where_exp: "s", "s.name != page.name" | limit: 3 %}
-    {% for s in similar %}
-    <a href="{{ s.url | relative_url }}" style="text-decoration: none; color: inherit;">
-      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem; transition: all 0.3s;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-          <span style="font-weight: bold; color: #fff;">{{ s.name }}</span>
-          <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: capitalize;">{{ s.speed }}</span>
-        </div>
-        <div style="display: flex; gap: 0.5rem; font-size: 0.75rem;">
-          <span style="color: #00f5d4;">E{{ s.energy }}</span>
-          <span style="color: #ff006e;">F{{ s.focus }}</span>
-          <span style="color: #FFD700;">P{{ s.pain }}</span>
-        </div>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-</div>
       </form>
+    </div>
+    
+    <!-- Compare Similar Strains -->
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+      <h3 style="font-family: 'Cinzel', serif; color: #FFD700; margin-bottom: 1.5rem;">Compare Similar Strains</h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+        {% assign similar = site.strains | where: "color", page.color | where_exp: "s", "s.name != page.name" | limit: 3 %}
+        {% for s in similar %}
+        <a href="{{ s.url | relative_url }}" style="text-decoration: none; color: inherit;">
+          <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem; transition: all 0.3s;" onmouseover="this.style.borderColor='rgba(255,215,0,0.5)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-weight: bold; color: #fff; font-family: 'Cinzel', serif;">{{ s.name }}</span>
+              <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: capitalize; padding: 0.2rem 0.6rem; background: rgba(255,255,255,0.1); border-radius: 12px;">{{ s.speed }}</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; font-size: 0.75rem; font-family: 'Inter', sans-serif;">
+              <span style="color: #00f5d4;">E{{ s.energy }}</span>
+              <span style="color: #ff006e;">F{{ s.focus }}</span>
+              <span style="color: #FFD700;">P{{ s.pain }}</span>
+              <span style="color: #9b5de5;">A{{ s.anxiety }}</span>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
