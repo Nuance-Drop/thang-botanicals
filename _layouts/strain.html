@@ -48,8 +48,7 @@ layout: default
     </div>
     
     <!-- Stats Grid -->
-    <!-- Stats with Bar Graphs -->
-<div style="margin: 2rem 0; padding: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
+     <div style="margin: 2rem 0; padding: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
   
   <!-- Energy Bar -->
   <div style="margin-bottom: 1rem;">
@@ -64,6 +63,32 @@ layout: default
   
   <!-- Repeat for Focus, Pain, Anxiety, Social -->
   
+</div>
+    <!-- Stats with Bar Graphs -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; padding: 2rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
+
+  {% assign stats = "energy|Energy,focus|Focus,pain|Pain Relief,anxiety|Anxiety Relief,social|Social" | split: "," %}
+  {% for stat in stats %}
+    {% assign pair = stat | split: "|" %}
+    {% assign key = pair[0] %}
+    {% assign label = pair[1] %}
+    {% assign value = page[key] %}
+    
+    <div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+        <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase;">{{ label }}</span>
+        <span style="font-size: 0.8rem; color: #FFD700; font-family: 'Orbitron', sans-serif;">{{ value }}/10</span>
+      </div>
+      <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+        <div style="width: {{ value | times: 10 }}%; height: 100%; background: linear-gradient(90deg, #ff006e, #FFD700); border-radius: 4px;"></div>
+      </div>
+    </div>
+  {% endfor %}
+  
+  <div style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+    <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase;">Speed</div>
+    <div style="font-size: 1.4rem; color: #FFD700; font-family: 'Orbitron', sans-serif; text-transform: capitalize; margin-top: 0.5rem;">{{ page.speed }}</div>
+  </div>
 </div>
     
     <!-- Tags -->
