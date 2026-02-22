@@ -103,8 +103,7 @@
   <nav>
     <a href="{{ '/' | relative_url }}" class="logo">
       <!-- Add your logo image here when ready -->
-      <img src="{{ 'assets/images/thang-logo.svg' | relative_url }}" alt="THANG" style="height: 32px;">
-      THANG
+      <img src="{{ '/assets/images/thang-logo.svg' | relative_url }}" alt="THANG" onerror="this.style.display='none'">
     </a>
     <ul class="nav-links">
       <li><a href="{{ '/quiz' | relative_url }}">Strain Finder</a></li>
