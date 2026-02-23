@@ -51,4 +51,17 @@ permalink: /blog/how-long-does-kratom-last/
   <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 12px; margin-top: 3rem;">
     <h3 style="color: #D4AF37; margin-bottom: 1rem;">Redosing Strategy</h3>
     <p style="color: rgba(255,255,255,0.9); line-height: 1.8;">
-      Wait at least <strong>6
+      Wait at least <strong>6 hours</strong> between doses to prevent tolerance buildup. For sustained all-day relief, use a longer-lasting strain (Green Malay) rather than redosing short-acting strains multiple times.
+    </p>
+    <p style="color: rgba(255,255,255,0.9); line-height: 1.8; margin-top: 1rem;">
+      <strong>Pro tip:</strong> If you need morning energy and evening relaxation, dose White MD at 8am (wears off by 1pm) and Red Bali at 6pm. Avoid overlapping durations to prevent accumulation.
+    </p>
+  </div>
+
+  <div style="background: rgba(255,0,110,0.1); border: 1px solid rgba(255,0,110,0.3); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+    <strong style="color: #ff006e;">⚠️ Duration vs. Half-Life</strong>
+    <p style="color: rgba(255,255,255,0.8); margin-top: 0.5rem;">
+      Effects may fade after 6 hours, but mitragynine's half-life is 24 hours. This means daily use leads to accumulation. Take 1-2 days off weekly to reset.
+    </p>
+  </div>
+</div>
