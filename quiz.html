@@ -842,7 +842,6 @@ function answer(category, value) {
   
   const progress = ((currentQ + 1) / totalQ) * 100;
   document.getElementById('progress').style.width = progress + '%';
-  console.log(`Progress: ${progress}%, nextQ: ${currentQ + 1}`); // ADD THIS
 
   // Hide current, show next or results
   const questions = document.querySelectorAll('.question');
@@ -988,8 +987,6 @@ function calculateScores() {
     .sort((a, b) => b.score - a.score);
 }
 
-// REPLACE your entire showResults() function with this:
-
 function showResults() {
   document.getElementById('results').style.display = 'block';
   
@@ -1011,25 +1008,21 @@ function showResults() {
     return;
   }
   
-  // Find highest score for percentage calculation
-  const highestScore = topMatches[0].score;
+  // Calculate percentage based on highest score in results
+  const highestScore = Math.max(...matches.map(m => m.score));
   
   container.innerHTML = topMatches.map((match, i) => {
     const isTop = i === 0;
     const s = match.strain;
     
-    // Calculate percentage based on relative score (not hardcoded 70-98)
-    // Assuming max possible score is around 200
-  // Instead of maxPossibleScore, use highest score in results
-
-const highestScore = Math.max(...matches.map(m => m.score));
-let matchPercent = Math.round((match.score / highestScore) * 95); // Top match = 95%
-
+    // Calculate percentage relative to highest score
+    let matchPercent = Math.round((match.score / highestScore) * 95);
+    
     // Clamp between 60-99 for display purposes
     matchPercent = Math.min(99, Math.max(60, matchPercent));
     
-    // Top match gets a boost
-    if (isTop) matchPercent = Math.min(99, matchPercent + 5);
+    // Top match gets a small boost to ensure 90%+ for best match
+    if (isTop) matchPercent = Math.min(99, matchPercent + 4);
     
     const colorMap = {
       'green': '#00ff88',
