@@ -7,192 +7,198 @@
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
-  <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
   
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   
-  <!-- Schema MUST be outside style tag -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "THANG Botanicals",
-    "url": "https://kratomthang.com",
-    "logo": "https://kratomthang.com/assets/images/logo.png",
-    "description": "Premium kratom supplier with sustainable sourcing, lab-tested products, and educational resources.",
-    "foundingDate": "2024",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Garland",
-      "addressRegion": "TX",
-      "addressCountry": "US"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Customer Service",
-      "email": "orders@kratomthang.com"
-    }
-  }
-  </script>
-
   <style>
     :root {
-      --neon-pink: #ff006e;
-      --gold: #FFD700;
-      --cyan: #00f5d4;
-      --void: #0a0b0d;
-      --gold-primary: #D4AF37;
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --gold-primary: #ffd700;
+      --gold-dark: #b8860b;
       --accent-pink: #ff006e;
       --accent-cyan: #00f5d4;
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255,255,255,0.7);
     }
     
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     
-    html, body {
-      font-family: 'Rajdhani', sans-serif;
-      background: var(--void);
-      color: #fff;
-      overflow-x: hidden;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
       line-height: 1.6;
-      max-width: 100vw;
+      min-height: 100vh;
     }
     
-    /* Navigation - Mobile Fixed */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 3%;
-      background: rgba(10,11,13,0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
+    /* Header with Logo */
+    .site-header {
+      background: rgba(10,10,15,0.95);
       backdrop-filter: blur(10px);
-      max-width: 100vw;
+      border-bottom: 1px solid rgba(255,215,0,0.1);
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      font-weight: 700;
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: space-between;
+    }
+    
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--gold-primary);
+    }
+    
+    .logo-img {
+      height: 40px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(255,215,0,0.3));
     }
     
     .logo-text {
-      /* Fallback if no image */
-      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
     }
     
-    .logo img {
-      height: 32px;
-      width: auto;
-      display: block; /* Hidden until you have actual logo file */
-    }
-    
-    .nav-links {
+    .main-nav {
       display: flex;
-      gap: 1rem;
-      list-style: none;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 2rem;
     }
     
-    .nav-links a {
-      color: rgba(255,255,255,0.9);
+    .main-nav a {
+      color: var(--text-secondary);
       text-decoration: none;
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: all 0.3s;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      white-space: nowrap;
-    }
-    
-    .nav-links a:hover {
-      color: var(--neon-pink);
-      text-shadow: 0 0 10px rgba(255,0,110,0.5);
-    }
-    
-    /* Mobile nav adjustments */
-    @media (max-width: 768px) {
-      nav { padding: 0.8rem 2%; }
-      .logo { font-size: 1.2rem; }
-      .logo img { height: 24px; }
-      .nav-links { gap: 0.6rem; }
-      .nav-links a { font-size: 0.75rem; }
-    }
-    
-    h1, h2, h3 { font-family: 'Orbitron', sans-serif; }
-    
-    /* Content padding for fixed nav */
-    main { padding-top: 80px; }
-    
-    /* Back button utility */
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
       transition: color 0.3s;
     }
     
-    .back-link:hover {
-      color: var(--gold);
+    .main-nav a:hover {
+      color: var(--gold-primary);
     }
     
-    /* Button styles that were missing */
-    .btn-gold {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
+    /* Mobile menu */
+    @media (max-width: 768px) {
+      .main-nav {
+        display: none;
+      }
+      
+      .logo-text {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Footer */
+    .site-footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid rgba(255,215,0,0.1);
+      padding: 3rem 5%;
+      margin-top: 4rem;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
       text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--gold-primary);
+    }
+    
+    .copyright {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+    }
+    
+    /* Gold button utility */
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      color: #000;
+      padding: 1rem 2rem;
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.85rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
       transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
     }
     
     .btn-gold:hover {
-      background: rgba(212,175,55,0.15);
-      color: #fff;
-      box-shadow: 0 0 20px rgba(212,175,55,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(255,215,0,0.3);
     }
   </style>
 </head>
 <body>
-
-  <nav>
-    <a href="{{ '/' | relative_url }}" class="logo">
-      <span class="logo-text">THANG</span>
-      <!-- Uncomment when you have logo: -->
-      <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='inline'"> 
-    </a>
-    <ul class="nav-links">
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/quiz' | relative_url }}">Quiz</a></li>
-      <li><a href="{{ '/catalog' | relative_url }}">Catalog</a></li>
-      <li><a href="{{ '/blog' | relative_url }}">Education</a></li>
-    </ul>
-  </nav>
+  <header class="site-header">
+    <div class="header-content">
+      <a href="{{ '/' | relative_url }}" class="logo-link">
+        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG Botanicals" class="logo-img">
+        <span class="logo-text">THANG</span>
+      </a>
+      
+      <nav class="main-nav">
+        <a href="{{ '/catalog' | relative_url }}">Catalog</a>
+        <a href="{{ '/quiz' | relative_url }}">Strain Finder</a>
+        <a href="{{ '/about' | relative_url }}">About</a>
+      </nav>
+    </div>
+  </header>
 
   <main>
     {{ content }}
   </main>
 
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="{{ '/privacy-policy' | relative_url }}">Privacy Policy</a>
+        <a href="{{ '/terms' | relative_url }}">Terms</a>
+        <a href="mailto:hello@thangbotanicals.com">Contact</a>
+      </div>
+      <p class="copyright">© 2026 THANG Botanicals. Must be 21+ to purchase.</p>
+    </div>
+  </footer>
 </body>
 </html>
