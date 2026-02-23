@@ -1,0 +1,48 @@
+# THANG Botanicals Robots.txt
+# Last Updated: 2026-02-23
+
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://kratomthang.com/sitemap.xml
+
+# Crawl-delay for aggressive bots
+User-agent: AhrefsBot
+Crawl-delay: 2
+
+User-agent: SemrushBot
+Crawl-delay: 2
+
+# Block admin and utility pages
+Disallow: /admin/
+Disallow: /_layouts/
+Disallow: /_includes/
+Disallow: /_site/
+Disallow: /assets/css/
+Disallow: /assets/js/
+
+# Block utility pages
+Disallow: /404.html
+Disallow: /search
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /account/
+
+# Block parameter-based URLs (if any)
+Disallow: /*?ref=
+Disallow: /*?utm_
+Disallow: /*?sort=
+Disallow: /*?page=
+
+# Allow important assets
+Allow: /assets/images/
+Allow: /assets/fonts/
+
+# Block specific file types
+Disallow: /*.pdf$
+Disallow: /*.zip$
+Disallow: /*.exe$
+
+# Host
+Host: https://kratomthang.com

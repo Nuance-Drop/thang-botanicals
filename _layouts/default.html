@@ -4,13 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | THANG Botanicals</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+  
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  
+  <!-- Schema MUST be outside style tag -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "THANG Botanicals",
+    "url": "https://kratomthang.com",
+    "logo": "https://kratomthang.com/assets/images/logo.png",
+    "description": "Premium kratom supplier with sustainable sourcing, lab-tested products, and educational resources.",
+    "foundingDate": "2024",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Garland",
+      "addressRegion": "TX",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "orders@kratomthang.com"
+    }
+  }
+  </script>
+
   <style>
     :root {
       --neon-pink: #ff006e;
       --gold: #FFD700;
       --cyan: #00f5d4;
       --void: #0a0b0d;
+      --gold-primary: #D4AF37;
+      --accent-pink: #ff006e;
+      --accent-cyan: #00f5d4;
     }
     
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,9 +86,15 @@
       gap: 0.5rem;
     }
     
+    .logo-text {
+      /* Fallback if no image */
+      color: var(--gold);
+    }
+    
     .logo img {
       height: 32px;
       width: auto;
+      display: none; /* Hidden until you have actual logo file */
     }
     
     .nav-links {
@@ -96,20 +135,58 @@
     
     /* Content padding for fixed nav */
     main { padding-top: 80px; }
+    
+    /* Back button utility */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      transition: color 0.3s;
+    }
+    
+    .back-link:hover {
+      color: var(--gold);
+    }
+    
+    /* Button styles that were missing */
+    .btn-gold {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    
+    .btn-gold:hover {
+      background: rgba(212,175,55,0.15);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(212,175,55,0.2);
+    }
   </style>
 </head>
 <body>
 
   <nav>
     <a href="{{ '/' | relative_url }}" class="logo">
-      <!-- Add your logo image here when ready -->
-      <img src="{{ '/assets/images/thang-logo.svg' | relative_url }}" alt="THANG" onerror="this.style.display='none'">
+      <span class="logo-text">THANG</span>
+      <!-- Uncomment when you have logo: -->
+      <!-- <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='inline'"> -->
     </a>
     <ul class="nav-links">
-      <li><a href="{{ '/quiz' | relative_url }}">Strain Finder</a></li>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/quiz' | relative_url }}">Quiz</a></li>
       <li><a href="{{ '/catalog' | relative_url }}">Catalog</a></li>
       <li><a href="{{ '/blog' | relative_url }}">Education</a></li>
-      <li><a href="{{ '/investors' | relative_url }}">Investors</a></li>
     </ul>
   </nav>
 
