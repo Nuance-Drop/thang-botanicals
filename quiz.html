@@ -1072,8 +1072,10 @@ function showResults() {
             ${s.desc}
           </p>
           
-                  <div class="strain-characteristics">
-            <!-- tags removed -->
+                    <div class="strain-characteristics">
+            <span class="char-tag">E:${s.stats.energy}</span>
+            <span class="char-tag">F:${s.stats.focus}</span>
+            <span class="char-tag">P:${s.stats.pain}</span>
           </div>
           
           ${warningsHtml}
