@@ -1,228 +1,620 @@
 ---
 layout: default
-title: Education | THANG Botanicals
+title: Botanical Education & Research | THANG Botanicals
+description: Science-backed kratom education, harm reduction guides, and historical research. Learn about alkaloids, responsible use, and the future of botanical medicine.
 ---
 
 <style>
-  .container { max-width: 1200px; margin: 0 auto; padding: 2rem 3%; }
-  
-  .back-link {
-    display: inline-block;
-    margin-bottom: 2rem;
-    color: rgba(255,255,255,0.6);
-    text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 0.1em;
-    font-size: 0.9rem;
+  :root {
+    --gold-primary: #D4AF37;
+    --accent-pink: #ff006e;
+    --accent-cyan: #00f5d4;
+    --navy-deep: #0a0e27;
   }
   
-  .back-link:hover { color: #ff006e; }
+  .edu-container { max-width: 1200px; margin: 0 auto; padding: 2rem 3%; }
   
-  .blog-header {
+  .edu-header {
     text-align: center;
-    padding: 3rem 0;
+    padding: 4rem 0;
+    background: linear-gradient(180deg, rgba(212,175,55,0.1) 0%, transparent 100%);
     border-bottom: 1px solid rgba(255,255,255,0.1);
     margin-bottom: 3rem;
   }
   
-  .blog-header h1 {
-    font-size: 2.5rem;
+  .edu-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    color: var(--gold-primary);
     margin-bottom: 1rem;
-    color: #FFD700;
-    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
   
-  .blog-grid {
+  .edu-header p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* Category Navigation */
+  .category-nav {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0 4rem;
+  }
+  
+  .category-btn {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .category-btn:hover, .category-btn.active {
+    background: rgba(255,0,110,0.2);
+    border-color: var(--accent-pink);
+    color: #fff;
+  }
+  
+  /* Article Grid */
+  .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 2rem;
     margin: 3rem 0;
   }
   
-  .blog-card {
+  .article-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
     transition: all 0.3s;
     text-decoration: none;
-    color: #fff;
-    display: block;
-    cursor: pointer;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
   }
   
-  .blog-card:hover {
-    transform: translateY(-5px);
-    border-color: #ff006e;
-    box-shadow: 0 10px 30px rgba(255,0,110,0.2);
+  .article-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold-primary);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   }
   
-  .blog-content {
-    padding: 2rem;
+  .article-meta {
+    padding: 1.5rem;
+    flex-grow: 1;
   }
   
-  .blog-tag {
+  .article-category {
     display: inline-block;
-    padding: 0.3rem 1rem;
-    background: rgba(255,0,110,0.1);
-    border: 1px solid rgba(255,0,110,0.3);
+    padding: 0.3rem 0.8rem;
     border-radius: 20px;
-    font-size: 0.8rem;
-    color: #ff006e;
-    margin-bottom: 1rem;
+    font-size: 0.75rem;
     font-family: 'Orbitron', sans-serif;
-  }
-  
-  .blog-card h2 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #fff;
-    font-family: 'Orbitron', sans-serif;
-  }
-  
-  .blog-card p {
-    color: rgba(255,255,255,0.7);
-    line-height: 1.6;
-    font-size: 0.95rem;
-  }
-  
-  .read-more {
-    display: inline-block;
-    margin-top: 1.5rem;
-    color: #FFD700;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.85rem;
+    text-transform: uppercase;
     letter-spacing: 0.1em;
+    margin-bottom: 1rem;
   }
   
-  .edu-section {
-    background: rgba(0,255,127,0.05);
-    border: 1px solid rgba(0,255,127,0.2);
-    border-radius: 24px;
-    padding: 3rem 2rem;
+  .cat-history { background: rgba(212,175,55,0.15); color: var(--gold-primary); border: 1px solid rgba(212,175,55,0.3); }
+  .cat-science { background: rgba(0,245,212,0.15); color: var(--accent-cyan); border: 1px solid rgba(0,245,212,0.3); }
+  .cat-harm { background: rgba(0,255,127,0.15); color: #00ff7f; border: 1px solid rgba(0,255,127,0.3); }
+  .cat-legal { background: rgba(255,0,110,0.15); color: var(--accent-pink); border: 1px solid rgba(255,0,110,0.3); }
+  .cat-lifestyle { background: rgba(155,89,182,0.15); color: #9b59b6; border: 1px solid rgba(155,89,182,0.3); }
+  .cat-veterans { background: rgba(231,76,60,0.15); color: #e74c3c; border: 1px solid rgba(231,76,60,0.3); }
+  
+  .article-card h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: #fff;
+    line-height: 1.3;
+  }
+  
+  .article-card p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  
+  .article-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+  }
+  
+  .read-time::before {
+    content: '⏱ ';
+  }
+  
+  /* Featured Article */
+  .featured-article {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(22,33,62,0.9));
+    border: 1px solid rgba(212,175,55,0.3);
+    padding: 3rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+  }
+  
+  .featured-content h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold-primary);
+    margin-bottom: 1rem;
+  }
+  
+  .featured-content .lead {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  .featured-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .stat-box {
+    text-align: center;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-cyan);
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+  
+  /* SEO Section */
+  .seo-section {
+    background: rgba(0,0,0,0.2);
+    border-radius: 20px;
+    padding: 3rem;
     margin: 4rem 0;
     text-align: center;
   }
   
-  .edu-section h2 {
-    color: #00ff7f;
+  .seo-section h3 {
+    color: var(--gold-primary);
+    font-family: 'Cinzel', serif;
     margin-bottom: 1.5rem;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
   }
   
-  .strain-colors {
+  .keyword-cloud {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
     flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
   }
   
-  .color-box {
-    text-align: center;
-    padding: 1.5rem;
-    background: rgba(0,0,0,0.3);
-    border-radius: 12px;
-    min-width: 120px;
+  .keyword-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    transition: all 0.3s;
   }
   
-  .color-indicator {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 0 auto 1rem;
-    border: 3px solid;
+  .keyword-tag:hover {
+    background: rgba(212,175,55,0.1);
+    border-color: var(--gold-primary);
+    color: var(--gold-primary);
   }
   
-  .color-indicator.green { border-color: #00ff7f; box-shadow: 0 0 20px rgba(0,255,127,0.3); }
-  .color-indicator.red { border-color: #ff006e; box-shadow: 0 0 20px rgba(255,0,110,0.3); }
-  .color-indicator.white { border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.3); }
-  .color-indicator.yellow { border-color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
-  
-  footer {
-    text-align: center;
-    padding: 4rem 0;
-    color: rgba(255,255,255,0.4);
-    font-size: 0.9rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    margin-top: 4rem;
+  @media (max-width: 768px) {
+    .featured-article { grid-template-columns: 1fr; }
+    .articles-grid { grid-template-columns: 1fr; }
+    .edu-header h1 { font-size: 2rem; }
   }
-  
-  footer a { color: #ff006e; text-decoration: none; }
 </style>
 
-<div class="container">
-  <a href="{{ '/' | relative_url }}" class="back-link">← Back to Home</a>
-  
-  <div class="blog-header">
-    <h1>Botanical Education</h1>
-    <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-      Learn about our sustainable sourcing, strain varieties, and the science behind botanicals.
-    </p>
+<div class="edu-container">
+  <div class="edu-header">
+    <h1>Botanical Research & Education</h1>
+    <p>Evidence-based kratom science, harm reduction guides, historical research, and advocacy resources. Supporting the 15 million Americans who choose botanical wellness.</p>
   </div>
   
-  <div class="edu-section">
-    <h2>Understanding "vein" Colors</h2>
-    <p style="color: rgba(255,255,255,0.8); max-width: 800px; margin: 0 auto; font-size: 1rem;">
-      The color of kratom veins indicates the alkaloid profile and effects. Our farmers harvest at specific times to ensure optimal potency for each variety.
-    </p>
+  <!-- Category Filter -->
+  <div class="category-nav">
+    <button class="category-btn active" onclick="filterArticles('all')">All Topics</button>
+    <button class="category-btn" onclick="filterArticles('science')">Science</button>
+    <button class="category-btn" onclick="filterArticles('harm')">Harm Reduction</button>
+    <button class="category-btn" onclick="filterArticles('history')">History</button>
+    <button class="category-btn" onclick="filterArticles('veterans')">Veterans</button>
+    <button class="category-btn" onclick="filterArticles('legal')">Legal</button>
+  </div>
+  
+  <div class="articles-grid" id="articlesGrid">
     
-    <div class="strain-colors">
-      <div class="color-box">
-        <div class="color-indicator green"></div>
-        <h3 style="color: #00ff7f; font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; font-size: 0.9rem;">Green</h3>
-        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Balanced energy & focus</p>
+    <!-- FEATURED: Veterans Article (SEO Gold) -->
+    <a href="{{ '/blog/veterans-kratom-ptsd-survey' | relative_url }}" class="article-card featured-article" data-category="veterans science">
+      <div class="featured-content">
+        <span class="article-category cat-veterans">Veterans • Featured Research</span>
+        <h2>Veterans Using Kratom for PTSD: American Kratom Association Survey Results</h2>
+        <p class="lead">New survey data from 2,798 veterans reveals how kratom is being used to manage PTSD symptoms, chronic pain, and transition to civilian life. Includes harm reduction insights and dosage protocols from military healthcare providers.</p>
+        <div class="featured-stats">
+          <div class="stat-box">
+            <div class="stat-number">68%</div>
+            <div class="stat-label">Pain Relief</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">67%</div>
+            <div class="stat-label">Anxiety Reduction</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">87%</div>
+            <div class="stat-label">Opioid Relief</div>
+          </div>
+        </div>
       </div>
-      <div class="color-box">
-        <div class="color-indicator red"></div>
-        <h3 style="color: #ff006e; font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; font-size: 0.9rem;">Red</h3>
-        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Relaxation & comfort</p>
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <div style="text-align: center; color: rgba(255,255,255,0.3);">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">🎖️</div>
+          <div style="font-family: 'Orbitron', sans-serif;">Read Full Report →</div>
+        </div>
       </div>
-      <div class="color-box">
-        <div class="color-indicator white"></div>
-        <h3 style="color: #fff; font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; font-size: 0.9rem;">White</h3>
-        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Clean energy</p>
+    </a>
+    
+    <!-- HISTORY & ANTHROPOLOGY -->
+    <a href="{{ '/blog/kratom-trade-colonial-southeast-asia' | relative_url }}" class="article-card" data-category="history">
+      <div class="article-meta">
+        <span class="article-category cat-history">History</span>
+        <h2>The Kratom Trade in Colonial Southeast Asia (1820s-1940s)</h2>
+        <p>Dutch colonial records reveal the emergence of kratom as a cash crop, from indigenous use to international commodity. How plantation economics shaped modern strains.</p>
       </div>
-      <div class="color-box">
-        <div class="color-indicator yellow"></div>
-        <h3 style="color: #FFD700; font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; font-size: 0.9rem;">Yellow</h3>
-        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Mood & balance</p>
+      <div class="article-footer">
+        <span class="read-time">12 min read</span>
+        <span>📜 Primary Sources</span>
       </div>
+    </a>
+    
+    <a href="{{ '/blog/thai-quid-chewing-rituals' | relative_url }}" class="article-card" data-category="history">
+      <div class="article-meta">
+        <span class="article-category cat-history">Anthropology</span>
+        <h2>Traditional Use in Thai Culture: Quid Chewing Rituals</h2>
+        <p>The social and spiritual dimensions of traditional kratom use in Southern Thailand. From manual labor aid to community bonding practice.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">8 min read</span>
+        <span>🌏 Field Research</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/malaysia-ban-black-market' | relative_url }}" class="article-card" data-category="history legal">
+      <div class="article-meta">
+        <span class="article-category cat-history">History • Policy</span>
+        <h2>Why Malaysia Banned Kratom (and the Black Market That Followed)</h2>
+        <p>The 2003 Poisons Act amendment and its unintended consequences. How prohibition created a $2B illicit trade and lessons for U.S. policy.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">10 min read</span>
+        <span>⚖️ Policy Analysis</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/dutch-botanical-expeditions' | relative_url }}" class="article-card" data-category="history">
+      <div class="article-meta">
+        <span class="article-category cat-history">History</span>
+        <h2>The Dutch Botanical Expeditions: First Western Documentation</h2>
+        <p>Peter Willem Korthals and the 1839 discovery of Mitragyna speciosa. Colonial science meets indigenous knowledge systems.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">7 min read</span>
+        <span>🔬 Botanical History</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/kratom-vietnam-war' | relative_url }}" class="article-card" data-category="history veterans">
+      <div class="article-meta">
+        <span class="article-category cat-history">Military History</span>
+        <h2>Kratom in the Vietnam War: Soldier Accounts</h2>
+        <p>Declassified reports and veteran testimonies reveal kratom's role in managing combat stress and jungle conditions during the conflict.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">9 min read</span>
+        <span>📚 Archival Research</span>
+      </div>
+    </a>
+    
+    <!-- SCIENCE & HERBALISM -->
+    <a href="{{ '/blog/alkaloid-breakdown-mitragynine' | relative_url }}" class="article-card" data-category="science">
+      <div class="article-meta">
+        <span class="article-category cat-science">Science</span>
+        <h2>Mitragynine vs. 7-OH: The Alkaloid Breakdown</h2>
+        <p>The pharmacological differences between kratom's primary alkaloids. Why the "7-OH is dangerous" narrative misses the full picture.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">11 min read</span>
+        <span>🧬 Biochemistry</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/strain-names-marketing-truth' | relative_url }}" class="article-card" data-category="science">
+      <div class="article-meta">
+        <span class="article-category cat-science">Industry Analysis</span>
+        <h2>Why "Strain" Names Are Mostly Marketing (The Truth About Fermentation)</h2>
+        <p>Red, green, white—what's actually in the bag? How post-harvest processing creates "strains" and why lab testing matters more than names.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">8 min read</span>
+        <span>🔍 Investigation</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/entourage-effect-whole-leaf' | relative_url }}" class="article-card" data-category="science">
+      <div class="article-meta">
+        <span class="article-category cat-science">Pharmacology</span>
+        <h2>The Entourage Effect: Why Whole-Leaf Beats Extracts</h2>
+        <p>Over 40 alkaloids work synergistically in kratom leaf. Why isolated extracts miss the benefits and increase side effect risks.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">6 min read</span>
+        <span>🌿 Plant Medicine</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/kratom-opioid-receptor-science' | relative_url }}" class="article-card" data-category="science">
+      <div class="article-meta">
+        <span class="article-category cat-science">Neuroscience</span>
+        <h2>Kratom and the Opioid Receptor: Partial Agonist Science</h2>
+        <p>Dr. Christopher McCurdy's research on biased agonism. Why kratom doesn't cause respiratory depression like traditional opioids.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">10 min read</span>
+        <span>🧠 Peer-Reviewed</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/heavy-metals-testing-lab-reports' | relative_url }}" class="article-card" data-category="science">
+      <div class="article-meta">
+        <span class="article-category cat-science">Safety</span>
+        <h2>Heavy Metals Testing: Why Lab Reports Matter</h2>
+        <p>Lead, cadmium, arsenic—the hidden contaminants in cheap kratom. How to read a Certificate of Analysis and what to demand from vendors.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">7 min read</span>
+        <span>⚗️ Quality Control</span>
+      </div>
+    </a>
+    
+    <!-- HARM REDUCTION -->
+    <a href="{{ '/blog/less-is-more-principle' | relative_url }}" class="article-card" data-category="harm">
+      <div class="article-meta">
+        <span class="article-category cat-harm">Harm Reduction</span>
+        <h2>Responsible Use: The "Less Is More" Principle</h2>
+        <p>Why lower doses often provide better effects. The bell-curve dose response and avoiding the "wobbles."</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">5 min read</span>
+        <span>✅ Safety Guide</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/avoiding-adulterated-kratom' | relative_url }}" class="article-card" data-category="harm">
+      <div class="article-meta">
+        <span class="article-category cat-harm">Harm Reduction</span>
+        <h2>Recognizing and Avoiding Adulterated Product</h2>
+        <p>Fentanyl, O-desmethyltramadol, synthetic 7-OH—how to spot contaminated kratom and why the KCPA matters for consumer safety.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">8 min read</span>
+        <span>🚨 Critical Info</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/kratom-deaths-polydrug-interactions' | relative_url }}" class="article-card" data-category="harm science">
+      <div class="article-meta">
+        <span class="article-category cat-harm">Harm Reduction</span>
+        <h2>The Truth About "Kratom-Related Deaths" (Polydrug Interactions)</h2>
+        <p>Analyzing the FDA's 44 death reports. Why polydrug use, not pure kratom, is the real culprit in fatalities.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">9 min read</span>
+        <span>📊 Data Analysis</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/tapering-strategies-guide' | relative_url }}" class="article-card" data-category="harm">
+      <div class="article-meta">
+        <span class="article-category cat-harm">Harm Reduction</span>
+        <h2>Tapering Strategies: A Practical Guide</h2>
+        <p>How to reduce or discontinue kratom use comfortably. Evidence-based protocols for managing tolerance and dependence.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">7 min read</span>
+        <span>📋 Protocol</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/kratom-vs-opioids-risk-comparison' | relative_url }}" class="article-card" data-category="harm science">
+      <div class="article-meta">
+        <span class="article-category cat-harm">Comparative Risk</span>
+        <h2>Kratom vs. Prescription Opioids: Comparative Risk Profiles</h2>
+        <p>Respiratory depression, addiction liability, and overdose potential. Why Johns Hopkins calls kratom "nature's harm reduction."</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">12 min read</span>
+        <span>⚖️ Risk Analysis</span>
+      </div>
+    </a>
+    
+    <!-- LEGAL & ADVOCACY -->
+    <a href="{{ '/blog/kratom-consumer-protection-act-status' | relative_url }}" class="article-card" data-category="legal">
+      <div class="article-meta">
+        <span class="article-category cat-legal">Legal</span>
+        <h2>The Kratom Consumer Protection Act: State-by-State Status</h2>
+        <p>Which 7 states have enacted KCPA protections? Interactive map and legislative tracker for 2025.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">6 min read</span>
+        <span>🗺️ Interactive</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/contact-representative-kratom' | relative_url }}" class="article-card" data-category="legal">
+      <div class="article-meta">
+        <span class="article-category cat-legal">Advocacy</span>
+        <h2>How to Contact Your Representative About Kratom Policy</h2>
+        <p>Templates, phone scripts, and meeting strategies for effective advocacy. Make your voice heard in 10 minutes.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">4 min read</span>
+        <span>📢 Take Action</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/fda-import-alert-54-15' | relative_url }}" class="article-card" data-category="legal">
+      <div class="article-meta">
+        <span class="article-category cat-legal">Regulatory</span>
+        <h2>The FDA's Import Alert 54-15: What It Means for Vendors</h2>
+        <p>Understanding the 2022 import alert and its impact on supply chains. Why some vendors have stock issues.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">7 min read</span>
+        <span>📋 Regulatory</span>
+      </div>
+    </a>
+    
+    <!-- LIFESTYLE & CULTURE -->
+    <a href="{{ '/blog/kratom-tea-subculture-america' | relative_url }}" class="article-card" data-category="lifestyle">
+      <div class="article-meta">
+        <span class="article-category cat-lifestyle">Culture</span>
+        <h2>The "Kratom Tea" Subculture in America</h2>
+        <p>From Reddit communities to local kava bars—how kratom built a grassroots wellness movement without corporate backing.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">8 min read</span>
+        <span>☕ Culture</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/coffee-to-kratom-morning-ritual' | relative_url }}" class="article-card" data-category="lifestyle">
+      <div class="article-meta">
+        <span class="article-category cat-lifestyle">Lifestyle</span>
+        <h2>From Coffee to Kratom: The Morning Ritual Shift</h2>
+        <p>Why 33% of users replace their morning coffee. Comparing caffeine and kratom for sustainable energy without the crash.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">6 min read</span>
+        <span>☀️ Morning Routine</span>
+      </div>
+    </a>
+    
+    <!-- SEO LONG-TAIL ARTICLES -->
+    <a href="{{ '/blog/best-kratom-energy-without-jitters' | relative_url }}" class="article-card" data-category="science lifestyle">
+      <div class="article-meta">
+        <span class="article-category cat-science">Strain Guide</span>
+        <h2>Best Kratom for Energy Without Jitters</h2>
+        <p>White vs. green strains for clean stimulation. Avoiding anxiety and the "wobbles" with proper selection and dosing.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">5 min read</span>
+        <span>⚡ Energy</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/how-long-does-kratom-last' | relative_url }}" class="article-card" data-category="science">
+      <div class="article-meta">
+        <span class="article-category cat-science">FAQ</span>
+        <h2>How Long Does Kratom Last? Duration by Strain</h2>
+        <p>Green Malay's 8-hour window vs. White MD's 4-hour peak. Factors affecting duration and redosing strategies.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">4 min read</span>
+        <span>⏱️ Duration Guide</span>
+      </div>
+    </a>
+    
+    <a href="{{ '/blog/kratom-social-anxiety-user-experiences' | relative_url }}" class="article-card" data-category="science lifestyle">
+      <div class="article-meta">
+        <span class="article-category cat-science">User Guide</span>
+        <h2>Kratom for Social Anxiety: User Experiences</h2>
+        <p>Yellow strains and low-dose protocols for social situations. Anecdotal reports and harm reduction tips.</p>
+      </div>
+      <div class="article-footer">
+        <span class="read-time">6 min read</span>
+        <span>🗣️ Social</span>
+      </div>
+    </a>
+    
+  </div>
+  
+  <!-- SEO Keyword Cloud -->
+  <div class="seo-section">
+    <h3>Popular Search Topics</h3>
+    <div class="keyword-cloud">
+      <span class="keyword-tag">kratom for pain relief</span>
+      <span class="keyword-tag">kratom vs opioids</span>
+      <span class="keyword-tag">is kratom legal in texas</span>
+      <span class="keyword-tag">kratom dosage guide</span>
+      <span class="keyword-tag">best kratom for anxiety</span>
+      <span class="keyword-tag">kratom withdrawal help</span>
+      <span class="keyword-tag">how to use kratom powder</span>
+      <span class="keyword-tag">kratom tea recipe</span>
+      <span class="keyword-tag">kratom drug test</span>
+      <span class="keyword-tag">kratom side effects</span>
+      <span class="keyword-tag">american kratom association</span>
+      <span class="keyword-tag">kratom consumer protection act</span>
     </div>
   </div>
   
-  <div class="blog-grid">
-    <div class="blog-card" onclick="alert('Full article coming soon!')">
-      <div class="blog-content">
-        <span class="blog-tag">SCIENCE</span>
-        <h2>Alkaloid Profiles: Why Lab Testing Matters</h2>
-        <p>Not all kratom is created equal. We break down mitragynine and 7-hydroxymitragynine levels...</p>
-        <span class="read-more">Read Article →</span>
-      </div>
-    </div>
-    
-    <div class="blog-card" onclick="alert('Full article coming soon!')">
-      <div class="blog-content">
-        <span class="blog-tag">ETHICS</span>
-        <h2>Fair Trade in the Botanical Industry</h2>
-        <p>The dark truth about middlemen in the kratom supply chain, and how THANG is building a better model...</p>
-        <span class="read-more">Read Article →</span>
-      </div>
-    </div>
-    
-    <div class="blog-card" onclick="alert('Full article coming soon!')">
-      <div class="blog-content">
-        <span class="blog-tag">STRAIN GUIDE</span>
-        <h2>Limited Editions: Why Rare Strains Cost More</h2>
-        <p>From Green Dracula to White Zombie—understanding what makes certain harvests limited...</p>
-        <span class="read-more">Read Article →</span>
-      </div>
-    </div>
-  </div>
-  
-  <footer>
-    <p>THANG Botanicals © 2026</p>
-    <p style="margin-top: 0.5rem;"><a href="{{ '/' | relative_url }}">Home</a> | <a href="{{ '/catalog' | relative_url }}">Catalog</a> | <a href="{{ '/quiz' | relative_url }}">Quiz</a></p>
-  </footer>
 </div>
+
+<script>
+function filterArticles(category) {
+  const cards = document.querySelectorAll('.article-card');
+  const buttons = document.querySelectorAll('.category-btn');
+  
+  // Update button states
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', 
+      category === 'all' ? btn.textContent.includes('All') : btn.getAttribute('onclick').includes(category)
+    );
+  });
+  
+  // Filter cards
+  cards.forEach(card => {
+    if (category === 'all') {
+      card.style.display = 'flex';
+    } else {
+      const categories = card.getAttribute('data-category') || '';
+      card.style.display = categories.includes(category) ? 'flex' : 'none';
+    }
+  });
+}
+</script>
