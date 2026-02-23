@@ -1020,9 +1020,11 @@ function showResults() {
     
     // Calculate percentage based on relative score (not hardcoded 70-98)
     // Assuming max possible score is around 200
-    const maxPossibleScore = 200;
-    let matchPercent = Math.round((match.score / maxPossibleScore) * 100);
-    
+  // Instead of maxPossibleScore, use highest score in results
+
+const highestScore = Math.max(...matches.map(m => m.score));
+let matchPercent = Math.round((match.score / highestScore) * 95); // Top match = 95%
+
     // Clamp between 60-99 for display purposes
     matchPercent = Math.min(99, Math.max(60, matchPercent));
     
