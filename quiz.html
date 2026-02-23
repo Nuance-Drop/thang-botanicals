@@ -840,6 +840,17 @@ const totalQ = 5;
 function answer(category, value) {
   answers[category] = value;
   
+function answer(category, value) {
+  answers[category] = value;
+  console.log(`Q${currentQ}: ${category} = ${value}`); // ADD THIS
+  
+  const progress = ((currentQ + 1) / totalQ) * 100;
+  document.getElementById('progress').style.width = progress + '%';
+  console.log(`Progress: ${progress}%, nextQ: ${currentQ + 1}`); // ADD THIS
+  
+  // ... rest of function
+}
+
   // Update progress
   const progress = ((currentQ + 1) / totalQ) * 100;
   document.getElementById('progress').style.width = progress + '%';
