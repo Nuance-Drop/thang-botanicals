@@ -94,7 +94,7 @@
     .logo img {
       height: 32px;
       width: auto;
-      display: none; /* Hidden until you have actual logo file */
+      display: block; /* Hidden until you have actual logo file */
     }
     
     .nav-links {
@@ -180,7 +180,7 @@
     <a href="{{ '/' | relative_url }}" class="logo">
       <span class="logo-text">THANG</span>
       <!-- Uncomment when you have logo: -->
-      <!-- <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='inline'"> -->
+      <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='inline'"> 
     </a>
     <ul class="nav-links">
       <li><a href="{{ '/' | relative_url }}">Home</a></li>
