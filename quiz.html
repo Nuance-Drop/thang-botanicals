@@ -1019,7 +1019,11 @@ function showResults() {
             <span>Best: ${s.time.join(', ')}</span>
           </div>
           <p style="color: rgba(255,255,255,0.85); line-height: 1.6; font-size: 1.05rem; margin: 1rem 0;">${s.desc}</p>
-         
+          <div class="strain-characteristics">
+            <span class="char-tag">E:${s.stats.energy}</span>
+            <span class="char-tag">F:${s.stats.focus}</span>
+            <span class="char-tag">P:${s.stats.pain}</span>
+          </div>
           ${warningsHtml}
         </div>
       </a>
