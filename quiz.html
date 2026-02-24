@@ -146,14 +146,14 @@ title: Strain Finder | THANG Botanicals
     background: linear-gradient(135deg, rgba(26,26,46,0.95), rgba(32,42,72,0.95));
   }
   
-  .click-footer {
+  .click-header {
     text-align: center;
     color: var(--gold-primary);
     font-family: 'Cinzel', serif;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
     padding: 0.5rem;
     border: 1px solid rgba(255,215,0,0.3);
     border-radius: 4px;
@@ -1001,7 +1001,7 @@ function showResults() {
     return `
       <a href="/strains/${s.slug}/" class="result-card-wrapper">
         <div class="result-card ${isTop ? 'top-match' : ''}">
-          <div class="click-footer">Click for Full Details →</div>
+          <div class="click-header">Click for Full Details →</div>
           <div class="match-score">${matchPercent}% Match</div>
           <div class="strain-badges">
             ${s.limited ? '<span class="badge badge-limited">Limited Stock</span>' : ''}
