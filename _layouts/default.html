@@ -169,23 +169,21 @@
       box-shadow: 0 5px 20px rgba(255,215,0,0.3);
     }
   </style>
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-content">
-      <a href="{{ '/' | relative_url }}" class="logo-link">
-        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG Botanicals" class="logo-img">
-        <span class="logo-text">THANG</span>
-      </a>
-      
-      <nav class="main-nav">
-        <a href="{{ '/catalog' | relative_url }}">Catalog</a>
-        <a href="{{ '/quiz' | relative_url }}">Strain Finder</a>
-        <a href="{{ '/about' | relative_url }}">About</a>
-      </nav>
-    </div>
-  </header>
-
+<header class="site-header">
+  <div class="header-content">
+    <a href="{{ '/' | relative_url }}" class="logo-link">
+      <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG Botanicals" class="logo-img" onerror="this.style.display='none'">
+      <span class="logo-text">THANG</span>
+    </a>
+    
+    <nav class="main-nav">
+      <a href="{{ '/catalog' | relative_url }}">Catalog</a>
+      <a href="{{ '/quiz' | relative_url }}">Strain Finder</a>
+      <a href="{{ '/about' | relative_url }}">About</a>
+      <a href="{{ '/contact' | relative_url }}">Contact</a>
+    </nav>
+  </div>
+</header>
   <main>
     {{ content }}
   </main>
