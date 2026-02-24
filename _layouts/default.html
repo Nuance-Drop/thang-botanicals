@@ -37,46 +37,48 @@
       color: var(--text-primary);
       line-height: 1.6;
       min-height: 100vh;
+      padding-top: 70px; /* Space for fixed header */
     }
     
-    /* Navigation - Mobile Fixed */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 3%;
-      background: rgba(10,11,13,0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    /* Fixed Header */
+    .site-header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
+      background: rgba(10,10,15,0.95);
       backdrop-filter: blur(10px);
-      max-width: 100vw;
+      border-bottom: 1px solid rgba(255,215,0,0.1);
+      padding: 1rem 3%;
+      z-index: 1000;
     }
     
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      font-weight: 700;
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo-link {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-    }
-    
-    .logo-text {
-      /* Fallback if no image */
-      color: var(--gold);
+      text-decoration: none;
     }
     
     .logo-img {
       height: 40px;
       width: auto;
-      display: none; /* Hidden until you have actual logo file */
+    }
+    
+    .logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold-primary);
+      font-weight: 700;
+      letter-spacing: 0.1em;
     }
     
     .main-nav {
@@ -88,20 +90,25 @@
       color: var(--text-secondary);
       text-decoration: none;
       font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       transition: color 0.3s;
+      white-space: nowrap;
     }
     
     .main-nav a:hover {
       color: var(--gold-primary);
     }
     
-    /* Mobile menu */
+    /* Mobile */
     @media (max-width: 768px) {
       .main-nav {
-        display: none;
+        gap: 1rem;
+      }
+      
+      .main-nav a {
+        font-size: 0.75rem;
       }
       
       .logo-text {
@@ -147,7 +154,6 @@
       font-size: 0.85rem;
     }
     
-    /* Gold button utility */
     .btn-gold {
       background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
       color: #000;
@@ -169,21 +175,25 @@
       box-shadow: 0 5px 20px rgba(255,215,0,0.3);
     }
   </style>
-<header class="site-header">
-  <div class="header-content">
-    <a href="{{ '/' | relative_url }}" class="logo-link">
-      <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG Botanicals" class="logo-img" onerror="this.style.display='none'">
-      <span class="logo-text">THANG</span>
-    </a>
-    
-    <nav class="main-nav">
-      <a href="{{ '/catalog' | relative_url }}">Catalog</a>
-      <a href="{{ '/quiz' | relative_url }}">Strain Finder</a>
-      <a href="{{ '/about' | relative_url }}">About</a>
-      <a href="{{ '/contact' | relative_url }}">Contact</a>
-    </nav>
-  </div>
-</header>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <a href="{{ '/' | relative_url }}" class="logo-link">
+        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG Botanicals" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text">THANG</span>
+      </a>
+      
+      <nav class="main-nav">
+        <a href="{{ '/catalog' | relative_url }}">Catalog</a>
+        <a href="{{ '/quiz' | relative_url }}">Strain Finder</a>
+        <a href="{{ '/blog' | relative_url }}">Education</a>
+        <a href="{{ '/investors' | relative_url }}">Investors</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
     {{ content }}
   </main>
