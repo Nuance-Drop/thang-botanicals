@@ -107,7 +107,6 @@ title: Strain Finder | THANG Botanicals
     font-size: 0.9rem;
   }
   
-  /* Results Styling */
   #results {
     display: none;
     animation: fadeIn 0.6s ease-out;
@@ -329,7 +328,6 @@ title: Strain Finder | THANG Botanicals
     <div class="progress-fill" id="progress"></div>
   </div>
   
-  <!-- Question 1: Experience (Critical Safety Filter) -->
   <div class="question active" data-q="0">
     <h2>Experience Level</h2>
     <div class="question-subtitle">This determines which strains we show you. Safety first—some strains are not for beginners.</div>
@@ -349,7 +347,6 @@ title: Strain Finder | THANG Botanicals
     </div>
   </div>
   
-  <!-- Question 2: Primary Intent -->
   <div class="question" data-q="1">
     <h2>What are you seeking?</h2>
     <div class="question-subtitle">Different strains have different "personalities"</div>
@@ -377,7 +374,6 @@ title: Strain Finder | THANG Botanicals
     </div>
   </div>
   
-  <!-- Question 3: Time of Day -->
   <div class="question" data-q="2">
     <h2>When do you prefer?</h2>
     <div class="question-subtitle">Some strains are too stimulating or sedating for certain times</div>
@@ -401,7 +397,6 @@ title: Strain Finder | THANG Botanicals
     </div>
   </div>
   
-  <!-- Question 4: Speed/Intensity -->
   <div class="question" data-q="3">
     <h2>Preferred Intensity</h2>
     <div class="question-subtitle">How fast and hard should it hit?</div>
@@ -421,7 +416,6 @@ title: Strain Finder | THANG Botanicals
     </div>
   </div>
   
-  <!-- Question 5: Health/Safety (Optional but recommended) -->
   <div class="question" data-q="4">
     <h2>Health Considerations</h2>
     <div class="question-subtitle">Help us filter for your safety (optional)</div>
@@ -441,7 +435,6 @@ title: Strain Finder | THANG Botanicals
     </div>
   </div>
   
-  <!-- Results Section -->
   <div id="results">
     <div class="warning-box" id="beginner-warning" style="display: none;">
       <strong>⚠️ Beginner Safety Notice</strong>
@@ -462,9 +455,7 @@ title: Strain Finder | THANG Botanicals
 </div>
 
 <script>
-// Complete strain database with all metadata from interview
 const strains = [
-  // === GREENS ===
   { 
     name: "Green Aceh", 
     slug: "green-aceh",
@@ -570,8 +561,6 @@ const strains = [
     avoidIf: ["beginner"],
     stats: { energy: 8, focus: 6, pain: 4, anxiety: 5, social: 8 }
   },
-  
-  // === REDS ===
   { 
     name: "Red Aceh", 
     slug: "red-aceh",
@@ -662,8 +651,6 @@ const strains = [
     avoidIf: [],
     stats: { energy: 2, focus: 3, pain: 7, anxiety: 8, social: 4 }
   },
-  
-  // === WHITES ===
   { 
     name: "White Maeng Da", 
     slug: "white-maeng-da",
@@ -754,8 +741,6 @@ const strains = [
     avoidIf: ["anxiety"],
     stats: { energy: 8, focus: 6, pain: 3, anxiety: 4, social: 7 }
   },
-  
-  // === YELLOWS ===
   { 
     name: "Yellow Dragon", 
     slug: "yellow-dragon",
@@ -843,7 +828,6 @@ function answer(category, value) {
   const progress = ((currentQ + 1) / totalQ) * 100;
   document.getElementById('progress').style.width = progress + '%';
 
-  // Hide current, show next or results
   const questions = document.querySelectorAll('.question');
   questions[currentQ].classList.remove('active');
   
@@ -861,17 +845,15 @@ function calculateScores() {
     let reasons = [];
     let warnings = [];
     
-    // 1. EXPERIENCE GATE (CRITICAL - Hard filters)
     if (answers.experience === 'beginner') {
-      // Hard block experienced-only strains
       if (strain.experience === 'experienced') {
-        return { strain, score: -999, reasons: [], warnings: [] }; // Filtered out
+        return { strain, score: -999, reasons: [], warnings: [] };
       }
       if (strain.experience === 'beginner') {
         score += 40;
         reasons.push("Perfect for beginners");
       } else {
-        score += 20; // Moderate okay with caution
+        score += 20;
       }
     } else if (answers.experience === 'experienced') {
       if (strain.experience === 'experienced') {
@@ -881,7 +863,6 @@ function calculateScores() {
         score += 15;
       }
     } else {
-      // Moderate - prefer moderate strains, allow others
       if (strain.experience === 'moderate') {
         score += 30;
       } else {
@@ -889,13 +870,11 @@ function calculateScores() {
       }
     }
     
-    // 2. HEALTH FILTERS (Safety)
     if (answers.health === 'sensitive') {
       if (strain.avoidIf.includes('sensitive')) {
         score -= 50;
         warnings.push("May cause nausea—start very small");
       }
-      // Bonus for gentle/fermented strains
       if (strain.name.includes('Bentuangie') || strain.speed === 'slow' || strain.potency <= 5) {
         score += 20;
         reasons.push("Gentle on stomach");
@@ -907,14 +886,12 @@ function calculateScores() {
         score -= 60;
         warnings.push("May increase anxiety—avoid if sensitive");
       }
-      // Bonus for yellows and certain reds
       if (strain.color === 'yellow' || (strain.color === 'red' && strain.speed === 'slow')) {
         score += 15;
         reasons.push("Anxiety-friendly");
       }
     }
     
-    // 3. INTENT MATCHING
     const intentWeights = {
       'energy': 30,
       'social': 30,
@@ -928,12 +905,10 @@ function calculateScores() {
       score += intentWeights[answers.intent] || 25;
       reasons.push(`Great for ${answers.intent}`);
       
-      // Extra for potency match on energy/relax
       if (answers.intent === 'energy' && strain.potency >= 7) score += 10;
       if (answers.intent === 'relax' && strain.speed === 'slow') score += 10;
     }
     
-    // 4. TIME MATCHING
     if (strain.time.includes(answers.time)) {
       score += 25;
       reasons.push(`Perfect for ${answers.time}`);
@@ -941,10 +916,9 @@ function calculateScores() {
       score += 20;
       reasons.push("Flexible timing");
     } else if (answers.time === 'evening' && strain.time.includes('afternoon')) {
-      score += 10; // Partial credit
+      score += 10;
     }
     
-    // 5. SPEED/POTENCY PREFERENCE
     if (answers.speed === 'gentle') {
       if (strain.speed === 'slow') score += 25;
       else if (strain.speed === 'moderate') score += 15;
@@ -962,23 +936,18 @@ function calculateScores() {
       else score += 5;
     }
     
-    // 6. CROSS-CATEGORY PENALTIES
-    // Don't recommend fast whites for evening
     if (answers.time === 'evening' && strain.color === 'white' && strain.speed === 'fast') {
       score -= 25;
       warnings.push("Too stimulating for evening");
     }
-    // Don't recommend sedating reds for morning
     if (answers.time === 'morning' && strain.color === 'red' && strain.speed === 'slow') {
       score -= 20;
       warnings.push("Too sedating for morning");
     }
-    // Don't recommend stimulating greens for evening unless specifically for social
     if (answers.time === 'evening' && strain.color === 'green' && strain.speed === 'fast' && answers.intent !== 'social') {
       score -= 15;
     }
     
-    // 7. PREMIUM/LIMITED BONUS (small nudge for variety)
     if (strain.premium) score += 5;
     if (strain.limited) score += 3;
     
@@ -1008,20 +977,14 @@ function showResults() {
     return;
   }
   
-  // Calculate percentage based on highest score in results
   const highestScore = Math.max(...matches.map(m => m.score));
   
   container.innerHTML = topMatches.map((match, i) => {
     const isTop = i === 0;
     const s = match.strain;
     
-    // Calculate percentage relative to highest score
     let matchPercent = Math.round((match.score / highestScore) * 95);
-    
-    // Clamp between 60-99 for display purposes
     matchPercent = Math.min(99, Math.max(60, matchPercent));
-    
-    // Top match gets a small boost to ensure 90%+ for best match
     if (isTop) matchPercent = Math.min(99, matchPercent + 4);
     
     const colorMap = {
@@ -1039,24 +1002,15 @@ function showResults() {
       <a href="/strains/${s.slug}/" class="result-card-wrapper">
         <div class="result-card ${isTop ? 'top-match' : ''}">
           <div class="click-header">Click for Full Details →</div>
-          
           <div class="match-score">${matchPercent}% Match</div>
-          
           <div class="strain-badges">
             ${s.limited ? '<span class="badge badge-limited">Limited Stock</span>' : ''}
             ${s.premium ? '<span class="badge badge-premium">Premium +$15</span>' : ''}
             ${s.experience === 'beginner' ? '<span class="badge badge-beginner">Beginner Safe</span>' : ''}
             <span class="badge" style="background: ${accentColor}20; border: 1px solid ${accentColor}40; color: ${accentColor}; text-transform: capitalize;">${s.color}</span>
           </div>
-          
-          <div class="strain-photo-placeholder">
-            [Photo: ${s.name}]
-          </div>
-          
-          <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; margin: 0 0 0.5rem; color: #fff;">
-            ${s.name}
-          </h3>
-          
+          <div class="strain-photo-placeholder">[Photo: ${s.name}]</div>
+          <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; margin: 0 0 0.5rem; color: #fff;">${s.name}</h3>
           <div class="strain-meta">
             <span style="text-transform: capitalize">${s.speed} onset</span>
             <span>•</span>
@@ -1064,17 +1018,12 @@ function showResults() {
             <span>•</span>
             <span>Best: ${s.time.join(', ')}</span>
           </div>
-          
-          <p style="color: rgba(255,255,255,0.85); line-height: 1.6; font-size: 1.05rem; margin: 1rem 0;">
-            ${s.desc}
-          </p>
-          
+          <p style="color: rgba(255,255,255,0.85); line-height: 1.6; font-size: 1.05rem; margin: 1rem 0;">${s.desc}</p>
           <div class="strain-characteristics">
             <span class="char-tag">E:${s.stats.energy}</span>
             <span class="char-tag">F:${s.stats.focus}</span>
             <span class="char-tag">P:${s.stats.pain}</span>
           </div>
-          
           ${warningsHtml}
         </div>
       </a>
