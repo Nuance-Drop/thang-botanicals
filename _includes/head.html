@@ -2,25 +2,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Content Security Policy (Meta Tag for GitHub Pages) -->
+  <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="default-src {{ site.csp.default_src }}; script-src {{ site.csp.script_src }}; style-src {{ site.csp.style_src }}; img-src {{ site.csp.img_src }}; connect-src {{ site.csp.connect_src }}; font-src {{ site.csp.font_src }}; frame-src {{ site.csp.frame_src }}; object-src {{ site.csp.object_src }}; base-uri {{ site.csp.base_uri }}; form-action {{ site.csp.form_action }};">
   
-  <!-- Security Headers (Meta equivalents) -->
+  <!-- Security Headers -->
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera()">
   
-  <!-- SEO -->
-  <title>{{ page.title | default: site.title }}</title>
+  <!-- SEO Essentials -->
+  <title>{{ page.title | default: site.title }} | THANG Botanicals</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="keywords" content="{{ page.keywords | default: 'kratom, botanicals, natural wellness, Dallas kratom, lab tested kratom' }}">
+  <meta name="author" content="THANG Botanicals">
+  <meta name="robots" content="index, follow">
   
-  <!-- Favicon (Jekyll compatible paths) -->
+  <!-- Canonical URL - CRITICAL FOR SEO -->
+  <link rel="canonical" href="https://kratomthang.com{{ page.url }}">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% elsif page.layout == 'strain' %}product{% else %}website{% endif %}">
+  <meta property="og:url" content="https://kratomthang.com{{ page.url }}">
+  <meta property="og:title" content="{{ page.title | default: 'THANG Botanicals' }}">
+  <meta property="og:description" content="{{ page.description | default: 'Premium kratom with sustainable sourcing and lab testing.' }}">
+  <meta property="og:image" content="https://kratomthang.com/assets/images/og-image.jpg">
+  <meta property="og:site_name" content="THANG Botanicals">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://kratomthang.com{{ page.url }}">
+  <meta property="twitter:title" content="{{ page.title | default: 'THANG Botanicals' }}">
+  <meta property="twitter:description" content="{{ page.description | default: 'Premium kratom with sustainable sourcing and lab testing.' }}">
+  <meta property="twitter:image" content="https://kratomthang.com/assets/images/og-image.jpg">
+  
+  <!-- Favicon - Fixed paths -->
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+  <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
   <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
-  <link rel="mask-icon" href="{{ '/assets/images/safari-pinned-tab.svg' | relative_url }}" color="#D4AF37">
+  <!-- REMOVED: safari-pinned-tab.svg - you don't have this file -->
+  
   <meta name="msapplication-TileColor" content="#0a0e27">
   <meta name="theme-color" content="#0a0e27">
   
@@ -30,6 +53,31 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  
+  <!-- Organization Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "THANG Botanicals",
+    "url": "https://kratomthang.com",
+    "logo": "https://kratomthang.com/assets/images/thang-logo.svg",
+    "sameAs": [
+      "https://instagram.com/thangbotanicals"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "areaServed": "Dallas-Fort Worth, TX"
+    }
+  }
+  </script>
+  
+  <!-- Breadcrumb Schema (if not in separate include) -->
+  {% include breadcrumbs.html %}
+  
+  <!-- Google Analytics - Add your ID when ready -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
   
   {% seo %}
 </head>
