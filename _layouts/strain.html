@@ -122,58 +122,130 @@ layout: default
       </div>
     </div>
     
-    <!-- ORDER FORM -->
-    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(255,215,0,0.2);">
-      <h2 style="font-family: 'Cinzel', serif; color: #FFD700; margin-bottom: 1.5rem;">Request Availability</h2>
-      
-      <form action="https://formspree.io/f/mreyzpjn" method="POST" style="display: grid; gap: 1.5rem;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <div>
-            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Name</label>
-            <input type="text" name="name" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif; transition: border-color 0.3s;" onfocus="this.style.borderColor='#FFD700'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
-          </div>
-          <div>
-            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Email</label>
-            <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif; transition: border-color 0.3s;" onfocus="this.style.borderColor='#FFD700'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
-          </div>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <div>
-            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Amount</label>
-            <select name="amount" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif; cursor: pointer;">
-              <option value="1oz">1 oz - Sample (${{ page.price | divided_by: 4 | round: 2 }})</option>
-              <option value="4oz">4 oz - Personal (${{ page.price }})</option>
-              <option value="8oz">8 oz - Value (${{ page.price | times: 1.8 | round: 2 }})</option>
-              <option value="1kg">1 kg - Bulk (${{ page.price | times: 3.5 | round: 2 }})</option>
-            </select>
-          </div>
-          <div>
-            <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Quantity</label>
-            <input type="number" name="quantity" value="1" min="1" max="10" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif;">
-          </div>
-        </div>
-        
-        <input type="hidden" name="strain" value="{{ page.name }}">
-        <input type="hidden" name="color" value="{{ page.color }}">
-        <input type="hidden" name="_subject" value="New THANG Order Request: {{ page.name }}">
-        <input type="hidden" name="_replyto" value="orders@kratomthang.com">
-        
-        <div>
-          <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Notes (Optional)</label>
-          <textarea name="message" rows="3" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-family: 'Inter', sans-serif; resize: vertical; transition: border-color 0.3s;" onfocus="this.style.borderColor='#FFD700'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'"></textarea>
-        </div>
-        
-        <button type="submit" style="padding: 1rem; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; border: none; font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 30px rgba(255,215,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-          Submit Request
-        </button>
-        
-        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-align: center; font-family: 'Inter', sans-serif;">
-          You will receive a confirmation email within 24 hours. No payment required until availability confirmed.
-        </p>
-      </form>
+<!-- ORDER FORM -->
+<div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(255,215,0,0.2);">
+  <h2 style="font-family: 'Cinzel', serif; color: #FFD700; margin-bottom: 1.5rem;">Request This Strain</h2>
+  
+  <form action="https://formspree.io/f/mreyzpjn" method="POST" style="display: grid; gap: 1.5rem;">
+    <!-- Hidden tracking -->
+    <input type="hidden" name="strain_requested" value="{{ page.name }}">
+    <input type="hidden" name="strain_color" value="{{ page.color }}">
+    <input type="hidden" name="_subject" value="ORDER: {{ page.name }} - {{ page.color }}">
+    <input type="hidden" name="_next" value="https://kratomthang.com/thanks.html">
+    
+    <!-- Contact -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div>
+        <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Name *</label>
+        <input type="text" name="customer_name" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px;">
+      </div>
+      <div>
+        <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Phone *</label>
+        <input type="tel" name="phone" required placeholder="(469) 555-0123" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px;">
+      </div>
     </div>
     
+    <div>
+      <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Email *</label>
+      <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px;">
+    </div>
+    
+    <!-- Strain selector (all 22) -->
+    <div>
+      <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Strain *</label>
+      <select name="strain" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px;">
+        <option value="{{ page.name }}" selected>{{ page.name }} (This Page)</option>
+        <optgroup label="Green Veins">
+          <option value="Green Aceh">Green Aceh</option>
+          <option value="Green Dragon">Green Dragon</option>
+          <option value="Green MD">Green MD</option>
+          <option value="Green Malay">Green Malay</option>
+          <option value="Super Green">Super Green</option>
+          <option value="Green Thai">Green Thai</option>
+          <option value="Green Dracula">Green Dracula</option>
+        </optgroup>
+        <optgroup label="Red Veins">
+          <option value="Red Aceh">Red Aceh</option>
+          <option value="Red Thai">Red Thai</option>
+          <option value="Red Dragon">Red Dragon</option>
+          <option value="Red Bali">Red Bali</option>
+          <option value="Red MD">Red MD</option>
+          <option value="Red Bentuangie">Red Bentuangie</option>
+        </optgroup>
+        <optgroup label="White Veins">
+          <option value="White MD">White MD</option>
+          <option value="White Aceh">White Aceh</option>
+          <option value="White Horn">White Horn</option>
+          <option value="White Sumatra">White Sumatra</option>
+          <option value="White Elephant">White Elephant</option>
+          <option value="White Zombie">White Zombie</option>
+        </optgroup>
+        <optgroup label="Yellow Veins">
+          <option value="Yellow Dragon">Yellow Dragon</option>
+          <option value="Yellow Hulu">Yellow Hulu</option>
+          <option value="Yellow Vietnam">Yellow Vietnam</option>
+          <option value="Yellow Maeng Da">Yellow Maeng Da</option>
+          <option value="Yellow Thai">Yellow Thai</option>
+        </optgroup>
+      </select>
+    </div>
+    
+    <!-- Amount & Quantity -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div>
+        <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Amount *</label>
+        <select name="amount" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px;">
+          <option value="">Select...</option>
+          <option value="1oz">1 oz - $15 (Sample)</option>
+          <option value="4oz">4 oz - $50 (Personal)</option>
+          <option value="8oz">8 oz - $90 (Value)</option>
+          <option value="1lb">1 lb - $160 (Bulk)</option>
+        </select>
+      </div>
+      <div>
+        <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Quantity *</label>
+        <input type="number" name="quantity" value="1" min="1" max="5" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px;">
+      </div>
+    </div>
+    
+    <!-- Payment & Delivery -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div>
+        <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Payment Method *</label>
+        <select name="payment_method" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px;">
+          <option value="">Select...</option>
+          <option value="venmo">Venmo</option>
+          <option value="cashapp">CashApp</option>
+          <option value="zelle">Zelle</option>
+          <option value="cash">Cash (pickup only)</option>
+        </select>
+      </div>
+      <div>
+        <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Delivery *</label>
+        <select name="delivery_method" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px;">
+          <option value="">Select...</option>
+          <option value="pickup">Pickup (Garland, TX)</option>
+          <option value="local-delivery">Local Delivery (+$5)</option>
+          <option value="shipping">Shipping (+$8)</option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- Address/Notes -->
+    <div>
+      <label style="display: block; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-size: 0.9rem; font-family: 'Cinzel', serif;">Delivery Address / Pickup Notes</label>
+      <textarea name="address_notes" rows="3" placeholder="Your address for delivery, OR preferred pickup time/day..." style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; resize: vertical;"></textarea>
+    </div>
+    
+    <button type="submit" style="padding: 1rem; background: linear-gradient(135deg, #FFD700, #ff9500); color: #000; border: none; font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 8px; font-weight: bold; font-size: 1.1rem;">
+      Submit Order Request
+    </button>
+    
+    <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); text-align: center; font-family: 'Inter', sans-serif;">
+      No payment collected now. We'll confirm availability and send payment instructions within 2 hours.
+    </p>
+  </form>
+</div>
     <!-- Compare Similar Strains -->
     <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
       <h3 style="font-family: 'Cinzel', serif; color: #FFD700; margin-bottom: 1.5rem;">Compare Similar Strains</h3>
