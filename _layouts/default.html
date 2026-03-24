@@ -1,188 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include head.html %}
-<body>
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      min-height: 100vh;
-      padding-top: 70px; /* Space for fixed header */
-    }
-    
-    /* Fixed Header */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(10,10,15,0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,215,0,0.1);
-      padding: 1rem 3%;
-      z-index: 1000;
-    }
-    
-    .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo-link {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-    }
-    
-    .logo-img {
-      height: 40px;
-      width: auto;
-    }
-    
-    .logo-text {
-      font-family: 'Cinzel', serif;
-      font-size: 1.5rem;
-      color: var(--gold-primary);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-    }
-    
-    .main-nav {
-      display: flex;
-      gap: 2rem;
-    }
-    
-    .main-nav a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: color 0.3s;
-      white-space: nowrap;
-    }
-    
-    .main-nav a:hover {
-      color: var(--gold-primary);
-    }
-    
-    /* Mobile */
-    @media (max-width: 768px) {
-      .main-nav {
-        gap: 1rem;
-      }
-      
-      .main-nav a {
-        font-size: 0.75rem;
-      }
-      
-      .logo-text {
-        font-size: 1.2rem;
-      }
-    }
-    
-    /* Footer */
-    .site-footer {
-      background: var(--bg-secondary);
-      border-top: 1px solid rgba(255,215,0,0.1);
-      padding: 3rem 5%;
-      margin-top: 4rem;
-      text-align: center;
-    }
-    
-    .footer-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .footer-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-    
-    .footer-links a:hover {
-      color: var(--gold-primary);
-    }
-    
-    .copyright {
-      color: rgba(255,255,255,0.4);
-      font-size: 0.85rem;
-    }
-    
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-      color: #000;
-      padding: 1rem 2rem;
-      font-family: 'Cinzel', serif;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(255,215,0,0.3);
-    }
-  </style>
-</head>
 
 <body>
-  <header class="site-header">
-    <div class="header-content">
-      <a href="{{ '/' | relative_url }}" class="logo-link">
-        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="THANG Botanicals" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-        <span class="logo-text">THANG</span>
-      </a>
-      
-      <nav class="main-nav">
-        <a href="{{ '/quiz' | relative_url }}">Strain Finder</a>
-        <a href="{{ '/catalog' | relative_url }}">Catalog</a>
-        <a href="{{ '/blog' | relative_url }}">Education</a>
-        <a href="{{ '/investors' | relative_url }}">Investors</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    {{ content }}
-  </main>
+  <header class="site-header">
+    <div class="header-content">
+      <a href="{{ '/' | relative_url }}" class="logo-link">
+        <img src="{{ '/assets/images/thang-logo.svg' | relative_url }}" alt="THANG Botanicals" class="logo-img">
+        <span class="logo-text">THANG</span>
+      </a>
+      <nav class="main-nav">
+        <a href="{{ '/quiz' | relative_url }}">Strain Finder</a>
+        <a href="{{ '/catalog' | relative_url }}">Catalog</a>
+        <a href="{{ '/contact' | relative_url }}">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="{{ '/privacy-policy' | relative_url }}">Privacy Policy</a>
-        <a href="{{ '/terms' | relative_url }}">Terms</a>
-        <a href="mailto:info@thangbotanicals.com">Contact</a>
-      </div>
-      <p class="copyright">© 2026 THANG Botanicals. Must be 21+ to purchase.</p>
-    </div>
-      <div style="text-align: center; padding: 2rem; color: rgba(255,255,255,0.4); font-size: 0.8rem;">
-  <p>Site architecture by <a href="https://www.linkedin.com/in/rhyspritchett" style="color: var(--gold);">[NuMaximum]</a></p>
-  <p style="margin-top: 0.5rem; font-size: 0.75rem;">Custom e-commerce • Jekyll • Liquid • Dallas TX</p>
-</div>
-  </footer>
+  <main>
+    {{ content }}
+  </main>
+
+  <!-- Footer removed entirely -->
+
 </body>
 </html>

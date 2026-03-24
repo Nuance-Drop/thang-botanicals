@@ -1,26 +1,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src {{ site.csp.default_src }}; script-src {{ site.csp.script_src }}; style-src {{ site.csp.style_src }}; img-src {{ site.csp.img_src }}; connect-src {{ site.csp.connect_src }}; font-src {{ site.csp.font_src }}; frame-src {{ site.csp.frame_src }}; object-src {{ site.csp.object_src }}; base-uri {{ site.csp.base_uri }}; form-action {{ site.csp.form_action }};">
-  
-  <!-- Security Headers -->
+
+  <!-- Security Headers (safe) -->
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera()">
-  
+
   <!-- SEO Essentials -->
   <title>{{ page.title | default: site.title }} | THANG Botanicals</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
   <meta name="keywords" content="{{ page.keywords | default: 'kratom, botanicals, natural wellness, Dallas kratom, lab tested kratom' }}">
   <meta name="author" content="THANG Botanicals">
   <meta name="robots" content="index, follow">
-  
-  <!-- Canonical URL - CRITICAL FOR SEO -->
+
+  <!-- Canonical URL -->
   <link rel="canonical" href="https://kratomthang.com{{ page.url }}">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% elsif page.layout == 'strain' %}product{% else %}website{% endif %}">
   <meta property="og:url" content="https://kratomthang.com{{ page.url }}">
@@ -28,33 +25,144 @@
   <meta property="og:description" content="{{ page.description | default: 'Premium kratom with sustainable sourcing and lab testing.' }}">
   <meta property="og:image" content="https://kratomthang.com/assets/images/og-image.jpg">
   <meta property="og:site_name" content="THANG Botanicals">
-  
+
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://kratomthang.com{{ page.url }}">
   <meta property="twitter:title" content="{{ page.title | default: 'THANG Botanicals' }}">
   <meta property="twitter:description" content="{{ page.description | default: 'Premium kratom with sustainable sourcing and lab testing.' }}">
   <meta property="twitter:image" content="https://kratomthang.com/assets/images/og-image.jpg">
-  
-  <!-- Favicon - Fixed paths -->
+
+  <!-- Favicon (fixed paths) -->
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
   <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
   <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
-  <!-- REMOVED: safari-pinned-tab.svg - you don't have this file -->
-  
   <meta name="msapplication-TileColor" content="#0a0e27">
   <meta name="theme-color" content="#0a0e27">
-  
-  <!-- Fonts -->
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  
-  <!-- Organization Schema (JSON-LD) -->
+
+  <!-- Critical inline styles (ensures header/footer look good even if style.css is missing) -->
+  <style>
+    :root {
+      --bg-primary: #0a0e27;
+      --bg-secondary: #0f132c;
+      --text-primary: #ffffff;
+      --text-secondary: #e0e0e0;
+      --gold-primary: #ffd700;
+      --gold-dark: #b8860b;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      margin: 0;
+      padding-top: 70px;
+    }
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,215,0,0.1);
+      padding: 1rem 3%;
+      z-index: 1000;
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .logo-img {
+      height: 40px;
+      width: auto;
+    }
+    .logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold-primary);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    .main-nav {
+      display: flex;
+      gap: 2rem;
+    }
+    .main-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+    .main-nav a:hover {
+      color: var(--gold-primary);
+    }
+    .site-footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid rgba(255,215,0,0.1);
+      padding: 2rem 5%;
+      margin-top: 4rem;
+      text-align: center;
+    }
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .copyright {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      color: #000;
+      padding: 1rem 2rem;
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(255,215,0,0.3);
+    }
+    @media (max-width: 768px) {
+      .main-nav { gap: 1rem; }
+      .main-nav a { font-size: 0.75rem; }
+      .logo-text { font-size: 1.2rem; }
+    }
+  </style>
+
+  <!-- Organization Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -62,9 +170,7 @@
     "name": "THANG Botanicals",
     "url": "https://kratomthang.com",
     "logo": "https://kratomthang.com/assets/images/thang-logo.svg",
-    "sameAs": [
-      "https://instagram.com/thangbotanicals"
-    ],
+    "sameAs": ["https://instagram.com/thangbotanicals"],
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
@@ -72,12 +178,7 @@
     }
   }
   </script>
-  
-  <!-- Breadcrumb Schema (if not in separate include) -->
-  {% include breadcrumbs.html %}
-  
-  <!-- Google Analytics - Add your ID when ready -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
-  
+
+  <!-- jekyll-seo-tag will add more metadata -->
   {% seo %}
 </head>
