@@ -9,6 +9,7 @@
   --holographic: linear-gradient(135deg, #00f5d4, #00bbf9, #fee440, #f15bb5, #9b5de5);
   --text-primary: #e0e6ed;
   --text-muted: #8b92a8;
+  --text-secondary: #e0e0e0;
   --accent-pink: #ff006e;
   --accent-cyan: #00f5d4;
 }
@@ -25,6 +26,7 @@ body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  padding-top: 70px; /* Prevents fixed header from covering content */
 }
 
 /* Geometric border - STATIC */
@@ -103,14 +105,10 @@ h1::after, h2::after, h3::after {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* REMOVED: ::before pseudo-element that had the shimmer animation */
-/* REMOVED: @keyframes holoShimmer entirely */
-
 .holo-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 245, 212, 0.1);
   border-color: var(--gold-primary);
-  /* Static holographic tint instead of animated */
   background: linear-gradient(135deg, var(--navy-mid) 0%, rgba(0, 245, 212, 0.05) 100%);
 }
 
@@ -203,7 +201,6 @@ h1::after, h2::after, h3::after {
   transform: rotate(5deg);
   box-shadow: 0 4px 10px rgba(255, 0, 110, 0.3);
   z-index: 10;
-  /* REMOVED: Any hover animations */
 }
 
 .container {
@@ -231,13 +228,10 @@ h1::after, h2::after, h3::after {
   cursor: pointer;
 }
 
-/* REMOVED: ::before pseudo-element with the sweeping shimmer effect */
-
 .btn-gold:hover {
   background: rgba(212, 175, 55, 0.15);
   color: var(--gold-light);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-  /* Static glow only, no moving parts */
 }
 
 .btn-gold:disabled {
@@ -299,9 +293,6 @@ h1::after, h2::after, h3::after {
   border-color: var(--accent-cyan);
   color: #5ef2d9;
 }
-.site-footer {
-  margin-top: 2rem;
-}
 
 .click-hint {
   display: block;
@@ -317,4 +308,116 @@ h1::after, h2::after, h3::after {
 
 .result-card-button:hover .click-hint {
   background: rgba(255,215,0,0.1);
+}
+
+/* ========== HEADER & FOOTER STYLES ========== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  padding: 1rem 3%;
+  z-index: 1000;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+
+.logo-text {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: var(--gold-primary);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.main-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.main-nav a:hover {
+  color: var(--gold-primary);
+}
+
+.site-footer {
+  background: var(--navy-mid);
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  padding: 2rem 5%;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--gold-primary);
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .main-nav {
+    gap: 1rem;
+  }
+  .main-nav a {
+    font-size: 0.75rem;
+  }
+  .logo-text {
+    font-size: 1.2rem;
+  }
 }
