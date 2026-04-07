@@ -299,6 +299,9 @@ h1::after, h2::after, h3::after {
   border-color: var(--accent-cyan);
   color: #5ef2d9;
 }
+.site-footer {
+  margin-top: 2rem;
+}
 
 .click-hint {
   display: block;
