@@ -263,8 +263,14 @@ title: Catalog | THANG Botanicals
       {% if strain.limited %}<span class="badge-limited">EXCLUSIVE</span>{% endif %}
       
       <!-- Photo placeholder -->
-      <div class="card-photo"></div>
-      
+      <div class="card-photo"> 
+        {% if strain.image %}
+          <img src=""{{ strain.image | relative_url  }}" alt="{{ strain.name }}" class="strain-img">
+        {% else %}
+          <div class="no-image">📸</div>
+        {% endif %}
+      </div>
+       
       <div class="card-content">
         <div class="badges">
           <span class="tag {{ strain.color }}">{{ strain.color }}</span>

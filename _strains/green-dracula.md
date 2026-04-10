@@ -6,6 +6,7 @@ price: 34.99
 speed: fast
 premium: false
 limited: true
+image: /assets/images/strains/green-dracula.jpg
 energy: 9
 focus: 7
 pain: 4

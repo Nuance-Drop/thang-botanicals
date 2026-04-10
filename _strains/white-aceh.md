@@ -6,6 +6,7 @@ price: 49.99
 speed: fast
 premium: true
 limited: false
+image: /assets/images/strains/
 energy: 9
 focus: 8
 pain: 3
